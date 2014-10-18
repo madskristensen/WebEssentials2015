@@ -1,4 +1,4 @@
-[Web Essentials](http://vswebessentials.com) for Visual Studio 2013
+[Web Essentials](http://vswebessentials.com) for Visual Studio 2015
 =================
 
 Web Essentials extends Visual Studio with lots of new features that web developers have been missing for many years. 
@@ -15,8 +15,8 @@ To contribute to this project, you'll need to do a few things first:
 
  1. Fork the project on GitHub
  1. Clone it to your computer
- 1. Install the [Visual Studio 2013 SDK](http://www.microsoft.com/visualstudio/eng/downloads#d-vs-sdk).
- 1. Open the solution in VS2013.
+ 1. Install the [Visual Studio 2015 SDK](http://www.microsoft.com/visualstudio/eng/downloads#d-vs-sdk).
+ 1. Open the solution in VS2015.
 
 To install your local fork into your main VS instance, you will first need to open `Source.extension.vsixmanifest` and bump the version number to make it overwrite the (presumably) already-installed production copy. (alternatively, just uninstall Web Essentials from within VS first)
 

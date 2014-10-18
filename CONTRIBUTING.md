@@ -109,15 +109,15 @@ included in the project:
    git clone https://github.com/<your-username>/WebEssentials2015.git
    # Navigate to the newly cloned directory
    cd WebEssentials2015
-   # Assign the original repo to a remote called "we2013" (or "upstream")
-   git remote add we2013 https://github.com/madskristensen/WebEssentials2015.git
+   # Assign the original repo to a remote called "we2015" (or "upstream")
+   git remote add we2015 https://github.com/madskristensen/WebEssentials2015.git
    ```
 
 2. If you cloned a while ago, get the latest changes from upstream:
 
    ```bash
    git checkout master
-   git pull we2013 master
+   git pull we2015 master
    ```
 
 3. Create a new topic branch (off the main project development branch) to
@@ -137,7 +137,7 @@ included in the project:
 5. Locally merge (or rebase) the upstream development branch into your topic branch:
 
    ```bash
-   git pull [--rebase] we2013 master
+   git pull [--rebase] we2015 master
    ```
 
 6. Push your topic branch up to your fork:
