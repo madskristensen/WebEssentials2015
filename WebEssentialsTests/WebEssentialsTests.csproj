@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E05B0E57-CF56-4513-9D24-18B6EE7C3712}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebEssentialsTests</RootNamespace>
+    <AssemblyName>WebEssentialsTests</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ConfOxide, Version=1.4.0.0, Culture=neutral, PublicKeyToken=934faed64f82030e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ConfOxide.1.4.0.0\lib\net40\ConfOxide.dll</HintPath>
+    </Reference>
+    <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="EnvDTE80, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="FluentAssertions">
+      <HintPath>..\packages\FluentAssertions.3.0.107\lib\net45\FluentAssertions.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentAssertions.Core">
+      <HintPath>..\packages\FluentAssertions.3.0.107\lib\net45\FluentAssertions.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MarkdownSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MarkdownSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.CSS.Core, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Web Tools\Editors\Microsoft.CSS.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSS.Editor, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Web Tools\Editors\Microsoft.CSS.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Html.Core, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Web Tools\Editors\Microsoft.Html.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Html.Editor, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Web Tools\Editors\Microsoft.Html.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.ComponentModelHost, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.CoreUtility, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Language.Intellisense, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.OLE.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.Shell.12.0, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.Text.Data, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Text.Logic, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Text.UI, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Text.UI.Wpf, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.TextManager.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.Web.Extensions">
+      <HintPath>$(DevEnvDir)\Extensions\Microsoft\Web Tools\Languages\Microsoft.VisualStudio.Web.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VSSDK.TestHostFramework, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VSSDK.UnitTestLibrary, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Web.Core, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Web Tools\Editors\Microsoft.Web.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Editor, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Web Tools\Editors\Microsoft.Web.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <Compile Include="IntegrationTests\Completion\JsIntelliSenseTest.cs" />
+    <Compile Include="IntegrationTests\Completion\ZenCodingTest.cs" />
+    <Compile Include="IntegrationTests\Completion\CommentsTest.cs" />
+    <Compile Include="IntegrationTests\Dependencies\ChainCompilationTests.cs" />
+    <Compile Include="IntegrationTests\Dependencies\DependencyGraphTests.cs" />
+    <Compile Include="IntegrationTests\SettingsTests.cs" />
+    <Compile Include="Tests\Foundation\FoundationValidationTests.cs" />
+    <Compile Include="Tests\Foundation\FoundationColumnsValidatorTests.cs" />
+    <Compile Include="Tests\Bootstrap\BootstrapColumnsValidatorTests.cs" />
+    <Compile Include="Tests\Handlebars\HandlebarsCompilationTests.cs" />
+    <Compile Include="Tests\NodeExecutors\SweetJsCompilationTests.cs" />
+    <Compile Include="Tests\SCSS\ScssDocumentTests.cs" />
+    <Compile Include="Tests\Shared\Base64Vlq.cs" />
+    <Compile Include="VSHost.cs" />
+    <None Include="ExtractZipTask.cs" />
+    <Compile Include="IntegrationTests\Compilation\CompileOnSaveTests.cs" />
+    <Compile Include="IntegrationTests\ProjectHelpersTests.cs" />
+    <Compile Include="Tests\Bootstrap\BootstrapValidationTests.cs" />
+    <Compile Include="Tests\NodeExecutors\IcedCoffeeScriptCompilationTests.cs" />
+    <Compile Include="Tests\NodeExecutors\CoffeeScriptCompilationTests.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Tests\IntellisenseGeneration\IntellisenseTypeTests.cs" />
+    <Compile Include="Tests\IntellisenseGeneration\IntellisenseWriteJavaScriptsTests.cs" />
+    <Compile Include="Tests\IntellisenseGeneration\IntellisenseWriteTypeScriptTests.cs" />
+    <Compile Include="Tests\IntellisenseGeneration\Parsing_SimpleClass_Tests.cs" />
+    <Compile Include="Tests\IntellisenseGeneration\TestHelper\IntellisenseObjectsAssertionsExtensions.cs" />
+    <Compile Include="Tests\IntellisenseGeneration\Parsing_CollectionModel_Tests.cs" />
+    <Compile Include="Tests\IntellisenseGeneration\Parsing_SimpleNullable_Tests.cs" />
+    <Compile Include="Tests\IntellisenseGeneration\TestHelper\IntellisenseObjectsAssertions.cs" />
+    <Compile Include="Tests\IntellisenseGeneration\TestHelper\IntellisensePropertyAssertions.cs" />
+    <Compile Include="TestCodeExtensions.cs" />
+    <Compile Include="Tests\NodeExecutors\JsHintTests.cs" />
+    <Compile Include="Tests\NodeExecutors\LessCompilationTests.cs" />
+    <Compile Include="Tests\LESS\LessDocumentTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tests\Markdown\MarkdownOutlinerTests.cs" />
+    <Compile Include="Tests\Markdown\MarkdownCodeBlockTests.cs" />
+    <Compile Include="Tests\Markdown\TabAwareCharacterStreamTests.cs" />
+    <Compile Include="Tests\NodeExecutors\ScssCompilationTests.cs" />
+    <Compile Include="Tests\Shared\MockSnapshot.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\NodeModules\NodeModuleImportedTests.cs" />
+    <Compile Include="Tests\NodeModules\NodeModuleCompletionTests.cs" />
+    <Compile Include="Tests\Markdown\MarkdownClassifierTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fixtures\coffee\compiled\test.js" />
+    <Content Include="fixtures\coffee\source\test.js">
+      <DependentUpon>test.coffee</DependentUpon>
+    </Content>
+    <Content Include="fixtures\handlebars\compiled\test.hbs.js" />
+    <Content Include="fixtures\iced\compiled\test.js" />
+    <Content Include="fixtures\jshint\config\clean.js" />
+    <Content Include="fixtures\jshint\skip.js" />
+    <Content Include="fixtures\jshint\default.js" />
+    <Content Include="fixtures\less\css\URLs.css" />
+    <Content Include="fixtures\less\css\_Deep Inclusion.css" />
+    <Content Include="fixtures\less\css\_Entry1.css" />
+    <Content Include="fixtures\less\sub1\css\_Entry2.css" />
+    <Content Include="fixtures\less\sub1\deeper\css\_Entry3.css" />
+    <Content Include="fixtures\less\sub1\deeper\css\_lib.css" />
+    <Content Include="fixtures\less\sub1\deeper\_lib.css" />
+    <Content Include="fixtures\less\sub1\deeper\_Entry3.css" />
+    <Content Include="fixtures\less\sub1\_Entry2.css" />
+    <Content Include="fixtures\less\_Deep Inclusion.css" />
+    <Content Include="fixtures\less\_Entry1.css" />
+    <Content Include="fixtures\module-resolution\a.js" />
+    <Content Include="fixtures\module-resolution\b\c.js" />
+    <Content Include="fixtures\module-resolution\b\d.js" />
+    <Content Include="fixtures\module-resolution\b\package\index.js" />
+    <Content Include="fixtures\module-resolution\cycles\folder\foo.js" />
+    <Content Include="fixtures\module-resolution\cycles\root.js" />
+    <Content Include="fixtures\module-resolution\global\plain.js" />
+    <Content Include="fixtures\module-resolution\nested-index\one\hello.js" />
+    <Content Include="fixtures\module-resolution\nested-index\one\index.js" />
+    <Content Include="fixtures\module-resolution\nested-index\three.js" />
+    <Content Include="fixtures\module-resolution\nested-index\three\index.js" />
+    <Content Include="fixtures\module-resolution\nested-index\two\hello.js" />
+    <Content Include="fixtures\module-resolution\nested-index\two\index.js" />
+    <Content Include="fixtures\module-resolution\node_modules\asdf.js" />
+    <Content Include="fixtures\module-resolution\node_modules\bar.js" />
+    <Content Include="fixtures\module-resolution\node_modules\baz\index.js" />
+    <Content Include="fixtures\module-resolution\node_modules\baz\node_modules\asdf.js" />
+    <Content Include="fixtures\module-resolution\node_modules\baz\otherFile.js" />
+    <Content Include="fixtures\module-resolution\node_modules\foo.js" />
+    <Content Include="fixtures\module-resolution\node_modules\node_modules\bar.js" />
+    <Content Include="fixtures\module-resolution\packages\main-index\package-main-module\index.js" />
+    <Content Include="fixtures\module-resolution\packages\main\package-main-module.js" />
+    <Content Include="fixtures\sweet.js\compiled\test.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <Content Include="fixtures\less\URLs.css" />
+    <None Include="fixtures\handlebars\source\test.hbs" />
+    <None Include="fixtures\iced\source\test.iced" />
+    <Content Include="fixtures\jshint\config\.jshintrc" />
+    <None Include="fixtures\jshint\.jshintignore" />
+    <None Include="fixtures\less\URLs.less" />
+    <None Include="fixtures\less\sub1\deeper\_lib.less" />
+    <None Include="fixtures\less\sub1\deeper\_Entry3.less" />
+    <None Include="fixtures\less\sub1\_Entry2.less" />
+    <None Include="fixtures\less\_Deep Inclusion.less" />
+    <None Include="fixtures\less\_Entry1.less" />
+    <None Include="fixtures\module-resolution\empty\.gitkeep" />
+    <None Include="fixtures\module-resolution\foo" />
+    <None Include="fixtures\module-resolution\packages\main-index\package.json" />
+    <None Include="fixtures\module-resolution\packages\main\package.json" />
+    <None Include="fixtures\coffee\source\test.coffee" />
+    <Content Include="fixtures\scss\extend.css" />
+    <None Include="fixtures\scss\extend.scss" />
+    <None Include="fixtures\sweet.js\source\test.sjs" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EditorExtensions\WebEssentials2015.csproj">
+      <Project>{10d05bc1-cdee-4d14-b88f-f91c0bdc7861}</Project>
+      <Name>WebEssentials2015</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <UsingTask TaskName="MadsKristensen.EditorExtensions.ExtractZipTask" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v12.0.dll">
+    <ParameterGroup>
+      <ZipPath ParameterType="System.String" Required="true" />
+      <ArchivePath ParameterType="System.String" Required="true" />
+      <Destination ParameterType="System.String" Required="true" />
+    </ParameterGroup>
+    <Task>
+      <Reference Include="System.IO.Compression" />
+      <Reference Include="System.IO.Compression.FileSystem" />
+      <Code Language="cs" Source="ExtractZipTask.cs" />
+    </Task>
+  </UsingTask>
+  <Target Name="AfterBuild">
+    <MadsKristensen.EditorExtensions.ExtractZipTask ZipPath="$(SolutionDir)EditorExtensions\$(OutDir)\WebEssentials2013.vsix" ArchivePath="Resources" Destination="$(OutDir)" />
+  </Target>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+      rem Copy fixtures to output directory to run tests
+      (robocopy /mir /e /ns /nc /nfl /ndl /np /njh /njs "$(ProjectDir)fixtures" "$(TargetDir)fixtures") ^&amp; IF %ERRORLEVEL% LEQ 1 exit 0
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  
+  Finally found it, but we don't need it after robocopy
+  <Target Name="BeforeClean">
+    <RemoveDir Directories="$(TargetDir)fixtures\" />
+  </Target>-->
+</Project>
