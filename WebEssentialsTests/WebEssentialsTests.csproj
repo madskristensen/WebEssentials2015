@@ -221,8 +221,6 @@
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>
-      rem Copy fixtures to output directory to run tests
-      (robocopy /mir /e /ns /nc /nfl /ndl /np /njh /njs "$(ProjectDir)fixtures" "$(TargetDir)fixtures") ^&amp; IF %ERRORLEVEL% LEQ 1 exit 0
     </PostBuildEvent>
   </PropertyGroup>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

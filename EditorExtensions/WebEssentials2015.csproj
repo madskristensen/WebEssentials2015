@@ -773,7 +773,6 @@
     <Content Include="CSS\Snippets\Web Essentials\css-radial-gradient.snippet">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <None Include="PreBuildTask.cs" />
     <Content Include="Resources\Icons\Bundle.ico">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
