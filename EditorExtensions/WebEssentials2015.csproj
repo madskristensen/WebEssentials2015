@@ -718,61 +718,6 @@
     <Compile Include="HTML\Validation\OpenGraphPrefixValidator.cs" />
     <Compile Include="HTML\Validation\ItemTypeValidator.cs" />
     <EmbeddedResource Include="BrowserLink\BrowserInfo\BrowserInfo.js" />
-    <Content Include="CSS\Snippets\snippets.pkgdef">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="CSS\Snippets\Web Essentials\media query desktop laptop.snippet">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="CSS\Snippets\Web Essentials\media query ipad landscape.snippet">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="CSS\Snippets\Web Essentials\media query ipad portrait.snippet">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="CSS\Snippets\Web Essentials\media query ipad.snippet">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="CSS\Snippets\Web Essentials\media query iphone 4 landscape.snippet">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="CSS\Snippets\Web Essentials\media query iphone 4 portrait.snippet">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="CSS\Snippets\Web Essentials\media query iphone 4.snippet">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="CSS\Snippets\Web Essentials\media query iphone 5 landscape.snippet">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="CSS\Snippets\Web Essentials\media query iphone 5 portrait.snippet">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="CSS\Snippets\Web Essentials\media query iphone 5.snippet">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="CSS\Snippets\Web Essentials\media query large screen.snippet">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="CSS\Snippets\Web Essentials\media query smartphone landscape.snippet">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="CSS\Snippets\Web Essentials\media query smartphone portrait.snippet">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="CSS\Snippets\Web Essentials\media query smartphone.snippet">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="CSS\Snippets\Web Essentials\media query windows snap view.snippet">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="CSS\Snippets\Web Essentials\css-linear-gradient.snippet">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="CSS\Snippets\Web Essentials\css-radial-gradient.snippet">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
     <Content Include="Resources\Icons\Bundle.ico">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
