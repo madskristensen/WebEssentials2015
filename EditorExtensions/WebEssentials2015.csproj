@@ -362,7 +362,6 @@
     <Compile Include="JSON\Completion\HyperSchemaCompletionProvider.cs" />
     <Compile Include="JSON\Completion\RefValueCompletionProvider.cs" />
     <Compile Include="JSON\Completion\RequireCompletionProvider.cs" />
-    <Compile Include="JSON\Completion\SchemaValueCompletionProvider.cs" />
     <Compile Include="JSON\Completion\SimpleCompletionEntry.cs" />
     <Compile Include="JSON\Helpers\JsonTreeVisitor.cs" />
     <Compile Include="JSON\Schemas\SchemaExporter.cs" />
@@ -385,7 +384,7 @@
     <Compile Include="Shared\Compilers\Result\CompilerResult.cs" />
     <Compile Include="Shared\Compilers\Result\CompilerResultFactory.cs" />
     <Compile Include="Shared\Compilers\Result\CssCompilerResult.cs" />
-    <Compile Include="Shared\Completion\ColorSwatchIntellisense.cs" />
+    <Compile Include="CSS\Completion\ColorSwatchCompletionListEntry.cs" />
     <Compile Include="Markdown\Classify\BufferGenerator.cs" />
     <Compile Include="Markdown\Classify\CodeArtifactProcessor.cs" />
     <Compile Include="Markdown\Classify\CodeLanguageEmbedders.cs" />
@@ -395,7 +394,7 @@
     <Compile Include="Markdown\Classify\MarkdownLanguageSupport.cs" />
     <Compile Include="Markdown\Classify\MarkdownParser.cs" />
     <Compile Include="SCSS\SmartTags\ScssExtractVariableSmartTagProvider.cs" />
-    <Compile Include="Shared\Completion\ColorSwatchIntellisenseProvider.cs" />
+    <Compile Include="CSS\Completion\CompletionProviders\ColorSwatchIntellisenseProvider.cs" />
     <Compile Include="Shared\ExtensionMethods\TaskExtensions.cs" />
     <Compile Include="Shared\Helpers\AsyncLock.cs" />
     <Compile Include="Shared\Helpers\Policies\PolicyFactory.cs" />
@@ -426,7 +425,6 @@
     <Compile Include="Shared\ExtensionMethods\DispatcherPriorityAwaiter.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Shared\Helpers\DependencyGraph.cs" />
-    <Compile Include="Misc\MenuItems\ChainCompilation.cs" />
     <Compile Include="Images\MenuItems\SpriteImage.cs" />
     <Compile Include="Shared\Helpers\Mef.cs" />
     <Compile Include="Shared\Margins\TextViewMargin.cs" />

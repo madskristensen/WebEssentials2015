@@ -11,7 +11,7 @@ using Microsoft.CSS.Editor;
 using Microsoft.CSS.Editor.Intellisense;
 using Microsoft.VisualStudio.Utilities;
 
-namespace MadsKristensen.EditorExtensions.Shared
+namespace MadsKristensen.EditorExtensions.Css
 {
     [Export(typeof(ICssCompletionProvider))]
     [Name("ColorSwatchIntellisenseProvider")]
@@ -64,7 +64,7 @@ namespace MadsKristensen.EditorExtensions.Shared
 
             foreach (var variable in varsCollection.GetEvaluatedColorVariables())
             {
-                yield return new ColorSwatchIntellisense(variable.Name, variable.Value);
+                yield return new ColorSwatchCompletionListEntry(variable.Name, variable.Value);
             }
         }
 

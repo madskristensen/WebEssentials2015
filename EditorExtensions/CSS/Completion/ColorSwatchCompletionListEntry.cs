@@ -6,16 +6,16 @@ using Microsoft.CSS.Editor.Intellisense;
 using Microsoft.VisualStudio.Text;
 using Microsoft.Web.Editor.Intellisense;
 
-namespace MadsKristensen.EditorExtensions.Shared
+namespace MadsKristensen.EditorExtensions.Css
 {
     /// <summary>
     /// This represents a color swatch intellisense
     /// </summary>
-    internal class ColorSwatchIntellisense : ICssCompletionListEntry
+    internal class ColorSwatchCompletionListEntry : ICssCompletionListEntry
     {
         private string _name;
 
-        public ColorSwatchIntellisense(string name = null, string value = null)
+        public ColorSwatchCompletionListEntry(string name = null, string value = null)
         {
             _name = name ?? string.Empty;
             ColorValue = value;
