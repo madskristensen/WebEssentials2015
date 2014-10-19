@@ -7,7 +7,6 @@ using Microsoft.VisualStudio.Utilities;
 namespace MadsKristensen.EditorExtensions.Settings
 {
     [Export(typeof(IWpfTextViewCreationListener))]
-    [ContentType("text")]   // TODO: Remove after JSON editor ships
     [ContentType("JSON")]
     [TextViewRole(PredefinedTextViewRoles.Document)]
     public class ProjectSettingsTextViewListener : IWpfTextViewCreationListener

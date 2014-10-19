@@ -9,8 +9,8 @@ namespace MadsKristensen.EditorExtensions.Settings
 {
     internal static class SettingsStore
     {
-        const string _legacyFileName = "WE2013-settings.xml";
-        public const string FileName = "WebEssentials2015-Settings.json";
+        //const string _legacyFileName = "WE2013-settings.xml";
+        public const string FileName = "WebEssentials-Settings.json";
 
         public static bool SolutionSettingsExist
         {
@@ -35,23 +35,23 @@ namespace MadsKristensen.EditorExtensions.Settings
         {
             if (InTestMode) return;
 
-            if (!File.Exists(GetSolutionFilePath()))
-            {
-                // If there is a legacy solution settings file, and no
-                // modern solution settings file, migrate it.
-                if (File.Exists(GetLegacySolutionFilePath()))
-                {
-                    Migrate(solution: true);
-                    return;
-                }
-                // If there aren't any solution-level settings, check
-                // whether we need to migrate legacy global settings.
-                if (File.Exists(GetLegacyFilePath()) && !File.Exists(GetUserFilePath()))
-                {
-                    Migrate(solution: false);
-                    return;
-                }
-            }
+            //if (!File.Exists(GetSolutionFilePath()))
+            //{
+            //    // If there is a legacy solution settings file, and no
+            //    // modern solution settings file, migrate it.
+            //    if (File.Exists(GetLegacySolutionFilePath()))
+            //    {
+            //        Migrate(solution: true);
+            //        return;
+            //    }
+            //    // If there aren't any solution-level settings, check
+            //    // whether we need to migrate legacy global settings.
+            //    if (File.Exists(GetLegacyFilePath()) && !File.Exists(GetUserFilePath()))
+            //    {
+            //        Migrate(solution: false);
+            //        return;
+            //    }
+            //}
 
             string jsonPath = GetFilePath();
             if (File.Exists(jsonPath))
@@ -61,22 +61,22 @@ namespace MadsKristensen.EditorExtensions.Settings
             }
         }
 
-        private static void Migrate(bool solution)
-        {
-            var legacyPath = GetLegacyFilePath();
-            if (!File.Exists(legacyPath))
-                return;
+        //private static void Migrate(bool solution)
+        //{
+        //    var legacyPath = GetLegacyFilePath();
+        //    if (!File.Exists(legacyPath))
+        //        return;
 
-            new SettingsMigrator(legacyPath).ApplyTo(WESettings.Instance);
+        //    new SettingsMigrator(legacyPath).ApplyTo(WESettings.Instance);
 
-            var jsonPath = solution ? GetSolutionFilePath() : GetUserFilePath();
-            Save(jsonPath);
-            if (solution)
-                ProjectHelpers.GetSolutionItemsProject().ProjectItems.AddFromFile(jsonPath);
+        //    var jsonPath = solution ? GetSolutionFilePath() : GetUserFilePath();
+        //    Save(jsonPath);
+        //    if (solution)
+        //        ProjectHelpers.GetSolutionItemsProject().ProjectItems.AddFromFile(jsonPath);
 
-            UpdateStatusBar("imported from legacy XML settings file");
-            Logger.Log("Migrated legacy XML settings file " + legacyPath + " to " + jsonPath);
-        }
+        //    UpdateStatusBar("imported from legacy XML settings file");
+        //    Logger.Log("Migrated legacy XML settings file " + legacyPath + " to " + jsonPath);
+        //}
 
         ///<summary>Saves the current settings to the active settings file.</summary>
         public static void Save() { Save(GetFilePath()); }
@@ -100,27 +100,27 @@ namespace MadsKristensen.EditorExtensions.Settings
             UpdateStatusBar("created");
         }
 
-        #region Legacy Locator
-        private static string GetLegacyFilePath()
-        {
-            string path = (GetSolutionFilePath() ?? "").Replace(FileName, _legacyFileName);
+        //#region Legacy Locator
+        //private static string GetLegacyFilePath()
+        //{
+        //    string path = (GetSolutionFilePath() ?? "").Replace(FileName, _legacyFileName);
 
-            if (!File.Exists(path))
-                return GetLegacyUserFilePath();
-            return path;
-        }
-        private static string GetLegacySolutionFilePath()
-        {
-            string path = GetSolutionFilePath();
-            if (string.IsNullOrEmpty(path))
-                return null;
-            return path.Replace(FileName, _legacyFileName);
-        }
-        private static string GetLegacyUserFilePath()
-        {
-            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Web Essentials", _legacyFileName);
-        }
-        #endregion
+        //    if (!File.Exists(path))
+        //        return GetLegacyUserFilePath();
+        //    return path;
+        //}
+        //private static string GetLegacySolutionFilePath()
+        //{
+        //    string path = GetSolutionFilePath();
+        //    if (string.IsNullOrEmpty(path))
+        //        return null;
+        //    return path.Replace(FileName, _legacyFileName);
+        //}
+        //private static string GetLegacyUserFilePath()
+        //{
+        //    return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Web Essentials", _legacyFileName);
+        //}
+        //#endregion
 
         #region Modern Locator
         private static string GetFilePath()

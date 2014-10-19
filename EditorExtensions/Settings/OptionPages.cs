@@ -48,10 +48,10 @@ namespace MadsKristensen.EditorExtensions.Settings
     {
         public CodeGenOptions() : base(s => s.CodeGen) { }
     }
-    //class JavaScriptOptions : SettingsOptionPage<JavaScriptSettings>
-    //{
-    //    public JavaScriptOptions() : base(s => s.JavaScript) { }
-    //}
+    class JavaScriptOptions : SettingsOptionPage<JavaScriptSettings>
+    {
+        public JavaScriptOptions() : base(s => s.JavaScript) { }
+    }
     class GeneralOptions : SettingsOptionPage<GeneralSettings>
     {
         public GeneralOptions() : base(s => s.General) { }

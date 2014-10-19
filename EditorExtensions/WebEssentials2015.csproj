@@ -712,7 +712,6 @@
     <Compile Include="CSS\SmartTags\Actions\EmbedSmartTagAction.cs" />
     <Compile Include="CSS\SmartTags\CssSmartTagger.cs" />
     <Compile Include="Shared\Helpers\Css\CssItemCollector.cs" />
-    <Compile Include="Settings\LegacySettings.cs" />
     <Compile Include="HTML\Validation\OpenGraphPrefixValidator.cs" />
     <Compile Include="HTML\Validation\ItemTypeValidator.cs" />
     <EmbeddedResource Include="BrowserLink\BrowserInfo\BrowserInfo.js" />

@@ -328,7 +328,7 @@ namespace MadsKristensen.EditorExtensions.Settings
         public string HtmlFormat { get; set; }
     }
 
-    public sealed class JavaScriptSettings : IMinifierSettings, ISourceMapSettings, IBundleSettings
+    public sealed class JavaScriptSettings : SettingsBase<JavaScriptSettings>, IMinifierSettings, ISourceMapSettings, IBundleSettings
     {
         #region Minification
         [Category("Minification")]

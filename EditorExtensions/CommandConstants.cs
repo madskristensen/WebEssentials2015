@@ -131,11 +131,11 @@ namespace MadsKristensen.EditorExtensions
         // Build
         BuildBundles = 0x1083,
         BuildSprites = 0x1094,
-        BuildLess = 0x1084,
-        BuildSass = 0x1085,
+        //BuildLess = 0x1084,
+        //BuildSass = 0x1085,
         BuildMinify = 0x1086,
-        BuildCoffeeScript = 0x1087,
-        BuildSweetJs = 0x1088,
+        //BuildCoffeeScript = 0x1087,
+        //BuildSweetJs = 0x1088,
 
         // Images
         CompressImage = 0x1091,
