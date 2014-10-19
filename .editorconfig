@@ -1,8 +1,8 @@
-; Top-most EditorConfig file
+# Top-most EditorConfig file
 root = true
 
 [*]
-end_of_line = CRLF
+end_of_line = crlf
 indent_style = space
 indent_size = 4
 
