@@ -239,6 +239,7 @@
     <Compile Include="BrowserLink\BrowserInfo\BrowserInfo.cs" />
     <Compile Include="BrowserLink\PixelPushing\CssSyncSuppressionContext.cs" />
     <Compile Include="BrowserLink\UnusedCss\ScssDocument.cs" />
+    <Compile Include="CoffeeScript\Commands\CoffeeScriptCreationListener.cs" />
     <Compile Include="CompatibilityChecker.cs" />
     <Compile Include="CSON\ContentType\CsonContentTypeDefinition.cs" />
     <Compile Include="CSS\Adornments\ColorAdornment.cs" />
@@ -397,6 +398,7 @@
     <Compile Include="CSS\Completion\CompletionProviders\ColorSwatchIntellisenseProvider.cs" />
     <Compile Include="Shared\ExtensionMethods\TaskExtensions.cs" />
     <Compile Include="Shared\Helpers\AsyncLock.cs" />
+    <Compile Include="Shared\Helpers\NodeModuleService.cs" />
     <Compile Include="Shared\Helpers\Policies\PolicyFactory.cs" />
     <Compile Include="Shared\Helpers\Policies\Strategies\FileTransientErrorDetectionStrategy.cs" />
     <Compile Include="Shared\Helpers\SourceMapNode.cs" />
@@ -540,7 +542,6 @@
     <Compile Include="Shared\Helpers\Css\CssUrlNormalizer.cs" />
     <Compile Include="Shared\Helpers\FileCache.cs" />
     <Compile Include="Shared\ExtensionMethods\HtmlExtensions.cs" />
-    <Compile Include="Shared\Helpers\NodeModuleService.cs" />
     <Compile Include="Shared\Helpers\Css\StyleSheetHelpers.cs" />
     <Compile Include="Shared\Helpers\WindowHelpers.cs" />
     <Compile Include="JavaScript\MenuItems\ReferenceJs.cs" />

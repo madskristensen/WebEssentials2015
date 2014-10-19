@@ -1,11 +1,9 @@
-﻿using System;
+﻿using ConfOxide;
+using MarkdownSharp;
+using Microsoft.Ajax.Utilities;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
-using ConfOxide;
-using MarkdownSharp;
-using Microsoft.Ajax.Utilities;
-using Microsoft.VisualStudio.Shell;
 using WebMarkupMin.Core;
 
 namespace MadsKristensen.EditorExtensions.Settings

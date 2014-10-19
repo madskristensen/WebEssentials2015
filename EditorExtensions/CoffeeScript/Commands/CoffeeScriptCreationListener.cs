@@ -1,14 +1,13 @@
-﻿using System.Collections.ObjectModel;
-using System.ComponentModel.Composition;
-using System.Linq;
-using MadsKristensen.EditorExtensions.IcedCoffeeScript;
+﻿using MadsKristensen.EditorExtensions.IcedCoffeeScript;
 using MadsKristensen.EditorExtensions.LiveScript;
-using MadsKristensen.EditorExtensions.Settings;
 using Microsoft.VisualStudio.Editor;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Utilities;
 using Microsoft.Web.Editor;
+using System.Collections.ObjectModel;
+using System.ComponentModel.Composition;
+using System.Linq;
 
 namespace MadsKristensen.EditorExtensions.CoffeeScript
 {
@@ -33,18 +32,6 @@ namespace MadsKristensen.EditorExtensions.CoffeeScript
 
             textView.Properties.GetOrCreateSingletonProperty(() => new EnterIndentation(textViewAdapter, textView));
             textView.Properties.GetOrCreateSingletonProperty(() => new CommentCommandTarget(textViewAdapter, textView, "#"));
-
-            ITextDocument document;
-            if (TextDocumentFactoryService.TryGetTextDocument(textView.TextDataModel.DocumentBuffer, out document))
-            {
-                var lintInvoker = new LintFileInvoker(
-                    f => new LintReporter(new CoffeeLintCompiler(), WESettings.Instance.CoffeeScript, f),
-                    document
-                );
-                textView.Closed += (s, e) => lintInvoker.Dispose();
-
-                textView.TextBuffer.Properties.GetOrCreateSingletonProperty(() => lintInvoker);
-            }
         }
 
         public void SubjectBuffersDisconnected(IWpfTextView textView, ConnectionReason reason, Collection<ITextBuffer> subjectBuffers)
