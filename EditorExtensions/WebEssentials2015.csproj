@@ -746,11 +746,9 @@
     <Resource Include="Resources\Images\angular.png" />
     <Resource Include="Resources\Images\bootstrap.png" />
     <Content Include="Resources\Images\preview.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="Resources\Images\WebEssentials2012logo.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="Resources\Scripts\Modern.Intellisense.js">
