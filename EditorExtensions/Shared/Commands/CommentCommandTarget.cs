@@ -34,7 +34,7 @@ namespace MadsKristensen.EditorExtensions
                     break;
             }
 
-            UpdateTextBuffer(span, sb.ToString());
+            UpdateTextBuffer(span, sb.ToString().TrimEnd());
 
             return true;
         }

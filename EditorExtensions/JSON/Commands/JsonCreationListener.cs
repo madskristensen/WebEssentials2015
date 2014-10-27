@@ -27,7 +27,8 @@ namespace MadsKristensen.EditorExtensions.JSON
             if (textViewAdapter == null)
                 return;
 
-            textView.Properties.GetOrCreateSingletonProperty<FormatCommandTarget>(() => new FormatCommandTarget(textViewAdapter, textView));
+            textView.Properties.GetOrCreateSingletonProperty(() => new FormatCommandTarget(textViewAdapter, textView));
+            textView.Properties.GetOrCreateSingletonProperty(() => new CommentCommandTarget(textViewAdapter, textView, "//"));
         }
 
         public void SubjectBuffersDisconnected(IWpfTextView textView, ConnectionReason reason, Collection<ITextBuffer> subjectBuffers)
