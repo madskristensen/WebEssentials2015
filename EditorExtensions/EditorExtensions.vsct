@@ -857,7 +857,7 @@
   </CommandPlacements>
 
   <Symbols>
-    <GuidSymbol name="guidEditorExtensionsPkg" value="{5fb7364d-2e8c-44a4-95eb-2a382e30fec8}" />
+    <GuidSymbol name="guidEditorExtensionsPkg" value="{5fb7364d-2e8c-44a4-95eb-2a382e30fec9}" />
 
     <GuidSymbol name="guidTopMenu" value="{30947ebe-9147-45f9-96cf-401bfc671a01}">
       <IDSymbol name="TopMenu" value="0x3001" />
