@@ -2,7 +2,7 @@
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
   <PropertyGroup>
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
-    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <SccProjectName>
     </SccProjectName>
@@ -79,7 +79,7 @@
     <DefineConstants>
     </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>3</WarningLevel>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <DeployExtension>True</DeployExtension>
@@ -95,19 +95,19 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\ConfOxide.1.4.0.0\lib\net40\ConfOxide.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CSS.Core, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.CSS.Core, Version=14.0.0.0">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$(DevEnvDir)\Extensions\Microsoft\Web Tools\Editors\Microsoft.CSS.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CSS.Editor, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.CSS.Editor, Version=14.0.0.0">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$(DevEnvDir)\Extensions\Microsoft\Web Tools\Editors\Microsoft.CSS.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Html.Core, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Html.Core, Version=14.0.0.0">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$(DevEnvDir)\Extensions\Microsoft\Web Tools\Editors\Microsoft.Html.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Html.Editor, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Html.Editor, Version=14.0.0.0">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$(DevEnvDir)\Extensions\Microsoft\Web Tools\Editors\Microsoft.Html.Editor.dll</HintPath>
     </Reference>
@@ -121,8 +121,8 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.CoreUtility, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.VisualStudio.ExtensionManager, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-    <Reference Include="Microsoft.VisualStudio.Html.Package, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.VisualStudio.ExtensionManager, Version=12.0.0.0" />
+    <Reference Include="Microsoft.VisualStudio.Html.Package, Version=14.0.0.0">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$(DevEnvDir)\Extensions\Microsoft\Web Tools\Editors\Microsoft.VisualStudio.Html.Package.dll</HintPath>
     </Reference>
@@ -139,14 +139,17 @@
     <Reference Include="Microsoft.VisualStudio.Text.Logic, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualStudio.Text.UI, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualStudio.Text.UI.Wpf, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Web, Version=14.0.0.0" />
     <Reference Include="Microsoft.VisualStudio.Web.Extensions">
       <HintPath>$(DevEnvDir)\Extensions\Microsoft\Web Tools\Editors\Microsoft.VisualStudio.Web.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Web.Core, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.VisualStudio.Web.HTML, Version=14.0.0.0" />
+    <Reference Include="Microsoft.VisualStudio.Web.HTML.Implementation, Version=14.0.0.0" />
+    <Reference Include="Microsoft.Web.Core, Version=14.0.0.0">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$(DevEnvDir)\Extensions\Microsoft\Web Tools\Editors\Microsoft.Web.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Web.Editor, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Web.Editor, Version=14.0.0.0">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$(DevEnvDir)\Extensions\Microsoft\Web Tools\Editors\Microsoft.Web.Editor.dll</HintPath>
     </Reference>
@@ -171,7 +174,7 @@
     <Reference Include="Microsoft.Practices.TransientFaultHandling.Core">
       <HintPath>..\packages\TransientFaultHandling.Core.5.1.1209.1\lib\NET4\Microsoft.Practices.TransientFaultHandling.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.VisualStudio.JSLS, Version=12.0.0.0" />
+    <Reference Include="Microsoft.VisualStudio.JSLS, Version=14.0.0.0" />
     <Reference Include="Microsoft.VisualStudio.Language.StandardClassification, Version=12.0.0.0" />
     <Reference Include="Microsoft.VisualStudio.TextManager.Interop.12.0" />
     <Reference Include="Microsoft.VisualBasic" />
@@ -182,7 +185,7 @@
     </Reference>
     <Reference Include="Microsoft.VisualStudio.TextManager.Interop.8.0, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="Microsoft.VisualStudio.Threading, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.VisualStudio.Web.BrowserLink.12.0, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Web.BrowserLink.12.0" />
     <Reference Include="Microsoft.VisualStudio.Editor, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualStudio.OLE.Interop" />
     <Reference Include="Microsoft.VisualStudio.Shell.Interop" />
@@ -368,6 +371,20 @@
     <Compile Include="JSON\Schemas\SchemaExporter.cs" />
     <Compile Include="JSON\Validation\JsonErrorTag.cs" />
     <Compile Include="JSON\Validation\RefMemberNameItemValidator.cs" />
+    <Compile Include="Markdown\Classify\BufferGenerator.cs" />
+    <Compile Include="Markdown\Classify\CodeArtifactProcessor.cs" />
+    <Compile Include="Markdown\Classify\CodeLanguageEmbedders.cs" />
+    <Compile Include="Markdown\Classify\ContainedLanguageAdapter.cs" />
+    <Compile Include="Markdown\Classify\MarkdownClassificationTypes.cs" />
+    <Compile Include="Markdown\Classify\MarkdownClassifier.cs" />
+    <Compile Include="Markdown\Classify\MarkdownLanguageSupport.cs" />
+    <Compile Include="Markdown\Classify\MarkdownParser.cs" />
+    <Compile Include="Markdown\Completion\MarkdownCompletionFilter.cs" />
+    <Compile Include="Markdown\ContentType\MarkdownContentTypeDefinition.cs" />
+    <Compile Include="Markdown\ContentType\MarkdownContentTypeHandler.cs" />
+    <Compile Include="Markdown\Margin\MarkdownMargin.cs" />
+    <Compile Include="Markdown\MenuItems\Markdown.cs" />
+    <Compile Include="Markdown\Outlining\MarkdownOutlineTagger.cs" />
     <Compile Include="Misc\Bundles\BundleFilesObserver.cs" />
     <Compile Include="Misc\Bundles\IBundleDocument.cs" />
     <Compile Include="Misc\Bundles\BundleGenerator.cs" />
@@ -386,14 +403,6 @@
     <Compile Include="Shared\Compilers\Result\CompilerResultFactory.cs" />
     <Compile Include="Shared\Compilers\Result\CssCompilerResult.cs" />
     <Compile Include="CSS\Completion\ColorSwatchCompletionListEntry.cs" />
-    <Compile Include="Markdown\Classify\BufferGenerator.cs" />
-    <Compile Include="Markdown\Classify\CodeArtifactProcessor.cs" />
-    <Compile Include="Markdown\Classify\CodeLanguageEmbedders.cs" />
-    <Compile Include="Markdown\Classify\ContainedLanguageAdapter.cs" />
-    <Compile Include="Markdown\ContentType\MarkdownContentTypeHandler.cs" />
-    <Compile Include="Markdown\Outlining\MarkdownOutlineTagger.cs" />
-    <Compile Include="Markdown\Classify\MarkdownLanguageSupport.cs" />
-    <Compile Include="Markdown\Classify\MarkdownParser.cs" />
     <Compile Include="SCSS\SmartTags\ScssExtractVariableSmartTagProvider.cs" />
     <Compile Include="CSS\Completion\CompletionProviders\ColorSwatchIntellisenseProvider.cs" />
     <Compile Include="Shared\ExtensionMethods\TaskExtensions.cs" />
@@ -413,9 +422,6 @@
     <Compile Include="WebVtt\Classify\WebVttClassificationTypes.cs" />
     <Compile Include="WebVtt\Classify\WebVttClassifier.cs" />
     <Compile Include="WebVtt\Classify\WebVttClassifierProvider.cs" />
-    <Compile Include="Markdown\Classify\MarkdownClassificationTypes.cs" />
-    <Compile Include="Markdown\Classify\MarkdownClassifier.cs" />
-    <Compile Include="Markdown\ContentType\MarkdownContentTypeDefinition.cs" />
     <Compile Include="Svg\ContentType\SvgContentTypeDefinition.cs" />
     <Compile Include="AppCache\Commands\AppCacheCreationListener.cs" />
     <Compile Include="Shared\Commands\IFileSaveListener.cs" />
@@ -467,7 +473,6 @@
     <Compile Include="CSS\Completion\ContextProviders\MediaFeatureContextProvider.cs" />
     <Compile Include="CSS\Completion\ContextProviders\VariableContextProvider.cs" />
     <Compile Include="JavaScript\Completion\JsDocCompletionSource.cs" />
-    <Compile Include="Markdown\Completion\MarkdownCompletionFilter.cs" />
     <Compile Include="HTML\DragDrop\HtmlImageDrop.cs" />
     <Compile Include="Shared\Helpers\Disposable.cs" />
     <Compile Include="Shared\ExtensionMethods\Extensions.cs" />
@@ -621,13 +626,11 @@
     <Compile Include="Shared\Helpers\Css\CssItemAggregator.cs" />
     <Compile Include="Shared\Helpers\Logger.cs" />
     <Compile Include="Shared\Helpers\FileHelpers.cs" />
-    <Compile Include="Markdown\Margin\MarkdownMargin.cs" />
     <Compile Include="Shared\Helpers\OptionHelpers.cs" />
     <Compile Include="Shared\Margins\MarginBase.cs" />
     <Compile Include="Shared\Margins\EditorMarginFactory.cs" />
     <Compile Include="Misc\MenuItems\BundleFiles.cs" />
     <Compile Include="Misc\MenuItems\BuildMenu.cs" />
-    <Compile Include="Markdown\MenuItems\Markdown.cs" />
     <Compile Include="CSS\MenuItems\SolutionColors.cs" />
     <Compile Include="Misc\MenuItems\ProjectSettings.cs" />
     <Compile Include="Misc\MenuItems\MinifyFile.cs" />
@@ -786,7 +789,6 @@
     <EmbeddedResource Include="BrowserLink\UnusedCss\UnusedCss.js" />
     <EmbeddedResource Include="BrowserLink\PixelPushing\PixelPushingModeBrowserLink.js" />
     <EmbeddedResource Include="BrowserLink\Menu\MenuBrowserLink.js" />
-    <None Include="Markdown\Classify\Sample.md" />
   </ItemGroup>
   <ItemGroup>
     <VSCTCompile Include="EditorExtensions.vsct">
@@ -795,6 +797,7 @@
     </VSCTCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Markdown\Classify\Sample.md" />
     <None Include="packages.config" />
     <None Include="Resources\Images\Images.png" />
   </ItemGroup>
