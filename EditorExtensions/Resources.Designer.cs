@@ -142,6 +142,15 @@ namespace MadsKristensen.EditorExtensions {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Browser compatibility: &quot;{0}&quot; has been deprecated and is no longer needed. {1}.
+        /// </summary>
+        internal static string BestPracticeRemoveObsolete {
+            get {
+                return ResourceManager.GetString("BestPracticeRemoveObsolete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Browser compatibility: Place the standard property below its vendor specific implementations.
         /// </summary>
         internal static string BestPracticeStandardPropertyOrder {
@@ -151,7 +160,7 @@ namespace MadsKristensen.EditorExtensions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Best Practice: Don&apos;t specify the unit type ({0}) when the value is zero. (Disable this check in Tools -&gt; Options).
+        ///   Looks up a localized string similar to Best practice: Don&apos;t specify the unit type ({0}) when the value is zero. (Disable this check in Tools -&gt; Options).
         /// </summary>
         internal static string BestPracticeZeroUnit {
             get {
@@ -331,7 +340,7 @@ namespace MadsKristensen.EditorExtensions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Validation (WE): &quot;{0}&quot; is not a valid vendor specific property or it may have been deprecated..
+        ///   Looks up a localized string similar to Validation (WE): &quot;{0}&quot; is not a valid vendor specific property..
         /// </summary>
         internal static string ValidationVendorDeclarations {
             get {
@@ -340,7 +349,7 @@ namespace MadsKristensen.EditorExtensions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Validation (WE): &quot;{0}&quot; is not a valid vendor specific @-directive or it may have been deprecated..
+        ///   Looks up a localized string similar to Validation (WE): &quot;{0}&quot; is not a valid vendor specific @-directive..
         /// </summary>
         internal static string ValidationVendorDirective {
             get {
@@ -349,7 +358,7 @@ namespace MadsKristensen.EditorExtensions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Validation (WE): &quot;{0}&quot; is not a valid vendor specific pseudo class/element or it may have been deprecated..
+        ///   Looks up a localized string similar to Validation (WE): &quot;{0}&quot; is not a valid vendor specific pseudo class/element..
         /// </summary>
         internal static string ValidationVendorPseudo {
             get {
