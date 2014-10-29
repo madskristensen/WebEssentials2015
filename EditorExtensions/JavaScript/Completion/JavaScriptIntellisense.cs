@@ -9,7 +9,6 @@ namespace MadsKristensen.EditorExtensions.JavaScript
     {
         public static void Register()
         {
-            RegisterFile("resources\\scripts\\JsDocComments.js");
             RegisterFile("resources\\scripts\\Modern.Intellisense.js");
         }
 

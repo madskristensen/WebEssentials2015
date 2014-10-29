@@ -762,9 +762,6 @@
     <Content Include="Resources\Scripts\Modern.Intellisense.js">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="Resources\Scripts\JSDocComments.js">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
     <Content Include="Resources\Tools\gifsicle.exe">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>

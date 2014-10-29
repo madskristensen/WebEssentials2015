@@ -1,8 +1,8 @@
-﻿using System.ComponentModel.Composition;
+﻿using Microsoft.JSON.Editor.Schema.Def;
 using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Utilities;
-using Microsoft.JSON.Editor.Schema.Def;
+using System.ComponentModel.Composition;
 
 namespace MadsKristensen.EditorExtensions
 {
