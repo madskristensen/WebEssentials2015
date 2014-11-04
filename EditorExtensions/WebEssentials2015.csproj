@@ -363,6 +363,8 @@
     <Compile Include="JSON-LD\Vocabularies\IVocabulary.cs" />
     <Compile Include="JSON-LD\Vocabularies\SchemaOrgVocabulary.cs" />
     <Compile Include="JSON-LD\Vocabularies\VocabularyFactory.cs" />
+    <Compile Include="JSON\Adornments\LogoAdornment.cs" />
+    <Compile Include="JSON\Adornments\LogoProvider.cs" />
     <Compile Include="JSON\Commands\FormatCommandTarget.cs" />
     <Compile Include="JSON\Commands\JsonCreationListener.cs" />
     <Compile Include="JSON\Completion\FormatCompletionProvider.cs" />
@@ -726,6 +728,11 @@
     <Compile Include="HTML\Validation\OpenGraphPrefixValidator.cs" />
     <Compile Include="HTML\Validation\ItemTypeValidator.cs" />
     <EmbeddedResource Include="BrowserLink\BrowserInfo\BrowserInfo.js" />
+    <Resource Include="JSON\Resources\bower.png" />
+    <Resource Include="JSON\Resources\npm.png" />
+    <Resource Include="JSON\Resources\vs.png" />
+    <Resource Include="JSON\Resources\grunt.png" />
+    <Resource Include="JSON\Resources\gulp.png" />
     <Content Include="Resources\Icons\Bundle.ico">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
