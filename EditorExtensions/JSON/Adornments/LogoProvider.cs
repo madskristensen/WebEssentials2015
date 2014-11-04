@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.Text;
+﻿using MadsKristensen.EditorExtensions.Settings;
+using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Utilities;
 using System.Collections.Generic;
@@ -35,6 +36,9 @@ namespace MadsKristensen.EditorExtensions.JSON
 
         public void TextViewCreated(IWpfTextView textView)
         {
+            if (!WESettings.Instance.General.ShowLogoWatermark)
+                return;
+
             ITextDocument document;
             if (TextDocumentFactoryService.TryGetTextDocument(textView.TextDataModel.DocumentBuffer, out document))
             {

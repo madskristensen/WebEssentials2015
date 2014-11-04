@@ -111,6 +111,12 @@ namespace MadsKristensen.EditorExtensions.Settings
         [DefaultValue(false)]
         public bool AllMessagesToOutputWindow { get; set; }
 
+        [Category("IDE")]
+        [DisplayName("Show logo watermarks in editor")]
+        [Description("For certain files, a watermark of the associated logo is shown in the top right corner.")]
+        [DefaultValue(true)]
+        public bool ShowLogoWatermark { get; set; }
+
         //[Category("CSS")]
         //[DisplayName("Chain Compilation")]
         //[Description("Compile the dependents chain when a LESS or SASS file is saved.")]
