@@ -42,9 +42,9 @@ namespace MadsKristensen.EditorExtensions.JSON
             ITextDocument document;
             if (TextDocumentFactoryService.TryGetTextDocument(textView.TextDataModel.DocumentBuffer, out document))
             {
-                string fileName = Path.GetFileName(document.FilePath);
+                string fileName = Path.GetFileName(document.FilePath).ToLowerInvariant();
 
-                if (_map.ContainsKey(fileName))
+                if (!string.IsNullOrEmpty(fileName) && _map.ContainsKey(fileName))
                 {
                     LogoAdornment highlighter = new LogoAdornment(textView, _map[fileName]);
                 }
