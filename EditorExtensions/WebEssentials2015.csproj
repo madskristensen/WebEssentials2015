@@ -335,6 +335,7 @@
     <Compile Include="HTML\Completion\OpenGraphTypeCompletion.cs" />
     <Compile Include="HTML\Completion\SimpleHtmlCompletion.cs" />
     <Compile Include="HTML\Completion\StaticListCompletion.cs" />
+    <Compile Include="HTML\Completion\FragmentCompletion.cs" />
     <Compile Include="HTML\Completion\TwitterCardCompletion.cs" />
     <Compile Include="HTML\Completion\ViewportCompletion.cs" />
     <Compile Include="HTML\Helpers\HtmlHelpers.cs" />
