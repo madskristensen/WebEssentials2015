@@ -24,20 +24,13 @@ namespace MadsKristensen.EditorExtensions
     [ProvideAutoLoad(UIContextGuids80.SolutionExists)]
     [InstalledProductRegistration("#110", "#112", WebEssentialsPackage.Version, IconResourceID = 400)]
     [ProvideOptionPage(typeof(Settings.CssOptions), "Web Essentials", "CSS", 101, 102, true, new[] { "Minify", "Minification", "W3C", "CSS3" })]
-    //[ProvideOptionPage(typeof(Settings.LessOptions), "Web Essentials", "LESS", 101, 105, true, new[] { "LESS", "Complier", "Minification", "Minify" })]
-    //[ProvideOptionPage(typeof(Settings.HandlebarsOptions), "Web Essentials", "Handlebars", 101, 109, true, new[] { "handlebars", "hbs", "templates" })]
     [ProvideOptionPage(typeof(Settings.HtmlOptions), "Web Essentials", "HTML", 101, 111, true, new[] { "html", "angular", "xhtml" })]
-    //[ProvideOptionPage(typeof(Settings.ScssOptions), "Web Essentials", "SASS", 101, 113, true, new[] { "SASS", "Complier", "Minification", "Minify" })]
     [ProvideOptionPage(typeof(Settings.SpriteOptions), "Web Essentials", "Sprite", 101, 211, true, new[] { "Sprite", "image" })]
-    //[ProvideOptionPage(typeof(Settings.SweetJsOptions), "Web Essentials", "Sweet.js", 101, 111, true, new[] { "Sweet", "SJS", "Sweet.js" })]
     [ProvideOptionPage(typeof(Settings.GeneralOptions), "Web Essentials", "General", 101, 101, true, new[] { "ZenCoding", "Mustache", "Handlebars", "Comments", "Bundling", "Bundle" })]
     [ProvideOptionPage(typeof(Settings.CodeGenOptions), "Web Essentials", "Code Generation", 101, 210, true, new[] { "CodeGeneration", "codeGeneration" })]
     [ProvideOptionPage(typeof(Settings.MarkdownOptions), "Web Essentials", "Markdown", 101, 109, true, new[] { "markdown", "Markdown", "md" })]
-    //[ProvideOptionPage(typeof(Settings.TypeScriptOptions), "Web Essentials", "TypeScript", 101, 210, true, new[] { "TypeScript", "TS" })]
     [ProvideOptionPage(typeof(Settings.JavaScriptOptions), "Web Essentials", "JavaScript", 101, 107, true, new[] { "JScript", "JS", "Minify", "Minification", "EcmaScript" })]
     [ProvideOptionPage(typeof(Settings.BrowserLinkOptions), "Web Essentials", "Browser Link", 101, 108, true, new[] { "HTML menu", "BrowserLink" })]
-    //[ProvideOptionPage(typeof(Settings.CoffeeScriptOptions), "Web Essentials", "CoffeeScript", 101, 106, true, new[] { "Iced", "JavaScript", "JS", "JScript" })]
-    //[ProvideOptionPage(typeof(Settings.LiveScriptOptions), "Web Essentials", "LiveScript", 101, 106, true, new[] { "LiveScript", "LS", "JavaScript", "JS", "JScript" })]
     [SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling"), PackageRegistration(UseManagedResourcesOnly = true)]
     public sealed class WebEssentialsPackage : Package
     {
@@ -78,7 +71,7 @@ namespace MadsKristensen.EditorExtensions
 
             SettingsStore.Load();
             JavaScriptIntellisense.Register();
-
+            //_dte.ExecuteCommand("Tools.Options", typeof(Settings.GeneralOptions).GUID.ToString());
             OleMenuCommandService mcs = GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
 
             if (null != mcs)
@@ -87,18 +80,10 @@ namespace MadsKristensen.EditorExtensions
                 DiffMenu diffMenu = new DiffMenu(mcs);
                 MinifyFileMenu minifyMenu = new MinifyFileMenu(mcs);
                 BundleFilesMenu bundleMenu = new BundleFilesMenu(DTE, mcs);
-                //JsHintMenu jsHintMenu = new JsHintMenu(DTE, mcs);
-                //TsLintMenu tsLintMenu = new TsLintMenu(DTE, mcs);
-                //HubsT4Menu hubsT4Menu = new HubsT4Menu(DTE, mcs);
-                //CoffeeLintMenu coffeeLintMenu = new CoffeeLintMenu(DTE, mcs);
-                //JsCodeStyle jsCodeStyleMenu = new JsCodeStyle(DTE, mcs);
-                //RtlCssMenu rtlCssMenu = new RtlCssMenu(DTE, mcs);
-                //CsonMenu cson = new CsonMenu(mcs);
                 ProjectSettingsMenu projectSettingsMenu = new ProjectSettingsMenu(DTE, mcs);
                 SolutionColorsMenu solutionColorsMenu = new SolutionColorsMenu(mcs);
                 BuildMenu buildMenu = new BuildMenu(DTE, mcs);
                 MarkdownMenu markdownMenu = new MarkdownMenu(DTE, mcs);
-                //HandlebarsMenu handlebarsMenu = new HandlebarsMenu(DTE, mcs);
                 AddIntellisenseFileMenu intellisenseFile = new AddIntellisenseFileMenu(DTE, mcs);
                 UnusedCssMenu unusedCssMenu = new UnusedCssMenu(mcs);
                 PixelPushingMenu pixelPushingMenu = new PixelPushingMenu(mcs);
@@ -106,7 +91,6 @@ namespace MadsKristensen.EditorExtensions
                 CompressImageMenu compressImageMenu = new CompressImageMenu(mcs);
                 SpriteImageMenu spriteImageMenu = new SpriteImageMenu(DTE, mcs);
                 UnminifyMenu unMinifyMenu = new UnminifyMenu(mcs);
-                //ChainCompilationMenu chainCompilationMenu = new ChainCompilationMenu(DTE, mcs);
 
                 HandleMenuVisibility(mcs);
                 referenceJsMenu.SetupCommands();
@@ -114,17 +98,9 @@ namespace MadsKristensen.EditorExtensions
                 unusedCssMenu.SetupCommands();
                 intellisenseFile.SetupCommands();
                 markdownMenu.SetupCommands();
-                //handlebarsMenu.SetupCommands();
                 buildMenu.SetupCommands();
                 solutionColorsMenu.SetupCommands();
                 projectSettingsMenu.SetupCommands();
-                //jsHintMenu.SetupCommands();
-                //tsLintMenu.SetupCommands();
-                //hubsT4Menu.SetupCommands();
-                //coffeeLintMenu.SetupCommands();
-                //jsCodeStyleMenu.SetupCommands();
-                //rtlCssMenu.SetupCommands();
-                //cson.SetupCommands();
                 bundleMenu.SetupCommands();
                 minifyMenu.SetupCommands();
                 diffMenu.SetupCommands();
@@ -132,7 +108,6 @@ namespace MadsKristensen.EditorExtensions
                 compressImageMenu.SetupCommands();
                 spriteImageMenu.SetupCommands();
                 unMinifyMenu.SetupCommands();
-                //chainCompilationMenu.SetupCommands();
             }
 
             IconRegistration.RegisterIcons();
@@ -160,51 +135,7 @@ namespace MadsKristensen.EditorExtensions
 
                 return;
             }
-
-            //if (Action == vsBuildAction.vsBuildActionClean)
-            //{
-            //    LintReporter.Reset();
-            //    return;
-            //}
-
-            //InitiateExecutors();
         }
-
-        //private static void InitiateExecutors()
-        //{
-        //    var compiler = WebEditor.Host.ExportProvider.GetExport<ProjectCompiler>();
-
-        //    Task.Run(() =>
-        //    {
-        //        Parallel.ForEach(
-        //            Mef.GetSupportedContentTypes<ICompilerRunnerProvider>()
-        //               .Where(c => { var settings = WESettings.Instance.ForContentType<ICompilerInvocationSettings>(c); return settings != null && settings.CompileOnBuild; }),
-        //            c => compiler.Value.CompileSolutionAsync(c).DoNotWait("compiling solution-wide " + c.DisplayName)
-        //        );
-        //    }).DoNotWait("running solution-wide compilers");
-
-        //    RunLinters();
-        //    RunBundles();
-        //}
-
-        //private static void RunLinters()
-        //{
-        //    if (WESettings.Instance.JavaScript.LintOnBuild)
-        //    {
-        //        LintFileInvoker.RunOnAllFilesInProjectAsync(new[] { "*.js" }, f => new JavaScriptLintReporter(new JsHintCompiler(), f))
-        //            .DoNotWait("running solution-wide JSHint");
-        //        LintFileInvoker.RunOnAllFilesInProjectAsync(new[] { "*.js" }, f => new JavaScriptLintReporter(new JsCodeStyleCompiler(), f))
-        //            .DoNotWait("running solution-wide JSCS");
-        //    }
-
-        //    if (WESettings.Instance.TypeScript.LintOnBuild)
-        //        LintFileInvoker.RunOnAllFilesInProjectAsync(new[] { "*.ts" }, f => new LintReporter(new TsLintCompiler(), WESettings.Instance.TypeScript, f))
-        //            .DoNotWait("running solution-wide TSLint");
-
-        //    if (WESettings.Instance.CoffeeScript.LintOnBuild)
-        //        LintFileInvoker.RunOnAllFilesInProjectAsync(new[] { "*.coffee", "*.iced" }, f => new LintReporter(new CoffeeLintCompiler(), WESettings.Instance.CoffeeScript, f))
-        //            .DoNotWait("running solution-wide CoffeeLint");
-        //}
 
         private static void RunBundles()
         {
@@ -271,13 +202,6 @@ namespace MadsKristensen.EditorExtensions
 
             return new Disposable(DTE.UndoContext.Close);
         }
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //        NodeServer.Down();
-
-        //    base.Dispose(true);
-        //}
     }
 
     [Guid(CommandGuids.guidEditorExtensionsPkgString2)]
