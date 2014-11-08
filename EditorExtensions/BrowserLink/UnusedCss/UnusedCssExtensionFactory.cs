@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.Web.BrowserLink;
 
 namespace MadsKristensen.EditorExtensions.BrowserLink.UnusedCss
 {
-    [Export(typeof(IBrowserLinkExtensionFactory))]
+    //[Export(typeof(IBrowserLinkExtensionFactory))]
     public class UnusedCssExtensionFactory : IBrowserLinkExtensionFactory
     {
         public BrowserLinkExtension CreateExtensionInstance(BrowserLinkConnection connection)

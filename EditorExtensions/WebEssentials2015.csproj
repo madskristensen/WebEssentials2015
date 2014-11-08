@@ -241,7 +241,31 @@
   <ItemGroup>
     <Compile Include="BrowserLink\BrowserInfo\BrowserInfo.cs" />
     <Compile Include="BrowserLink\PixelPushing\CssSyncSuppressionContext.cs" />
+    <Compile Include="BrowserLink\UnusedCss\AmbientRuleContext.cs" />
+    <Compile Include="BrowserLink\UnusedCss\CompositeUsageData.cs" />
+    <Compile Include="BrowserLink\UnusedCss\CssDocument.cs" />
+    <Compile Include="BrowserLink\UnusedCss\CssRule.cs" />
+    <Compile Include="BrowserLink\UnusedCss\DocumentBase.cs" />
+    <Compile Include="BrowserLink\UnusedCss\DocumentFactory.cs" />
+    <Compile Include="BrowserLink\UnusedCss\ErrorList.cs" />
+    <Compile Include="BrowserLink\UnusedCss\IDocument.cs" />
+    <Compile Include="BrowserLink\UnusedCss\IResolutionRequiredDataSource.cs" />
+    <Compile Include="BrowserLink\UnusedCss\IStylingRule.cs" />
+    <Compile Include="BrowserLink\UnusedCss\IUsageDataSource.cs" />
+    <Compile Include="BrowserLink\UnusedCss\LessDocument.cs" />
+    <Compile Include="BrowserLink\UnusedCss\MessageDisplayManager.cs" />
+    <Compile Include="BrowserLink\UnusedCss\MessageDisplaySource.cs" />
+    <Compile Include="BrowserLink\UnusedCss\RawRuleUsage.cs" />
+    <Compile Include="BrowserLink\UnusedCss\RuleExtensions.cs" />
+    <Compile Include="BrowserLink\UnusedCss\RuleRegistry.cs" />
+    <Compile Include="BrowserLink\UnusedCss\RuleUsage.cs" />
     <Compile Include="BrowserLink\UnusedCss\ScssDocument.cs" />
+    <Compile Include="BrowserLink\UnusedCss\SessionResult.cs" />
+    <Compile Include="BrowserLink\UnusedCss\SourceLocation.cs" />
+    <Compile Include="BrowserLink\UnusedCss\UnusedCssExtension.cs" />
+    <Compile Include="BrowserLink\UnusedCss\UnusedCssExtensionFactory.cs" />
+    <Compile Include="BrowserLink\UnusedCss\UnusedCssMenu.cs" />
+    <Compile Include="BrowserLink\UnusedCss\UsageRegistry.cs" />
     <Compile Include="CoffeeScript\Commands\CoffeeScriptCreationListener.cs" />
     <Compile Include="CompatibilityChecker.cs" />
     <Compile Include="CSON\ContentType\CsonContentTypeDefinition.cs" />
@@ -281,30 +305,6 @@
     <Compile Include="BrowserLink\PixelPushing\PixelPushingMenu.cs" />
     <Compile Include="BrowserLink\PixelPushing\PixelPushingMode.cs" />
     <Compile Include="BrowserLink\PixelPushing\PixelPusingModeFactory.cs" />
-    <Compile Include="BrowserLink\UnusedCss\AmbientRuleContext.cs" />
-    <Compile Include="BrowserLink\UnusedCss\CompositeUsageData.cs" />
-    <Compile Include="BrowserLink\UnusedCss\CssDocument.cs" />
-    <Compile Include="BrowserLink\UnusedCss\CssRule.cs" />
-    <Compile Include="BrowserLink\UnusedCss\DocumentBase.cs" />
-    <Compile Include="BrowserLink\UnusedCss\LessDocument.cs" />
-    <Compile Include="BrowserLink\UnusedCss\RuleRegistry.cs" />
-    <Compile Include="BrowserLink\UnusedCss\DocumentFactory.cs" />
-    <Compile Include="BrowserLink\UnusedCss\ErrorList.cs" />
-    <Compile Include="BrowserLink\UnusedCss\IDocument.cs" />
-    <Compile Include="BrowserLink\UnusedCss\IResolutionRequiredDataSource.cs" />
-    <Compile Include="BrowserLink\UnusedCss\IStylingRule.cs" />
-    <Compile Include="BrowserLink\UnusedCss\IUsageDataSource.cs" />
-    <Compile Include="BrowserLink\UnusedCss\MessageDisplayManager.cs" />
-    <Compile Include="BrowserLink\UnusedCss\MessageDisplaySource.cs" />
-    <Compile Include="BrowserLink\UnusedCss\RawRuleUsage.cs" />
-    <Compile Include="BrowserLink\UnusedCss\RuleExtensions.cs" />
-    <Compile Include="BrowserLink\UnusedCss\RuleUsage.cs" />
-    <Compile Include="BrowserLink\UnusedCss\SessionResult.cs" />
-    <Compile Include="BrowserLink\UnusedCss\SourceLocation.cs" />
-    <Compile Include="BrowserLink\UnusedCss\UnusedCssExtensionFactory.cs" />
-    <Compile Include="BrowserLink\UnusedCss\UnusedCssExtension.cs" />
-    <Compile Include="BrowserLink\UnusedCss\UnusedCssMenu.cs" />
-    <Compile Include="BrowserLink\UnusedCss\UsageRegistry.cs" />
     <Compile Include="BrowserLink\UploadHelper.cs" />
     <Compile Include="AppCache\Classify\AppCacheClassificationTypes.cs" />
     <Compile Include="AppCache\Classify\AppCacheClassifier.cs" />
@@ -563,7 +563,6 @@
     <Compile Include="JavaScript\MenuItems\ReferenceJs.cs" />
     <Compile Include="Shared\Classify\IconRegistration.cs" />
     <Compile Include="CSS\SmartTags\Actions\RemoveCssRuleSmartTagAction.cs" />
-    <Compile Include="CSS\SmartTags\Providers\RemoveCssRuleSmartTagProvider.cs" />
     <Compile Include="HTML\SmartTags\Base64DecodeSmartTag.cs" />
     <Compile Include="HTML\SmartTags\ExtractToFileSmartTag.cs">
       <SubType>Code</SubType>
@@ -579,7 +578,6 @@
     </Compile>
     <Compile Include="CSS\Validation\Filters\VariableCssErrorFilter.cs" />
     <Compile Include="CSS\Validation\Providers\MediaQuerySyntaxErrorTagProvider.cs" />
-    <Compile Include="CSS\Validation\Providers\UnusedCssTagProvider.cs" />
     <Compile Include="HTML\Validation\BootstrapClassValidator.cs" />
     <Compile Include="HTML\Validation\AngularMissingAppValidator.cs" />
     <Compile Include="CSS\Validation\Providers\ColorValuesInRangeErrorTagProvider.cs">
@@ -790,6 +788,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="BrowserLink\UnusedCss\UnusedCss.js" />
     <EmbeddedResource Include="Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -802,7 +801,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="BrowserLink\UnusedCss\UnusedCss.js" />
     <EmbeddedResource Include="BrowserLink\PixelPushing\PixelPushingModeBrowserLink.js" />
     <EmbeddedResource Include="BrowserLink\Menu\MenuBrowserLink.js" />
   </ItemGroup>
