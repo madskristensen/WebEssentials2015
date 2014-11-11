@@ -53,7 +53,7 @@ namespace MadsKristensen.EditorExtensions
                 if (info != null && !string.IsNullOrEmpty(info.PropertyDocumentation))
                 {
                     applicableToSpan = _buffer.CurrentSnapshot.CreateTrackingSpan(item.Start, item.Length, SpanTrackingMode.EdgeNegative);
-                    qiContent.Add(info.DisplayText + Environment.NewLine + info.PropertyDocumentation);
+                    qiContent.Add(info.DisplayText + Environment.NewLine + info.PropertyDocumentation.Replace("\\r", "\r"));
                 }
             }
         }
