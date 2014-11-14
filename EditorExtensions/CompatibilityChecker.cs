@@ -5,7 +5,6 @@ using System.Net;
 using System.Net.Http;
 using System.Runtime.InteropServices;
 using Microsoft.VisualStudio;
-using Microsoft.VisualStudio.ExtensionManager;
 using Microsoft.VisualStudio.Settings;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
@@ -28,7 +27,7 @@ namespace MadsKristensen.EditorExtensions
         {
             if (CanCheckCompatibility)
             {
-                string weVersion = WebEssentialsVersionString;
+                string weVersion = WebEssentialsPackage.Version;
                 string vsVersion = VisualStudioVersionString;
 
                 if (!string.IsNullOrEmpty(weVersion) && !string.IsNullOrEmpty(vsVersion))
@@ -159,12 +158,12 @@ namespace MadsKristensen.EditorExtensions
         /// <summary>
         /// Allows reading global VS settings
         /// </summary>
-        private static Microsoft.VisualStudio.Settings.SettingsStore GlobalConfigStore
+        private static SettingsStore GlobalConfigStore
         {
             get
             {
                 SettingsManager settingsManager = new ShellSettingsManager(ServiceProvider.GlobalProvider);
-                return settingsManager.GetReadOnlySettingsStore(Microsoft.VisualStudio.Settings.SettingsScope.Configuration);
+                return settingsManager.GetReadOnlySettingsStore(SettingsScope.Configuration);
             }
         }
 
@@ -177,28 +176,6 @@ namespace MadsKristensen.EditorExtensions
             {
                 SettingsManager settingsManager = new ShellSettingsManager(ServiceProvider.GlobalProvider);
                 return settingsManager.GetWritableSettingsStore(SettingsScope.UserSettings);
-            }
-        }
-
-        private static string WebEssentialsVersionString
-        {
-            get
-            {
-
-                string versionString = string.Empty;
-
-                var extensionManager = Package.GetGlobalService(typeof(SVsExtensionManager)) as IVsExtensionManager;
-                if (extensionManager != null)
-                {
-                    //Get the extension using the extension manager
-                    var extension = extensionManager.GetInstalledExtension(CommandGuids.guidEditorExtensionsPkgString);
-                    if (extension != null)
-                    {
-                        versionString = extension.Header.Version.ToString();
-                    }
-                }
-
-                return versionString;
             }
         }
 
