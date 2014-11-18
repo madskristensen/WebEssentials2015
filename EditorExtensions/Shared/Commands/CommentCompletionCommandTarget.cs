@@ -7,11 +7,13 @@ using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Classification;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.TextManager.Interop;
+using Microsoft.VisualStudio.Text.Tagging;
 
 namespace MadsKristensen.EditorExtensions
 {
     class CommentCompletionCommandTarget : CommandTargetBase<VSConstants.VSStd2KCmdID>
     {
+        private static readonly Type jsTaggerType = typeof(Microsoft.VisualStudio.JSLS.JavaScriptLanguageService).Assembly.GetType("Microsoft.VisualStudio.JSLS.Classification.Tagger");
         private IClassifier _classifier;
         public CommentCompletionCommandTarget(IVsTextView adapter, IWpfTextView textView, IClassifierAggregatorService classifier)
             : base(adapter, textView, VSConstants.VSStd2KCmdID.TYPECHAR)
@@ -41,8 +43,9 @@ namespace MadsKristensen.EditorExtensions
 
             SnapshotSpan span = new SnapshotSpan(TextView.TextBuffer.CurrentSnapshot, position - 1, 1);
             bool isComment = _classifier.GetClassificationSpans(span).Any(c => c.ClassificationType.IsOfType("comment"));
+            bool isString = IsString(span.Start);
 
-            if (isComment)
+            if (isComment || isString)
                 return false;
 
             char prevChar = TextView.TextBuffer.CurrentSnapshot.ToCharArray(position - 1, 1)[0];
@@ -65,6 +68,20 @@ namespace MadsKristensen.EditorExtensions
             TextView.Caret.MoveTo(point);
 
             return true;
+        }
+
+        private static bool IsString(SnapshotPoint position)
+        {
+            if (position.Position < 2)
+                return false;
+
+            var tagger = position.Snapshot.TextBuffer.Properties.GetProperty<ITagger<ClassificationTag>>(jsTaggerType);
+
+            Span span = Span.FromBounds(position.Position - 1, position.Position);
+            var spans = new NormalizedSnapshotSpanCollection(new SnapshotSpan(position.Snapshot, span));
+            var classifications = tagger.GetTags(spans);
+
+            return classifications.Any(c => c.Tag.ClassificationType.IsOfType("string"));
         }
 
         protected override bool IsEnabled()
