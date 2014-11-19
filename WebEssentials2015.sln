@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.22217.0
+VisualStudioVersion = 14.0.22310.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{140A15DE-0F66-4377-BB52-BC24C7FC46E9}"
 	ProjectSection(SolutionItems) = preProject
@@ -11,7 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		CONTRIBUTING.md = CONTRIBUTING.md
 		LICENSE.txt = LICENSE.txt
 		README.md = README.md
-		Rebracer.xml = Rebracer.xml
 		WebEssentials2012logo.pdn = WebEssentials2012logo.pdn
 		WebEssentialsTests.UnitTests.testsettings = WebEssentialsTests.UnitTests.testsettings
 	EndProjectSection
