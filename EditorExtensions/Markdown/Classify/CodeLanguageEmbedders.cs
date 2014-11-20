@@ -2,13 +2,19 @@
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Linq;
 using System.Reflection;
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.Host;
+using Microsoft.CodeAnalysis.Host.Mef;
+using Microsoft.CodeAnalysis.Text;
 using Microsoft.Html.Editor;
 using Microsoft.Html.Editor.Projection;
 using Microsoft.JSON.Core.Format;
 using Microsoft.JSON.Editor;
 using Microsoft.JSON.Editor.Format;
+using Microsoft.VisualStudio.ComponentModelHost;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.Text;
@@ -86,43 +92,152 @@ namespace MadsKristensen.EditorExtensions.Markdown
         public string GlobalSuffix { get { return ""; } }
     }
 
-    public abstract class IntellisenseProjectEmbedder : ICodeLanguageEmbedder
+    public abstract class RoslynEmbedder : ICodeLanguageEmbedder
     {
         public abstract IReadOnlyCollection<string> GetBlockWrapper(IEnumerable<string> code);
-        public abstract string ProviderName { get; }
+        static readonly IReadOnlyCollection<string> DefaultReferences = new[] {
+            typeof(object),
+            typeof(Uri),
+            typeof(Enumerable),
+            typeof(System.Net.Http.HttpClient),
+            typeof(System.Xml.Linq.XElement),
+            typeof(System.Web.HttpContextBase),
+            typeof(System.Windows.Forms.Form),
+            typeof(System.Windows.Window),
+            typeof(System.Data.DataSet)
+        }.Select(t => t.Assembly.GetName().Name).ToList();
 
-        Guid FindGuid()
+        // Copied from VSEmbed.Roslyn.EditorWorkspace
+        // This contains all of the ugly hacks needed
+        // to make the Roslyn editor fully functional
+        // on a custom Workspace
+        class MarkdownWorkspace : Workspace
         {
-            try
+            static readonly Type IWorkCoordinatorRegistrationService = Type.GetType("Microsoft.CodeAnalysis.SolutionCrawler.IWorkCoordinatorRegistrationService, Microsoft.CodeAnalysis.Features");
+
+            readonly Dictionary<DocumentId, ITextBuffer> documentBuffers = new Dictionary<DocumentId, ITextBuffer>();
+            public MarkdownWorkspace(HostServices host) : base(host, WorkspaceKind.Host)
             {
-                using (var settings = VSRegistry.RegistryRoot(__VsLocalRegistryType.RegType_Configuration))
-                using (var languages = settings.OpenSubKey("Languages"))
-                using (var intellisenseProviders = languages.OpenSubKey("IntellisenseProviders"))
-                using (var provider = intellisenseProviders.OpenSubKey(ProviderName))
-                    return new Guid(provider.GetValue("GUID").ToString());
+                var wcrService = typeof(HostWorkspaceServices)
+                    .GetMethod("GetService")
+                    .MakeGenericMethod(IWorkCoordinatorRegistrationService)
+                    .Invoke(Services, null);
+
+                IWorkCoordinatorRegistrationService.GetMethod("Register").Invoke(wcrService, new[] { this });
             }
-            catch
+            public Project AddProject(string name, string language)
             {
-                return Guid.Empty;
+                ProjectInfo projectInfo = ProjectInfo.Create(ProjectId.CreateNewId(null), VersionStamp.Create(), name, name, language);
+                OnProjectAdded(projectInfo);
+                return CurrentSolution.GetProject(projectInfo.Id);
             }
+
+            static readonly string referenceAssemblyPath = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),
+                @"Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5"
+            );
+
+
+            //static readonly Type xmlDocProvider = typeof(MSBuildWorkspace).Assembly.GetType("Microsoft.CodeAnalysis.FileBasedXmlDocumentationProvider");
+            public MetadataReference CreateFrameworkReference(string assemblyName)
+            {
+                return MetadataReference.CreateFromFile(
+                    Path.Combine(referenceAssemblyPath, assemblyName + ".dll"),
+                    MetadataReferenceProperties.Assembly
+                    //(DocumentationProvider)Activator.CreateInstance(xmlDocProvider, Path.Combine(referenceAssemblyPath, assemblyName + ".xml"))
+                );
+            }
+
+
+            ///<summary>Creates a new document linked to an existing text buffer.</summary>
+            public Document CreateDocument(ProjectId projectId, ITextBuffer buffer)
+            {
+                var id = DocumentId.CreateNewId(projectId);
+                documentBuffers.Add(id, buffer);
+
+                var docInfo = DocumentInfo.Create(id, "Sample Document",
+                    loader: TextLoader.From(buffer.AsTextContainer(), VersionStamp.Create()),
+                    sourceCodeKind: SourceCodeKind.Script
+                );
+                OnDocumentAdded(docInfo);
+                OnDocumentOpened(id, buffer.AsTextContainer());
+                buffer.Changed += delegate { OnDocumentContextUpdated(id); };
+                return CurrentSolution.GetDocument(id);
+            }
+
+            protected override void AddMetadataReference(ProjectId projectId, MetadataReference metadataReference)
+            {
+                OnMetadataReferenceAdded(projectId, metadataReference);
+            }
+            protected override void ChangedDocumentText(DocumentId id, SourceText text)
+            {
+                OnDocumentTextChanged(id, text, PreservationMode.PreserveValue);
+                UpdateText(text, documentBuffers[id], EditOptions.DefaultMinimalChange);
+            }
+
+            // Stolen from Microsoft.VisualStudio.LanguageServices.Implementation.ProjectSystem.DocumentProvider.StandardTextDocument
+            private static void UpdateText(SourceText newText, ITextBuffer buffer, EditOptions options)
+            {
+                using (ITextEdit textEdit = buffer.CreateEdit(options, null, null))
+                {
+                    SourceText oldText = buffer.CurrentSnapshot.AsText();
+                    foreach (TextChange current in newText.GetTextChanges(oldText))
+                    {
+                        textEdit.Replace(current.Span.Start, current.Span.Length, current.NewText);
+                    }
+                    textEdit.Apply();
+                }
+            }
+
+            public override bool CanApplyChange(ApplyChangesKind feature)
+            {
+                switch (feature)
+                {
+                    case ApplyChangesKind.AddMetadataReference:
+                    case ApplyChangesKind.RemoveMetadataReference:
+                    case ApplyChangesKind.ChangeDocument:
+                        return true;
+                    case ApplyChangesKind.AddProject:
+                    case ApplyChangesKind.RemoveProject:
+                    case ApplyChangesKind.AddProjectReference:
+                    case ApplyChangesKind.RemoveProjectReference:
+                    case ApplyChangesKind.AddDocument:
+                    case ApplyChangesKind.RemoveDocument:
+                    default:
+                        return false;
+                }
+            }
+
         }
 
+        static readonly Dictionary<string, string> contentTypeLanguages = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase) {
+            { "CSharp", LanguageNames.CSharp },
+            { "Basic", LanguageNames.VisualBasic }
+        };
+        [Import]
+        public SVsServiceProvider ServiceProvider { get; set; }
         public void OnBlockCreated(ITextBuffer editorBuffer, LanguageProjectionBuffer projectionBuffer)
         {
-            WindowHelpers.WaitFor(delegate
-            {
-                // Make sure we don't set up ContainedLanguages until the buffer is ready
-                // When loading lots of Markdown files on solution load, we might need to
-                // wait for multiple idle cycles.
-                var doc = ServiceManager.GetService<HtmlEditorDocument>(editorBuffer);
-                if (doc == null) return false;
-                if (doc.PrimaryView == null) return false;
+            var componentModel = (IComponentModel)ServiceProvider.GetService(typeof(SComponentModel));
 
-                Guid guid = FindGuid();
-                if (guid != Guid.Empty)
-                    ContainedLanguageAdapter.ForBuffer(editorBuffer).AddIntellisenseProjectLanguage(projectionBuffer, guid);
-                return true;
+            var workspace = editorBuffer.Properties.GetOrCreateSingletonProperty(() =>
+                new MarkdownWorkspace(MefV1HostServices.Create(componentModel.DefaultExportProvider))
+            );
+
+            var contentType = projectionBuffer.IProjectionBuffer.ContentType.DisplayName;
+            var project = editorBuffer.Properties.GetOrCreateSingletonProperty(contentType, () =>
+            {
+                var newProject = workspace.AddProject(
+                    "Sample " + contentType + " Project",
+                    contentTypeLanguages[contentType]
+                );
+                workspace.TryApplyChanges(workspace.CurrentSolution.AddMetadataReferences(
+                    newProject.Id,
+                    DefaultReferences.Select(workspace.CreateFrameworkReference)
+                ));
+                return newProject;
             });
+            workspace.CreateDocument(project.Id, projectionBuffer.IProjectionBuffer);
         }
 
         public virtual string GlobalPrefix { get { return ""; } }
@@ -131,9 +246,8 @@ namespace MadsKristensen.EditorExtensions.Markdown
 
     [Export(typeof(ICodeLanguageEmbedder))]
     [ContentType("CSharp")]
-    public class CSharpEmbedder : IntellisenseProjectEmbedder
+    public class CSharpEmbedder : RoslynEmbedder
     {
-        public override string ProviderName { get { return "CSharpCodeProvider"; } }
         public override string GlobalPrefix
         {
             get
@@ -167,9 +281,8 @@ namespace MadsKristensen.EditorExtensions.Markdown
 
     [Export(typeof(ICodeLanguageEmbedder))]
     [ContentType("Basic")]
-    public class VBEmbedder : IntellisenseProjectEmbedder
+    public class VBEmbedder : RoslynEmbedder
     {
-        public override string ProviderName { get { return "VBCodeProvider"; } }
         public override string GlobalPrefix
         {
             get
