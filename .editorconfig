@@ -3,10 +3,12 @@ root = true
 
 [*]
 end_of_line = crlf
-indent_style = space
 indent_size = 4
 
 ; Match VS' default XML formatting
 [*.csproj]
+indent_style = space
+indent_size = 2
+[*.config]
 indent_style = space
 indent_size = 2
