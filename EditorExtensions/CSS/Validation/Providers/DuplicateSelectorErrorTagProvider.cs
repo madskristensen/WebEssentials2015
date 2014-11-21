@@ -4,6 +4,7 @@ using System.ComponentModel.Composition;
 using System.Linq;
 using Microsoft.CSS.Core;
 using Microsoft.VisualStudio.Utilities;
+using MadsKristensen.EditorExtensions.Settings;
 
 namespace MadsKristensen.EditorExtensions.Css
 {
@@ -14,6 +15,9 @@ namespace MadsKristensen.EditorExtensions.Css
     {
         public ItemCheckResult CheckItem(ParseItem item, ICssCheckerContext context)
         {
+            if (!WESettings.Instance.Css.ValidateDuplicateSelectors)
+                return ItemCheckResult.Continue;
+
             RuleSet rule = (RuleSet)item;
 
             if (!rule.IsValid || context == null)

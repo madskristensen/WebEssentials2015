@@ -447,6 +447,12 @@ namespace MadsKristensen.EditorExtensions.Settings
         [DefaultValue(true)]
         public bool ValidateVendorSpecifics { get; set; }
 
+        [Category("Validation")]
+        [DisplayName("Validate duplicate selectors")]
+        [Description("Shows a warning when duplicate selectors are identified in a CSS document.")]
+        [DefaultValue(true)]
+        public bool ValidateDuplicateSelectors { get; set; }
+
         [Category("IntelliSense")]
         [DisplayName("Sync vendor-specific values")]
         [Description("Synchronize vendor-specific property values when modifying the standard property.")]
