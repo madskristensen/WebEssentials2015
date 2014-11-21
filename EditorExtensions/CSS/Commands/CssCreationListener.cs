@@ -1,12 +1,12 @@
-﻿using System.Collections.ObjectModel;
-using System.ComponentModel.Composition;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using Microsoft.VisualStudio.Editor;
+﻿using Microsoft.VisualStudio.Editor;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Utilities;
 using Microsoft.Web.Editor;
+using System.Collections.ObjectModel;
+using System.ComponentModel.Composition;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace MadsKristensen.EditorExtensions.Css
 {
@@ -30,16 +30,16 @@ namespace MadsKristensen.EditorExtensions.Css
                 return;
 
             //textView.Properties.GetOrCreateSingletonProperty<CssSortProperties>(() => new CssSortProperties(textViewAdapter, textView));
-            textView.Properties.GetOrCreateSingletonProperty<ExtractToFile>(() => new ExtractToFile(textViewAdapter, textView));
-            textView.Properties.GetOrCreateSingletonProperty<CssAddMissingStandard>(() => new CssAddMissingStandard(textViewAdapter, textView));
-            textView.Properties.GetOrCreateSingletonProperty<CssAddMissingVendor>(() => new CssAddMissingVendor(textViewAdapter, textView));
-            textView.Properties.GetOrCreateSingletonProperty<CssRemoveDuplicates>(() => new CssRemoveDuplicates(textViewAdapter, textView));
-            textView.Properties.GetOrCreateSingletonProperty<MinifySelection>(() => new MinifySelection(textViewAdapter, textView));
-            textView.Properties.GetOrCreateSingletonProperty<CssFindReferences>(() => new CssFindReferences(textViewAdapter, textView));
-            textView.Properties.GetOrCreateSingletonProperty<F1Help>(() => new F1Help(textViewAdapter, textView));
-            textView.Properties.GetOrCreateSingletonProperty<CssSelectBrowsers>(() => new CssSelectBrowsers(textViewAdapter, textView));
-            textView.Properties.GetOrCreateSingletonProperty<RetriggerTarget>(() => new RetriggerTarget(textViewAdapter, textView));
-            textView.Properties.GetOrCreateSingletonProperty<ArrowsCommandTarget>(() => new ArrowsCommandTarget(textViewAdapter, textView));
+            textView.Properties.GetOrCreateSingletonProperty(() => new ExtractToFile(textViewAdapter, textView));
+            textView.Properties.GetOrCreateSingletonProperty(() => new CssAddMissingStandard(textViewAdapter, textView));
+            textView.Properties.GetOrCreateSingletonProperty(() => new CssAddMissingVendor(textViewAdapter, textView));
+            textView.Properties.GetOrCreateSingletonProperty(() => new CssRemoveDuplicates(textViewAdapter, textView));
+            textView.Properties.GetOrCreateSingletonProperty(() => new MinifySelection(textViewAdapter, textView));
+            textView.Properties.GetOrCreateSingletonProperty(() => new CssFindReferences(textViewAdapter, textView));
+            textView.Properties.GetOrCreateSingletonProperty(() => new F1Help(textViewAdapter, textView));
+            textView.Properties.GetOrCreateSingletonProperty(() => new CssSelectBrowsers(textViewAdapter, textView));
+            textView.Properties.GetOrCreateSingletonProperty(() => new RetriggerTarget(textViewAdapter, textView));
+            textView.Properties.GetOrCreateSingletonProperty(() => new ArrowsCommandTarget(textViewAdapter, textView));
 
             CssSchemaUpdater.CheckForUpdates();
         }
