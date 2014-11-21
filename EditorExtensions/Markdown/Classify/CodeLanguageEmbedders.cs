@@ -94,7 +94,8 @@ namespace MadsKristensen.EditorExtensions.Markdown
 
     public abstract class RoslynEmbedder : ICodeLanguageEmbedder
     {
-        public abstract IReadOnlyCollection<string> GetBlockWrapper(IEnumerable<string> code);
+        public IReadOnlyCollection<string> GetBlockWrapper(IEnumerable<string> code) { return new string[0]; }
+
         static readonly IReadOnlyCollection<string> DefaultReferences = new[] {
             typeof(object),
             typeof(Uri),
@@ -116,7 +117,7 @@ namespace MadsKristensen.EditorExtensions.Markdown
             static readonly Type IWorkCoordinatorRegistrationService = Type.GetType("Microsoft.CodeAnalysis.SolutionCrawler.IWorkCoordinatorRegistrationService, Microsoft.CodeAnalysis.Features");
 
             readonly Dictionary<DocumentId, ITextBuffer> documentBuffers = new Dictionary<DocumentId, ITextBuffer>();
-            public MarkdownWorkspace(HostServices host) : base(host, WorkspaceKind.Host)
+            public MarkdownWorkspace(HostServices host) : base(host, WorkspaceKind.MiscellaneousFiles)
             {
                 var wcrService = typeof(HostWorkspaceServices)
                     .GetMethod("GetService")
@@ -138,6 +139,7 @@ namespace MadsKristensen.EditorExtensions.Markdown
             );
 
 
+            // TODO: Use VisualStudioDocumentationProvider
             //static readonly Type xmlDocProvider = typeof(MSBuildWorkspace).Assembly.GetType("Microsoft.CodeAnalysis.FileBasedXmlDocumentationProvider");
             public MetadataReference CreateFrameworkReference(string assemblyName)
             {
@@ -207,7 +209,6 @@ namespace MadsKristensen.EditorExtensions.Markdown
                         return false;
                 }
             }
-
         }
 
         static readonly Dictionary<string, string> contentTypeLanguages = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase) {
@@ -268,15 +269,6 @@ namespace MadsKristensen.EditorExtensions.Markdown
                          using System.Xml.Linq;";
             }
         }
-        public override IReadOnlyCollection<string> GetBlockWrapper(IEnumerable<string> code)
-        {
-            return new[] { @"partial class Entry
-                            {
-                                  async Task<object> SampleMethod" + Guid.NewGuid().ToString("n") + @"() {", @"
-                                return await Task.FromResult(new object());
-                            }
-                            }" };
-        }
     }
 
     [Export(typeof(ICodeLanguageEmbedder))]
@@ -302,15 +294,6 @@ namespace MadsKristensen.EditorExtensions.Markdown
                         Imports System.Xml
                         Imports System.Xml.Linq";
             }
-        }
-        public override IReadOnlyCollection<string> GetBlockWrapper(IEnumerable<string> code)
-        {
-            return new[] { @"
-                            Partial Class Entry
-                            Async Function SampleMethod" + Guid.NewGuid().ToString("n") + @"() As Task(Of Object)", @"
-                                Return Await Task.FromResult(New Object())
-                            End Function
-                            End Class" };
         }
     }
 
