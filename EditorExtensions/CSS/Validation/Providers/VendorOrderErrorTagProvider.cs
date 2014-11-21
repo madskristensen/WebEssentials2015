@@ -8,6 +8,7 @@ using Microsoft.CSS.Editor.Intellisense;
 using Microsoft.CSS.Editor.Schemas;
 using Microsoft.CSS.Editor.SyntaxCheck;
 using Microsoft.VisualStudio.Utilities;
+using MadsKristensen.EditorExtensions.Settings;
 
 namespace MadsKristensen.EditorExtensions.Css
 {
@@ -37,7 +38,7 @@ namespace MadsKristensen.EditorExtensions.Css
                     return ItemCheckResult.CancelCurrentItem;
                 }
             }
-            else
+            else if (WESettings.Instance.Css.ValidateVendorSpecifics)
             {
                 ICssCompletionListEntry entry = VendorHelpers.GetMatchingStandardEntry(dec, context);
                 if (entry != null && !rule.Declarations.Any(d => d.PropertyName != null && d.PropertyName.Text == entry.DisplayText))

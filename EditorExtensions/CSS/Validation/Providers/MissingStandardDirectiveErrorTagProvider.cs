@@ -6,6 +6,7 @@ using System.Linq;
 using Microsoft.CSS.Core;
 using Microsoft.CSS.Editor.Intellisense;
 using Microsoft.VisualStudio.Utilities;
+using MadsKristensen.EditorExtensions.Settings;
 
 namespace MadsKristensen.EditorExtensions.Css
 {
@@ -16,6 +17,9 @@ namespace MadsKristensen.EditorExtensions.Css
     {
         public ItemCheckResult CheckItem(ParseItem item, ICssCheckerContext context)
         {
+            if (!WESettings.Instance.Css.ValidateVendorSpecifics)
+                return ItemCheckResult.Continue;
+
             AtDirective directive = (AtDirective)item;
 
             if (context == null || !directive.IsValid || !directive.IsVendorSpecific())

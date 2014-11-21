@@ -403,33 +403,6 @@ namespace MadsKristensen.EditorExtensions.Settings
 
     public sealed class CssSettings : SettingsBase<CssSettings>, IMinifierSettings, IBundleSettings
     {
-        //#region Autoprefixer
-        //[Category("Autoprefixer")]
-        //[DisplayName("Enable Autoprefixer")]
-        //[Description("Parse CSS and add vendor prefixes to CSS rules using values from caniuse.com")]
-        //[DefaultValue(false)]
-        //public bool Autoprefix { get; set; }
-
-        //[Category("Autoprefixer")]
-        //[DisplayName("Targeted browsers")]
-        //[Description("Specify comma-separated list of browsers to target. See http://github.com/ai/autoprefixer#browsers")]
-        //[DefaultValue(null)]
-        //public string AutoprefixerBrowsers { get; set; }
-        //#endregion
-
-        //#region RTLCSS
-        //[Category("RTLCSS")]
-        //[DisplayName("Generate RTL variant")]
-        //[Description("Generate right-to-left variant of compiled CSS file from LESS and SASS. Also, to enable or disable RTL generation on saving a CSS file. With 'Run RTLCSS' option in Solution Explorer menu for CSS file(s) or folder containing CSS files, this option is ignored.")]
-        //[DefaultValue(false)]
-        //public bool RtlCss { get; set; }
-
-        //[Category("RTLCSS")]
-        //[DisplayName("Generate RTL source-maps")]
-        //[Description("Generate right-to-left variant source maps. Note, this settings only applies to CSS RTL. For LESS and SASS, RTL shares the existing setting.")]
-        //[DefaultValue(true)]
-        //public bool GenerateRtlSourceMaps { get; set; }
-        //#endregion
 
         #region Minification
         [Category("Minification")]
@@ -466,13 +439,13 @@ namespace MadsKristensen.EditorExtensions.Settings
         [Description("Warn on URLs to small images that are not embedded using data URIs.")]
         [DefaultValue(true)]
         public bool ValidateEmbedImages { get; set; }
+        #endregion
 
-        [Category("Performance Warnings")]
-        [DisplayName("Disallow unrecognized vendor-specifics")]
+        [Category("Validation")]
+        [DisplayName("Validate vendor-specifics")]
         [Description("Warn on unrecognized vendor specific properties, pseudos, and @-directives.")]
         [DefaultValue(true)]
         public bool ValidateVendorSpecifics { get; set; }
-        #endregion
 
         [Category("IntelliSense")]
         [DisplayName("Sync vendor-specific values")]
