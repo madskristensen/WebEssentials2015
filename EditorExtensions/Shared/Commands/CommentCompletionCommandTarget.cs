@@ -43,7 +43,7 @@ namespace MadsKristensen.EditorExtensions
 
             SnapshotSpan span = new SnapshotSpan(TextView.TextBuffer.CurrentSnapshot, position - 1, 1);
             bool isComment = _classifier.GetClassificationSpans(span).Any(c => c.ClassificationType.IsOfType("comment"));
-            bool isString = IsString(span.Start);
+            bool isString = IsString(span);
 
             if (isComment || isString)
                 return false;
@@ -70,18 +70,14 @@ namespace MadsKristensen.EditorExtensions
             return true;
         }
 
-        private static bool IsString(SnapshotPoint position)
+        private bool IsString(SnapshotSpan span)
         {
-            if (position.Position < 2)
+            if (span.Start < 2)
                 return false;
 
-            var tagger = position.Snapshot.TextBuffer.Properties.GetProperty<ITagger<ClassificationTag>>(jsTaggerType);
+            var spans = _classifier.GetClassificationSpans(span);
 
-            Span span = Span.FromBounds(position.Position - 1, position.Position);
-            var spans = new NormalizedSnapshotSpanCollection(new SnapshotSpan(position.Snapshot, span));
-            var classifications = tagger.GetTags(spans);
-
-            return classifications.Any(c => c.Tag.ClassificationType.IsOfType("string"));
+            return spans.Any(c => c.ClassificationType.IsOfType("string"));
         }
 
         protected override bool IsEnabled()
