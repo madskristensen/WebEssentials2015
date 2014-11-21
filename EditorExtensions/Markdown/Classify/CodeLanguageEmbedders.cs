@@ -15,6 +15,7 @@ using Microsoft.JSON.Core.Format;
 using Microsoft.JSON.Editor;
 using Microsoft.JSON.Editor.Format;
 using Microsoft.VisualStudio.ComponentModelHost;
+using Microsoft.VisualStudio.LanguageServices;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.Text;
@@ -96,17 +97,24 @@ namespace MadsKristensen.EditorExtensions.Markdown
     {
         public IReadOnlyCollection<string> GetBlockWrapper(IEnumerable<string> code) { return new string[0]; }
 
+        static readonly string referenceAssemblyPath = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),
+            @"Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5"
+        );
         static readonly IReadOnlyCollection<string> DefaultReferences = new[] {
-            typeof(object),
-            typeof(Uri),
-            typeof(Enumerable),
-            typeof(System.Net.Http.HttpClient),
-            typeof(System.Xml.Linq.XElement),
-            typeof(System.Web.HttpContextBase),
-            typeof(System.Windows.Forms.Form),
-            typeof(System.Windows.Window),
-            typeof(System.Data.DataSet)
-        }.Select(t => t.Assembly.GetName().Name).ToList();
+            "mscorlib",
+            "System",
+            "System.Core",
+            "System.Data",
+            "System.Net.Http",
+            "System.Net.Http.WebRequest",
+            "System.Xml.Linq",
+            "System.Web",
+            "System.Windows.Forms",
+            "WindowsBase",
+            "PresentationCore",
+            "PresentationFramework",
+        };
 
         // Copied from VSEmbed.Roslyn.EditorWorkspace
         // This contains all of the ugly hacks needed
@@ -132,24 +140,6 @@ namespace MadsKristensen.EditorExtensions.Markdown
                 OnProjectAdded(projectInfo);
                 return CurrentSolution.GetProject(projectInfo.Id);
             }
-
-            static readonly string referenceAssemblyPath = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),
-                @"Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5"
-            );
-
-
-            // TODO: Use VisualStudioDocumentationProvider
-            //static readonly Type xmlDocProvider = typeof(MSBuildWorkspace).Assembly.GetType("Microsoft.CodeAnalysis.FileBasedXmlDocumentationProvider");
-            public MetadataReference CreateFrameworkReference(string assemblyName)
-            {
-                return MetadataReference.CreateFromFile(
-                    Path.Combine(referenceAssemblyPath, assemblyName + ".dll"),
-                    MetadataReferenceProperties.Assembly
-                    //(DocumentationProvider)Activator.CreateInstance(xmlDocProvider, Path.Combine(referenceAssemblyPath, assemblyName + ".xml"))
-                );
-            }
-
 
             ///<summary>Creates a new document linked to an existing text buffer.</summary>
             public Document CreateDocument(ProjectId projectId, ITextBuffer buffer)
@@ -217,6 +207,8 @@ namespace MadsKristensen.EditorExtensions.Markdown
         };
         [Import]
         public SVsServiceProvider ServiceProvider { get; set; }
+        [Import]
+        public VisualStudioWorkspace VSWorkspace { get; set; }
         public void OnBlockCreated(ITextBuffer editorBuffer, LanguageProjectionBuffer projectionBuffer)
         {
             var componentModel = (IComponentModel)ServiceProvider.GetService(typeof(SComponentModel));
@@ -234,7 +226,10 @@ namespace MadsKristensen.EditorExtensions.Markdown
                 );
                 workspace.TryApplyChanges(workspace.CurrentSolution.AddMetadataReferences(
                     newProject.Id,
-                    DefaultReferences.Select(workspace.CreateFrameworkReference)
+                    DefaultReferences.Select(name => VSWorkspace.CreatePortableExecutableReference(
+                        Path.Combine(referenceAssemblyPath, name + ".dll"),
+                        MetadataReferenceProperties.Assembly
+                    ))
                 ));
                 return newProject;
             });

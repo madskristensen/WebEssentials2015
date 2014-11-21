@@ -178,6 +178,9 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Language.Intellisense, Version=14.0.0.0" />
+    <Reference Include="Microsoft.VisualStudio.LanguageServices">
+      <HintPath>..\packages\Microsoft.VisualStudio.LanguageServices.1.0.0-beta1-20141031-01\lib\net45\Microsoft.VisualStudio.LanguageServices.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.Shell.14.0, Version=14.0.0.0" />
     <Reference Include="Microsoft.VisualStudio.Text.Data, Version=14.0.0.0" />
     <Reference Include="Microsoft.VisualStudio.Text.Internal, Version=14.0.0.0">
