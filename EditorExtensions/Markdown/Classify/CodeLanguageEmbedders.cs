@@ -15,13 +15,16 @@ using Microsoft.JSON.Core.Format;
 using Microsoft.JSON.Editor;
 using Microsoft.JSON.Editor.Format;
 using Microsoft.VisualStudio.ComponentModelHost;
+using Microsoft.VisualStudio.Editor;
 using Microsoft.VisualStudio.LanguageServices;
+using Microsoft.VisualStudio.OLE.Interop;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Utilities;
 using Microsoft.Web.Editor;
+using Microsoft.Web.Editor.EditorHelpers;
 
 namespace MadsKristensen.EditorExtensions.Markdown
 {
@@ -128,7 +131,7 @@ namespace MadsKristensen.EditorExtensions.Markdown
             public MarkdownWorkspace(HostServices host) : base(host, WorkspaceKind.MiscellaneousFiles)
             {
                 var wcrService = typeof(HostWorkspaceServices)
-                    .GetMethod("GetService")
+                    .GetMethod(nameof(HostWorkspaceServices.GetService))
                     .MakeGenericMethod(IWorkCoordinatorRegistrationService)
                     .Invoke(Services, null);
 
@@ -147,7 +150,8 @@ namespace MadsKristensen.EditorExtensions.Markdown
                 var id = DocumentId.CreateNewId(projectId);
                 documentBuffers.Add(id, buffer);
 
-                var docInfo = DocumentInfo.Create(id, "Sample Document",
+                // Our GetFileName() extension (which should probably be deleted) doesn't work on projection buffers
+                var docInfo = DocumentInfo.Create(id, TextBufferExtensions.GetFileName(buffer) ?? "Markdown Embedded Code",
                     loader: TextLoader.From(buffer.AsTextContainer(), VersionStamp.Create()),
                     sourceCodeKind: SourceCodeKind.Script
                 );
@@ -173,7 +177,7 @@ namespace MadsKristensen.EditorExtensions.Markdown
                 using (ITextEdit textEdit = buffer.CreateEdit(options, null, null))
                 {
                     SourceText oldText = buffer.CurrentSnapshot.AsText();
-                    foreach (TextChange current in newText.GetTextChanges(oldText))
+                    foreach (var current in newText.GetTextChanges(oldText))
                     {
                         textEdit.Replace(current.Span.Start, current.Span.Length, current.NewText);
                     }
@@ -208,6 +212,8 @@ namespace MadsKristensen.EditorExtensions.Markdown
         [Import]
         public SVsServiceProvider ServiceProvider { get; set; }
         [Import]
+        public IVsEditorAdaptersFactoryService EditorAdaptersFactory { get; set; }
+        [Import]
         public VisualStudioWorkspace VSWorkspace { get; set; }
         public void OnBlockCreated(ITextBuffer editorBuffer, LanguageProjectionBuffer projectionBuffer)
         {
@@ -234,7 +240,77 @@ namespace MadsKristensen.EditorExtensions.Markdown
                 return newProject;
             });
             workspace.CreateDocument(project.Id, projectionBuffer.IProjectionBuffer);
+
+            WindowHelpers.WaitFor(delegate
+            {
+                var textView = TextViewConnectionListener.GetFirstViewForBuffer(editorBuffer);
+                if (textView == null) return false;
+                InstallCommandTarget(textView, projectionBuffer.IProjectionBuffer);
+                return true;
+            });
         }
+
+        #region OleCommandTarget Hackery
+        // This horror is necessary to forward IOleCommandTarget commands to Roslyn's
+        // internal commanding system.  See https://roslyn.codeplex.com/workitem/243.
+
+        private void InstallCommandTarget(ITextView textView, ITextBuffer subjectBuffer)
+        {
+            var roslynCommandFilter = CreateCommandTarget(textView, subjectBuffer);
+            // The VenusCommandFilter ctor accepts a nextCommandTarget immediately;
+            // this apparently comes from the bowels of COM interop code. I pass it
+            // a meaningless value, then call the base class' Attach method to make
+            // it register as a CommandFilter (and correctly set NCT).  You have no
+            // hope of comprehending this code without carefully decompiling Roslyn
+            roslynCommandFilter.GetType()
+                .GetMethod("AttachToVsTextView", BindingFlags.NonPublic | BindingFlags.Instance)
+                .Invoke(roslynCommandFilter, null);
+        }
+
+        static readonly Type commandHandlerServiceFactoryType = Type.GetType("Microsoft.CodeAnalysis.Editor.ICommandHandlerServiceFactory, Microsoft.CodeAnalysis.EditorFeatures");
+        static readonly MethodInfo mefGetServiceCHSFMethod = typeof(IComponentModel).GetMethod(nameof(IComponentModel.GetService)).MakeGenericMethod(commandHandlerServiceFactoryType);
+
+        static Dictionary<string, string> contentTypeToNamespace = new Dictionary<string, string> {
+            { "CSharp", "CSharp" },
+            { "Basic",  "VisualBasic" }
+        };
+        IOleCommandTarget CreateCommandTarget(ITextView textView, ITextBuffer subjectBuffer)
+        {
+            var ns = contentTypeToNamespace[subjectBuffer.ContentType.TypeName];
+            var packageType = Type.GetType("Microsoft.VisualStudio.LanguageServices.\{ns}.LanguageService.CSharpPackage, "
+                                         + "Microsoft.VisualStudio.LanguageServices.\{ns}");
+            var languageServiceType = Type.GetType("Microsoft.VisualStudio.LanguageServices.\{ns}.LanguageService.\{ns}LanguageService, "
+                                                 + "Microsoft.VisualStudio.LanguageServices.\{ns}");
+            var projectShimType = Type.GetType("Microsoft.VisualStudio.LanguageServices.\{ns}.ProjectSystemShim.\{ns}Project, Microsoft.VisualStudio.LanguageServices.\{ns}");
+            var oleCommandTargetType = Type.GetType("Microsoft.VisualStudio.LanguageServices.Implementation.Venus.VenusCommandFilter`3, "
+                                                  + "Microsoft.VisualStudio.LanguageServices")
+                .MakeGenericType(packageType, languageServiceType, projectShimType);
+
+
+            // This returns a COM wrapper object which I cannot unwrap.  However,
+            // calling it primes the AbstractPackage.languageService field, which
+            // I can then grab.
+            ServiceProvider.GetService(languageServiceType);
+            var shell = (IVsShell)ServiceProvider.GetService(typeof(SVsShell));
+            IVsPackage package;
+            Guid packageGuid = packageType.GUID;
+            shell.LoadPackage(ref packageGuid, out package);
+            var languageService = Type.GetType("Microsoft.VisualStudio.LanguageServices.Implementation.LanguageService.AbstractPackage`2, "
+                                             + "Microsoft.VisualStudio.LanguageServices").MakeGenericType(packageType, languageServiceType)
+                .GetField("languageService", BindingFlags.NonPublic | BindingFlags.Instance)
+                .GetValue(package);
+
+            var mef = (IComponentModel)ServiceProvider.GetService(typeof(SComponentModel));
+            return (IOleCommandTarget)Activator.CreateInstance(oleCommandTargetType,
+                languageService,
+                textView,
+                mefGetServiceCHSFMethod.Invoke(mef, null),        // commandHandlerServiceFactory
+                subjectBuffer,
+                EditorAdaptersFactory.GetViewAdapter(textView),   // nextCommandTarget; not used immediately (see our callsite)
+                EditorAdaptersFactory
+            );
+        }
+        #endregion
 
         public virtual string GlobalPrefix { get { return ""; } }
         public virtual string GlobalSuffix { get { return ""; } }
