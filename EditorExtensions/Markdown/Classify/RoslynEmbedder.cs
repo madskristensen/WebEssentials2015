@@ -204,7 +204,7 @@ namespace MadsKristensen.EditorExtensions.Markdown.Classify
         IOleCommandTarget CreateCommandTarget(ITextView textView, ITextBuffer subjectBuffer)
         {
             var ns = contentTypeToNamespace[subjectBuffer.ContentType.TypeName];
-            var packageType = Type.GetType("Microsoft.VisualStudio.LanguageServices.\{ns}.LanguageService.CSharpPackage, "
+            var packageType = Type.GetType("Microsoft.VisualStudio.LanguageServices.\{ns}.LanguageService.\{ns}Package, "
                                          + "Microsoft.VisualStudio.LanguageServices.\{ns}");
             var languageServiceType = Type.GetType("Microsoft.VisualStudio.LanguageServices.\{ns}.LanguageService.\{ns}LanguageService, "
                                                  + "Microsoft.VisualStudio.LanguageServices.\{ns}");
