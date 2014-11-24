@@ -204,10 +204,13 @@ namespace MadsKristensen.EditorExtensions.Markdown.Classify
         IOleCommandTarget CreateCommandTarget(ITextView textView, ITextBuffer subjectBuffer)
         {
             var ns = contentTypeToNamespace[subjectBuffer.ContentType.TypeName];
-            var packageType = Type.GetType("Microsoft.VisualStudio.LanguageServices.\{ns}.LanguageService.\{ns}Package, "
-                                         + "Microsoft.VisualStudio.LanguageServices.\{ns}");
-            var languageServiceType = Type.GetType("Microsoft.VisualStudio.LanguageServices.\{ns}.LanguageService.\{ns}LanguageService, "
-                                                 + "Microsoft.VisualStudio.LanguageServices.\{ns}");
+            // VisualBasicLanguageService & Package are in a different namespace than C#'s.
+            var packageType = Type.GetType(("Microsoft.VisualStudio.LanguageServices.\{ns}.LanguageService.\{ns}Package, "
+                                         + "Microsoft.VisualStudio.LanguageServices.\{ns}")
+                                            .Replace("LanguageService.VisualBasicPackage", "VisualBasicPackage"));
+            var languageServiceType = Type.GetType(("Microsoft.VisualStudio.LanguageServices.\{ns}.LanguageService.\{ns}LanguageService, "
+                                                  + "Microsoft.VisualStudio.LanguageServices.\{ns}")
+                                            .Replace("LanguageService.VisualBasicLanguageService", "VisualBasicLanguageService"));
             var projectShimType = Type.GetType("Microsoft.VisualStudio.LanguageServices.\{ns}.ProjectSystemShim.\{ns}Project, Microsoft.VisualStudio.LanguageServices.\{ns}");
             var oleCommandTargetType = Type.GetType("Microsoft.VisualStudio.LanguageServices.Implementation.Venus.VenusCommandFilter`3, "
                                                   + "Microsoft.VisualStudio.LanguageServices")
