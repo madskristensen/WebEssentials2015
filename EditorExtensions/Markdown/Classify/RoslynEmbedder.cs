@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using System.ComponentModel.Composition.Hosting;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -194,9 +195,6 @@ namespace MadsKristensen.EditorExtensions.Markdown.Classify
                 .Invoke(roslynCommandFilter, null);
         }
 
-        static readonly Type commandHandlerServiceFactoryType = Type.GetType("Microsoft.CodeAnalysis.Editor.ICommandHandlerServiceFactory, Microsoft.CodeAnalysis.EditorFeatures");
-        static readonly MethodInfo mefGetServiceCHSFMethod = typeof(IComponentModel).GetMethod(nameof(IComponentModel.GetService)).MakeGenericMethod(commandHandlerServiceFactoryType);
-
         static Dictionary<string, string> contentTypeToNamespace = new Dictionary<string, string> {
             { "CSharp", "CSharp" },
             { "Basic",  "VisualBasic" }
@@ -234,7 +232,7 @@ namespace MadsKristensen.EditorExtensions.Markdown.Classify
             return (IOleCommandTarget)Activator.CreateInstance(oleCommandTargetType,
                 languageService,
                 textView,
-                mefGetServiceCHSFMethod.Invoke(mef, null),        // commandHandlerServiceFactory
+                mef.DefaultExportProvider.GetExport<object>("Microsoft.CodeAnalysis.Editor.ICommandHandlerServiceFactory").Value,           // commandHandlerServiceFactory
                 subjectBuffer,
                 EditorAdaptersFactory.GetViewAdapter(textView),   // nextCommandTarget; not used immediately (see our callsite)
                 EditorAdaptersFactory
