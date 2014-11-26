@@ -184,15 +184,20 @@ namespace MadsKristensen.EditorExtensions.Markdown.Classify
 
         private void InstallCommandTarget(ITextView textView, ITextBuffer subjectBuffer)
         {
-            var roslynCommandFilter = CreateCommandTarget(textView, subjectBuffer);
-            // The VenusCommandFilter ctor accepts a nextCommandTarget immediately;
-            // this apparently comes from the bowels of COM interop code. I pass it
-            // a meaningless value, then call the base class' Attach method to make
-            // it register as a CommandFilter (and correctly set NCT).  You have no
-            // hope of comprehending this code without carefully decompiling Roslyn
-            roslynCommandFilter.GetType()
-                .GetMethod("AttachToVsTextView", BindingFlags.NonPublic | BindingFlags.Instance)
-                .Invoke(roslynCommandFilter, null);
+            // Roslyn's OleCommandTarget will apply to every
+            // Roslyn-powered buffer in the TextView.  Thus,
+            // I reuse the existing instance when creating a
+            // second Roslyn buffer. Although we utilize the
+            // content type when creating the CommandTarget,
+            // it appears to never actually matter.
+            textView.Properties.GetOrCreateSingletonProperty("Roslyn Markdown Command Target", () =>
+            {
+                var roslynCommandFilter = CreateCommandTarget(textView, subjectBuffer.ContentType);
+                roslynCommandFilter.GetType()
+                    .GetMethod("AttachToVsTextView", BindingFlags.NonPublic | BindingFlags.Instance)
+                    .Invoke(roslynCommandFilter, null);
+                return roslynCommandFilter;
+            });
         }
 
         static Dictionary<string, string> contentTypeToNamespace = new Dictionary<string, string> {
@@ -203,9 +208,9 @@ namespace MadsKristensen.EditorExtensions.Markdown.Classify
             { "CSharp", new Guid("a6c744a8-0e4a-4fc6-886a-064283054674") },
             { "Basic",  new Guid("2c015c70-c72c-11d0-88c3-00a0c9110049") }
         };
-        IOleCommandTarget CreateCommandTarget(ITextView textView, ITextBuffer subjectBuffer)
+        object CreateCommandTarget(ITextView textView, IContentType initialContentType)
         {
-            var ns = contentTypeToNamespace[subjectBuffer.ContentType.TypeName];
+            var ns = contentTypeToNamespace[initialContentType.TypeName];
             // VisualBasicLanguageService & Package are in a different namespace than C#'s.
             var packageType = Type.GetType(("Microsoft.VisualStudio.LanguageServices.\{ns}.LanguageService.\{ns}Package, "
                                          + "Microsoft.VisualStudio.LanguageServices.\{ns}")
@@ -215,7 +220,7 @@ namespace MadsKristensen.EditorExtensions.Markdown.Classify
                                             .Replace("LanguageService.VisualBasicLanguageService", "VisualBasicLanguageService"));
             var projectShimType = Type.GetType("Microsoft.VisualStudio.LanguageServices.\{ns}.ProjectSystemShim.\{ns}Project, "
                                              + "Microsoft.VisualStudio.LanguageServices.\{ns}");
-            var oleCommandTargetType = Type.GetType("Microsoft.VisualStudio.LanguageServices.Implementation.Venus.VenusCommandFilter`3, "
+            var oleCommandTargetType = Type.GetType("Microsoft.VisualStudio.LanguageServices.Implementation.StandaloneCommandFilter`3, "
                                                   + "Microsoft.VisualStudio.LanguageServices")
                 .MakeGenericType(packageType, languageServiceType, projectShimType);
 
@@ -229,7 +234,7 @@ namespace MadsKristensen.EditorExtensions.Markdown.Classify
             // which I don't know how to unwrap. Instead, I get the package
             // from the editor factory.
             var od = (IVsUIShellOpenDocument)ServiceProvider.GetService(typeof(SVsUIShellOpenDocument));
-            var editorFactoryGuid = contentTypeToLangServiceGuid[subjectBuffer.ContentType.TypeName];
+            var editorFactoryGuid = contentTypeToLangServiceGuid[initialContentType.TypeName];
             string physicalView;
             IVsEditorFactory factory;
             od.GetStandardEditorFactory(0, editorFactoryGuid, null, VSConstants.LOGVIEWID_TextView, out physicalView, out factory);
@@ -244,14 +249,17 @@ namespace MadsKristensen.EditorExtensions.Markdown.Classify
                 .GetValue(package);
 
             var mef = (IComponentModel)ServiceProvider.GetService(typeof(SComponentModel));
-            return (IOleCommandTarget)Activator.CreateInstance(oleCommandTargetType,
+            return CreateInstanceNonPublic(oleCommandTargetType,
                 languageService,
                 textView,
                 mef.DefaultExportProvider.GetExport<object>("Microsoft.CodeAnalysis.Editor.ICommandHandlerServiceFactory").Value,           // commandHandlerServiceFactory
-                subjectBuffer,
-                EditorAdaptersFactory.GetViewAdapter(textView),   // nextCommandTarget; not used immediately (see our callsite)
+                null,                       // optionService (not used)
                 EditorAdaptersFactory
             );
+        }
+        static object CreateInstanceNonPublic(Type type, params object[] args)
+        {
+            return Activator.CreateInstance(type, BindingFlags.NonPublic | BindingFlags.Instance, null, args, null);
         }
         #endregion
 
