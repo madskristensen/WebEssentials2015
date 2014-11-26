@@ -10,6 +10,7 @@ using Microsoft.CodeAnalysis.Host;
 using Microsoft.CodeAnalysis.Host.Mef;
 using Microsoft.CodeAnalysis.Text;
 using Microsoft.Html.Editor.Projection;
+using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.ComponentModelHost;
 using Microsoft.VisualStudio.Editor;
 using Microsoft.VisualStudio.LanguageServices;
@@ -19,7 +20,6 @@ using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Utilities;
-using Microsoft.Web.Editor;
 using Microsoft.Web.Editor.EditorHelpers;
 
 namespace MadsKristensen.EditorExtensions.Markdown.Classify
@@ -171,7 +171,7 @@ namespace MadsKristensen.EditorExtensions.Markdown.Classify
 
             WindowHelpers.WaitFor(delegate
             {
-                var textView = TextViewConnectionListener.GetFirstViewForBuffer(editorBuffer);
+                var textView = Microsoft.Web.Editor.TextViewConnectionListener.GetFirstViewForBuffer(editorBuffer);
                 if (textView == null) return false;
                 InstallCommandTarget(textView, projectionBuffer.IProjectionBuffer);
                 return true;
@@ -199,6 +199,10 @@ namespace MadsKristensen.EditorExtensions.Markdown.Classify
             { "CSharp", "CSharp" },
             { "Basic",  "VisualBasic" }
         };
+        static Dictionary<string, Guid> contentTypeToLangServiceGuid = new Dictionary<string, Guid> {
+            { "CSharp", new Guid("a6c744a8-0e4a-4fc6-886a-064283054674") },
+            { "Basic",  new Guid("2c015c70-c72c-11d0-88c3-00a0c9110049") }
+        };
         IOleCommandTarget CreateCommandTarget(ITextView textView, ITextBuffer subjectBuffer)
         {
             var ns = contentTypeToNamespace[subjectBuffer.ContentType.TypeName];
@@ -209,7 +213,8 @@ namespace MadsKristensen.EditorExtensions.Markdown.Classify
             var languageServiceType = Type.GetType(("Microsoft.VisualStudio.LanguageServices.\{ns}.LanguageService.\{ns}LanguageService, "
                                                   + "Microsoft.VisualStudio.LanguageServices.\{ns}")
                                             .Replace("LanguageService.VisualBasicLanguageService", "VisualBasicLanguageService"));
-            var projectShimType = Type.GetType("Microsoft.VisualStudio.LanguageServices.\{ns}.ProjectSystemShim.\{ns}Project, Microsoft.VisualStudio.LanguageServices.\{ns}");
+            var projectShimType = Type.GetType("Microsoft.VisualStudio.LanguageServices.\{ns}.ProjectSystemShim.\{ns}Project, "
+                                             + "Microsoft.VisualStudio.LanguageServices.\{ns}");
             var oleCommandTargetType = Type.GetType("Microsoft.VisualStudio.LanguageServices.Implementation.Venus.VenusCommandFilter`3, "
                                                   + "Microsoft.VisualStudio.LanguageServices")
                 .MakeGenericType(packageType, languageServiceType, projectShimType);
@@ -217,14 +222,24 @@ namespace MadsKristensen.EditorExtensions.Markdown.Classify
 
             // This returns a COM wrapper object which I cannot unwrap.  However,
             // calling it primes the AbstractPackage.languageService field, which
-            // I can then grab.
+            // I can then grab from the existing package instance.
             ServiceProvider.GetService(languageServiceType);
-            var shell = (IVsShell)ServiceProvider.GetService(typeof(SVsShell));
-            IVsPackage package;
-            Guid packageGuid = packageType.GUID;
-            shell.LoadPackage(ref packageGuid, out package);
+
+            // Shell.LoadPackage() returns a COM object for the VB package,
+            // which I don't know how to unwrap. Instead, I get the package
+            // from the editor factory.
+            var od = (IVsUIShellOpenDocument)ServiceProvider.GetService(typeof(SVsUIShellOpenDocument));
+            var editorFactoryGuid = contentTypeToLangServiceGuid[subjectBuffer.ContentType.TypeName];
+            string physicalView;
+            IVsEditorFactory factory;
+            od.GetStandardEditorFactory(0, editorFactoryGuid, null, VSConstants.LOGVIEWID_TextView, out physicalView, out factory);
+            object package = Type.GetType("Microsoft.VisualStudio.LanguageServices.Implementation.AbstractEditorFactory, "
+                                        + "Microsoft.VisualStudio.LanguageServices")
+                .GetField("package", BindingFlags.NonPublic | BindingFlags.Instance)
+                .GetValue(factory);
+
             var languageService = Type.GetType("Microsoft.VisualStudio.LanguageServices.Implementation.LanguageService.AbstractPackage`2, "
-                                             + "Microsoft.VisualStudio.LanguageServices").MakeGenericType(packageType, languageServiceType)
+                                         + "Microsoft.VisualStudio.LanguageServices").MakeGenericType(packageType, languageServiceType)
                 .GetField("languageService", BindingFlags.NonPublic | BindingFlags.Instance)
                 .GetValue(package);
 
