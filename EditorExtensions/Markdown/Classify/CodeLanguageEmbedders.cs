@@ -4,13 +4,12 @@ using System.ComponentModel.Composition;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
+using Microsoft.CodeAnalysis;
 using Microsoft.Html.Editor;
 using Microsoft.Html.Editor.Projection;
 using Microsoft.JSON.Core.Format;
 using Microsoft.JSON.Editor;
 using Microsoft.JSON.Editor.Format;
-using Microsoft.VisualStudio.Shell;
-using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Utilities;
@@ -85,122 +84,6 @@ namespace MadsKristensen.EditorExtensions.Markdown
         public string GlobalPrefix { get { return ""; } }
         public string GlobalSuffix { get { return ""; } }
     }
-
-    public abstract class IntellisenseProjectEmbedder : ICodeLanguageEmbedder
-    {
-        public abstract IReadOnlyCollection<string> GetBlockWrapper(IEnumerable<string> code);
-        public abstract string ProviderName { get; }
-
-        Guid FindGuid()
-        {
-            try
-            {
-                using (var settings = VSRegistry.RegistryRoot(__VsLocalRegistryType.RegType_Configuration))
-                using (var languages = settings.OpenSubKey("Languages"))
-                using (var intellisenseProviders = languages.OpenSubKey("IntellisenseProviders"))
-                using (var provider = intellisenseProviders.OpenSubKey(ProviderName))
-                    return new Guid(provider.GetValue("GUID").ToString());
-            }
-            catch
-            {
-                return Guid.Empty;
-            }
-        }
-
-        public void OnBlockCreated(ITextBuffer editorBuffer, LanguageProjectionBuffer projectionBuffer)
-        {
-            WindowHelpers.WaitFor(delegate
-            {
-                // Make sure we don't set up ContainedLanguages until the buffer is ready
-                // When loading lots of Markdown files on solution load, we might need to
-                // wait for multiple idle cycles.
-                var doc = ServiceManager.GetService<HtmlEditorDocument>(editorBuffer);
-                if (doc == null) return false;
-                if (doc.PrimaryView == null) return false;
-
-                Guid guid = FindGuid();
-                if (guid != Guid.Empty)
-                    ContainedLanguageAdapter.ForBuffer(editorBuffer).AddIntellisenseProjectLanguage(projectionBuffer, guid);
-                return true;
-            });
-        }
-
-        public virtual string GlobalPrefix { get { return ""; } }
-        public virtual string GlobalSuffix { get { return ""; } }
-    }
-
-    [Export(typeof(ICodeLanguageEmbedder))]
-    [ContentType("CSharp")]
-    public class CSharpEmbedder : IntellisenseProjectEmbedder
-    {
-        public override string ProviderName { get { return "CSharpCodeProvider"; } }
-        public override string GlobalPrefix
-        {
-            get
-            {
-                return @"using System;
-                         using System.Collections.Generic;
-                         using System.Data;
-                         using System.IO;
-                         using System.Linq;
-                         using System.Net;
-                         using System.Net.Http;
-                         using System.Net.Http.Formatting;
-                         using System.Reflection;
-                         using System.Text;
-                         using System.Threading;
-                         using System.Threading.Tasks;
-                         using System.Xml;
-                         using System.Xml.Linq;";
-            }
-        }
-        public override IReadOnlyCollection<string> GetBlockWrapper(IEnumerable<string> code)
-        {
-            return new[] { @"partial class Entry
-                            {
-                                  async Task<object> SampleMethod" + Guid.NewGuid().ToString("n") + @"() {", @"
-                                return await Task.FromResult(new object());
-                            }
-                            }" };
-        }
-    }
-
-    [Export(typeof(ICodeLanguageEmbedder))]
-    [ContentType("Basic")]
-    public class VBEmbedder : IntellisenseProjectEmbedder
-    {
-        public override string ProviderName { get { return "VBCodeProvider"; } }
-        public override string GlobalPrefix
-        {
-            get
-            {
-                return @"Imports System
-                        Imports System.Collections.Generic
-                        Imports System.Data
-                        Imports System.IO
-                        Imports System.Linq
-                        Imports System.Net
-                        Imports System.Net.Http
-                        Imports System.Net.Http.Formatting
-                        Imports System.Reflection
-                        Imports System.Text
-                        Imports System.Threading
-                        Imports System.Threading.Tasks
-                        Imports System.Xml
-                        Imports System.Xml.Linq";
-            }
-        }
-        public override IReadOnlyCollection<string> GetBlockWrapper(IEnumerable<string> code)
-        {
-            return new[] { @"
-                            Partial Class Entry
-                            Async Function SampleMethod" + Guid.NewGuid().ToString("n") + @"() As Task(Of Object)", @"
-                                Return Await Task.FromResult(New Object())
-                            End Function
-                            End Class" };
-        }
-    }
-
 
     // Ugly hacks because JSONIndenter uses textView.TextBuffer and
     // tries to operate with the outer Markdown TextBuffer, instead

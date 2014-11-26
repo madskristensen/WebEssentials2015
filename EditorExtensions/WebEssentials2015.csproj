@@ -84,27 +84,85 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\ConfOxide.1.4.0.0\lib\net40\ConfOxide.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CodeAnalysis">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.Common.1.0.0-beta1-20141031-01\lib\net45\Microsoft.CodeAnalysis.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.CSharp.1.0.0-beta1-20141031-01\lib\net45\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp.Desktop">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.CSharp.1.0.0-beta1-20141031-01\lib\net45\Microsoft.CodeAnalysis.CSharp.Desktop.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp.Workspaces">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.CSharp.Workspaces.1.0.0-beta1-20141031-01\lib\net45\Microsoft.CodeAnalysis.CSharp.Workspaces.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp.Workspaces.Desktop">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.CSharp.Workspaces.1.0.0-beta1-20141031-01\lib\net45\Microsoft.CodeAnalysis.CSharp.Workspaces.Desktop.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.Desktop">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.Common.1.0.0-beta1-20141031-01\lib\net45\Microsoft.CodeAnalysis.Desktop.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.VisualBasic">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.VisualBasic.1.0.0-beta1-20141031-01\lib\net45\Microsoft.CodeAnalysis.VisualBasic.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.VisualBasic.Desktop">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.VisualBasic.1.0.0-beta1-20141031-01\lib\net45\Microsoft.CodeAnalysis.VisualBasic.Desktop.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.VisualBasic.Workspaces">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.VisualBasic.Workspaces.1.0.0-beta1-20141031-01\lib\net45\Microsoft.CodeAnalysis.VisualBasic.Workspaces.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.VisualBasic.Workspaces.Desktop">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.VisualBasic.Workspaces.1.0.0-beta1-20141031-01\lib\net45\Microsoft.CodeAnalysis.VisualBasic.Workspaces.Desktop.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.Workspaces">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.Workspaces.Common.1.0.0-beta1-20141031-01\lib\net45\Microsoft.CodeAnalysis.Workspaces.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.Workspaces.Desktop">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.Workspaces.Common.1.0.0-beta1-20141031-01\lib\net45\Microsoft.CodeAnalysis.Workspaces.Desktop.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.EditorFeatures.Text">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.EditorFeatures.Text.1.0.0-beta1-20141031-01\lib\net45\Microsoft.CodeAnalysis.EditorFeatures.Text.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Microsoft.CSS.Core, Version=14.0.0.0">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$(DevEnvDir)\Extensions\Microsoft\Web Tools\Editors\Microsoft.CSS.Core.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.CSS.Editor, Version=14.0.0.0">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$(DevEnvDir)\Extensions\Microsoft\Web Tools\Editors\Microsoft.CSS.Editor.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Html.Core, Version=14.0.0.0">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$(DevEnvDir)\Extensions\Microsoft\Web Tools\Editors\Microsoft.Html.Core.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Html.Editor, Version=14.0.0.0">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$(DevEnvDir)\Extensions\Microsoft\Web Tools\Editors\Microsoft.Html.Editor.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.JSON.Core">
       <HintPath>$(DevEnvDir)\Extensions\Microsoft\Web Tools\Editors\Microsoft.JSON.Core.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.JSON.Editor">
       <HintPath>$(DevEnvDir)\Extensions\Microsoft\Web Tools\Editors\Microsoft.JSON.Editor.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -113,11 +171,16 @@
     <Reference Include="Microsoft.VisualStudio.Html.Package, Version=14.0.0.0">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$(DevEnvDir)\Extensions\Microsoft\Web Tools\Editors\Microsoft.VisualStudio.Html.Package.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.JSON.Package">
       <HintPath>$(DevEnvDir)\Extensions\Microsoft\Web Tools\Editors\Microsoft.VisualStudio.JSON.Package.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Language.Intellisense, Version=14.0.0.0" />
+    <Reference Include="Microsoft.VisualStudio.LanguageServices">
+      <HintPath>..\packages\Microsoft.VisualStudio.LanguageServices.1.0.0-beta1-20141031-01\lib\net45\Microsoft.VisualStudio.LanguageServices.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.Shell.14.0, Version=14.0.0.0" />
     <Reference Include="Microsoft.VisualStudio.Text.Data, Version=14.0.0.0" />
     <Reference Include="Microsoft.VisualStudio.Text.Internal, Version=14.0.0.0">
@@ -130,16 +193,19 @@
     <Reference Include="Microsoft.VisualStudio.Web, Version=14.0.0.0" />
     <Reference Include="Microsoft.VisualStudio.Web.Extensions">
       <HintPath>$(DevEnvDir)\Extensions\Microsoft\Web Tools\Editors\Microsoft.VisualStudio.Web.Extensions.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Web.HTML, Version=14.0.0.0" />
     <Reference Include="Microsoft.VisualStudio.Web.HTML.Implementation, Version=14.0.0.0" />
     <Reference Include="Microsoft.Web.Core, Version=14.0.0.0">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$(DevEnvDir)\Extensions\Microsoft\Web Tools\Editors\Microsoft.Web.Core.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Web.Editor, Version=14.0.0.0">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$(DevEnvDir)\Extensions\Microsoft\Web Tools\Editors\Microsoft.Web.Editor.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Minimatch, Version=1.1.0.0, Culture=neutral, PublicKeyToken=0cadeb0b849c27c0">
       <HintPath>..\packages\Minimatch.1.1.0.0\lib\portable-net40+sl50+win+wp80\Minimatch.dll</HintPath>
@@ -157,24 +223,23 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\MarkdownSharp.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Collections.Immutable, Version=12.0.0.0" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.TransientFaultHandling.Core">
       <HintPath>..\packages\TransientFaultHandling.Core.5.1.1209.1\lib\NET4\Microsoft.Practices.TransientFaultHandling.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.JSLS, Version=14.0.0.0" />
-    <Reference Include="Microsoft.VisualStudio.Language.StandardClassification, Version=12.0.0.0" />
+    <Reference Include="Microsoft.VisualStudio.Language.StandardClassification, Version=14.0.0.0" />
     <Reference Include="Microsoft.VisualStudio.TextManager.Interop.12.0" />
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="Microsoft.VisualStudio.ComponentModelHost, Version=12.0.0.0" />
-    <Reference Include="Microsoft.VisualStudio.Language.NavigateTo.Interfaces, Version=12.0.0.0" />
+    <Reference Include="Microsoft.VisualStudio.ComponentModelHost, Version=14.0.0.0" />
+    <Reference Include="Microsoft.VisualStudio.Language.NavigateTo.Interfaces, Version=14.0.0.0" />
     <Reference Include="Microsoft.VisualStudio.Shell.Interop.11.0, Version=11.0.0.0">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.TextManager.Interop.8.0, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-    <Reference Include="Microsoft.VisualStudio.Threading, Version=12.0.0.0" />
+    <Reference Include="Microsoft.VisualStudio.Threading, Version=14.0.0.0" />
     <Reference Include="Microsoft.VisualStudio.Web.BrowserLink.12.0" />
-    <Reference Include="Microsoft.VisualStudio.Editor, Version=12.0.0.0" />
+    <Reference Include="Microsoft.VisualStudio.Editor, Version=14.0.0.0" />
     <Reference Include="Microsoft.VisualStudio.OLE.Interop" />
     <Reference Include="Microsoft.VisualStudio.Shell.Interop" />
     <Reference Include="Microsoft.VisualStudio.Shell.Interop.8.0" />
@@ -190,13 +255,23 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.Collections.Immutable, Version=1.1.32.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>False</Private>
+      <HintPath>..\packages\System.Collections.Immutable.1.1.32-beta\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Reflection.Metadata">
+      <HintPath>..\packages\System.Reflection.Metadata.1.0.17-beta\lib\portable-net45+win8\System.Reflection.Metadata.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web" />
@@ -373,11 +448,10 @@
     <Compile Include="Markdown\Classify\BufferGenerator.cs" />
     <Compile Include="Markdown\Classify\CodeArtifactProcessor.cs" />
     <Compile Include="Markdown\Classify\CodeLanguageEmbedders.cs" />
-    <Compile Include="Markdown\Classify\ContainedLanguageAdapter.cs" />
     <Compile Include="Markdown\Classify\MarkdownClassificationTypes.cs" />
     <Compile Include="Markdown\Classify\MarkdownClassifier.cs" />
-    <Compile Include="Markdown\Classify\MarkdownLanguageSupport.cs" />
     <Compile Include="Markdown\Classify\MarkdownParser.cs" />
+    <Compile Include="Markdown\Classify\RoslynEmbedder.cs" />
     <Compile Include="Markdown\Completion\MarkdownCompletionFilter.cs" />
     <Compile Include="Markdown\ContentType\MarkdownContentTypeDefinition.cs" />
     <Compile Include="Markdown\ContentType\MarkdownContentTypeHandler.cs" />
@@ -976,5 +1050,4 @@
       </Content>
     </ItemGroup>
   </Target>-->
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
 </Project>
