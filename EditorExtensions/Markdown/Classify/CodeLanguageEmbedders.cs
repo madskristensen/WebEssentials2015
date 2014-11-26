@@ -95,12 +95,12 @@ namespace MadsKristensen.EditorExtensions.Markdown
     [ContentType("JSON")]
     public class JSONEmbedder : ICodeLanguageEmbedder
     {
-        public string GlobalPrefix { get { return ""; } }
-        public string GlobalSuffix { get { return ""; } }
+        public string GlobalPrefix { get { return "["; } }
+        public string GlobalSuffix { get { return "{}]"; } }
 
         public IReadOnlyCollection<string> GetBlockWrapper(IEnumerable<string> code)
         {
-            return null;
+            return new[] { "", "," };
         }
 
         public void OnBlockCreated(ITextBuffer editorBuffer, LanguageProjectionBuffer projectionBuffer)
@@ -110,33 +110,30 @@ namespace MadsKristensen.EditorExtensions.Markdown
                 var textView = TextViewConnectionListener.GetFirstViewForBuffer(editorBuffer);
                 if (textView == null)
                     return false;
-                // Add the inner buffer's EditorDocument to the outer buffer before
-                // broken editor code tries to create a new EditorDocument from the
-                // outer buffer.
-                var editorDocument = JSONEditorDocument.FromTextBuffer(projectionBuffer.IProjectionBuffer);
-                ServiceManager.AddService(editorDocument, textView.TextBuffer);
+                // Attach the inner buffer's Document to the outer 
+                // buffer so that it can be found from the TextView
+                var editorDocument = JSONEditorDocument.FromTextBuffer(projectionBuffer.IProjectionBuffer)
+                                  ?? JSONEditorDocument.Attach(projectionBuffer.IProjectionBuffer);
+                ServiceManager.AddService(editorDocument, editorBuffer);
                 editorDocument.Closing += delegate { ServiceManager.RemoveService<JSONEditorDocument>(textView.TextBuffer); };
-
-                // JSONIndenter uses TextView.TextBuffer, and therefore operates on the
-                // entire Markdown buffer, breaking everything.  I manually force it to
-                // use the inner projection buffer instead. Beware that this breaks its
-                // ViewCaret property, and I can't fix that unless I mock its TextView.
-                var indenter = ServiceManager.GetService<ISmartIndent>(textView);
-                indenter.GetType().GetField("_textBuffer", BindingFlags.Instance | BindingFlags.NonPublic)
-                    .SetValue(indenter, projectionBuffer.IProjectionBuffer);
                 return true;
             });
         }
     }
-
-    [Export(typeof(IJSONFormatterFactory))]
-    [ContentType("HTMLXProjection")]
-    [Name("Hack")]
-    public class JSONFormatterPassThroughFactoryHack : IJSONFormatterFactory
+    [Export(typeof(ITextViewCreationListener))]
+    [ContentType("JSON")]
+    class JsonBufferListener : ITextViewCreationListener
     {
-        public IJSONFormatter CreateFormatter()
+        public void OnTextViewCreated(ITextView textView, ITextBuffer textBuffer)
         {
-            return JSONFormatterLocator.FindComponent(ContentTypeManager.GetContentType("JSON")).CreateFormatter();
+            var jsonBuffer = textView.BufferGraph.GetTextBuffers(tb => tb.ContentType.IsOfType("JSON")).FirstOrDefault();
+            if (jsonBuffer == null) return;
+            // Attach the inner buffer's Document to the outer 
+            // buffer so that it can be found from the TextView
+            var editorDocument = JSONEditorDocument.FromTextBuffer(jsonBuffer)
+                              ?? JSONEditorDocument.Attach(jsonBuffer);
+            ServiceManager.AddService(editorDocument, textView.TextDataModel.DocumentBuffer);
+            editorDocument.Closing += delegate { ServiceManager.RemoveService<JSONEditorDocument>(textView.TextBuffer); };
         }
     }
 }
