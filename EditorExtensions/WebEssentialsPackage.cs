@@ -70,8 +70,7 @@ namespace MadsKristensen.EditorExtensions
             Instance = this;
 
             SettingsStore.Load();
-            JavaScriptIntellisense.Register();
-
+            
             OleMenuCommandService mcs = GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
 
             if (null != mcs)
@@ -212,6 +211,7 @@ namespace MadsKristensen.EditorExtensions
     {
         protected async override void Initialize()
         {
+            JavaScriptIntellisense.Register(UserRegistryRoot);
             await CompatibilityChecker.StartCheckingCompatibility();
         }
     }
