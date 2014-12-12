@@ -1,1077 +1,935 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-  <Extern href="stdidcmd.h"/>
-  <Extern href="vsshlids.h"/>
-
-  <Commands package="guidEditorExtensionsPkg">
-    <Menus>
-      <Menu guid="guidTopMenu" id="TopMenu" priority="0x700" type="Menu">
-        <Parent guid="guidSHLMainMenu" id="IDG_VS_MM_TOOLSADDINS" />
-        <CommandFlag>DefaultInvisible</CommandFlag>
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Web Essentials</ButtonText>
-        </Strings>
-      </Menu>
-      <Menu guid="guidEditorExtensionsCmdSet" id="SubMenu" priority="0x001" type="Menu">
-        <Parent guid="guidEditorLinesCmdSet" id="LinesTopMenuGroup" />
-        <Strings>
-          <ButtonText>Encode Selection</ButtonText>
-        </Strings>
-      </Menu>
-      <Menu guid="guidEditorExtensionsCmdSet" id="TransformSubMenu" priority="0x001" type="Menu">
-        <Parent guid="guidEditorLinesCmdSet" id="LinesTopMenuGroup" />
-        <Strings>
-          <ButtonText>Transform Selection</ButtonText>
-          <CommandName>Transform Selection</CommandName>
-        </Strings>
-      </Menu>
-      <Menu guid="guidCssIntellisenseCmdSet" id="CssIntellisenseSubMenu" priority="0x201" type="Menu">
-        <Parent guid="guidCssCmdSet" id="MyMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Web Essentials</ButtonText>
-          <CommandName>Web Essentials</CommandName>
-        </Strings>
-      </Menu>
-      <Menu guid="guidSolutionExplorerCmdSet" id="MySubMenuGroup" priority="0x202" type="Menu">
-        <Parent guid="guidSolutionExplorerCmdSet" id="MyMenuGroup" />
-        <Strings>
-          <ButtonText>Web Essentials</ButtonText>
-          <CommandName>Web Essentials</CommandName>
-        </Strings>
-      </Menu>
-      <Menu guid="guidEditorLinesCmdSet" id="LinesMenu" priority="0x201" type="Menu">
-        <Parent guid="guidEditorLinesCmdSet" id="LinesTopMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Selected Lines</ButtonText>
-        </Strings>
-      </Menu>
-    </Menus>
-
-    <Groups>
-      <Group guid="guidBuildCmdSet" id="MyBuildMenuGroup" priority="0x0002">
-        <Parent guid="guidTopMenu" id="TopMenu"/>
-      </Group>
-
-      <Group guid="guidTopMenu" id="SolutionSubMenuGroup" priority="0x0002">
-        <Parent guid="guidTopMenu" id="TopMenu"/>
-      </Group>
-
-      <Group guid="guidBuildCmdSet" id="MyCompileMenuGroup" priority="0x0003">
-        <Parent guid="guidTopMenu" id="TopMenu"/>
-      </Group>
-
-      <Group guid="guidEditorExtensionsCmdSet" id="HtmlEncodingMenuGroup" priority="0x0002">
-        <Parent guid="guidEditorExtensionsCmdSet" id="SubMenu"/>
-      </Group>
-
-      <Group guid="guidEditorExtensionsCmdSet" id="UrlEncodingMenuGroup" priority="0x0003">
-        <Parent guid="guidEditorExtensionsCmdSet" id="SubMenu"/>
-      </Group>
-
-      <Group guid="guidEditorExtensionsCmdSet" id="JavaScriptEncodingMenuGroup" priority="0x0004">
-        <Parent guid="guidEditorExtensionsCmdSet" id="SubMenu"/>
-      </Group>
-
-      <Group guid="guidEditorExtensionsCmdSet" id="CasingTransformMenuGroup" priority="0x0001">
-        <Parent guid="guidEditorExtensionsCmdSet" id="TransformSubMenu"/>
-      </Group>
-
-      <Group guid="guidEditorExtensionsCmdSet" id="MiscTransformMenuGroup" priority="0x0002">
-        <Parent guid="guidEditorExtensionsCmdSet" id="TransformSubMenu"/>
-      </Group>
-
-      <Group guid="guidEditorExtensionsCmdSet" id="CryptoTransformMenuGroup" priority="0x0003">
-        <Parent guid="guidEditorExtensionsCmdSet" id="TransformSubMenu"/>
-      </Group>
-
-      <Group guid="guidCssCmdSet" id="MyMenuGroup" priority="0x0003">
-        <Parent guid="cssEditorCommandSet" id="cssContextMenu"/>
-      </Group>
-
-      <Group guid="guidCssCmdSet" id="CssSubMenuGroup" priority="0x0003">
-        <Parent guid="guidCssIntellisenseCmdSet" id="CssIntellisenseSubMenu"/>
-      </Group>
-
-      <Group guid="guidCssCmdSet" id="CssMinifyMenuGroup" priority="0x0003">
-        <Parent guid="guidCssIntellisenseCmdSet" id="CssIntellisenseSubMenu"/>
-      </Group>
-
-      <Group guid="guidFormattingCmdSet" id="FormattingGroup" priority="0x0500">
-        <Parent guid="guidTopMenu" id="TopMenu"/>
-      </Group>
-
-      <Group guid="guidDiffCmdSet" id="MarkdownGroup" priority="0x0009">
-        <Parent guid="guidSolutionExplorerCmdSet" id="MySubMenuGroup"/>
-      </Group>
-
-      <Group guid="guidDiffCmdSet" id="MyMenuGroup" priority="0x0010">
-        <Parent guid="guidSolutionExplorerCmdSet" id="MySubMenuGroup"/>
-      </Group>
-
-      <Group guid="guidExtractCmdSet" id="MyMenuGroup" priority="0x0020">
-        <Parent guid="guidCssIntellisenseCmdSet" id="CssIntellisenseSubMenu"/>
-      </Group>
-
-      <Group guid="guidMinifyCmdSet" id="MyMenuGroup" priority="0x0009">
-        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE"/>
-      </Group>
-
-      <Group guid="guidImageCmdSet" id="MyMenuGroup" priority="0x0009">
-        <Parent guid="guidSolutionExplorerCmdSet" id="MySubMenuGroup"/>
-      </Group>
-
-      <Group guid="guidSolutionExplorerCmdSet" id="MyMenuGroup" priority="0x0001">
-        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE"/>
-      </Group>
-
-      <Group guid="guidSolutionExplorerCmdSet" id="MySubGroup" priority="0x0001">
-        <Parent guid="guidSolutionExplorerCmdSet" id="MySubMenuGroup"/>
-      </Group>
-
-      <Group guid="guidSolutionExplorerCmdSet" id="MyBundleGroup" priority="0x0002">
-        <Parent guid="guidSolutionExplorerCmdSet" id="MySubMenuGroup"/>
-      </Group>
-
-      <Group guid="guidEditorLinesCmdSet" id="LinesTopMenuGroup" priority="0x0002">
-        <Parent guid="guidTopMenu" id="TopMenu" />
-      </Group>
-
-      <Group guid="guidEditorLinesCmdSet" id="LinesMenuGroup" priority="0x0002">
-        <Parent guid="guidEditorLinesCmdSet" id="LinesMenu"/>
-      </Group>
-    </Groups>
-
-    <Buttons>
-      <Button guid="guidEditorExtensionsCmdSet" id="cmdidHtmlEncode" priority="0x0101" type="Button">
-        <Parent guid="guidEditorExtensionsCmdSet" id="HtmlEncodingMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <CommandFlag>DefaultDisabled</CommandFlag>
-        <Strings>
-          <ButtonText>HTML Encode</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidEditorExtensionsCmdSet" id="cmdidAttrEncode" priority="0x0102" type="Button">
-        <Parent guid="guidEditorExtensionsCmdSet" id="HtmlEncodingMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <CommandFlag>DefaultDisabled</CommandFlag>
-        <Strings>
-          <ButtonText>HTML Attribute Encode</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidEditorExtensionsCmdSet" id="cmdidHtmlDecode" priority="0x0103" type="Button">
-        <Parent guid="guidEditorExtensionsCmdSet" id="HtmlEncodingMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <CommandFlag>DefaultDisabled</CommandFlag>
-        <Strings>
-          <ButtonText>HTML Decode</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidEditorExtensionsCmdSet" id="cmdidUrlEncode" priority="0x0101" type="Button">
-        <Parent guid="guidEditorExtensionsCmdSet" id="UrlEncodingMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <CommandFlag>DefaultDisabled</CommandFlag>
-        <Strings>
-          <ButtonText>URL Encode</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidEditorExtensionsCmdSet" id="cmdidUrlDecode" priority="0x0103" type="Button">
-        <Parent guid="guidEditorExtensionsCmdSet" id="UrlEncodingMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <CommandFlag>DefaultDisabled</CommandFlag>
-        <Strings>
-          <ButtonText>URL Decode</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidEditorExtensionsCmdSet" id="cmdidJavaScriptEncode" priority="0x0101" type="Button">
-        <Parent guid="guidEditorExtensionsCmdSet" id="JavaScriptEncodingMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <CommandFlag>DefaultDisabled</CommandFlag>
-        <Strings>
-          <ButtonText>JavaScript String Encode</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidEditorExtensionsCmdSet" id="cmdidTitleCaseTransform" priority="0x0103" type="Button">
-        <Parent guid="guidEditorExtensionsCmdSet" id="CasingTransformMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>To Title Case</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidEditorExtensionsCmdSet" id="cmdidReverseTransform" priority="0x0104" type="Button">
-        <Parent guid="guidEditorExtensionsCmdSet" id="MiscTransformMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Reverse</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidEditorExtensionsCmdSet" id="cmdidNormalizeTransform" priority="0x0105" type="Button">
-        <Parent guid="guidEditorExtensionsCmdSet" id="MiscTransformMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Remove Diacritics</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidEditorExtensionsCmdSet" id="cmdidMd5Transform" priority="0x0105" type="Button">
-        <Parent guid="guidEditorExtensionsCmdSet" id="CryptoTransformMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>MD5</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidEditorExtensionsCmdSet" id="cmdidSha1Transform" priority="0x0105" type="Button">
-        <Parent guid="guidEditorExtensionsCmdSet" id="CryptoTransformMenuGroup" />
-
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>SHA-1</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidEditorExtensionsCmdSet" id="cmdidSha256Transform" priority="0x0105" type="Button">
-        <Parent guid="guidEditorExtensionsCmdSet" id="CryptoTransformMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>SHA-256</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidEditorExtensionsCmdSet" id="cmdidSha384Transform" priority="0x0105" type="Button">
-        <Parent guid="guidEditorExtensionsCmdSet" id="CryptoTransformMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>SHA-384</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidEditorExtensionsCmdSet" id="cmdidSha512Transform" priority="0x0105" type="Button">
-        <Parent guid="guidEditorExtensionsCmdSet" id="CryptoTransformMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>SHA-512</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidEditorLinesCmdSet" id="SortAsc" priority="0x0105" type="Button">
-        <Parent guid="guidEditorLinesCmdSet" id="LinesMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <CommandFlag>DefaultDisabled</CommandFlag>
-        <Strings>
-          <ButtonText>Sort Selection Lines Ascending</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidEditorLinesCmdSet" id="SortDesc" priority="0x0106" type="Button">
-        <Parent guid="guidEditorLinesCmdSet" id="LinesMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <CommandFlag>DefaultDisabled</CommandFlag>
-        <Strings>
-          <ButtonText>Sort Selection Lines Descending</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidEditorLinesCmdSet" id="RemoveDuplicateLines" priority="0x0106" type="Button">
-        <Parent guid="guidEditorLinesCmdSet" id="LinesMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <CommandFlag>DefaultDisabled</CommandFlag>
-        <Strings>
-          <ButtonText>Remove Duplicate Lines</ButtonText>
-        </Strings>
-      </Button>
-      <Button guid="guidEditorLinesCmdSet" id="RemoveEmptyLines" priority="0x0106" type="Button">
-        <Parent guid="guidEditorLinesCmdSet" id="LinesMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <CommandFlag>DefaultDisabled</CommandFlag>
-        <Strings>
-          <ButtonText>Remove Empty Lines</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidCssCmdSet" id="cmdidCssRemoveDuplicates" priority="0x0100" type="Button">
-        <Parent guid="guidCssCmdSet" id="CssSubMenuGroup" />
-        <Icon guid="guidNumbers" id="pic1"/>
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Remove Duplicate Properties</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidCssCmdSet" id="cmdidCssAddMissingStandard" priority="0x0101" type="Button">
-        <Parent guid="guidCssCmdSet" id="CssSubMenuGroup" />
-        <Icon guid="guidNumbers" id="pic2"/>
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Add Missing Standard Properties</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidCssCmdSet" id="cmdidCssAddMissingVendor" priority="0x0102" type="Button">
-        <Parent guid="guidCssCmdSet" id="CssSubMenuGroup" />
-        <Icon guid="guidNumbers" id="pic3"/>
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Add Missing Vendor Specifics</ButtonText>
-        </Strings>
-      </Button>
-
-      <!--<Button guid="guidCssCmdSet" id="cmdidCssSortProperties" priority="0x0103" type="Button">
-        <Parent guid="guidCssCmdSet" id="CssSubMenuGroup" />
-        <Icon guid="guidNumbers" id="pic4"/>
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Sort All Properties</ButtonText>
-        </Strings>
-      </Button>-->
-
-      <Button guid="guidMinifyCmdSet" id="cmdMinifySelection" priority="0x0104" type="Button">
-        <Parent guid="guidCssCmdSet" id="CssMinifyMenuGroup" />
-        <Icon guid="guidImages" id="bmpLogo"/>
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <CommandName>Minify Selection</CommandName>
-          <ButtonText>Minify selection</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidMinifyCmdSet" id="cmdUnMinifySelection" priority="0x0104" type="Button">
-        <Parent guid="guidCssCmdSet" id="CssMinifyMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <CommandName>UnMinifySelection</CommandName>
-          <ButtonText>Un-Minify document</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidExtractCmdSet" id="cmdExtractSelection" priority="0x0105" type="Button">
-        <Parent guid="guidExtractCmdSet" id="MyMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <CommandName>Extract To File</CommandName>
-          <ButtonText>Extract to file...</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidExtractCmdSet" id="cmdExtractVariable" priority="0x0106" type="Button">
-        <Parent guid="guidExtractCmdSet" id="MyMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <CommandFlag>DefaultDisabled</CommandFlag>
-        <Strings>
-          <CommandName>Extract To Variable</CommandName>
-          <ButtonText>Extract to variable...</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidExtractCmdSet" id="cmdExtractMixin" priority="0x0107" type="Button">
-        <Parent guid="guidExtractCmdSet" id="MyMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <CommandFlag>DefaultDisabled</CommandFlag>
-        <Strings>
-          <CommandName>Extract To Mixin</CommandName>
-          <ButtonText>Extract to mixin...</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidMinifyCmdSet" id="cmdSelectBrowsers" priority="0x0106" type="Button">
-        <Parent guid="guidCssCmdSet" id="CssMinifyMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <CommandName>Select Browsers</CommandName>
-          <ButtonText>Select browsers...</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidDiffCmdSet" id="cmdSolutionSettings" priority="0x0101" type="Button">
-        <Parent guid="guidTopMenu" id="SolutionSubMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Create solution settings</ButtonText>
-        </Strings>
-      </Button>
-
-      <!--<Button guid="guidDiffCmdSet" id="cmdEditGlobalJsHint" priority="0x0102" type="Button">
-        <Parent guid="guidTopMenu" id="SolutionSubMenuGroup" />
-        <Icon guid="guidMenuImages" id="bmpScript"/>
-        <Strings>
-          <ButtonText>Edit global JSHint settings (.jshintrc)...</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidDiffCmdSet" id="cmdEditGlobalTsLint" priority="0x0103" type="Button">
-        <Parent guid="guidTopMenu" id="SolutionSubMenuGroup" />
-        <Icon guid="guidMenuImages" id="bmpScript"/>
-        <Strings>
-          <ButtonText>Edit global TSLint settings (tslint.json)...</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidDiffCmdSet" id="cmdEditGlobalCoffeeLint" priority="0x0103" type="Button">
-        <Parent guid="guidTopMenu" id="SolutionSubMenuGroup" />
-        <Icon guid="guidMenuImages" id="bmpScript"/>
-        <Strings>
-          <ButtonText>Edit global CoffeeLint settings (coffeelint.json)...</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidDiffCmdSet" id="cmdEditGlobalJsCodeStyle" priority="0x0104" type="Button">
-        <Parent guid="guidTopMenu" id="SolutionSubMenuGroup" />
-        <Icon guid="guidMenuImages" id="bmpScript"/>
-        <Strings>
-          <ButtonText>Edit global JSCS settings (.jscsrc)...</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidDiffCmdSet" id="cmdEditGlobalRtlCss" priority="0x0104" type="Button">
-        <Parent guid="guidTopMenu" id="SolutionSubMenuGroup" />
-        <Icon guid="guidMenuImages" id="bmpScript"/>
-        <Strings>
-          <ButtonText>Edit global RTLCSS settings (.rtlcssrc)...</ButtonText>
-        </Strings>
-      </Button>-->
-
-      <Button guid="guidDiffCmdSet" id="cmdSolutionColors" priority="0x0105" type="Button">
-        <Parent guid="guidTopMenu" id="SolutionSubMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Create color palette</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidDiffCmdSet" id="cmdMarkdownStylesheet" priority="0x0106" type="Button">
-        <Parent guid="guidTopMenu" id="SolutionSubMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Add Markdown solution stylesheet</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidDiffCmdSet" id="cmdMarkdownCompile" priority="0x0102" type="Button">
-        <Parent guid="guidDiffCmdSet" id="MarkdownGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Compile Markdown to HTML</ButtonText>
-        </Strings>
-      </Button>
-
-      <!--<Button guid="guidDiffCmdSet" id="cmdHandleBarsCompile" priority="0x0102" type="Button">
-        <Parent guid="guidDiffCmdSet" id="MarkdownGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Compile Handlebars Template</ButtonText>
-        </Strings>
-      </Button>-->
-
-      <Button guid="guidDiffCmdSet" id="cmdDiff" priority="0x0104" type="Button">
-        <Parent guid="guidDiffCmdSet" id="MyMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Diff selected files</ButtonText>
-        </Strings>
-      </Button>
-
-      <!--<Button guid="guidDiffCmdSet" id="cmdJsHint" priority="0x0105" type="Button">
-        <Parent guid="guidDiffCmdSet" id="MyMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Run JSHint</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidDiffCmdSet" id="cmdTsLint" priority="0x0106" type="Button">
-        <Parent guid="guidDiffCmdSet" id="MyMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Run TSLint</ButtonText>
-        </Strings>
-      </Button>-->
-
-      <!--<Button guid="guidDiffCmdSet" id="cmdJsCodeStyle" priority="0x0106" type="Button">
-        <Parent guid="guidDiffCmdSet" id="MyMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Run JSCS</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidDiffCmdSet" id="cmdRtlCss" priority="0x0106" type="Button">
-        <Parent guid="guidDiffCmdSet" id="MyMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Run RTLCSS</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidDiffCmdSet" id="cmdRunCson2Json" priority="0x0106" type="Button">
-        <Parent guid="guidDiffCmdSet" id="MyMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Run CSON 2 JSON</ButtonText>
-        </Strings>
-      </Button>-->
-
-      <!--<Button guid="guidDiffCmdSet" id="cmdRunJson2Cson" priority="0x0106" type="Button">
-        <Parent guid="guidDiffCmdSet" id="MyMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Run JSON 2 CSON</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidDiffCmdSet" id="cmdCoffeeLint" priority="0x0106" type="Button">
-        <Parent guid="guidDiffCmdSet" id="MyMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Run CoffeeLint</ButtonText>
-        </Strings>
-      </Button>-->
-
-      <Button guid="guidDiffCmdSet" id="cmdJavaScriptIntellisense" priority="0x0107" type="Button">
-        <Parent guid="guidDiffCmdSet" id="MyMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <CommandFlag>DefaultDisabled</CommandFlag>
-        <Strings>
-          <ButtonText>Create JavaScript Intellisense file</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidDiffCmdSet" id="cmdTypeScriptIntellisense" priority="0x0108" type="Button">
-        <Parent guid="guidDiffCmdSet" id="MyMenuGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <CommandFlag>DefaultDisabled</CommandFlag>
-        <Strings>
-          <ButtonText>Create TypeScript Intellisense file</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidMinifyCmdSet" id="cmdMinifyCss" priority="0x0101" type="Button">
-        <Parent guid="guidSolutionExplorerCmdSet" id="MySubGroup"/>
-        <Icon guid="guidImages" id="bmpLogo"/>
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Minify CSS file(s)</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidMinifyCmdSet" id="cmdMinifyJs" priority="0x0101" type="Button">
-        <Parent guid="guidSolutionExplorerCmdSet" id="MySubGroup"/>
-        <Icon guid="guidImages" id="bmpLogo"/>
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Minify JavaScript file(s)</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidMinifyCmdSet" id="cmdMinifyHtml" priority="0x0101" type="Button">
-        <Parent guid="guidSolutionExplorerCmdSet" id="MySubGroup"/>
-        <Icon guid="guidImages" id="bmpLogo"/>
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Minify HTML file(s)</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidImageCmdSet" id="cmdCompressImage" priority="0x0101" type="Button">
-        <Parent guid="guidImageCmdSet" id="MyMenuGroup"/>
-        <Icon guid="guidMenuImages" id="bmpImage"/>
-        <CommandFlag>TextChanges</CommandFlag>
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Optimize image(s)</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidImageCmdSet" id="cmdSpriteImage" priority="0x0102" type="Button">
-        <Parent guid="guidImageCmdSet" id="MyMenuGroup"/>
-        <Icon guid="guidMenuImages" id="bmpJigsaw"/>
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Create image sprite...</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidBundleCmdSet" id="cmdBundleJs" priority="0x0101" type="Button">
-        <Parent guid="guidSolutionExplorerCmdSet" id="MyBundleGroup"/>
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Create JavaScript bundle file</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidBundleCmdSet" id="cmdBundleCss" priority="0x0101" type="Button">
-        <Parent guid="guidSolutionExplorerCmdSet" id="MyBundleGroup"/>
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Create CSS bundle file</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidBundleCmdSet" id="cmdBundleHtml" priority="0x0101" type="Button">
-        <Parent guid="guidSolutionExplorerCmdSet" id="MyBundleGroup"/>
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Create HTML bundle file</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidBuildCmdSet" id="cmdBuildBundles" priority="0x0102" type="Button">
-        <Parent guid="guidBuildCmdSet" id="MyBuildMenuGroup"/>
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Update All Bundles</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidBuildCmdSet" id="cmdBuildSprites" priority="0x0103" type="Button">
-        <Parent guid="guidBuildCmdSet" id="MyBuildMenuGroup"/>
-        <Icon guid="guidMenuImages" id="bmpJigsaw"/>
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Update All Sprites</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidBuildCmdSet" id="cmdBuildMinify" priority="0x0101" type="Button">
-        <Parent guid="guidBuildCmdSet" id="MyBuildMenuGroup"/>
-        <Icon guid="guidImages" id="bmpLogo"/>
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Re-minify All CSS/JS/HTML Files</ButtonText>
-        </Strings>
-      </Button>
-
-      <!--<Button guid="guidBuildCmdSet" id="cmdBuildLess" priority="0x0103" type="Button">
-        <Parent guid="guidBuildCmdSet" id="MyCompileMenuGroup"/>
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Re-compile All LESS Files</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidBuildCmdSet" id="cmdBuildSass" priority="0x0103" type="Button">
-        <Parent guid="guidBuildCmdSet" id="MyCompileMenuGroup"/>
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Re-compile All SASS Files</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidBuildCmdSet" id="cmdBuildCoffeeScript" priority="0x0105" type="Button">
-        <Parent guid="guidBuildCmdSet" id="MyCompileMenuGroup"/>
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Re-compile All CoffeeScript Files</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidBuildCmdSet" id="cmdBuildSweetJs" priority="0x0106" type="Button">
-        <Parent guid="guidBuildCmdSet" id="MyCompileMenuGroup"/>
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Re-compile All Sweet.js Files</ButtonText>
-        </Strings>
-      </Button>-->
-
-      <Button guid="guidFormattingCmdSet" id="SurroundWith" priority="0x0005" type="Button">
-        <Parent guid="guidFormattingCmdSet" id="FormattingGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <CommandFlag>DefaultDisabled</CommandFlag>
-        <CommandFlag>DefaultInvisible</CommandFlag>
-        <Strings>
-          <CommandName>Surround With Tag</CommandName>
-          <ButtonText>Surround with tag...</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidFormattingCmdSet" id="ExpandSelection" priority="0x0010" type="Button">
-        <Parent guid="guidFormattingCmdSet" id="FormattingGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <CommandFlag>DefaultDisabled</CommandFlag>
-        <CommandFlag>DefaultInvisible</CommandFlag>
-        <Strings>
-          <ButtonText>Expand Selection</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidFormattingCmdSet" id="ContractSelection" priority="0x0011" type="Button">
-        <Parent guid="guidFormattingCmdSet" id="FormattingGroup" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <CommandFlag>DefaultDisabled</CommandFlag>
-        <CommandFlag>DefaultInvisible</CommandFlag>
-        <Strings>
-          <ButtonText>Contract Selection</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidUnusedCssCmdSet" id="UnusedCssRecordAllCommandId" priority="0x2000" type="Button">
-        <Parent guid="guidBrowserLinkCmdSet" id="IDG_BROWSERLINK_COMMANDS"/>
-        <Icon guid="guidBrowserLink" id="bmpRecord"/>
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Start Recording (All Browsers)</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidUnusedCssCmdSet" id="UnusedCssStopRecordAllCommandId" priority="0x2001" type="Button">
-        <Parent guid="guidBrowserLinkCmdSet" id="IDG_BROWSERLINK_COMMANDS"/>
-        <Icon guid="guidBrowserLink" id="bmpPause"/>
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <CommandFlag>DefaultInvisible</CommandFlag>
-        <Strings>
-          <ButtonText>Stop Recording (All Browsers)</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidUnusedCssCmdSet" id="UnusedCssResetCommandId" priority="0x2003" type="Button">
-        <Parent guid="guidBrowserLinkCmdSet" id="IDG_BROWSERLINK_COMMANDS"/>
-        <Strings>
-          <ButtonText>Clear CSS Usage Data</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidPixelPushingCmdSet" id="PixelPushingToggleCommandId" priority="0x2010" type="Button">
-        <Parent guid="guidBrowserLinkCmdSet" id="IDG_BROWSERLINK_COMMANDS"/>
-        <Strings>
-          <ButtonText>Enable Saving F12 Changes</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidEditorExtensionsCmdSet" id="ReferenceJs" priority="0x2010" type="Button">
-        <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_PROJECT_ADD_ITEMS"/>
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <CommandFlag>DefaultInvisible</CommandFlag>
-        <Strings>
-          <ButtonText>_references.js Intellisense file</ButtonText>
-        </Strings>
-      </Button>
-
-      <Button guid="guidTypeScriptTypingsCmdSet" id="AddHubT4CommandId" priority="0x0106" type="Button">
-        <Parent guid="guidDiffCmdSet" id="MyMenuGroup" />
-        <CommandFlag>DefaultInvisible</CommandFlag>
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Add Hubs.tt</ButtonText>
-        </Strings>
-      </Button>
-
-      <!--<Button guid="guidEditorExtensionsCmdSet" id="cmdChainCompile" priority="0x2201" type="Button">
-        <Parent guid="guidSolutionExplorerCmdSet" id="MySubGroup"/>
-        <Icon guid="guidImages" id="bmpLogo"/>
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <ButtonText>Don't auto-compile when saving dependencies</ButtonText>
-        </Strings>
-      </Button>-->
-    </Buttons>
-
-    <Bitmaps>
-      <Bitmap guid="guidImages" href="Resources\Images\Images.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpLogo, bmpMinify"/>
-      <Bitmap guid="guidNumbers" href="Resources\Images\numbers.png" usedList="pic1, pic2, pic3, pic4"/>
-      <Bitmap guid="guidBrowserLink" href="Resources\Images\browserlink.png" usedList="bmpRecord, bmpPause"/>
-      <Bitmap guid="guidMenuImages" href="Resources\Images\menuimages.png" usedList="bmpScript, bmpImage, bmpJigsaw"/>
-    </Bitmaps>
-  </Commands>
-
-  <KeyBindings>
-    <KeyBinding guid="guidCssCmdSet" id="cmdidCssSortProperties" mod1="Shift Alt" key1="S" editor="guidVSStd97"/>
-    <KeyBinding guid="guidCssCmdSet" id="cmdidCssRemoveDuplicates" mod1="Shift Alt" key1="R" editor="guidVSStd97"/>
-    <KeyBinding guid="guidCssCmdSet" id="cmdidCssAddMissingStandard" mod1="Shift Alt" key1="P" editor="guidVSStd97"/>
-    <KeyBinding guid="guidCssCmdSet" id="cmdidCssAddMissingVendor" mod1="Shift Alt" key1="V" editor="guidVSStd97"/>
-    <KeyBinding guid="guidMinifyCmdSet" id="cmdMinifySelection" mod1="Shift Alt" key1="X" editor="guidVSStd97"/>
-    <KeyBinding guid="guidExtractCmdSet" id="cmdExtractSelection" mod1="Shift Alt" key1="E" editor="guidVSStd97"/>
-    <KeyBinding guid="guidExtractCmdSet" id="cmdExtractVariable" mod1="Shift Alt" key1="J" editor="guidVSStd97"/>
-    <KeyBinding guid="guidExtractCmdSet" id="cmdExtractMixin" mod1="Shift Alt" key1="K" editor="guidVSStd97"/>
-
-    <KeyBinding guid="guidBuildCmdSet" id="cmdBuildBundles" mod1="Shift Alt" key1="I" editor="guidVSStd97"/>
-    <KeyBinding guid="guidBuildCmdSet" id="cmdBuildSprites" mod1="Shift Alt" key1="G" editor="guidVSStd97"/>
-    <KeyBinding guid="guidBuildCmdSet" id="cmdBuildLess" mod1="Shift Alt" key1="Y" editor="guidVSStd97"/>
-    <KeyBinding guid="guidBuildCmdSet" id="cmdBuildSass" mod1="Shift Alt" key1="Q" editor="guidVSStd97"/>
-    <KeyBinding guid="guidBuildCmdSet" id="cmdBuildMinify" mod1="Shift Alt" key1="F" editor="guidVSStd97"/>
-    <KeyBinding guid="guidBuildCmdSet" id="cmdBuildCoffeeScript" mod1="Shift Alt" key1="Z" editor="guidVSStd97"/>
-    <KeyBinding guid="guidBuildCmdSet" id="cmdBuildSweetJs" mod1="Shift Alt" key1="J" editor="guidVSStd97"/>
-    <KeyBinding guid="guidFormattingCmdSet" id="SurroundWith" mod1="Shift Alt" key1="W" editor="guidVSStd97"/>
-    <KeyBinding guid="guidFormattingCmdSet" id="ExpandSelection" mod1="Alt" key1="1" editor="guidVSStd97"/>
-    <KeyBinding guid="guidFormattingCmdSet" id="ContractSelection" mod1="Alt" key1="2" editor="guidVSStd97"/>
-    <KeyBinding guid="guidEditorLinesCmdSet" id="SortAsc" mod1="Alt" key1="3" editor="guidVSStd97"/>
-    <KeyBinding guid="guidEditorLinesCmdSet" id="SortDesc" mod1="Alt" key1="4" editor="guidVSStd97"/>
-
-  </KeyBindings>
-
-  <CommandPlacements>
-    <!-- Editor Lines start-->
-    <CommandPlacement guid="guidEditorLinesCmdSet" id="LinesTopMenuGroup" priority="0x0300">
-      <Parent guid="jsEditorCommandSet" id="jsContextMenu"/>
-    </CommandPlacement>
-    <CommandPlacement guid="guidEditorLinesCmdSet" id="LinesTopMenuGroup" priority="0x0300">
-      <Parent guid="cssEditorCommandSet" id="cssContextMenu"/>
-    </CommandPlacement>
-    <CommandPlacement guid="guidEditorLinesCmdSet" id="LinesTopMenuGroup" priority="0x0300">
-      <Parent guid="htmlEditorCommandSet" id="htmlContextMenu"/>
-    </CommandPlacement>
-    <CommandPlacement guid="guidEditorLinesCmdSet" id="LinesTopMenuGroup" priority="0x0300">
-      <Parent guid="htmlEditorCommandSetLibra" id="htmlContextMenuLibra"/>
-    </CommandPlacement>
-    <!-- Editor Lines end-->
-
-    <CommandPlacement guid="guidCssCmdSet" id="MyMenuGroup" priority="0x0010">
-      <Parent guid="jsEditorCommandSet" id="jsContextMenu"/>
-    </CommandPlacement>
-    <CommandPlacement guid="guidCssCmdSet" id="MyMenuGroup" priority="0x0010">
-      <Parent guid="htmlEditorCommandSet" id="htmlContextMenu"/>
-    </CommandPlacement>
-    <CommandPlacement guid="guidCssCmdSet" id="MyMenuGroup" priority="0x0010">
-      <Parent guid="htmlEditorCommandSetLibra" id="htmlContextMenuLibra"/>
-    </CommandPlacement>
-    <CommandPlacement guid="guidEditorExtensionsCmdSet" id="MyMenuGroup" priority="0x0600">
-      <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_EDIT"/>
-    </CommandPlacement>
-    <CommandPlacement guid="guidSolutionExplorerCmdSet" id="MyMenuGroup" priority="0x0010">
-      <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_WEBITEMNODE"/>
-    </CommandPlacement>
-    <CommandPlacement guid="guidSolutionExplorerCmdSet" id="MyMenuGroup" priority="0x0010">
-      <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_WEBFOLDER"/>
-    </CommandPlacement>
-    <CommandPlacement guid="guidSolutionExplorerCmdSet" id="MyMenuGroup" priority="0x0010">
-      <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_FOLDERNODE"/>
-    </CommandPlacement>
-    <CommandPlacement guid="guidSolutionExplorerCmdSet" id="MyMenuGroup" priority="0x0100">
-      <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_WEBPROJECT"/>
-    </CommandPlacement>
-    <CommandPlacement guid="guidSolutionExplorerCmdSet" id="MyMenuGroup" priority="0x0100">
-      <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE"/>
-    </CommandPlacement>
-    <CommandPlacement guid="guidSolutionExplorerCmdSet" id="MyMenuGroup" priority="0x0100">
-      <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_SOLNNODE"/>
-    </CommandPlacement>
-  </CommandPlacements>
-
-  <Symbols>
-    <GuidSymbol name="guidEditorExtensionsPkg" value="{5fb7364d-2e8c-44a4-95eb-2a382e30fec9}" />
-
-    <GuidSymbol name="guidTopMenu" value="{30947ebe-9147-45f9-96cf-401bfc671a01}">
-      <IDSymbol name="TopMenu" value="0x3001" />
-      <IDSymbol name="TopMenuGroup" value="0x3002" />
-      <IDSymbol name="SolutionSubMenuGroup" value="0x3003" />
-    </GuidSymbol>
-
-    <GuidSymbol name="guidEditorExtensionsCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e41}">
-      <IDSymbol name="MyMenuGroup" value="0x1020" />
-      <IDSymbol name="cmdidHtmlEncode" value="0x0102" />
-      <IDSymbol name="cmdidHtmlDecode" value="0x0103" />
-      <IDSymbol name="SubMenu" value="0x0104" />
-      <IDSymbol name="HtmlEncodingMenuGroup" value="0x0600" />
-      <IDSymbol name="JavaScriptEncodingMenuGroup" value="0x0601" />
-      <IDSymbol name="UrlEncodingMenuGroup" value="0x0602" />
-      <IDSymbol name="cmdidUrlEncode" value="0x0106" />
-      <IDSymbol name="cmdidUrlDecode" value="0x0107" />
-      <IDSymbol name="cmdidJavaScriptEncode" value="0x0108" />
-      <IDSymbol name="cmdidAttrEncode" value="0x0109" />
-      <IDSymbol name="TransformSubMenu" value="0x0112" />
-      <IDSymbol name="CasingTransformMenuGroup" value="0x0113" />
-      <IDSymbol name="cmdidTitleCaseTransform" value="0x0115" />
-      <IDSymbol name="cmdidReverseTransform" value="0x0116" />
-      <IDSymbol name="MiscTransformMenuGroup" value="0x0117" />
-      <IDSymbol name="cmdidNormalizeTransform" value="0x0118" />
-      <IDSymbol name="CryptoTransformMenuGroup" value="0x0119" />
-      <IDSymbol name="cmdidMd5Transform" value="0x0120" />
-      <IDSymbol name="cmdidSha1Transform" value="0x0121" />
-      <IDSymbol name="cmdidSha256Transform" value="0x0122" />
-      <IDSymbol name="cmdidSha384Transform" value="0x0123" />
-      <IDSymbol name="cmdidSha512Transform" value="0x0124" />
-      <IDSymbol name="ReferenceJs" value="0x333" />
-      <!--<IDSymbol name="cmdChainCompile" value="0x337" />-->
-    </GuidSymbol>
-
-    <GuidSymbol name="guidEditorLinesCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e67}">
-      <IDSymbol name="LinesMenu" value="0x0001" />
-      <IDSymbol name="LinesMenuGroup" value="0x0002" />
-      <IDSymbol name="SortAsc" value="0x0003" />
-      <IDSymbol name="SortDesc" value="0x0004" />
-      <IDSymbol name="RemoveDuplicateLines" value="0x0005" />
-      <IDSymbol name="LinesTopMenuGroup" value="0x0006" />
-      <IDSymbol name="RemoveEmptyLines" value="0x0007" />
-    </GuidSymbol>
-
-    <GuidSymbol name="guidCssCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e50}">
-      <IDSymbol name="MyMenuGroup" value="0x1020" />
-      <IDSymbol name="CssSubMenuGroup" value="0x1022" />
-      <IDSymbol name="cmdidCssSortProperties" value="0x0125"/>
-      <IDSymbol name="CssIntellisenseSubMenu" value="0x0126"/>
-      <IDSymbol name="cmdidCssAddMissingVendor" value="0x0127"/>
-      <IDSymbol name="cmdidCssAddMissingStandard" value="0x0128"/>
-      <IDSymbol name="cmdidCssRemoveDuplicates" value="0x0129"/>
-      <IDSymbol name="CssMinifyMenuGroup" value="0x0130"/>
-    </GuidSymbol>
-
-    <GuidSymbol name="guidCssIntellisenseCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e51}">
-      <IDSymbol name="MyMenuGroup" value="0x1030" />
-      <IDSymbol name="CssIntellisenseSubMenu" value="0x1031" />
-      <IDSymbol name="cmdidGetInsertOptionsList" value="0x1034"/>
-    </GuidSymbol>
-
-    <GuidSymbol name="guidSolutionExplorerCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e62}">
-      <IDSymbol name="MyMenuGroup" value="0x1060" />
-      <IDSymbol name="MySubMenuGroup" value="0x1061" />
-      <IDSymbol name="MySubGroup" value="0x1062" />
-      <IDSymbol name="MyBundleGroup" value="0x1063" />
-    </GuidSymbol>
-
-    <GuidSymbol name="guidDiffCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e59}">
-      <IDSymbol name="MyMenuGroup" value="0x1040" />
-      <IDSymbol name="cmdDiff" value="0x1041" />
-      <IDSymbol name="cmdJsHint" value="0x1042" />
-      <IDSymbol name="cmdTsLint" value="0x1092" />
-      <IDSymbol name="cmdCoffeeLint" value="0x1096" />
-      <IDSymbol name="cmdJsCodeStyle" value="0x1095" />
-      <IDSymbol name="cmdRtlCss" value="0x2066" />
-      <IDSymbol name="cmdRunCson2Json" value="0x2067" />
-      <IDSymbol name="cmdRunJson2Cson" value="0x2068" />
-      <IDSymbol name="cmdProjectSettings" value="0x1043" />
-      <IDSymbol name="cmdSolutionSettings" value="0x1044" />
-      <IDSymbol name="cmdSolutionColors" value="0x1045" />
-      <IDSymbol name="cmdMarkdownStylesheet" value="0x1046" />
-      <IDSymbol name="cmdJavaScriptIntellisense" value="0x1047" />
-      <IDSymbol name="cmdTypeScriptIntellisense" value="0x1048" />
-      <IDSymbol name="MarkdownGroup" value="0x1049" />
-      <IDSymbol name="cmdEditGlobalJsHint" value="0x1038" />
-      <IDSymbol name="cmdEditGlobalTsLint" value="0x1098" />
-      <IDSymbol name="cmdEditGlobalCoffeeLint" value="0x1100" />
-      <IDSymbol name="cmdEditGlobalJsCodeStyle" value="0x1099" />
-      <IDSymbol name="cmdEditGlobalRtlCss" value="0x1081" />
-      <IDSymbol name="cmdMarkdownCompile" value="0x1039" />
-      <IDSymbol name="cmdHandleBarsCompile" value="0x1101" />
-    </GuidSymbol>
-
-    <GuidSymbol name="guidMinifyCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e61}">
-      <IDSymbol name="MyMenuGroup" value="0x1050" />
-      <IDSymbol name="cmdMinifyCss" value="0x1051" />
-      <IDSymbol name="cmdMinifyJs" value="0x1052" />
-      <IDSymbol name="cmdMinifySelection" value="0x1053" />
-      <IDSymbol name="cmdUnMinifySelection" value="0x1059" />
-      <IDSymbol name="cmdSelectBrowsers" value="0x1055" />
-      <IDSymbol name="cmdMinifyHtml" value="0x1058" />
-    </GuidSymbol>
-
-    <GuidSymbol name="guidExtractCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e64}">
-      <IDSymbol name="cmdExtractSelection" value="0x1054" />
-      <IDSymbol name="cmdExtractVariable" value="0x1056" />
-      <IDSymbol name="cmdExtractMixin" value="0x1057" />
-      <IDSymbol name="MyMenuGroup" value="0x1058" />
-    </GuidSymbol>
-
-    <GuidSymbol name="guidBuildCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e65}">
-      <IDSymbol name="MyBuildMenuGroup" value="0x1082" />
-      <IDSymbol name="cmdBuildBundles" value="0x1083" />
-      <IDSymbol name="cmdBuildSprites" value="0x1094" />
-      <IDSymbol name="cmdBuildLess" value="0x1084" />
-      <IDSymbol name="cmdBuildSass" value="0x1085" />
-      <IDSymbol name="cmdBuildMinify" value="0x1086" />
-      <IDSymbol name="cmdBuildCoffeeScript" value="0x1087" />
-      <IDSymbol name="cmdBuildSweetJs" value="0x1088" />
-      <IDSymbol name="MyCompileMenuGroup" value="0x1089" />
-    </GuidSymbol>
-
-    <GuidSymbol name="guidBundleCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e63}">
-      <IDSymbol name="MyMenuGroup" value="0x1070" />
-      <IDSymbol name="cmdBundleCss" value="0x1071" />
-      <IDSymbol name="cmdBundleJs" value="0x1072" />
-      <IDSymbol name="cmdBundleTs" value="0x1073" />
-      <IDSymbol name="cmdBundleHtml" value="0x1074" />
-    </GuidSymbol>
-
-    <GuidSymbol name="guidImageCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e68}">
-      <IDSymbol name="MyMenuGroup" value="0x1090" />
-      <IDSymbol name="cmdCompressImage" value="0x1091" />
-      <IDSymbol name="cmdSpriteImage" value="0x1093" />
-    </GuidSymbol>
-
-    <GuidSymbol name="htmlEditorCommandSet" value="{D7E8C5E1-BDB8-11D0-9C88-0000F8040A53}">
-      <IDSymbol name="htmlContextMenu" value="0x0033"/>
-      <!-- 53 in hex is 0x0035 -->
-    </GuidSymbol>
-
-    <GuidSymbol name="htmlEditorCommandSetLibra" value="{78F03954-2FB8-4087-8CE7-59D71710B3BB}">
-      <IDSymbol name="htmlContextMenuLibra" value="1"/>
-    </GuidSymbol>
-
-    <GuidSymbol name="cssEditorCommandSet" value="{64DA400E-B4AD-4D67-AA92-4B7ACB01ECD5}">
-      <IDSymbol name="cssContextMenu" value="0x0002"/>
-    </GuidSymbol>
-
-    <GuidSymbol name="guidFormattingCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e66}">
-      <IDSymbol name="FormattingGroup" value="0x0001"/>
-      <IDSymbol name="SurroundWith" value="0x334" />
-      <IDSymbol name="ExpandSelection" value="0x335" />
-      <IDSymbol name="ContractSelection" value="0x336" />
-    </GuidSymbol>
-
-    <!--<GuidSymbol name="lessEditorCommandSet" value="{D309F791-903F-11D0-9EFC-00A0C911004F}">
+    <Extern href="stdidcmd.h"/>
+    <Extern href="vsshlids.h"/>
+
+    <Commands package="guidEditorExtensionsPkg">
+        <Menus>
+            <Menu guid="guidTopMenu" id="TopMenu" priority="0x700" type="Menu">
+                <Parent guid="guidSHLMainMenu" id="IDG_VS_MM_TOOLSADDINS" />
+                <CommandFlag>DefaultInvisible</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Web Essentials</ButtonText>
+                </Strings>
+            </Menu>
+            <Menu guid="guidEditorExtensionsCmdSet" id="SubMenu" priority="0x001" type="Menu">
+                <Parent guid="guidEditorLinesCmdSet" id="LinesTopMenuGroup" />
+                <Strings>
+                    <ButtonText>Encode Selection</ButtonText>
+                </Strings>
+            </Menu>
+            <Menu guid="guidEditorExtensionsCmdSet" id="TransformSubMenu" priority="0x001" type="Menu">
+                <Parent guid="guidEditorLinesCmdSet" id="LinesTopMenuGroup" />
+                <Strings>
+                    <ButtonText>Transform Selection</ButtonText>
+                    <CommandName>Transform Selection</CommandName>
+                </Strings>
+            </Menu>
+            <Menu guid="guidCssIntellisenseCmdSet" id="CssIntellisenseSubMenu" priority="0x201" type="Menu">
+                <Parent guid="guidCssCmdSet" id="MyMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Web Essentials</ButtonText>
+                    <CommandName>Web Essentials</CommandName>
+                </Strings>
+            </Menu>
+            <Menu guid="guidSolutionExplorerCmdSet" id="MySubMenuGroup" priority="0x202" type="Menu">
+                <Parent guid="guidSolutionExplorerCmdSet" id="MyMenuGroup" />
+                <Strings>
+                    <ButtonText>Web Essentials</ButtonText>
+                    <CommandName>Web Essentials</CommandName>
+                </Strings>
+            </Menu>
+            <Menu guid="guidEditorLinesCmdSet" id="LinesMenu" priority="0x201" type="Menu">
+                <Parent guid="guidEditorLinesCmdSet" id="LinesTopMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Selected Lines</ButtonText>
+                </Strings>
+            </Menu>
+        </Menus>
+
+        <Groups>
+            <Group guid="guidBuildCmdSet" id="MyBuildMenuGroup" priority="0x0002">
+                <Parent guid="guidTopMenu" id="TopMenu"/>
+            </Group>
+
+            <Group guid="guidTopMenu" id="SolutionSubMenuGroup" priority="0x0002">
+                <Parent guid="guidTopMenu" id="TopMenu"/>
+            </Group>
+
+            <Group guid="guidBuildCmdSet" id="MyCompileMenuGroup" priority="0x0003">
+                <Parent guid="guidTopMenu" id="TopMenu"/>
+            </Group>
+
+            <Group guid="guidEditorExtensionsCmdSet" id="HtmlEncodingMenuGroup" priority="0x0002">
+                <Parent guid="guidEditorExtensionsCmdSet" id="SubMenu"/>
+            </Group>
+
+            <Group guid="guidEditorExtensionsCmdSet" id="UrlEncodingMenuGroup" priority="0x0003">
+                <Parent guid="guidEditorExtensionsCmdSet" id="SubMenu"/>
+            </Group>
+
+            <Group guid="guidEditorExtensionsCmdSet" id="JavaScriptEncodingMenuGroup" priority="0x0004">
+                <Parent guid="guidEditorExtensionsCmdSet" id="SubMenu"/>
+            </Group>
+
+            <Group guid="guidEditorExtensionsCmdSet" id="CasingTransformMenuGroup" priority="0x0001">
+                <Parent guid="guidEditorExtensionsCmdSet" id="TransformSubMenu"/>
+            </Group>
+
+            <Group guid="guidEditorExtensionsCmdSet" id="MiscTransformMenuGroup" priority="0x0002">
+                <Parent guid="guidEditorExtensionsCmdSet" id="TransformSubMenu"/>
+            </Group>
+
+            <Group guid="guidEditorExtensionsCmdSet" id="CryptoTransformMenuGroup" priority="0x0003">
+                <Parent guid="guidEditorExtensionsCmdSet" id="TransformSubMenu"/>
+            </Group>
+
+            <Group guid="guidCssCmdSet" id="MyMenuGroup" priority="0x0003">
+                <Parent guid="cssEditorCommandSet" id="cssContextMenu"/>
+            </Group>
+
+            <Group guid="guidCssCmdSet" id="CssSubMenuGroup" priority="0x0003">
+                <Parent guid="guidCssIntellisenseCmdSet" id="CssIntellisenseSubMenu"/>
+            </Group>
+
+            <Group guid="guidCssCmdSet" id="CssMinifyMenuGroup" priority="0x0003">
+                <Parent guid="guidCssIntellisenseCmdSet" id="CssIntellisenseSubMenu"/>
+            </Group>
+
+            <Group guid="guidFormattingCmdSet" id="FormattingGroup" priority="0x0500">
+                <Parent guid="guidTopMenu" id="TopMenu"/>
+            </Group>
+
+            <Group guid="guidDiffCmdSet" id="MarkdownGroup" priority="0x0009">
+                <Parent guid="guidSolutionExplorerCmdSet" id="MySubMenuGroup"/>
+            </Group>
+
+            <Group guid="guidDiffCmdSet" id="MyMenuGroup" priority="0x0010">
+                <Parent guid="guidSolutionExplorerCmdSet" id="MySubMenuGroup"/>
+            </Group>
+
+            <Group guid="guidExtractCmdSet" id="MyMenuGroup" priority="0x0020">
+                <Parent guid="guidCssIntellisenseCmdSet" id="CssIntellisenseSubMenu"/>
+            </Group>
+
+            <Group guid="guidMinifyCmdSet" id="MyMenuGroup" priority="0x0009">
+                <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE"/>
+            </Group>
+
+            <Group guid="guidImageCmdSet" id="MyMenuGroup" priority="0x0009">
+                <Parent guid="guidSolutionExplorerCmdSet" id="MySubMenuGroup"/>
+            </Group>
+
+            <Group guid="guidSolutionExplorerCmdSet" id="MyMenuGroup" priority="0x0001">
+                <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE"/>
+            </Group>
+
+            <Group guid="guidSolutionExplorerCmdSet" id="MySubGroup" priority="0x0001">
+                <Parent guid="guidSolutionExplorerCmdSet" id="MySubMenuGroup"/>
+            </Group>
+
+            <Group guid="guidSolutionExplorerCmdSet" id="MyBundleGroup" priority="0x0002">
+                <Parent guid="guidSolutionExplorerCmdSet" id="MySubMenuGroup"/>
+            </Group>
+
+            <Group guid="guidEditorLinesCmdSet" id="LinesTopMenuGroup" priority="0x0002">
+                <Parent guid="guidTopMenu" id="TopMenu" />
+            </Group>
+
+            <Group guid="guidEditorLinesCmdSet" id="LinesMenuGroup" priority="0x0002">
+                <Parent guid="guidEditorLinesCmdSet" id="LinesMenu"/>
+            </Group>
+        </Groups>
+
+        <Buttons>
+            <Button guid="guidEditorExtensionsCmdSet" id="cmdidHtmlEncode" priority="0x0101" type="Button">
+                <Parent guid="guidEditorExtensionsCmdSet" id="HtmlEncodingMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <CommandFlag>DefaultDisabled</CommandFlag>
+                <Strings>
+                    <ButtonText>HTML Encode</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidEditorExtensionsCmdSet" id="cmdidAttrEncode" priority="0x0102" type="Button">
+                <Parent guid="guidEditorExtensionsCmdSet" id="HtmlEncodingMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <CommandFlag>DefaultDisabled</CommandFlag>
+                <Strings>
+                    <ButtonText>HTML Attribute Encode</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidEditorExtensionsCmdSet" id="cmdidHtmlDecode" priority="0x0103" type="Button">
+                <Parent guid="guidEditorExtensionsCmdSet" id="HtmlEncodingMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <CommandFlag>DefaultDisabled</CommandFlag>
+                <Strings>
+                    <ButtonText>HTML Decode</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidEditorExtensionsCmdSet" id="cmdidUrlEncode" priority="0x0101" type="Button">
+                <Parent guid="guidEditorExtensionsCmdSet" id="UrlEncodingMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <CommandFlag>DefaultDisabled</CommandFlag>
+                <Strings>
+                    <ButtonText>URL Encode</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidEditorExtensionsCmdSet" id="cmdidUrlDecode" priority="0x0103" type="Button">
+                <Parent guid="guidEditorExtensionsCmdSet" id="UrlEncodingMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <CommandFlag>DefaultDisabled</CommandFlag>
+                <Strings>
+                    <ButtonText>URL Decode</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidEditorExtensionsCmdSet" id="cmdidJavaScriptEncode" priority="0x0101" type="Button">
+                <Parent guid="guidEditorExtensionsCmdSet" id="JavaScriptEncodingMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <CommandFlag>DefaultDisabled</CommandFlag>
+                <Strings>
+                    <ButtonText>JavaScript String Encode</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidEditorExtensionsCmdSet" id="cmdidTitleCaseTransform" priority="0x0103" type="Button">
+                <Parent guid="guidEditorExtensionsCmdSet" id="CasingTransformMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>To Title Case</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidEditorExtensionsCmdSet" id="cmdidReverseTransform" priority="0x0104" type="Button">
+                <Parent guid="guidEditorExtensionsCmdSet" id="MiscTransformMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Reverse</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidEditorExtensionsCmdSet" id="cmdidNormalizeTransform" priority="0x0105" type="Button">
+                <Parent guid="guidEditorExtensionsCmdSet" id="MiscTransformMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Remove Diacritics</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidEditorExtensionsCmdSet" id="cmdidMd5Transform" priority="0x0105" type="Button">
+                <Parent guid="guidEditorExtensionsCmdSet" id="CryptoTransformMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>MD5</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidEditorExtensionsCmdSet" id="cmdidSha1Transform" priority="0x0105" type="Button">
+                <Parent guid="guidEditorExtensionsCmdSet" id="CryptoTransformMenuGroup" />
+
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>SHA-1</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidEditorExtensionsCmdSet" id="cmdidSha256Transform" priority="0x0105" type="Button">
+                <Parent guid="guidEditorExtensionsCmdSet" id="CryptoTransformMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>SHA-256</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidEditorExtensionsCmdSet" id="cmdidSha384Transform" priority="0x0105" type="Button">
+                <Parent guid="guidEditorExtensionsCmdSet" id="CryptoTransformMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>SHA-384</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidEditorExtensionsCmdSet" id="cmdidSha512Transform" priority="0x0105" type="Button">
+                <Parent guid="guidEditorExtensionsCmdSet" id="CryptoTransformMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>SHA-512</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidEditorLinesCmdSet" id="SortAsc" priority="0x0105" type="Button">
+                <Parent guid="guidEditorLinesCmdSet" id="LinesMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <CommandFlag>DefaultDisabled</CommandFlag>
+                <Strings>
+                    <ButtonText>Sort Selection Lines Ascending</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidEditorLinesCmdSet" id="SortDesc" priority="0x0106" type="Button">
+                <Parent guid="guidEditorLinesCmdSet" id="LinesMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <CommandFlag>DefaultDisabled</CommandFlag>
+                <Strings>
+                    <ButtonText>Sort Selection Lines Descending</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidEditorLinesCmdSet" id="RemoveDuplicateLines" priority="0x0106" type="Button">
+                <Parent guid="guidEditorLinesCmdSet" id="LinesMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <CommandFlag>DefaultDisabled</CommandFlag>
+                <Strings>
+                    <ButtonText>Remove Duplicate Lines</ButtonText>
+                </Strings>
+            </Button>
+            <Button guid="guidEditorLinesCmdSet" id="RemoveEmptyLines" priority="0x0106" type="Button">
+                <Parent guid="guidEditorLinesCmdSet" id="LinesMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <CommandFlag>DefaultDisabled</CommandFlag>
+                <Strings>
+                    <ButtonText>Remove Empty Lines</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidCssCmdSet" id="cmdidCssRemoveDuplicates" priority="0x0100" type="Button">
+                <Parent guid="guidCssCmdSet" id="CssSubMenuGroup" />
+                <Icon guid="guidNumbers" id="pic1"/>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Remove Duplicate Properties</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidCssCmdSet" id="cmdidCssAddMissingStandard" priority="0x0101" type="Button">
+                <Parent guid="guidCssCmdSet" id="CssSubMenuGroup" />
+                <Icon guid="guidNumbers" id="pic2"/>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Add Missing Standard Properties</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidCssCmdSet" id="cmdidCssAddMissingVendor" priority="0x0102" type="Button">
+                <Parent guid="guidCssCmdSet" id="CssSubMenuGroup" />
+                <Icon guid="guidNumbers" id="pic3"/>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Add Missing Vendor Specifics</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidMinifyCmdSet" id="cmdMinifySelection" priority="0x0104" type="Button">
+                <Parent guid="guidCssCmdSet" id="CssMinifyMenuGroup" />
+                <Icon guid="guidImages" id="bmpLogo"/>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Minify Selection</CommandName>
+                    <ButtonText>Minify selection</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidMinifyCmdSet" id="cmdUnMinifySelection" priority="0x0104" type="Button">
+                <Parent guid="guidCssCmdSet" id="CssMinifyMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>UnMinifySelection</CommandName>
+                    <ButtonText>Un-Minify document</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidExtractCmdSet" id="cmdExtractSelection" priority="0x0105" type="Button">
+                <Parent guid="guidExtractCmdSet" id="MyMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Extract To File</CommandName>
+                    <ButtonText>Extract to file...</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidExtractCmdSet" id="cmdExtractVariable" priority="0x0106" type="Button">
+                <Parent guid="guidExtractCmdSet" id="MyMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <CommandFlag>DefaultDisabled</CommandFlag>
+                <Strings>
+                    <CommandName>Extract To Variable</CommandName>
+                    <ButtonText>Extract to variable...</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidExtractCmdSet" id="cmdExtractMixin" priority="0x0107" type="Button">
+                <Parent guid="guidExtractCmdSet" id="MyMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <CommandFlag>DefaultDisabled</CommandFlag>
+                <Strings>
+                    <CommandName>Extract To Mixin</CommandName>
+                    <ButtonText>Extract to mixin...</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidMinifyCmdSet" id="cmdSelectBrowsers" priority="0x0106" type="Button">
+                <Parent guid="guidCssCmdSet" id="CssMinifyMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Select Browsers</CommandName>
+                    <ButtonText>Select browsers...</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidDiffCmdSet" id="cmdSolutionSettings" priority="0x0101" type="Button">
+                <Parent guid="guidTopMenu" id="SolutionSubMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Create solution settings</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidDiffCmdSet" id="cmdSolutionColors" priority="0x0105" type="Button">
+                <Parent guid="guidTopMenu" id="SolutionSubMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Create color palette</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidDiffCmdSet" id="cmdMarkdownStylesheet" priority="0x0106" type="Button">
+                <Parent guid="guidTopMenu" id="SolutionSubMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Add Markdown solution stylesheet</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidDiffCmdSet" id="cmdMarkdownCompile" priority="0x0102" type="Button">
+                <Parent guid="guidDiffCmdSet" id="MarkdownGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Compile Markdown to HTML</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidDiffCmdSet" id="cmdDiff" priority="0x0104" type="Button">
+                <Parent guid="guidDiffCmdSet" id="MyMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Diff selected files</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidDiffCmdSet" id="cmdJavaScriptIntellisense" priority="0x0107" type="Button">
+                <Parent guid="guidDiffCmdSet" id="MyMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <CommandFlag>DefaultDisabled</CommandFlag>
+                <Strings>
+                    <ButtonText>Create JavaScript Intellisense file</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidDiffCmdSet" id="cmdTypeScriptIntellisense" priority="0x0108" type="Button">
+                <Parent guid="guidDiffCmdSet" id="MyMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <CommandFlag>DefaultDisabled</CommandFlag>
+                <Strings>
+                    <ButtonText>Create TypeScript Intellisense file</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidMinifyCmdSet" id="cmdMinifyCss" priority="0x0101" type="Button">
+                <Parent guid="guidSolutionExplorerCmdSet" id="MySubGroup"/>
+                <Icon guid="guidImages" id="bmpLogo"/>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Minify CSS file(s)</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidMinifyCmdSet" id="cmdMinifyJs" priority="0x0101" type="Button">
+                <Parent guid="guidSolutionExplorerCmdSet" id="MySubGroup"/>
+                <Icon guid="guidImages" id="bmpLogo"/>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Minify JavaScript file(s)</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidMinifyCmdSet" id="cmdMinifyHtml" priority="0x0101" type="Button">
+                <Parent guid="guidSolutionExplorerCmdSet" id="MySubGroup"/>
+                <Icon guid="guidImages" id="bmpLogo"/>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Minify HTML file(s)</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidImageCmdSet" id="cmdCompressImage" priority="0x0101" type="Button">
+                <Parent guid="guidImageCmdSet" id="MyMenuGroup"/>
+                <Icon guid="guidMenuImages" id="bmpImage"/>
+                <CommandFlag>TextChanges</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Optimize image(s)</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidImageCmdSet" id="cmdSpriteImage" priority="0x0102" type="Button">
+                <Parent guid="guidImageCmdSet" id="MyMenuGroup"/>
+                <Icon guid="guidMenuImages" id="bmpJigsaw"/>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Create image sprite...</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidBundleCmdSet" id="cmdBundleJs" priority="0x0101" type="Button">
+                <Parent guid="guidSolutionExplorerCmdSet" id="MyBundleGroup"/>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Create JavaScript bundle file</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidBundleCmdSet" id="cmdBundleCss" priority="0x0101" type="Button">
+                <Parent guid="guidSolutionExplorerCmdSet" id="MyBundleGroup"/>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Create CSS bundle file</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidBundleCmdSet" id="cmdBundleHtml" priority="0x0101" type="Button">
+                <Parent guid="guidSolutionExplorerCmdSet" id="MyBundleGroup"/>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Create HTML bundle file</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidBuildCmdSet" id="cmdBuildBundles" priority="0x0102" type="Button">
+                <Parent guid="guidBuildCmdSet" id="MyBuildMenuGroup"/>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Update All Bundles</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidBuildCmdSet" id="cmdBuildSprites" priority="0x0103" type="Button">
+                <Parent guid="guidBuildCmdSet" id="MyBuildMenuGroup"/>
+                <Icon guid="guidMenuImages" id="bmpJigsaw"/>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Update All Sprites</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidBuildCmdSet" id="cmdBuildMinify" priority="0x0101" type="Button">
+                <Parent guid="guidBuildCmdSet" id="MyBuildMenuGroup"/>
+                <Icon guid="guidImages" id="bmpLogo"/>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Re-minify All CSS/JS/HTML Files</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidFormattingCmdSet" id="SurroundWith" priority="0x0005" type="Button">
+                <Parent guid="guidFormattingCmdSet" id="FormattingGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <CommandFlag>DefaultDisabled</CommandFlag>
+                <CommandFlag>DefaultInvisible</CommandFlag>
+                <Strings>
+                    <CommandName>Surround With Tag</CommandName>
+                    <ButtonText>Surround with tag...</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidFormattingCmdSet" id="ExpandSelection" priority="0x0010" type="Button">
+                <Parent guid="guidFormattingCmdSet" id="FormattingGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <CommandFlag>DefaultDisabled</CommandFlag>
+                <CommandFlag>DefaultInvisible</CommandFlag>
+                <Strings>
+                    <ButtonText>Expand Selection</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidFormattingCmdSet" id="ContractSelection" priority="0x0011" type="Button">
+                <Parent guid="guidFormattingCmdSet" id="FormattingGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <CommandFlag>DefaultDisabled</CommandFlag>
+                <CommandFlag>DefaultInvisible</CommandFlag>
+                <Strings>
+                    <ButtonText>Contract Selection</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidUnusedCssCmdSet" id="UnusedCssRecordAllCommandId" priority="0x2000" type="Button">
+                <Parent guid="guidBrowserLinkCmdSet" id="IDG_BROWSERLINK_COMMANDS"/>
+                <Icon guid="guidBrowserLink" id="bmpRecord"/>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Start Recording (All Browsers)</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidUnusedCssCmdSet" id="UnusedCssStopRecordAllCommandId" priority="0x2001" type="Button">
+                <Parent guid="guidBrowserLinkCmdSet" id="IDG_BROWSERLINK_COMMANDS"/>
+                <Icon guid="guidBrowserLink" id="bmpPause"/>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <CommandFlag>DefaultInvisible</CommandFlag>
+                <Strings>
+                    <ButtonText>Stop Recording (All Browsers)</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidUnusedCssCmdSet" id="UnusedCssResetCommandId" priority="0x2003" type="Button">
+                <Parent guid="guidBrowserLinkCmdSet" id="IDG_BROWSERLINK_COMMANDS"/>
+                <Strings>
+                    <ButtonText>Clear CSS Usage Data</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidPixelPushingCmdSet" id="PixelPushingToggleCommandId" priority="0x2010" type="Button">
+                <Parent guid="guidBrowserLinkCmdSet" id="IDG_BROWSERLINK_COMMANDS"/>
+                <Strings>
+                    <ButtonText>Enable Saving F12 Changes</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidEditorExtensionsCmdSet" id="ReferenceJs" priority="0x2020" type="Button">
+                <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_PROJECT_ADD_ITEMS"/>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <CommandFlag>DefaultInvisible</CommandFlag>
+                <Strings>
+                    <ButtonText>_references.js Intellisense file</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidEditorExtensionsCmdSet" id="AddGrunt" priority="0x2010" type="Button">
+                <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_PROJECT_ADD_ITEMS"/>
+                <Icon guid="guidImages" id="bmpPicStrikethrough"/>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <CommandFlag>DefaultDisabled</CommandFlag>
+                <CommandFlag>TextChanges</CommandFlag>
+                <Strings>
+                    <ButtonText>Grunt and Bower to Project</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidTypeScriptTypingsCmdSet" id="AddHubT4CommandId" priority="0x0106" type="Button">
+                <Parent guid="guidDiffCmdSet" id="MyMenuGroup" />
+                <CommandFlag>DefaultInvisible</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Add Hubs.tt</ButtonText>
+                </Strings>
+            </Button>
+        </Buttons>
+
+        <Bitmaps>
+            <Bitmap guid="guidImages" href="Resources\Images\Images.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpLogo, bmpMinify"/>
+            <Bitmap guid="guidNumbers" href="Resources\Images\numbers.png" usedList="pic1, pic2, pic3, pic4"/>
+            <Bitmap guid="guidBrowserLink" href="Resources\Images\browserlink.png" usedList="bmpRecord, bmpPause"/>
+            <Bitmap guid="guidMenuImages" href="Resources\Images\menuimages.png" usedList="bmpScript, bmpImage, bmpJigsaw"/>
+        </Bitmaps>
+    </Commands>
+
+    <KeyBindings>
+        <KeyBinding guid="guidCssCmdSet" id="cmdidCssSortProperties" mod1="Shift Alt" key1="S" editor="guidVSStd97"/>
+        <KeyBinding guid="guidCssCmdSet" id="cmdidCssRemoveDuplicates" mod1="Shift Alt" key1="R" editor="guidVSStd97"/>
+        <KeyBinding guid="guidCssCmdSet" id="cmdidCssAddMissingStandard" mod1="Shift Alt" key1="P" editor="guidVSStd97"/>
+        <KeyBinding guid="guidCssCmdSet" id="cmdidCssAddMissingVendor" mod1="Shift Alt" key1="V" editor="guidVSStd97"/>
+        <KeyBinding guid="guidMinifyCmdSet" id="cmdMinifySelection" mod1="Shift Alt" key1="X" editor="guidVSStd97"/>
+        <KeyBinding guid="guidExtractCmdSet" id="cmdExtractSelection" mod1="Shift Alt" key1="E" editor="guidVSStd97"/>
+        <KeyBinding guid="guidExtractCmdSet" id="cmdExtractVariable" mod1="Shift Alt" key1="J" editor="guidVSStd97"/>
+        <KeyBinding guid="guidExtractCmdSet" id="cmdExtractMixin" mod1="Shift Alt" key1="K" editor="guidVSStd97"/>
+
+        <KeyBinding guid="guidBuildCmdSet" id="cmdBuildBundles" mod1="Shift Alt" key1="I" editor="guidVSStd97"/>
+        <KeyBinding guid="guidBuildCmdSet" id="cmdBuildSprites" mod1="Shift Alt" key1="G" editor="guidVSStd97"/>
+        <KeyBinding guid="guidBuildCmdSet" id="cmdBuildLess" mod1="Shift Alt" key1="Y" editor="guidVSStd97"/>
+        <KeyBinding guid="guidBuildCmdSet" id="cmdBuildSass" mod1="Shift Alt" key1="Q" editor="guidVSStd97"/>
+        <KeyBinding guid="guidBuildCmdSet" id="cmdBuildMinify" mod1="Shift Alt" key1="F" editor="guidVSStd97"/>
+        <KeyBinding guid="guidBuildCmdSet" id="cmdBuildCoffeeScript" mod1="Shift Alt" key1="Z" editor="guidVSStd97"/>
+        <KeyBinding guid="guidBuildCmdSet" id="cmdBuildSweetJs" mod1="Shift Alt" key1="J" editor="guidVSStd97"/>
+        <KeyBinding guid="guidFormattingCmdSet" id="SurroundWith" mod1="Shift Alt" key1="W" editor="guidVSStd97"/>
+        <KeyBinding guid="guidFormattingCmdSet" id="ExpandSelection" mod1="Alt" key1="1" editor="guidVSStd97"/>
+        <KeyBinding guid="guidFormattingCmdSet" id="ContractSelection" mod1="Alt" key1="2" editor="guidVSStd97"/>
+        <KeyBinding guid="guidEditorLinesCmdSet" id="SortAsc" mod1="Alt" key1="3" editor="guidVSStd97"/>
+        <KeyBinding guid="guidEditorLinesCmdSet" id="SortDesc" mod1="Alt" key1="4" editor="guidVSStd97"/>
+
+    </KeyBindings>
+
+    <CommandPlacements>
+        <!-- Editor Lines start-->
+        <CommandPlacement guid="guidEditorLinesCmdSet" id="LinesTopMenuGroup" priority="0x0300">
+            <Parent guid="jsEditorCommandSet" id="jsContextMenu"/>
+        </CommandPlacement>
+        <CommandPlacement guid="guidEditorLinesCmdSet" id="LinesTopMenuGroup" priority="0x0300">
+            <Parent guid="cssEditorCommandSet" id="cssContextMenu"/>
+        </CommandPlacement>
+        <CommandPlacement guid="guidEditorLinesCmdSet" id="LinesTopMenuGroup" priority="0x0300">
+            <Parent guid="htmlEditorCommandSet" id="htmlContextMenu"/>
+        </CommandPlacement>
+        <CommandPlacement guid="guidEditorLinesCmdSet" id="LinesTopMenuGroup" priority="0x0300">
+            <Parent guid="htmlEditorCommandSetLibra" id="htmlContextMenuLibra"/>
+        </CommandPlacement>
+        <!-- Editor Lines end-->
+
+        <CommandPlacement guid="guidCssCmdSet" id="MyMenuGroup" priority="0x0010">
+            <Parent guid="jsEditorCommandSet" id="jsContextMenu"/>
+        </CommandPlacement>
+        <CommandPlacement guid="guidCssCmdSet" id="MyMenuGroup" priority="0x0010">
+            <Parent guid="htmlEditorCommandSet" id="htmlContextMenu"/>
+        </CommandPlacement>
+        <CommandPlacement guid="guidCssCmdSet" id="MyMenuGroup" priority="0x0010">
+            <Parent guid="htmlEditorCommandSetLibra" id="htmlContextMenuLibra"/>
+        </CommandPlacement>
+        <CommandPlacement guid="guidEditorExtensionsCmdSet" id="MyMenuGroup" priority="0x0600">
+            <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_EDIT"/>
+        </CommandPlacement>
+        <CommandPlacement guid="guidSolutionExplorerCmdSet" id="MyMenuGroup" priority="0x0010">
+            <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_WEBITEMNODE"/>
+        </CommandPlacement>
+        <CommandPlacement guid="guidSolutionExplorerCmdSet" id="MyMenuGroup" priority="0x0010">
+            <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_WEBFOLDER"/>
+        </CommandPlacement>
+        <CommandPlacement guid="guidSolutionExplorerCmdSet" id="MyMenuGroup" priority="0x0010">
+            <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_FOLDERNODE"/>
+        </CommandPlacement>
+        <CommandPlacement guid="guidSolutionExplorerCmdSet" id="MyMenuGroup" priority="0x0100">
+            <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_WEBPROJECT"/>
+        </CommandPlacement>
+        <CommandPlacement guid="guidSolutionExplorerCmdSet" id="MyMenuGroup" priority="0x0100">
+            <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE"/>
+        </CommandPlacement>
+        <CommandPlacement guid="guidSolutionExplorerCmdSet" id="MyMenuGroup" priority="0x0100">
+            <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_SOLNNODE"/>
+        </CommandPlacement>
+    </CommandPlacements>
+
+    <Symbols>
+        <GuidSymbol name="guidEditorExtensionsPkg" value="{5fb7364d-2e8c-44a4-95eb-2a382e30fec9}" />
+
+        <GuidSymbol name="guidTopMenu" value="{30947ebe-9147-45f9-96cf-401bfc671a01}">
+            <IDSymbol name="TopMenu" value="0x3001" />
+            <IDSymbol name="TopMenuGroup" value="0x3002" />
+            <IDSymbol name="SolutionSubMenuGroup" value="0x3003" />
+        </GuidSymbol>
+
+        <GuidSymbol name="guidEditorExtensionsCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e41}">
+            <IDSymbol name="MyMenuGroup" value="0x1020" />
+            <IDSymbol name="cmdidHtmlEncode" value="0x0102" />
+            <IDSymbol name="cmdidHtmlDecode" value="0x0103" />
+            <IDSymbol name="SubMenu" value="0x0104" />
+            <IDSymbol name="HtmlEncodingMenuGroup" value="0x0600" />
+            <IDSymbol name="JavaScriptEncodingMenuGroup" value="0x0601" />
+            <IDSymbol name="UrlEncodingMenuGroup" value="0x0602" />
+            <IDSymbol name="cmdidUrlEncode" value="0x0106" />
+            <IDSymbol name="cmdidUrlDecode" value="0x0107" />
+            <IDSymbol name="cmdidJavaScriptEncode" value="0x0108" />
+            <IDSymbol name="cmdidAttrEncode" value="0x0109" />
+            <IDSymbol name="TransformSubMenu" value="0x0112" />
+            <IDSymbol name="CasingTransformMenuGroup" value="0x0113" />
+            <IDSymbol name="cmdidTitleCaseTransform" value="0x0115" />
+            <IDSymbol name="cmdidReverseTransform" value="0x0116" />
+            <IDSymbol name="MiscTransformMenuGroup" value="0x0117" />
+            <IDSymbol name="cmdidNormalizeTransform" value="0x0118" />
+            <IDSymbol name="CryptoTransformMenuGroup" value="0x0119" />
+            <IDSymbol name="cmdidMd5Transform" value="0x0120" />
+            <IDSymbol name="cmdidSha1Transform" value="0x0121" />
+            <IDSymbol name="cmdidSha256Transform" value="0x0122" />
+            <IDSymbol name="cmdidSha384Transform" value="0x0123" />
+            <IDSymbol name="cmdidSha512Transform" value="0x0124" />
+            <IDSymbol name="ReferenceJs" value="0x333" />
+            <IDSymbol name="AddGrunt" value="0x337" />
+            <!--<IDSymbol name="cmdChainCompile" value="0x337" />-->
+        </GuidSymbol>
+
+        <GuidSymbol name="guidEditorLinesCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e67}">
+            <IDSymbol name="LinesMenu" value="0x0001" />
+            <IDSymbol name="LinesMenuGroup" value="0x0002" />
+            <IDSymbol name="SortAsc" value="0x0003" />
+            <IDSymbol name="SortDesc" value="0x0004" />
+            <IDSymbol name="RemoveDuplicateLines" value="0x0005" />
+            <IDSymbol name="LinesTopMenuGroup" value="0x0006" />
+            <IDSymbol name="RemoveEmptyLines" value="0x0007" />
+        </GuidSymbol>
+
+        <GuidSymbol name="guidCssCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e50}">
+            <IDSymbol name="MyMenuGroup" value="0x1020" />
+            <IDSymbol name="CssSubMenuGroup" value="0x1022" />
+            <IDSymbol name="cmdidCssSortProperties" value="0x0125"/>
+            <IDSymbol name="CssIntellisenseSubMenu" value="0x0126"/>
+            <IDSymbol name="cmdidCssAddMissingVendor" value="0x0127"/>
+            <IDSymbol name="cmdidCssAddMissingStandard" value="0x0128"/>
+            <IDSymbol name="cmdidCssRemoveDuplicates" value="0x0129"/>
+            <IDSymbol name="CssMinifyMenuGroup" value="0x0130"/>
+        </GuidSymbol>
+
+        <GuidSymbol name="guidCssIntellisenseCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e51}">
+            <IDSymbol name="MyMenuGroup" value="0x1030" />
+            <IDSymbol name="CssIntellisenseSubMenu" value="0x1031" />
+            <IDSymbol name="cmdidGetInsertOptionsList" value="0x1034"/>
+        </GuidSymbol>
+
+        <GuidSymbol name="guidSolutionExplorerCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e62}">
+            <IDSymbol name="MyMenuGroup" value="0x1060" />
+            <IDSymbol name="MySubMenuGroup" value="0x1061" />
+            <IDSymbol name="MySubGroup" value="0x1062" />
+            <IDSymbol name="MyBundleGroup" value="0x1063" />
+        </GuidSymbol>
+
+        <GuidSymbol name="guidDiffCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e59}">
+            <IDSymbol name="MyMenuGroup" value="0x1040" />
+            <IDSymbol name="cmdDiff" value="0x1041" />
+            <IDSymbol name="cmdJsHint" value="0x1042" />
+            <IDSymbol name="cmdTsLint" value="0x1092" />
+            <IDSymbol name="cmdCoffeeLint" value="0x1096" />
+            <IDSymbol name="cmdJsCodeStyle" value="0x1095" />
+            <IDSymbol name="cmdRtlCss" value="0x2066" />
+            <IDSymbol name="cmdRunCson2Json" value="0x2067" />
+            <IDSymbol name="cmdRunJson2Cson" value="0x2068" />
+            <IDSymbol name="cmdProjectSettings" value="0x1043" />
+            <IDSymbol name="cmdSolutionSettings" value="0x1044" />
+            <IDSymbol name="cmdSolutionColors" value="0x1045" />
+            <IDSymbol name="cmdMarkdownStylesheet" value="0x1046" />
+            <IDSymbol name="cmdJavaScriptIntellisense" value="0x1047" />
+            <IDSymbol name="cmdTypeScriptIntellisense" value="0x1048" />
+            <IDSymbol name="MarkdownGroup" value="0x1049" />
+            <IDSymbol name="cmdEditGlobalJsHint" value="0x1038" />
+            <IDSymbol name="cmdEditGlobalTsLint" value="0x1098" />
+            <IDSymbol name="cmdEditGlobalCoffeeLint" value="0x1100" />
+            <IDSymbol name="cmdEditGlobalJsCodeStyle" value="0x1099" />
+            <IDSymbol name="cmdEditGlobalRtlCss" value="0x1081" />
+            <IDSymbol name="cmdMarkdownCompile" value="0x1039" />
+            <IDSymbol name="cmdHandleBarsCompile" value="0x1101" />
+        </GuidSymbol>
+
+        <GuidSymbol name="guidMinifyCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e61}">
+            <IDSymbol name="MyMenuGroup" value="0x1050" />
+            <IDSymbol name="cmdMinifyCss" value="0x1051" />
+            <IDSymbol name="cmdMinifyJs" value="0x1052" />
+            <IDSymbol name="cmdMinifySelection" value="0x1053" />
+            <IDSymbol name="cmdUnMinifySelection" value="0x1059" />
+            <IDSymbol name="cmdSelectBrowsers" value="0x1055" />
+            <IDSymbol name="cmdMinifyHtml" value="0x1058" />
+        </GuidSymbol>
+
+        <GuidSymbol name="guidExtractCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e64}">
+            <IDSymbol name="cmdExtractSelection" value="0x1054" />
+            <IDSymbol name="cmdExtractVariable" value="0x1056" />
+            <IDSymbol name="cmdExtractMixin" value="0x1057" />
+            <IDSymbol name="MyMenuGroup" value="0x1058" />
+        </GuidSymbol>
+
+        <GuidSymbol name="guidBuildCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e65}">
+            <IDSymbol name="MyBuildMenuGroup" value="0x1082" />
+            <IDSymbol name="cmdBuildBundles" value="0x1083" />
+            <IDSymbol name="cmdBuildSprites" value="0x1094" />
+            <IDSymbol name="cmdBuildLess" value="0x1084" />
+            <IDSymbol name="cmdBuildSass" value="0x1085" />
+            <IDSymbol name="cmdBuildMinify" value="0x1086" />
+            <IDSymbol name="cmdBuildCoffeeScript" value="0x1087" />
+            <IDSymbol name="cmdBuildSweetJs" value="0x1088" />
+            <IDSymbol name="MyCompileMenuGroup" value="0x1089" />
+        </GuidSymbol>
+
+        <GuidSymbol name="guidBundleCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e63}">
+            <IDSymbol name="MyMenuGroup" value="0x1070" />
+            <IDSymbol name="cmdBundleCss" value="0x1071" />
+            <IDSymbol name="cmdBundleJs" value="0x1072" />
+            <IDSymbol name="cmdBundleTs" value="0x1073" />
+            <IDSymbol name="cmdBundleHtml" value="0x1074" />
+        </GuidSymbol>
+
+        <GuidSymbol name="guidImageCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e68}">
+            <IDSymbol name="MyMenuGroup" value="0x1090" />
+            <IDSymbol name="cmdCompressImage" value="0x1091" />
+            <IDSymbol name="cmdSpriteImage" value="0x1093" />
+        </GuidSymbol>
+
+        <GuidSymbol name="htmlEditorCommandSet" value="{D7E8C5E1-BDB8-11D0-9C88-0000F8040A53}">
+            <IDSymbol name="htmlContextMenu" value="0x0033"/>
+            <!-- 53 in hex is 0x0035 -->
+        </GuidSymbol>
+
+        <GuidSymbol name="htmlEditorCommandSetLibra" value="{78F03954-2FB8-4087-8CE7-59D71710B3BB}">
+            <IDSymbol name="htmlContextMenuLibra" value="1"/>
+        </GuidSymbol>
+
+        <GuidSymbol name="cssEditorCommandSet" value="{64DA400E-B4AD-4D67-AA92-4B7ACB01ECD5}">
+            <IDSymbol name="cssContextMenu" value="0x0002"/>
+        </GuidSymbol>
+
+        <GuidSymbol name="guidFormattingCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e66}">
+            <IDSymbol name="FormattingGroup" value="0x0001"/>
+            <IDSymbol name="SurroundWith" value="0x334" />
+            <IDSymbol name="ExpandSelection" value="0x335" />
+            <IDSymbol name="ContractSelection" value="0x336" />
+        </GuidSymbol>
+
+        <!--<GuidSymbol name="lessEditorCommandSet" value="{D309F791-903F-11D0-9EFC-00A0C911004F}">
       <IDSymbol name="lessContextMenu" value="0x040d"/>
     </GuidSymbol>-->
 
-    <GuidSymbol name="jsEditorCommandSet" value="{D309F791-903F-11D0-9EFC-00A0C911004F}">
-      <IDSymbol name="jsContextMenu" value="0x040d"/>
-      <!-- 52 in hex is 0x0034 -->
-    </GuidSymbol>
+        <GuidSymbol name="jsEditorCommandSet" value="{D309F791-903F-11D0-9EFC-00A0C911004F}">
+            <IDSymbol name="jsContextMenu" value="0x040d"/>
+            <!-- 52 in hex is 0x0034 -->
+        </GuidSymbol>
 
-    <GuidSymbol name="guidUnusedCssCmdSet" value="{47BA41E6-C7AB-49F1-984A-30E672AFF9FC}">
-      <IDSymbol name="UnusedCssExtensionGroup" value="0x2020" />
-      <IDSymbol name="UnusedCssSnapshotCommandId" value="0x2100" />
-      <IDSymbol name="UnusedCssResetCommandId" value="0x2101" />
-      <IDSymbol name="UnusedCssRecordAllCommandId" value="0x2102" />
-      <IDSymbol name="UnusedCssStopRecordAllCommandId" value="0x2103" />
-    </GuidSymbol>
+        <GuidSymbol name="guidUnusedCssCmdSet" value="{47BA41E6-C7AB-49F1-984A-30E672AFF9FC}">
+            <IDSymbol name="UnusedCssExtensionGroup" value="0x2020" />
+            <IDSymbol name="UnusedCssSnapshotCommandId" value="0x2100" />
+            <IDSymbol name="UnusedCssResetCommandId" value="0x2101" />
+            <IDSymbol name="UnusedCssRecordAllCommandId" value="0x2102" />
+            <IDSymbol name="UnusedCssStopRecordAllCommandId" value="0x2103" />
+        </GuidSymbol>
 
-    <GuidSymbol name="guidPixelPushingCmdSet" value="{EE755B3C-F6ED-414B-86BA-1AADB7DAE216}">
-      <IDSymbol name="PixelPushingToggleCommandId" value="0x2200" />
-    </GuidSymbol>
+        <GuidSymbol name="guidPixelPushingCmdSet" value="{EE755B3C-F6ED-414B-86BA-1AADB7DAE216}">
+            <IDSymbol name="PixelPushingToggleCommandId" value="0x2200" />
+        </GuidSymbol>
 
-    <GuidSymbol name="guidBrowserLinkCmdSet" value="{30947ebe-9147-45f9-96cf-401bfc671a82}">
-      <IDSymbol name="IDG_BROWSERLINK_COMMANDS" value="0x2001" />
-    </GuidSymbol>
+        <GuidSymbol name="guidBrowserLinkCmdSet" value="{30947ebe-9147-45f9-96cf-401bfc671a82}">
+            <IDSymbol name="IDG_BROWSERLINK_COMMANDS" value="0x2001" />
+        </GuidSymbol>
 
-    <GuidSymbol name="guidTypeScriptTypingsCmdSet" value="{6147C315-9D10-45E8-B410-CE8F3C22E030}">
-      <IDSymbol name="AddHubT4CommandId" value="0x4001" />
-    </GuidSymbol>
+        <GuidSymbol name="guidTypeScriptTypingsCmdSet" value="{6147C315-9D10-45E8-B410-CE8F3C22E030}">
+            <IDSymbol name="AddHubT4CommandId" value="0x4001" />
+        </GuidSymbol>
 
-    <GuidSymbol name="guidImages" value="{51f54cc4-4444-4ae5-a1a6-d44f9a6b7cbc}" >
-      <IDSymbol name="bmpPic1" value="1" />
-      <IDSymbol name="bmpPic2" value="2" />
-      <IDSymbol name="bmpPicSearch" value="3" />
-      <IDSymbol name="bmpPicX" value="4" />
-      <IDSymbol name="bmpPicArrows" value="5" />
-      <IDSymbol name="bmpPicStrikethrough" value="6" />
-      <IDSymbol name="bmpLogo" value="7" />
-      <IDSymbol name="bmpMinify" value="8" />
-    </GuidSymbol>
+        <GuidSymbol name="guidImages" value="{51f54cc4-4444-4ae5-a1a6-d44f9a6b7cbc}" >
+            <IDSymbol name="bmpPic1" value="1" />
+            <IDSymbol name="bmpPic2" value="2" />
+            <IDSymbol name="bmpPicSearch" value="3" />
+            <IDSymbol name="bmpPicX" value="4" />
+            <IDSymbol name="bmpPicArrows" value="5" />
+            <IDSymbol name="bmpPicStrikethrough" value="6" />
+            <IDSymbol name="bmpLogo" value="7" />
+            <IDSymbol name="bmpMinify" value="8" />
+        </GuidSymbol>
 
-    <GuidSymbol name="guidNumbers" value="{51f54cc4-4444-4ae5-a1a6-d44f9a6b7cbd}" >
-      <IDSymbol name="pic1" value="1" />
-      <IDSymbol name="pic2" value="2" />
-      <IDSymbol name="pic3" value="3" />
-      <IDSymbol name="pic4" value="4" />
-    </GuidSymbol>
+        <GuidSymbol name="guidNumbers" value="{51f54cc4-4444-4ae5-a1a6-d44f9a6b7cbd}" >
+            <IDSymbol name="pic1" value="1" />
+            <IDSymbol name="pic2" value="2" />
+            <IDSymbol name="pic3" value="3" />
+            <IDSymbol name="pic4" value="4" />
+        </GuidSymbol>
 
-    <GuidSymbol name="guidBrowserLink" value="{51f54cc4-4444-4ae5-a1a6-d44f9a6b7cbe}" >
-      <IDSymbol name="bmpRecord" value="1" />
-      <IDSymbol name="bmpPause" value="2" />
-    </GuidSymbol>
+        <GuidSymbol name="guidBrowserLink" value="{51f54cc4-4444-4ae5-a1a6-d44f9a6b7cbe}" >
+            <IDSymbol name="bmpRecord" value="1" />
+            <IDSymbol name="bmpPause" value="2" />
+        </GuidSymbol>
 
-    <GuidSymbol name="guidMenuImages" value="{51f54cc4-4444-4ae5-a1a6-d44f9a6b7cbf}" >
-      <IDSymbol name="bmpScript" value="1" />
-      <IDSymbol name="bmpImage" value="2" />
-      <IDSymbol name="bmpJigsaw" value="3" />
-    </GuidSymbol>
-  </Symbols>
+        <GuidSymbol name="guidMenuImages" value="{51f54cc4-4444-4ae5-a1a6-d44f9a6b7cbf}" >
+            <IDSymbol name="bmpScript" value="1" />
+            <IDSymbol name="bmpImage" value="2" />
+            <IDSymbol name="bmpJigsaw" value="3" />
+        </GuidSymbol>
+    </Symbols>
 </CommandTable>

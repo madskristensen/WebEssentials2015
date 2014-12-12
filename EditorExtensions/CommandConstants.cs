@@ -126,6 +126,7 @@ namespace MadsKristensen.EditorExtensions
         BundleJs = 0x1072,
         BundleHtml = 0x1074,
         ReferenceJs = 0x333,
+        AddGrunt = 0x337,
         //ChainCompile = 0x337,
 
         // Build

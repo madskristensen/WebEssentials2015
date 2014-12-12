@@ -3,6 +3,7 @@ using EnvDTE80;
 using MadsKristensen.EditorExtensions.BrowserLink.PixelPushing;
 using MadsKristensen.EditorExtensions.BrowserLink.UnusedCss;
 using MadsKristensen.EditorExtensions.Css;
+using MadsKristensen.EditorExtensions.Grunt;
 using MadsKristensen.EditorExtensions.Images;
 using MadsKristensen.EditorExtensions.JavaScript;
 using MadsKristensen.EditorExtensions.Markdown;
@@ -70,7 +71,7 @@ namespace MadsKristensen.EditorExtensions
             Instance = this;
 
             SettingsStore.Load();
-            
+
             OleMenuCommandService mcs = GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
 
             if (null != mcs)
@@ -90,6 +91,7 @@ namespace MadsKristensen.EditorExtensions
                 CompressImageMenu compressImageMenu = new CompressImageMenu(mcs);
                 SpriteImageMenu spriteImageMenu = new SpriteImageMenu(DTE, mcs);
                 UnminifyMenu unMinifyMenu = new UnminifyMenu(mcs);
+                AddGruntToProject grunt = new AddGruntToProject(DTE, mcs);
 
                 HandleMenuVisibility(mcs);
                 referenceJsMenu.SetupCommands();
@@ -107,6 +109,7 @@ namespace MadsKristensen.EditorExtensions
                 compressImageMenu.SetupCommands();
                 spriteImageMenu.SetupCommands();
                 unMinifyMenu.SetupCommands();
+                grunt.SetupCommands();
             }
 
             IconRegistration.RegisterIcons();
