@@ -14,15 +14,10 @@ namespace MadsKristensen.EditorExtensions.JSON
     [TextViewRole(PredefinedTextViewRoles.Document)]
     class LogoProvider : IWpfTextViewCreationListener
     {
-        public const string LayerName = "JSON Logo";
+        private const double _initOpacity = 0.4D;
 
         [Import]
         public ITextDocumentFactoryService TextDocumentFactoryService { get; set; }
-
-        [Export(typeof(AdornmentLayerDefinition))]
-        [Name(LayerName)]
-        [Order(After = PredefinedAdornmentLayers.Caret)]
-        public AdornmentLayerDefinition editorAdornmentLayer = null;
 
         private Dictionary<string, string> _map = new Dictionary<string, string>()
         {
@@ -33,21 +28,19 @@ namespace MadsKristensen.EditorExtensions.JSON
             { "gulpfile.js", "gulp.png"},
         };
 
-
         public void TextViewCreated(IWpfTextView textView)
         {
-            if (!WESettings.Instance.General.ShowLogoWatermark)
-                return;
-
             ITextDocument document;
             if (TextDocumentFactoryService.TryGetTextDocument(textView.TextDataModel.DocumentBuffer, out document))
             {
                 string fileName = Path.GetFileName(document.FilePath).ToLowerInvariant();
 
-                if (!string.IsNullOrEmpty(fileName) && _map.ContainsKey(fileName))
-                {
-                    LogoAdornment highlighter = new LogoAdornment(textView, _map[fileName]);
-                }
+                if (string.IsNullOrEmpty(fileName) || !_map.ContainsKey(fileName))
+                    return;
+
+                bool isVisible = WESettings.Instance.General.ShowLogoWatermark;
+
+                LogoAdornment highlighter = new LogoAdornment(textView, _map[fileName], isVisible, _initOpacity);
             }
         }
     }

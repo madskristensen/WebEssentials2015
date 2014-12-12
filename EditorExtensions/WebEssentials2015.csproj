@@ -429,6 +429,7 @@
     <Compile Include="JSON-LD\Vocabularies\SchemaOrgVocabulary.cs" />
     <Compile Include="JSON-LD\Vocabularies\VocabularyFactory.cs" />
     <Compile Include="JSON\Adornments\LogoAdornment.cs" />
+    <Compile Include="JSON\Adornments\LogoLayer.cs" />
     <Compile Include="JSON\Adornments\LogoProvider.cs" />
     <Compile Include="JSON\Commands\FormatCommandTarget.cs" />
     <Compile Include="JSON\Commands\JsonCreationListener.cs" />
