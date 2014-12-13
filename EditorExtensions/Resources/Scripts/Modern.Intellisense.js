@@ -116,6 +116,100 @@ Object.observe = function (object, callback) {
 
 //#endregion
 
+// #region Grunt
+
+module = new Object();
+module.exports = function () { };
+
+var Grunt = function () {
+    this.initConfig = function () {
+        /// <signature>
+        ///   <summary>Initializes the Grunt configuration.</summary>
+        ///   <param name="config" type="object">Grunt configuration.</param>
+        /// </signature>
+    },
+    this.registerTask = function () {
+        /// <signature>
+        ///   <summary>Registers a Grunt task.</summary>
+        ///   <param name="name" type="string">The name of the task.</param>
+        ///   <param name="callback" type="function">A function that is run when the task is executed.</param>
+        /// </signature>
+        /// <signature>
+        ///   <summary>Registers a new aliased task made up of one or more other tasks and targets.</summary>
+        ///   <param name="name" type="string">The name of the task.</param>
+        ///   <param name="tasks" type="Array" elementType="String">A string array of task names.</param>
+        /// </signature>
+    },
+    this.loadNpmTask = function (name) {
+        /// <signature>
+        ///   <summary>Loads a task from npm.</summary>
+        ///   <param name="name" type="string">The name of the task.</param>
+        /// </signature>
+    },
+    this.task = new __Task(),
+    this.log = new __Log(),
+    this.verbose = new __Log()
+};
+
+function __Task() {
+    this.run = function () {
+        /// <signature>
+        ///   <summary>Runs grunt tasks.</summary>
+        ///   <param name="tasks" type="Array">An array of task names to run.</param>
+        /// </signature>
+    }
+}
+
+function __Log() {
+    this.warn = function () {
+        /// <signature>
+        ///   <summary>Outputs a warning.</summary>
+        ///   <param name="message" type="String">The message to log.</param>
+        /// </signature>
+    },
+    this.write = function () {
+        /// <signature>
+        ///   <summary>Outputs a warning.</summary>
+        ///   <param name="message" type="String">The message to log.</param>
+        /// </signature>
+    },
+    this.writeln = function () {
+        /// <signature>
+        ///   <summary>Outputs a warning.</summary>
+        ///   <param name="message" type="Array">The messages to log.</param>
+        /// </signature>
+    },
+    this.error = function () {
+        /// <signature>
+        ///   <summary>Outputs a warning.</summary>
+        ///   <param name="message" type="string">The messages to log.</param>
+        /// </signature>
+    },
+    this.debug = function () {
+        /// <signature>
+        ///   <summary>Outputs a warning.</summary>
+        ///   <param name="message" type="string">The messages to log.</param>
+        /// </signature>
+    },
+    this.ok = function () {
+        /// <signature>
+        ///   <summary>Logs 'ok' in green to the console.</summary>
+        /// </signature>
+        /// <signature>
+        ///   <summary>Logs a message in green to the output window.</summary>
+        ///   <param name="message" type="string">The messages to log.</param>
+        /// </signature>
+    }
+}
+
+intellisense.addEventListener('statementcompletion', function (event) {
+    event.items = event.items.filter(function (item) {
+        return item.name !== "Grunt" && item.name !== "__Task" && item.name !== "__Log";
+    });
+});
+
+// #endregion
+
 //#region Angular.js
 
 
