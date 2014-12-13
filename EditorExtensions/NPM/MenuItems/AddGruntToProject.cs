@@ -37,7 +37,9 @@ namespace MadsKristensen.EditorExtensions.Grunt
             var projects = ProjectHelpers.GetSelectedProjects();
 
             if (projects == null || !projects.Any())
-                _folder = ProjectHelpers.GetRootFolder(projects.ElementAt(0));
+                return;
+
+            _folder = ProjectHelpers.GetRootFolder(projects.ElementAt(0));
 
             if (!Directory.Exists(_folder))
                 return;
