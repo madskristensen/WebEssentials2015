@@ -33,10 +33,11 @@ namespace MadsKristensen.EditorExtensions.Grunt
         void BeforeQueryStatus(object sender, System.EventArgs e)
         {
             OleMenuCommand menuCommand = sender as OleMenuCommand;
-            menuCommand.Enabled = false;
 
-            Project project = ProjectHelpers.GetSelectedProjects().ElementAt(0);
-            _folder = ProjectHelpers.GetRootFolder(project);
+            var projects = ProjectHelpers.GetSelectedProjects();
+
+            if (projects == null || !projects.Any())
+                _folder = ProjectHelpers.GetRootFolder(projects.ElementAt(0));
 
             if (!Directory.Exists(_folder))
                 return;
@@ -47,12 +48,12 @@ namespace MadsKristensen.EditorExtensions.Grunt
             if (bower && grunt)
                 return;
 
+            menuCommand.Visible = true;
+
             if (bower && !grunt)
                 menuCommand.Text = "Grunt to Project";
             else if (grunt && !bower)
                 menuCommand.Text = "Bower to Project";
-
-            menuCommand.Enabled = true;
         }
 
         private void Execute()
@@ -95,7 +96,8 @@ namespace MadsKristensen.EditorExtensions.Grunt
                 p.Start();
                 p.BeginErrorReadLine();
                 p.BeginOutputReadLine();
-                p.Exited += (s, e) => {
+                p.Exited += (s, e) =>
+                {
                     Logger.Log("\r\nGrunt and Bower ready to use. You can use the Task Runner Explorer to control Grunt.");
                     _dte.StatusBar.Animate(false, vsStatusAnimation.vsStatusAnimationSync);
                     _dte.StatusBar.Clear();

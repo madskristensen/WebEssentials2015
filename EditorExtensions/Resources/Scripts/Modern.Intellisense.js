@@ -601,7 +601,7 @@ intellisense.addEventListener('statementcompletion', function (event) {
 
 var require = function (module) {
     if (module !== "gulp")
-        return;
+        return function () { };
 
     return {
         task: function () {

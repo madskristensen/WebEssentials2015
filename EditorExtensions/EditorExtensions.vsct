@@ -615,7 +615,7 @@
                 <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_PROJECT_ADD_ITEMS"/>
                 <Icon guid="guidImages" id="bmpPicStrikethrough"/>
                 <CommandFlag>DynamicVisibility</CommandFlag>
-                <CommandFlag>DefaultDisabled</CommandFlag>
+                <CommandFlag>DefaultInvisible</CommandFlag>
                 <CommandFlag>TextChanges</CommandFlag>
                 <Strings>
                     <ButtonText>Grunt and Bower to Project</ButtonText>
