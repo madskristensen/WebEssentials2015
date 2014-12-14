@@ -503,10 +503,17 @@ Object.observe = function (object, callback) {
 
 //#endregion
 
-// #region Grunt
+// #region module.exports
 
-module = new Object();
-module.exports = function () { };
+module = module || new Object();
+
+intellisense.annotate(module, {
+    exports: function () { }
+});
+
+// #endregion
+
+// #region Grunt
 
 var Grunt = function () {
     this.initConfig = function () {
@@ -533,75 +540,76 @@ var Grunt = function () {
         ///   <param name="name" type="string">The name of the task.</param>
         /// </signature>
     },
-    this.task = new __Task(),
-    this.log = new __Log(),
-    this.verbose = new __Log()
+    this.task = function () {
+        this.run = function () {
+            /// <signature>
+            ///   <summary>Runs grunt tasks.</summary>
+            ///   <param name="tasks" type="Array">An array of task names to run.</param>
+            /// </signature>
+        }
+    },
+    this.log = function () {
+        this.warn = function () {
+            /// <signature>
+            ///   <summary>Outputs a warning.</summary>
+            ///   <param name="message" type="String">The message to log.</param>
+            /// </signature>
+        },
+        this.write = function () {
+            /// <signature>
+            ///   <summary>Outputs a warning.</summary>
+            ///   <param name="message" type="String">The message to log.</param>
+            /// </signature>
+        },
+        this.writeln = function () {
+            /// <signature>
+            ///   <summary>Outputs a warning.</summary>
+            ///   <param name="message" type="Array">The messages to log.</param>
+            /// </signature>
+        },
+        this.error = function () {
+            /// <signature>
+            ///   <summary>Outputs a warning.</summary>
+            ///   <param name="message" type="string">The messages to log.</param>
+            /// </signature>
+        },
+        this.debug = function () {
+            /// <signature>
+            ///   <summary>Outputs a warning.</summary>
+            ///   <param name="message" type="string">The messages to log.</param>
+            /// </signature>
+        },
+        this.ok = function () {
+            /// <signature>
+            ///   <summary>Logs 'ok' in green to the console.</summary>
+            /// </signature>
+            /// <signature>
+            ///   <summary>Logs a message in green to the output window.</summary>
+            ///   <param name="message" type="string">The messages to log.</param>
+            /// </signature>
+        }
+    },
+    this.verbose = this.log
 };
-
-function __Task() {
-    this.run = function () {
-        /// <signature>
-        ///   <summary>Runs grunt tasks.</summary>
-        ///   <param name="tasks" type="Array">An array of task names to run.</param>
-        /// </signature>
-    }
-}
-
-function __Log() {
-    this.warn = function () {
-        /// <signature>
-        ///   <summary>Outputs a warning.</summary>
-        ///   <param name="message" type="String">The message to log.</param>
-        /// </signature>
-    },
-    this.write = function () {
-        /// <signature>
-        ///   <summary>Outputs a warning.</summary>
-        ///   <param name="message" type="String">The message to log.</param>
-        /// </signature>
-    },
-    this.writeln = function () {
-        /// <signature>
-        ///   <summary>Outputs a warning.</summary>
-        ///   <param name="message" type="Array">The messages to log.</param>
-        /// </signature>
-    },
-    this.error = function () {
-        /// <signature>
-        ///   <summary>Outputs a warning.</summary>
-        ///   <param name="message" type="string">The messages to log.</param>
-        /// </signature>
-    },
-    this.debug = function () {
-        /// <signature>
-        ///   <summary>Outputs a warning.</summary>
-        ///   <param name="message" type="string">The messages to log.</param>
-        /// </signature>
-    },
-    this.ok = function () {
-        /// <signature>
-        ///   <summary>Logs 'ok' in green to the console.</summary>
-        /// </signature>
-        /// <signature>
-        ///   <summary>Logs a message in green to the output window.</summary>
-        ///   <param name="message" type="string">The messages to log.</param>
-        /// </signature>
-    }
-}
 
 intellisense.addEventListener('statementcompletion', function (event) {
     event.items = event.items.filter(function (item) {
-        return item.name !== "Grunt" && item.name !== "__Task" && item.name !== "__Log";
+        return item.name !== "Grunt";
     });
 });
 
 // #endregion
 
 // #region Gulp
-
+var __existing_req = require;
 var require = function (module) {
-    if (module !== "gulp")
-        return function () { };
+
+    if (module !== "gulp") {
+        if (__existing_req)
+            intellisense.redirectDefinition(this, __existing_req);
+
+        return;
+    }
 
     return {
         task: function () {
@@ -715,7 +723,8 @@ var require = function (module) {
             /// <signature>
             ///   <summary>Watch files and do something when a file changes. This always returns an EventEmitter that emits  change  events.</summary>
             ///   <param name="glob" type="Array">An array of globs that indicate which files to watch for changes.</param>
-            ///   <param name="cb" type="function(event)">Callback to be called on each change.</param>
+            ///   <param name="cb" type="function(event)">
+            ///   </param>
             /// </signature>
         }
     }
