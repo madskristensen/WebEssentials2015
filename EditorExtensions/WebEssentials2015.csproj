@@ -798,6 +798,9 @@
     <Resource Include="JSON\Resources\vs.png" />
     <Resource Include="JSON\Resources\grunt.png" />
     <Resource Include="JSON\Resources\gulp.png" />
+    <Content Include="JavaScript\Snippets\snippets.pkgdef">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="NPM\Resources\gruntfile.js">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
@@ -880,6 +883,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="NPM\Resources\package.json">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="JavaScript\Snippets\Web Essentials\grunt.snippet">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="JavaScript\Snippets\Web Essentials\grunt-less.snippet">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="JavaScript\Snippets\Web Essentials\grunt-watch.snippet">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <None Include="Markdown\Classify\Sample.md" />
