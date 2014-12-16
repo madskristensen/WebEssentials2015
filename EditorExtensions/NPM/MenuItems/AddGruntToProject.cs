@@ -119,7 +119,7 @@ namespace MadsKristensen.EditorExtensions.Grunt
                 string source = Path.Combine(folder, "NPM\\Resources\\", fileName);
 
                 File.Copy(source, file, false);
-                ProjectHelpers.AddFileToActiveProject(file);
+                ProjectHelpers.AddFileToActiveProject(file, "None");
             }
         }
     }
