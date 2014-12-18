@@ -16,7 +16,7 @@ namespace MadsKristensen.EditorExtensions.JSON
         public LogoAdornment(IWpfTextView view, string imageName, bool isVisible, double initOpacity)
         {
             _adornmentLayer = view.GetAdornmentLayer(LogoLayer.LayerName);
-            _currentOpacity = isVisible ? _initOpacity : 0;
+            _currentOpacity = isVisible ? initOpacity : 0;
             _initOpacity = initOpacity;
 
             CreateImage(imageName);
