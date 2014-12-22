@@ -889,12 +889,34 @@
     </Content>
     <Content Include="JavaScript\Snippets\Web Essentials\grunt.snippet">
       <IncludeInVSIX>true</IncludeInVSIX>
+      <SubType>Designer</SubType>
     </Content>
-    <Content Include="JavaScript\Snippets\Web Essentials\grunt-less.snippet">
+    <Content Include="JavaScript\Snippets\Web Essentials\grunt-contrib-less.snippet">
       <IncludeInVSIX>true</IncludeInVSIX>
+      <SubType>Designer</SubType>
     </Content>
-    <Content Include="JavaScript\Snippets\Web Essentials\grunt-watch.snippet">
+    <Content Include="JavaScript\Snippets\Web Essentials\grunt-contrib-watch.snippet">
       <IncludeInVSIX>true</IncludeInVSIX>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="JavaScript\Snippets\Web Essentials\grunt-bower-task.snippet">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="JavaScript\Snippets\Web Essentials\grunt-pkg.snippet">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="JavaScript\Snippets\Web Essentials\grunt-contrib-cssmin.snippet">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="JavaScript\Snippets\Web Essentials\grunt-contrib-clean.snippet">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="JavaScript\Snippets\Web Essentials\grunt-contrib-uglify.snippet">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="JavaScript\Snippets\Web Essentials\grunt-contrib-jshint.snippet">
+      <SubType>Designer</SubType>
     </Content>
     <None Include="Markdown\Classify\Sample.md" />
     <Content Include="NPM\Resources\bower.json">

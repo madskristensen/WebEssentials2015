@@ -1,0 +1,31 @@
+﻿<CodeSnippet Format="1.1.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <Header>
+        <Title>Grunt JSHint config</Title>
+        <Author>Microsoft Corporation</Author>
+        <Shortcut>jshint</Shortcut>
+        <Description>Code snippet for "grunt-contrib-jshint" configuration in Grunt</Description>
+        <SnippetTypes>
+            <SnippetType>Expansion</SnippetType>
+        </SnippetTypes>
+    </Header>
+    <Snippet>
+        <Declarations>
+            <Literal>
+                <ID>test</ID>
+                <ToolTip>Paths to the .js files for the "test" target.</ToolTip>
+                <Default>"test/**/*.js"</Default>
+            </Literal>
+            <Literal>
+                <ID>dev</ID>
+                <ToolTip>Paths to the .js files for the "dev" target.</ToolTip>
+                <Default>"js/**/*.js"</Default>
+            </Literal>
+        </Declarations>
+        <Code Language="JavaScript">
+            <![CDATA[jshint: {
+    test: [$test$],
+    dev: [$dev$]
+  },$end$]]>
+        </Code>
+    </Snippet>
+</CodeSnippet>

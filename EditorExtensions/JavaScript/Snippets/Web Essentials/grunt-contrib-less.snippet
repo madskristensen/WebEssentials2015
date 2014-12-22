@@ -1,0 +1,45 @@
+﻿<CodeSnippet Format="1.1.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <Header>
+        <Title>Grunt LESS config</Title>
+        <Author>Microsoft Corporation</Author>
+        <Shortcut>less</Shortcut>
+        <Description>Code snippet for "grunt-contrib-less" configuration in Grunt</Description>
+        <SnippetTypes>
+            <SnippetType>Expansion</SnippetType>
+        </SnippetTypes>
+    </Header>
+    <Snippet>
+        <Declarations>
+            <Literal>
+                <ID>destination</ID>
+                <ToolTip>Paths to the where the compiled .css file should be stored.</ToolTip>
+                <Default>wwwroot/css/site.css</Default>
+            </Literal>
+            <Literal>
+                <ID>source</ID>
+                <ToolTip>Paths to the source .less files to compile.</ToolTip>
+                <Default>less/site.less</Default>
+            </Literal>
+        </Declarations>
+        <Code Language="JavaScript">
+            <![CDATA[less: {
+            dev: {
+                files: {
+                    "$destination$": ["$source$"]
+                },
+                options: {
+                    sourceMap: true,
+                }
+            },
+            prod: {
+                files: {
+                    "$destination$": ["less/site.less"]
+                },
+                options: {
+                    cleancss: true,
+                }
+            }
+        },$end$]]>
+        </Code>
+    </Snippet>
+</CodeSnippet>

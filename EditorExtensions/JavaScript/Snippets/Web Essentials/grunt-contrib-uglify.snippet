@@ -1,0 +1,34 @@
+﻿<CodeSnippet Format="1.1.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <Header>
+        <Title>Grunt uglify config</Title>
+        <Author>Microsoft Corporation</Author>
+        <Shortcut>uglify</Shortcut>
+        <Description>Code snippet for "grunt-contrib-uglify" configuration in Grunt</Description>
+        <SnippetTypes>
+            <SnippetType>Expansion</SnippetType>
+        </SnippetTypes>
+    </Header>
+    <Snippet>
+        <Declarations>
+            <Literal>
+                <ID>destination</ID>
+                <ToolTip>Paths to the where the uglyfied .js file should be stored.</ToolTip>
+                <Default>wwwroot/js/site.js</Default>
+            </Literal>
+            <Literal>
+                <ID>source</ID>
+                <ToolTip>Paths to the source .js files to uglify.</ToolTip>
+                <Default>"js/file1.js", "js/file2.js"</Default>
+            </Literal>
+        </Declarations>
+        <Code Language="JavaScript">
+            <![CDATA[uglify: {
+    prod: {
+      files: {
+        "$destination$": [$source$]
+      }
+    }
+  },$end$]]>
+        </Code>
+    </Snippet>
+</CodeSnippet>

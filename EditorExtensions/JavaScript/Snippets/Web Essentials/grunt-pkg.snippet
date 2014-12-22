@@ -1,21 +1,16 @@
 ﻿<CodeSnippet Format="1.1.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
     <Header>
-        <Title>GruntFile.js snippet </Title>
+        <Title>Grunt pkg config</Title>
         <Author>Microsoft Corporation</Author>
-        <Shortcut>grunt</Shortcut>
-        <Description>Code snippet for gruntfile.js</Description>
+        <Shortcut>pkg</Shortcut>
+        <Description>Code snippet for the "pkg" configuration in Grunt</Description>
         <SnippetTypes>
             <SnippetType>Expansion</SnippetType>
         </SnippetTypes>
     </Header>
     <Snippet>
         <Code Language="JavaScript">
-            <![CDATA[module.exports = function (grunt) {
-
-    grunt.initConfig({
-        $end$
-    });
-}]]>
+            <![CDATA[pkg: grunt.file.readJSON('package.json'),$end$]]>
         </Code>
     </Snippet>
 </CodeSnippet>

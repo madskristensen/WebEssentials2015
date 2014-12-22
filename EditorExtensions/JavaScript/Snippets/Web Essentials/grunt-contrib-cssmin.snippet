@@ -1,0 +1,34 @@
+﻿<CodeSnippet Format="1.1.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <Header>
+        <Title>Grunt cssmin config</Title>
+        <Author>Microsoft Corporation</Author>
+        <Shortcut>cssmin</Shortcut>
+        <Description>Code snippet for "grunt-contrib-cssmin" configuration in Grunt</Description>
+        <SnippetTypes>
+            <SnippetType>Expansion</SnippetType>
+        </SnippetTypes>
+    </Header>
+    <Snippet>
+        <Declarations>
+            <Literal>
+                <ID>destination</ID>
+                <ToolTip>Paths to the where the minified .css file should be stored.</ToolTip>
+                <Default>wwwroot/css/site.css</Default>
+            </Literal>
+            <Literal>
+                <ID>source</ID>
+                <ToolTip>Paths to the source .css files to minify.</ToolTip>
+                <Default>"css/reset.css", "css/site.css"</Default>
+            </Literal>
+        </Declarations>
+        <Code Language="JavaScript">
+            <![CDATA[cssmin: {
+  all: {
+    files: {
+      "$destination$": [$source$]
+    }
+  }
+},$end$]]>
+        </Code>
+    </Snippet>
+</CodeSnippet>
