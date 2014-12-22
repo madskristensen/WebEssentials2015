@@ -12,18 +12,18 @@
         <Declarations>
             <Literal>
                 <ID>target</ID>
-                <ToolTip>The name of the target. Is usually the file type, such as "js", "less", "typescript".</ToolTip>
-                <Default>less</Default>
+                <ToolTip>The name of the target. Is usually the file type, such as "js", "css", "less", "typescript".</ToolTip>
+                <Default>typescript</Default>
             </Literal>
             <Literal>
                 <ID>files</ID>
                 <ToolTip>An array of files to watch.</ToolTip>
-                <Default>less/*.less</Default>
+                <Default>typescript/**/*.ts</Default>
             </Literal>
             <Literal>
                 <ID>tasks</ID>
                 <ToolTip>An array of Grunt tasks to execute when the files change.</ToolTip>
-                <Default>less</Default>
+                <Default>typescript</Default>
             </Literal>
         </Declarations>
         <Code Language="JavaScript">
@@ -31,7 +31,7 @@
             $target$: {
                 files: ["$files$"],
                 tasks: ["$tasks$"]
-            }
+            },
         },$end$]]>
         </Code>
     </Snippet>
