@@ -113,7 +113,7 @@ namespace MadsKristensen.EditorExtensions.Settings
 
         [Category("IDE")]
         [DisplayName("Show logo watermarks in editor")]
-        [Description("For certain files, a watermark of the associated logo is shown in the top right corner.")]
+        [Description("For certain files, a watermark of the associated logo is shown in the bottom right corner.")]
         [DefaultValue(true)]
         public bool ShowLogoWatermark { get; set; }
 
