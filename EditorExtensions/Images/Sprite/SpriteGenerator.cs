@@ -34,7 +34,7 @@ namespace MadsKristensen.EditorExtensions.Images
         var rows = Math.Floor(sqrt) != Math.Ceiling(sqrt) ? cols + 1 : cols;
         // In this case, the remainder will create another row
         width = (images.Values.Max(img => img.Width) * cols) + (document.Margin * cols) + document.Margin;
-        height = (images.Values.Max(img => img.Height) * (rows + 1)) + (document.Margin * (rows + 1)) + document.Margin;
+        height = (images.Values.Max(img => img.Height) * rows) + (document.Margin * rows) + document.Margin;
       }
 
       List<SpriteFragment> fragments = new List<SpriteFragment>();
