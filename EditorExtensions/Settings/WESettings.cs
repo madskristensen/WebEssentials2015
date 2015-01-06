@@ -1,4 +1,5 @@
 ﻿using ConfOxide;
+using MadsKristensen.EditorExtensions.Images;
 using MarkdownSharp;
 using Microsoft.Ajax.Utilities;
 using System.Collections.ObjectModel;
@@ -45,8 +46,8 @@ namespace MadsKristensen.EditorExtensions.Settings
         [Category("Sprite")]
         [DisplayName("Is Vertical")]
         [Description("Sprite image would be generated vertically. Set it to false, to generate it horizontally.")]
-        [DefaultValue(true)]
-        public bool IsVertical { get; set; }
+        [DefaultValue(SpriteDirection.Vertical)]
+        public SpriteDirection Direction { get; set; }
 
         [Category("Sprite")]
         [DisplayName("Margin")]
