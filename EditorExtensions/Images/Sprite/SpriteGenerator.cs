@@ -16,6 +16,7 @@ namespace MadsKristensen.EditorExtensions.Images
 
       var width = 0;
       var height = 0;
+      var cols = 0;
       
       if (document.Direction == SpriteDirection.Vertical)
       {
@@ -29,12 +30,11 @@ namespace MadsKristensen.EditorExtensions.Images
       }
       else if (document.Direction == SpriteDirection.Both)
       {
-        var sqrt = Math.Sqrt(images.Count);
-        var cols = Convert.ToInt32(Math.Floor(sqrt));
-        var rows = Math.Floor(sqrt) != Math.Ceiling(sqrt) ? cols + 1 : cols;
+        cols = Convert.ToInt32(Math.Ceiling(Math.Sqrt(images.Count)));
+        
         // In this case, the remainder will create another row
         width = (images.Values.Max(img => img.Width) * cols) + (document.Margin * cols) + document.Margin;
-        height = (images.Values.Max(img => img.Height) * rows) + (document.Margin * rows) + document.Margin;
+        height = (images.Values.Max(img => img.Height) * cols) + (document.Margin * cols) + document.Margin;
       }
 
       List<SpriteFragment> fragments = new List<SpriteFragment>();
@@ -46,7 +46,7 @@ namespace MadsKristensen.EditorExtensions.Images
           switch (document.Direction)
           {
           case SpriteDirection.Both:
-            Both(images, fragments, canvas, document.Margin);
+            Both(images, fragments, canvas, document.Margin, cols);
             break;
           case SpriteDirection.Horizontal:
             Horizontal(images, fragments, canvas, document.Margin);
@@ -80,7 +80,7 @@ namespace MadsKristensen.EditorExtensions.Images
 
       return images;
     }
-    private static void Both(Dictionary<String, Image> images, List<SpriteFragment> fragments ,Graphics canvas, int margin)
+    private static void Both(Dictionary<String, Image> images, List<SpriteFragment> fragments ,Graphics canvas, int margin, int cols)
     {
       int currentY = margin;
       int currentX = margin;
@@ -89,8 +89,6 @@ namespace MadsKristensen.EditorExtensions.Images
       var rowHeight = images.Max(img => img.Value.Height);
       var colWidth = images.Max(img => img.Value.Width);
 
-      var cols = Convert.ToInt32(Math.Floor(Math.Sqrt(images.Count)));
-      
       Queue<String> imageQueue = new Queue<String>(images.Keys);
 
       while (imageQueue.Count > 0)
