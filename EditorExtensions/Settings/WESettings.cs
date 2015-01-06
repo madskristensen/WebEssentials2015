@@ -44,8 +44,8 @@ namespace MadsKristensen.EditorExtensions.Settings
         public bool Optimize { get; set; }
 
         [Category("Sprite")]
-        [DisplayName("Is Vertical")]
-        [Description("Sprite image would be generated vertically. Set it to false, to generate it horizontally.")]
+        [DisplayName("Render Direction")]
+        [Description("Direction to render the sprite image. Default is vertically.")]
         [DefaultValue(SpriteDirection.Vertical)]
         public SpriteDirection Direction { get; set; }
 

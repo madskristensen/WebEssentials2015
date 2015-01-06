@@ -64,8 +64,7 @@ namespace MadsKristensen.EditorExtensions.Images
                     new XComment("Determines if the sprite image should be automatically optimized after creation/update."),
                     new XElement("optimize", Optimize.ToString().ToLowerInvariant()),
                     new XComment("Determines the orientation of images to form this sprite. The value must be vertical or horizontal."),
-                    new XElement("orientation", Direction == SpriteDirection.Both ? "both" :
-                      (Direction == SpriteDirection.Horizontal ? "horizontal" : "vertical")),
+                    new XElement("orientation", Enum.GetName(typeof(SpriteDirection), Direction).ToLowerInvariant()),
                     new XComment("The margin (in pixel) around and between the constituent images."),
                     new XElement("margin", Margin),
                     new XComment("File extension of sprite image."),
@@ -136,9 +135,11 @@ namespace MadsKristensen.EditorExtensions.Images
       element = doc.Descendants("orientation").FirstOrDefault();
 
       if (element != null)
-        sprite.Direction = element.Value.Equals("vertical", StringComparison.OrdinalIgnoreCase) ? SpriteDirection.Vertical :
-          (element.Value.Equals("horizontal", StringComparison.OrdinalIgnoreCase) ? SpriteDirection.Horizontal : SpriteDirection.Both);
+      {
+        SpriteDirection direction = Enum.TryParse<SpriteDirection>(element.Value.ToString(), true, out direction) ? direction : SpriteDirection.Vertical;
+        sprite.Direction = direction;
 
+      }
       element = doc.Descendants("margin").FirstOrDefault();
 
       sprite.Margin = WESettings.Instance.Sprite.Margin; // So the current implementation (without margin support) doesn't break.

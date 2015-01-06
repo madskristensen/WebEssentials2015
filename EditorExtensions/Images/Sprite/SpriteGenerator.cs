@@ -34,7 +34,7 @@ namespace MadsKristensen.EditorExtensions.Images
         var rows = Math.Floor(sqrt) != Math.Ceiling(sqrt) ? cols + 1 : cols;
         // In this case, the remainder will create another row
         width = (images.Values.Max(img => img.Width) * cols) + (document.Margin * cols) + document.Margin;
-        height = (images.Values.Max(img => img.Height) * rows) + (document.Margin * rows) + document.Margin;
+        height = (images.Values.Max(img => img.Height) * (rows + 1)) + (document.Margin * (rows + 1)) + document.Margin;
       }
 
       List<SpriteFragment> fragments = new List<SpriteFragment>();
@@ -85,13 +85,12 @@ namespace MadsKristensen.EditorExtensions.Images
       int currentY = margin;
       int currentX = margin;
 
-      var sqrt = Math.Sqrt(images.Count);
-
+      // Lazy way of making sure images don't overlap is to make ALL OF THEM to be the size of the largest one
       var rowHeight = images.Max(img => img.Value.Height);
       var colWidth = images.Max(img => img.Value.Width);
 
-      var cols = Convert.ToInt32(sqrt);
-      // In this case, the remainder will create another row
+      var cols = Convert.ToInt32(Math.Floor(Math.Sqrt(images.Count)));
+      
       Queue<String> imageQueue = new Queue<String>(images.Keys);
 
       while (imageQueue.Count > 0)

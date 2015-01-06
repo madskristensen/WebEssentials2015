@@ -469,6 +469,7 @@
     <Compile Include="Misc\Bundles\BundleGenerator.cs" />
     <Compile Include="Misc\Bundles\BundleDocument.cs" />
     <Compile Include="LiveScript\ContentType\LiveScriptContentTypeDefinition.cs" />
+    <None Include="PreBuildTask.cs" />
     <Compile Include="SCSS\Commands\ScssCreationListener.cs" />
     <Compile Include="SCSS\Commands\ScssExtractMixinCommandTarget.cs" />
     <Compile Include="SCSS\Commands\ScssExtractVariableCommandTarget.cs" />
