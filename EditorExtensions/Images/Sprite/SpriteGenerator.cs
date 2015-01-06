@@ -30,11 +30,13 @@ namespace MadsKristensen.EditorExtensions.Images
       }
       else if (document.Direction == SpriteDirection.Both)
       {
-        cols = Convert.ToInt32(Math.Ceiling(Math.Sqrt(images.Count)));
+        var sqrt = Math.Sqrt(images.Count);
+        cols = Convert.ToInt32(Math.Ceiling(sqrt));
+        var rows = (sqrt < (Math.Floor(sqrt) + 0.5)) ? cols - 1 : cols;
         
         // In this case, the remainder will create another row
         width = (images.Values.Max(img => img.Width) * cols) + (document.Margin * cols) + document.Margin;
-        height = (images.Values.Max(img => img.Height) * cols) + (document.Margin * cols) + document.Margin;
+        height = (images.Values.Max(img => img.Height) * rows) + (document.Margin * rows) + document.Margin;
       }
 
       List<SpriteFragment> fragments = new List<SpriteFragment>();
@@ -46,7 +48,7 @@ namespace MadsKristensen.EditorExtensions.Images
           switch (document.Direction)
           {
           case SpriteDirection.Both:
-            Both(images, fragments, canvas, document.Margin, cols);
+            Both(images, fragments, canvas, document.Margin);
             break;
           case SpriteDirection.Horizontal:
             Horizontal(images, fragments, canvas, document.Margin);
@@ -80,11 +82,11 @@ namespace MadsKristensen.EditorExtensions.Images
 
       return images;
     }
-    private static void Both(Dictionary<String, Image> images, List<SpriteFragment> fragments ,Graphics canvas, int margin, int cols)
+    private static void Both(Dictionary<String, Image> images, List<SpriteFragment> fragments ,Graphics canvas, int margin)
     {
       int currentY = margin;
       int currentX = margin;
-
+      var cols = Math.Ceiling(Math.Sqrt(images.Count));
       // Lazy way of making sure images don't overlap is to make ALL OF THEM to be the size of the largest one
       var rowHeight = images.Max(img => img.Value.Height);
       var colWidth = images.Max(img => img.Value.Width);
