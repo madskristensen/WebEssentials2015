@@ -1,4 +1,10 @@
-﻿using EnvDTE;
+﻿using System;
+using System.ComponentModel.Design;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Windows.Threading;
+using EnvDTE;
 using EnvDTE80;
 using MadsKristensen.EditorExtensions.BrowserLink.PixelPushing;
 using MadsKristensen.EditorExtensions.BrowserLink.UnusedCss;
@@ -11,12 +17,6 @@ using MadsKristensen.EditorExtensions.Settings;
 using Microsoft.VisualStudio.ComponentModelHost;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
-using System;
-using System.ComponentModel.Design;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Windows.Threading;
 
 namespace MadsKristensen.EditorExtensions
 {
@@ -85,7 +85,7 @@ namespace MadsKristensen.EditorExtensions
                 BuildMenu buildMenu = new BuildMenu(DTE, mcs);
                 MarkdownMenu markdownMenu = new MarkdownMenu(DTE, mcs);
                 AddIntellisenseFileMenu intellisenseFile = new AddIntellisenseFileMenu(DTE, mcs);
-                UnusedCssMenu unusedCssMenu = new UnusedCssMenu(mcs);
+                //UnusedCssMenu unusedCssMenu = new UnusedCssMenu(mcs);
                 PixelPushingMenu pixelPushingMenu = new PixelPushingMenu(mcs);
                 ReferenceJsMenu referenceJsMenu = new ReferenceJsMenu(mcs);
                 CompressImageMenu compressImageMenu = new CompressImageMenu(mcs);
@@ -96,7 +96,7 @@ namespace MadsKristensen.EditorExtensions
                 HandleMenuVisibility(mcs);
                 referenceJsMenu.SetupCommands();
                 pixelPushingMenu.SetupCommands();
-                unusedCssMenu.SetupCommands();
+                //unusedCssMenu.SetupCommands();
                 intellisenseFile.SetupCommands();
                 markdownMenu.SetupCommands();
                 buildMenu.SetupCommands();
