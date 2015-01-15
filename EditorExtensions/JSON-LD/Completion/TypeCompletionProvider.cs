@@ -2,10 +2,11 @@
 using System.ComponentModel.Composition;
 using Microsoft.JSON.Core.Parser;
 using Microsoft.JSON.Editor.Completion;
-using Microsoft.JSON.Editor.Completion.Def;
 using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.VisualStudio.Utilities;
 using Microsoft.Web.Editor;
+using Microsoft.JSON.Core.Parser.TreeItems;
+using Microsoft.Web.Editor.Imaging;
 
 namespace MadsKristensen.EditorExtensions.JSONLD
 {

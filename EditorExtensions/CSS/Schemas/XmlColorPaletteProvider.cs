@@ -6,11 +6,16 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.CSS.Core;
 using Microsoft.CSS.Editor;
-using Microsoft.CSS.Editor.Intellisense;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Utilities;
 using Microsoft.Web.Editor;
+using Microsoft.CSS.Core.Parser;
+using Microsoft.CSS.Core.TreeItems;
+using Microsoft.CSS.Core.TreeItems.AtDirectives;
+using Microsoft.CSS.Editor.Document;
+using Microsoft.Web.Editor.ColorPicker;
+using Microsoft.CSS.Editor.Completion.ColorPicker;
 
 namespace MadsKristensen.EditorExtensions.Css
 {

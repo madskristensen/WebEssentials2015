@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Html.Schemas;
-using Microsoft.Html.Schemas.Model;
 using Microsoft.VisualStudio.Utilities;
 using Microsoft.Web.Editor;
+using Microsoft.Web.Core.ContentTypes;
+using Microsoft.Html.Editor.Schemas.Model;
+using Microsoft.Html.Editor.Schemas.Interfaces;
 
 namespace MadsKristensen.EditorExtensions.Html
 {

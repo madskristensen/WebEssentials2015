@@ -4,11 +4,14 @@ using System.ComponentModel.Composition;
 using System.Globalization;
 using System.Linq;
 using Microsoft.CSS.Core;
-using Microsoft.CSS.Editor.Intellisense;
 using Microsoft.CSS.Editor.Schemas;
-using Microsoft.CSS.Editor.SyntaxCheck;
 using Microsoft.VisualStudio.Utilities;
 using MadsKristensen.EditorExtensions.Settings;
+using Microsoft.CSS.Core.Checker;
+using Microsoft.CSS.Core.Parser;
+using Microsoft.CSS.Core.TreeItems;
+using Microsoft.CSS.Editor.Checker;
+using Microsoft.CSS.Editor.Completion;
 
 namespace MadsKristensen.EditorExtensions.Css
 {

@@ -1,14 +1,20 @@
-﻿using System;
-using System.Globalization;
-using Microsoft.CSS.Core;
+﻿using Microsoft.CSS.Core;
+using Microsoft.CSS.Core.Parser;
+using Microsoft.CSS.Core.TreeItems.Functions;
+using Microsoft.CSS.Core.TreeItems.PropertyValues;
 using Microsoft.CSS.Editor;
-using Microsoft.CSS.Editor.Intellisense;
+using Microsoft.CSS.Editor.Completion.ColorPicker;
+using Microsoft.CSS.Editor.Document;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.OLE.Interop;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.TextManager.Interop;
-using Editor = Microsoft.Web.Editor;
+using Microsoft.Web.Core.ContentTypes;
+using Microsoft.Web.Editor.Host;
+using System;
+using System.Globalization;
+using Editor = Microsoft.Web.Editor.ColorPicker;
 
 namespace MadsKristensen.EditorExtensions.Css
 {
@@ -52,10 +58,10 @@ namespace MadsKristensen.EditorExtensions.Css
 
         private bool Move(Direction direction)
         {
-            if (Editor.WebEditor.Host == null)
+            if (WebEditor.Host == null)
                 return false;
 
-            var point = _textView.BufferGraph.MapDownToInsertionPoint(_textView.Caret.Position.BufferPosition, PointTrackingMode.Positive, ts => ts.ContentType.IsOfType(Editor.CssContentTypeDefinition.CssContentType));
+            var point = _textView.BufferGraph.MapDownToInsertionPoint(_textView.Caret.Position.BufferPosition, PointTrackingMode.Positive, ts => ts.ContentType.IsOfType(CssContentTypeDefinition.CssContentType));
             if (point == null)
                 return false;
 

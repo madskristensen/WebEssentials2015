@@ -1,5 +1,8 @@
-﻿using Microsoft.Html.Editor.Intellisense;
+﻿
+using Microsoft.Html.Editor.Completion;
+using Microsoft.Html.Editor.Completion.Def;
 using Microsoft.VisualStudio.Utilities;
+using Microsoft.Web.Core.ContentTypes;
 using Microsoft.Web.Editor;
 using System;
 using System.Collections.Generic;

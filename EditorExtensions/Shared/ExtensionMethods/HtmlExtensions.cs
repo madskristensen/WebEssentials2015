@@ -1,11 +1,13 @@
-﻿using System;
-using System.Linq;
-using System.Runtime.InteropServices;
-using MadsKristensen.EditorExtensions.Helpers;
+﻿using MadsKristensen.EditorExtensions.Helpers;
 using Microsoft.Html.Core;
+using Microsoft.Html.Core.Artifacts;
+using Microsoft.Html.Core.Tree.Nodes;
 using Microsoft.VisualStudio.OLE.Interop;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.TextManager.Interop;
+using System;
+using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace MadsKristensen.EditorExtensions
 {

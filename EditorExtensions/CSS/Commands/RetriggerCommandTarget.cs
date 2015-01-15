@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Windows.Threading;
-using Microsoft.CSS.Editor.Intellisense;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.OLE.Interop;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.TextManager.Interop;
+using Microsoft.CSS.Editor.Completion;
 
 namespace MadsKristensen.EditorExtensions.Css
 {

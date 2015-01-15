@@ -1,16 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Html.Core;
+using Microsoft.Html.Core.Tree.Nodes;
+using Microsoft.Html.Core.Tree.Utility;
+using Microsoft.Html.Editor.SmartTags;
+using Microsoft.Html.Editor.SmartTags.Def;
+using Microsoft.VisualStudio.Language.Intellisense;
+using Microsoft.VisualStudio.Text;
+using Microsoft.VisualStudio.Text.Editor;
+using Microsoft.VisualStudio.Utilities;
+using Microsoft.Web.Core.ContentTypes;
+using Microsoft.Web.Editor;
+using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Globalization;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Forms;
-using Microsoft.Html.Core;
-using Microsoft.Html.Editor.SmartTags;
-using Microsoft.VisualStudio.Language.Intellisense;
-using Microsoft.VisualStudio.Text;
-using Microsoft.VisualStudio.Text.Editor;
-using Microsoft.VisualStudio.Utilities;
-using Microsoft.Web.Editor;
 
 namespace MadsKristensen.EditorExtensions.Html
 {

@@ -4,6 +4,8 @@ using Microsoft.CSS.Editor;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.TextManager.Interop;
+using Microsoft.CSS.Core.Parser;
+using Microsoft.CSS.Editor.Document;
 
 namespace MadsKristensen.EditorExtensions.Scss
 {

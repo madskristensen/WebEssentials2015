@@ -4,6 +4,7 @@ using System.Linq;
 using MadsKristensen.EditorExtensions.JSON;
 using Microsoft.JSON.Core.Parser;
 using Microsoft.Web.Editor;
+using Microsoft.JSON.Core.Parser.TreeItems;
 
 namespace MadsKristensen.EditorExtensions.JSONLD
 {

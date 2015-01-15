@@ -4,6 +4,7 @@ using System.Text;
 using System.Windows.Media.Imaging;
 using Microsoft.CSS.Core;
 using Microsoft.VisualStudio.Text;
+using Microsoft.CSS.Core.TreeItems.AtDirectives;
 
 namespace MadsKristensen.EditorExtensions.Css
 {

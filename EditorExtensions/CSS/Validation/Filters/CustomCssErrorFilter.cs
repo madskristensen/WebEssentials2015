@@ -2,6 +2,8 @@
 using System.ComponentModel.Composition;
 using Microsoft.CSS.Core;
 using Microsoft.VisualStudio.Utilities;
+using Microsoft.CSS.Core.Checker;
+using Microsoft.CSS.Core.TreeItems;
 
 namespace MadsKristensen.EditorExtensions.Css
 {

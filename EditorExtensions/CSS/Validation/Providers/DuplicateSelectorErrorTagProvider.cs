@@ -5,6 +5,9 @@ using System.Linq;
 using Microsoft.CSS.Core;
 using Microsoft.VisualStudio.Utilities;
 using MadsKristensen.EditorExtensions.Settings;
+using Microsoft.CSS.Core.TreeItems;
+using Microsoft.CSS.Core.Checker;
+using Microsoft.CSS.Core.Parser;
 
 namespace MadsKristensen.EditorExtensions.Css
 {

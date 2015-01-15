@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Windows.Threading;
-using Microsoft.CSS.Editor.Intellisense;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Utilities;
+using Microsoft.CSS.Editor.Completion;
 
 namespace MadsKristensen.EditorExtensions.Css
 {

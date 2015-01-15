@@ -9,6 +9,8 @@ using Microsoft.Html.Core;
 using Microsoft.Html.Editor;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Web.BrowserLink;
+using Microsoft.Html.Editor.Document;
+using Microsoft.Html.Core.Tree.Nodes;
 
 namespace MadsKristensen.EditorExtensions
 {

@@ -6,6 +6,8 @@ using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Utilities;
+using Microsoft.CSS.Core.TreeItems.Selectors;
+using Microsoft.CSS.Core.Parser;
 
 namespace MadsKristensen.EditorExtensions.Css
 {

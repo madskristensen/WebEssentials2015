@@ -3,6 +3,10 @@ using System.Diagnostics.CodeAnalysis;
 using MadsKristensen.EditorExtensions.Settings;
 using Microsoft.CSS.Core;
 using Microsoft.CSS.Editor.Schemas;
+using Microsoft.CSS.Core.TreeItems.Functions;
+using Microsoft.CSS.Core.TreeItems.Selectors;
+using Microsoft.CSS.Core.Parser;
+using Microsoft.CSS.Core.Checker;
 
 namespace MadsKristensen.EditorExtensions
 {

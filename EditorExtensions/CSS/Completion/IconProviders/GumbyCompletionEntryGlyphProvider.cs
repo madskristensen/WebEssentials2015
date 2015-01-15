@@ -1,5 +1,5 @@
 ﻿using Microsoft.CSS.Editor;
-using Microsoft.Web.Editor.Intellisense;
+using Microsoft.CSS.Editor.Completion;
 using System;
 using System.ComponentModel.Composition;
 using System.IO;

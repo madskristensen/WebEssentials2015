@@ -5,9 +5,12 @@ using System.Globalization;
 using System.Linq;
 using Microsoft.CSS.Core;
 using Microsoft.CSS.Editor.Schemas;
-using Microsoft.CSS.Editor.SyntaxCheck;
 using Microsoft.VisualStudio.Utilities;
 using MadsKristensen.EditorExtensions.Settings;
+using Microsoft.CSS.Core.Checker;
+using Microsoft.CSS.Core.TreeItems.AtDirectives;
+using Microsoft.CSS.Core.Parser;
+using Microsoft.CSS.Editor.Checker;
 
 namespace MadsKristensen.EditorExtensions.Css
 {

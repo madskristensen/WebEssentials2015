@@ -12,6 +12,9 @@ using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.TextManager.Interop;
 using Microsoft.Web.Editor;
 using VSConstants = Microsoft.VisualStudio.VSConstants;
+using Microsoft.CSS.Core.TreeItems.Selectors;
+using Microsoft.CSS.Editor.Document;
+using Microsoft.Web.Editor.Host;
 
 namespace MadsKristensen.EditorExtensions.Margin
 {

@@ -2,6 +2,7 @@
 using System.Windows.Media.Imaging;
 using Microsoft.CSS.Core;
 using Microsoft.VisualStudio.Text;
+using Microsoft.CSS.Core.TreeItems.Selectors;
 
 namespace MadsKristensen.EditorExtensions.Css
 {

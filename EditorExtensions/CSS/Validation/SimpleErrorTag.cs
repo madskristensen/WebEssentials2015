@@ -1,5 +1,7 @@
 ﻿using MadsKristensen.EditorExtensions.Settings;
 using Microsoft.CSS.Core;
+using Microsoft.CSS.Core.Checker;
+using Microsoft.CSS.Core.Parser;
 
 namespace MadsKristensen.EditorExtensions.Css
 {

@@ -9,6 +9,9 @@ using Microsoft.CSS.Core;
 using Microsoft.CSS.Editor;
 using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.VisualStudio.Text;
+using Microsoft.CSS.Core.Parser;
+using Microsoft.CSS.Editor.Document;
+using Microsoft.CSS.Core.TreeItems;
 
 namespace MadsKristensen.EditorExtensions
 {

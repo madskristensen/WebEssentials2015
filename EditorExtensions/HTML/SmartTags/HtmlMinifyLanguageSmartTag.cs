@@ -1,15 +1,20 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.Composition;
-using MadsKristensen.EditorExtensions.Optimization.Minification;
+﻿using MadsKristensen.EditorExtensions.Optimization.Minification;
 using Microsoft.Html.Core;
+using Microsoft.Html.Core.Tree.Nodes;
+using Microsoft.Html.Core.Tree.Utility;
 using Microsoft.Html.Editor.SmartTags;
+using Microsoft.Html.Editor.SmartTags.Def;
 using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Utilities;
 using Microsoft.Web.Core;
+using Microsoft.Web.Core.ContentTypes;
+using Microsoft.Web.Core.Text;
 using Microsoft.Web.Editor;
-using Microsoft.Web.Editor.Extensions.Text;
+using Microsoft.Web.Editor.Text;
+using System.Collections.Generic;
+using System.ComponentModel.Composition;
 
 namespace MadsKristensen.EditorExtensions.Html
 {

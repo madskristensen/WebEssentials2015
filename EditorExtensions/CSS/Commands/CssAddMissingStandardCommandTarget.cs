@@ -5,11 +5,13 @@ using System.Text;
 using EnvDTE;
 using Microsoft.CSS.Core;
 using Microsoft.CSS.Editor;
-using Microsoft.CSS.Editor.Intellisense;
 using Microsoft.CSS.Editor.Schemas;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.TextManager.Interop;
+using Microsoft.CSS.Core.TreeItems;
+using Microsoft.CSS.Editor.Document;
+using Microsoft.CSS.Editor.Completion;
 
 namespace MadsKristensen.EditorExtensions.Css
 {

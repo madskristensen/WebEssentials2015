@@ -8,6 +8,13 @@ using Microsoft.Html.Editor;
 using Microsoft.Html.Editor.ContainedLanguage;
 using Microsoft.VisualStudio.Utilities;
 using Microsoft.Web.Editor.Formatting;
+using Microsoft.Html.Editor.ContainedLanguage.Handlers;
+using Microsoft.Html.Editor.ContentType.Handlers;
+using Microsoft.Html.Editor.ContentType.Def;
+using Microsoft.Html.Core.Artifacts;
+using Microsoft.Html.Editor.Tree;
+using Microsoft.Html.Editor.ContainedLanguage.Generators;
+using Microsoft.Html.Editor.ContainedLanguage.Common;
 
 namespace MadsKristensen.EditorExtensions.Markdown
 {

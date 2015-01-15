@@ -7,6 +7,11 @@ using Microsoft.CSS.Core;
 using Microsoft.CSS.Editor;
 using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.VisualStudio.Text;
+using Microsoft.CSS.Core.TreeItems;
+using Microsoft.CSS.Core.Parser;
+using Microsoft.CSS.Editor.Parser;
+using Microsoft.CSS.Core.TreeItems.Selectors;
+using Microsoft.CSS.Core.TreeItems.AtDirectives;
 
 namespace MadsKristensen.EditorExtensions.Html
 {

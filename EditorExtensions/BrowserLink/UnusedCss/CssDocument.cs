@@ -1,4 +1,5 @@
 ﻿using Microsoft.CSS.Core;
+using Microsoft.CSS.Core.Parser;
 
 namespace MadsKristensen.EditorExtensions.BrowserLink.UnusedCss
 {

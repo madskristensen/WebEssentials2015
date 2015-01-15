@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
@@ -7,6 +7,10 @@ using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Utilities;
+using Microsoft.CSS.Core.TreeItems.Functions;
+using Microsoft.CSS.Core.Parser;
+using Microsoft.CSS.Core.TreeItems.Comments;
+using Microsoft.CSS.Core.TreeItems;
 
 namespace MadsKristensen.EditorExtensions.Css
 {

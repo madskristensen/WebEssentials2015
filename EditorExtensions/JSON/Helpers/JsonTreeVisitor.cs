@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.CSS.Core;
 using Microsoft.JSON.Core.Parser;
+using Microsoft.CSS.Core.Parser;
 
 namespace MadsKristensen.EditorExtensions.JSON
 {

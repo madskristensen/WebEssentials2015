@@ -3,6 +3,9 @@ using System.Windows.Media.Imaging;
 using Microsoft.CSS.Core;
 using Microsoft.CSS.Editor;
 using Microsoft.VisualStudio.Text;
+using Microsoft.CSS.Core.TreeItems;
+using Microsoft.CSS.Editor.Settings;
+using Microsoft.CSS.Core.Format;
 
 namespace MadsKristensen.EditorExtensions.Css
 {

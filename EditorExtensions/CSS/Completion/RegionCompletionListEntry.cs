@@ -1,7 +1,9 @@
 ﻿using System;
 using Microsoft.CSS.Editor;
-using Microsoft.CSS.Editor.Intellisense;
 using Microsoft.VisualStudio.Text;
+using Microsoft.Web.Editor.Completion;
+using Microsoft.CSS.Editor.Schemas.Browsers;
+using Microsoft.CSS.Editor.Completion;
 
 namespace MadsKristensen.EditorExtensions.Css
 {
@@ -66,9 +68,9 @@ namespace MadsKristensen.EditorExtensions.Css
             get { return null; }
         }
 
-        public Microsoft.Web.Editor.Intellisense.CompletionEntryFilterTypes FilterType
+        public CompletionEntryFilterTypes FilterType
         {
-            get { return Microsoft.Web.Editor.Intellisense.CompletionEntryFilterTypes.AlwaysVisible; }
+            get { return CompletionEntryFilterTypes.AlwaysVisible; }
         }
 
         public System.Windows.Media.ImageSource Icon

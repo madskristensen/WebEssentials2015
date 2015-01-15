@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.CSS.Core;
+using Microsoft.CSS.Core.TreeItems.Selectors;
+using Microsoft.CSS.Core.TreeItems;
 
 namespace MadsKristensen.EditorExtensions
 {

@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.CSS.Core;
-using Microsoft.CSS.Editor.Intellisense;
 using Microsoft.CSS.Editor.Schemas;
-using Microsoft.CSS.Editor.SyntaxCheck;
+using Microsoft.CSS.Editor.Completion;
+using Microsoft.CSS.Core.TreeItems;
+using Microsoft.CSS.Editor.Checker;
+using Microsoft.CSS.Core.TreeItems.AtDirectives;
+using Microsoft.CSS.Core.Checker;
 
 namespace MadsKristensen.EditorExtensions
 {

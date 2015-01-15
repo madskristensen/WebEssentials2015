@@ -6,6 +6,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Microsoft.VisualStudio.Text;
 using Microsoft.Web.Editor;
+using Microsoft.Web.Editor.ColorPicker;
 
 namespace MadsKristensen.EditorExtensions.Css
 {

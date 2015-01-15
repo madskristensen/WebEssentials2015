@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using Microsoft.CSS.Editor.Schemas;
 using Microsoft.Web.Editor;
+using Microsoft.Web.Editor.Host;
 
 namespace MadsKristensen.EditorExtensions.Css
 {

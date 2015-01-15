@@ -3,6 +3,7 @@ using System.Globalization;
 using Microsoft.CSS.Core;
 using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.VisualStudio.Text;
+using Microsoft.CSS.Core.TreeItems;
 
 namespace MadsKristensen.EditorExtensions
 {

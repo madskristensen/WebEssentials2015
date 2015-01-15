@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.CSS.Core;
+using Microsoft.CSS.Core.TreeItems;
+using Microsoft.CSS.Core.Parser;
 
 namespace MadsKristensen.EditorExtensions.BrowserLink.UnusedCss
 {

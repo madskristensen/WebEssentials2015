@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.Web.Core;
+using Microsoft.Web.Core.Text;
 
 namespace MadsKristensen.EditorExtensions.Helpers
 {

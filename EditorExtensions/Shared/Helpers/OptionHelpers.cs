@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.Web.Editor;
 using VS = Microsoft.VisualStudio;
+using Microsoft.Web.Editor.ColorPicker;
 
 namespace MadsKristensen.EditorExtensions
 {

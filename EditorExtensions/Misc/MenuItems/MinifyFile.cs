@@ -9,6 +9,7 @@ using MadsKristensen.EditorExtensions.Settings;
 using Microsoft.Html.Editor;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Utilities;
+using Microsoft.Html.Editor.ContentType;
 
 namespace MadsKristensen.EditorExtensions
 {

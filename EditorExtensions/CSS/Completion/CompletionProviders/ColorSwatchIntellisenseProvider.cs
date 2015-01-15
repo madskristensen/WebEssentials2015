@@ -5,11 +5,15 @@ using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Microsoft.Css.Extensions;
 using Microsoft.CSS.Core;
 using Microsoft.CSS.Editor;
-using Microsoft.CSS.Editor.Intellisense;
 using Microsoft.VisualStudio.Utilities;
+using Microsoft.CSS.Editor.Completion;
+using Microsoft.CSS.Core.TreeItems;
+using Microsoft.Web.Languages.Css.Extensions;
+using Microsoft.CSS.Editor.Document.Cache;
+using Microsoft.CSS.Editor.Document;
+using Microsoft.CSS.Editor.Completion.ColorPicker;
 
 namespace MadsKristensen.EditorExtensions.Css
 {

@@ -11,6 +11,8 @@ using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Text.Projection;
 using Microsoft.VisualStudio.TextManager.Interop;
 using Microsoft.Web.Editor;
+using Microsoft.VisualStudio;
+using Microsoft.Web.Core.ContentTypes;
 
 namespace MadsKristensen.EditorExtensions.Images
 {

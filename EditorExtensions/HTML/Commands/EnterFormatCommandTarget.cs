@@ -5,8 +5,6 @@ using System.Windows.Threading;
 using MadsKristensen.EditorExtensions.Settings;
 using Microsoft.Html.Core;
 using Microsoft.Html.Editor;
-using Microsoft.Html.Schemas;
-using Microsoft.Html.Schemas.Model;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.VisualStudio.Text;
@@ -15,6 +13,11 @@ using Microsoft.VisualStudio.Text.Formatting;
 using Microsoft.VisualStudio.Text.Projection;
 using Microsoft.VisualStudio.TextManager.Interop;
 using Microsoft.Web.Editor.Formatting;
+using Microsoft.Html.Editor.Tree;
+using Microsoft.Html.Editor.Document;
+using Microsoft.Html.Core.Tree.Nodes;
+using Microsoft.Html.Editor.Schemas.Interfaces;
+using Microsoft.Html.Editor.Schemas.Model;
 
 namespace MadsKristensen.EditorExtensions.Html
 {

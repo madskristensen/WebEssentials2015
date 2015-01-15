@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using Microsoft.CSS.Core;
 using Microsoft.VisualStudio.Utilities;
+using Microsoft.CSS.Core.Checker;
+using Microsoft.CSS.Core.Parser;
+using Microsoft.CSS.Core.TreeItems.AtDirectives;
 
 namespace MadsKristensen.EditorExtensions.Css
 {

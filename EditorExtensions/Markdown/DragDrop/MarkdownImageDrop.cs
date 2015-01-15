@@ -11,27 +11,26 @@ using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Text.Editor.DragDrop;
 using Microsoft.VisualStudio.Utilities;
 
-namespace MadsKristensen.EditorExtensions.Html
+namespace MadsKristensen.EditorExtensions.Markdown
 {
     [Export(typeof(IDropHandlerProvider))]
     [DropFormat("FileDrop")]
     [DropFormat("CF_VSSTGPROJECTITEMS")]
-    [Name("HtmlImageDropHandler")]
-    [ContentType("HTMLX")]
+    [Name("MarkdownImageDropHandler")]
+    [ContentType("markdown")]
     [Order(Before = "DefaultFileDropHandler")]
-    public class HtmlImageDropHandlerProvider : IDropHandlerProvider
+    public class HtmlImageDropHandlerMarkdownImageDropHandlerProvider : IDropHandlerProvider
     {
         [Import]
         public ITextDocumentFactoryService TextDocumentFactoryService { get; set; }
         public IDropHandler GetAssociatedDropHandler(IWpfTextView wpfTextView)
         {
-            return wpfTextView.Properties.GetOrCreateSingletonProperty(() => new HtmlImageDropHandler(TextDocumentFactoryService, wpfTextView));
+            return wpfTextView.Properties.GetOrCreateSingletonProperty(() => new MarkdownImageDropHandler(TextDocumentFactoryService, wpfTextView));
         }
     }
 
-    public class HtmlImageDropHandler : IDropHandler
+    public class MarkdownImageDropHandler : IDropHandler
     {
-        const string HtmlTemplate = "<img src=\"{2}\" alt=\"\" />";
         const string MarkdownTemplate = "![{0}]({1})";
         static readonly HashSet<string> _imageExtensions = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { ".jpg", ".jpeg", ".bmp", ".png", ".gif", ".svg", ".tif", ".tiff" };
 
@@ -40,7 +39,7 @@ namespace MadsKristensen.EditorExtensions.Html
 
         string _imageFilename;
 
-        public HtmlImageDropHandler(ITextDocumentFactoryService documentFactory, IWpfTextView view)
+        public MarkdownImageDropHandler(ITextDocumentFactoryService documentFactory, IWpfTextView view)
         {
             _documentFactory = documentFactory;
             _view = view;
@@ -63,9 +62,7 @@ namespace MadsKristensen.EditorExtensions.Html
             if (!_documentFactory.TryGetTextDocument(_view.TextDataModel.DocumentBuffer, out document))
                 return DragDropPointerEffects.None;
 
-            string template = document.TextBuffer.ContentType.IsOfType("Markdown") ? MarkdownTemplate : HtmlTemplate.ToLowerInvariant();
-
-            _view.TextBuffer.Insert(dragDropInfo.VirtualBufferPosition.Position.Position, string.Format(CultureInfo.CurrentCulture, template, Path.GetFileName(reference), reference, HttpUtility.HtmlAttributeEncode(reference)));
+            _view.TextBuffer.Insert(dragDropInfo.VirtualBufferPosition.Position.Position, string.Format(CultureInfo.CurrentCulture, MarkdownTemplate, Path.GetFileName(reference), reference, HttpUtility.HtmlAttributeEncode(reference)));
 
             return DragDropPointerEffects.Link;
         }

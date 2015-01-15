@@ -21,6 +21,7 @@ using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Utilities;
 using Microsoft.Web.Editor.EditorHelpers;
+using Microsoft.Web.Editor.Controller;
 
 namespace MadsKristensen.EditorExtensions.Markdown.Classify
 {
@@ -171,7 +172,7 @@ namespace MadsKristensen.EditorExtensions.Markdown.Classify
 
             WindowHelpers.WaitFor(delegate
             {
-                var textView = Microsoft.Web.Editor.TextViewConnectionListener.GetFirstViewForBuffer(editorBuffer);
+                var textView = TextViewConnectionListener.GetFirstViewForBuffer(editorBuffer);
                 if (textView == null) return false;
                 InstallCommandTarget(textView, projectionBuffer.IProjectionBuffer);
                 return true;
@@ -212,14 +213,14 @@ namespace MadsKristensen.EditorExtensions.Markdown.Classify
         {
             var ns = contentTypeToNamespace[initialContentType.TypeName];
             // VisualBasicLanguageService & Package are in a different namespace than C#'s.
-            var packageType = Type.GetType(("Microsoft.VisualStudio.LanguageServices.\{ns}.LanguageService.\{ns}Package, "
-                                         + "Microsoft.VisualStudio.LanguageServices.\{ns}")
+            var packageType = Type.GetType(("Microsoft.VisualStudio.LanguageServices.{ns}.LanguageService.{ns}Package, "
+                                         + "Microsoft.VisualStudio.LanguageServices.{ns}")
                                             .Replace("LanguageService.VisualBasicPackage", "VisualBasicPackage"));
-            var languageServiceType = Type.GetType(("Microsoft.VisualStudio.LanguageServices.\{ns}.LanguageService.\{ns}LanguageService, "
-                                                  + "Microsoft.VisualStudio.LanguageServices.\{ns}")
+            var languageServiceType = Type.GetType(("Microsoft.VisualStudio.LanguageServices.{ns}.LanguageService.{ns}LanguageService, "
+                                                  + "Microsoft.VisualStudio.LanguageServices.{ns}")
                                             .Replace("LanguageService.VisualBasicLanguageService", "VisualBasicLanguageService"));
-            var projectShimType = Type.GetType("Microsoft.VisualStudio.LanguageServices.\{ns}.ProjectSystemShim.\{ns}Project, "
-                                             + "Microsoft.VisualStudio.LanguageServices.\{ns}");
+            var projectShimType = Type.GetType("Microsoft.VisualStudio.LanguageServices.{ns}.ProjectSystemShim.{ns}Project, "
+                                             + "Microsoft.VisualStudio.LanguageServices.{ns}");
             var oleCommandTargetType = Type.GetType("Microsoft.VisualStudio.LanguageServices.Implementation.StandaloneCommandFilter`3, "
                                                   + "Microsoft.VisualStudio.LanguageServices")
                 .MakeGenericType(packageType, languageServiceType, projectShimType);

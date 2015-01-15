@@ -1,10 +1,10 @@
 ﻿using System;
 using System.ComponentModel.Composition;
 using MadsKristensen.EditorExtensions.Settings;
-using Microsoft.CSS.Editor.Intellisense;
 using Microsoft.CSS.Editor.Schemas;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Utilities;
+using Microsoft.CSS.Editor.Completion;
 
 namespace MadsKristensen.EditorExtensions.Css
 {

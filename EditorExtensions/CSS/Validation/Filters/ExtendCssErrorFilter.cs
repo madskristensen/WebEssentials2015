@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using Microsoft.CSS.Core;
-using Microsoft.Less.Core;
 using Microsoft.VisualStudio.Utilities;
+using Microsoft.Web.Languages.Less.Parser;
+using Microsoft.CSS.Core.Checker;
 
 namespace MadsKristensen.EditorExtensions.Css
 {

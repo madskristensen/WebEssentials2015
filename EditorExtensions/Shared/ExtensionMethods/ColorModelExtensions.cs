@@ -1,5 +1,6 @@
 ﻿using System.Windows.Media;
 using Microsoft.Web.Editor;
+using Microsoft.Web.Editor.ColorPicker;
 
 namespace MadsKristensen.EditorExtensions
 {

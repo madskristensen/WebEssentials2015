@@ -6,6 +6,10 @@ using Microsoft.CSS.Core;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Classification;
 using Microsoft.VisualStudio.Utilities;
+using Microsoft.CSS.Core.Utilities;
+using Microsoft.CSS.Core.TreeItems;
+using Microsoft.CSS.Core.Parser;
+using Microsoft.CSS.Core.Document;
 
 namespace MadsKristensen.EditorExtensions.Css
 {

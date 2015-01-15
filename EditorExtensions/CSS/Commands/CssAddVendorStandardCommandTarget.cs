@@ -9,6 +9,8 @@ using Microsoft.CSS.Editor.Schemas;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.TextManager.Interop;
+using Microsoft.CSS.Core.TreeItems;
+using Microsoft.CSS.Editor.Document;
 
 namespace MadsKristensen.EditorExtensions.Css
 {

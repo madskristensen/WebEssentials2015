@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Drawing;
 using Microsoft.CSS.Core;
-using Microsoft.CSS.Editor.Intellisense;
 using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Utilities;
 using Microsoft.Web.Editor;
+using Microsoft.CSS.Core.TreeItems;
+using Microsoft.CSS.Core.Parser;
+using Microsoft.CSS.Core.Tokens;
+using Microsoft.CSS.Editor.Completion.ColorPicker;
+using Microsoft.Web.Editor.ColorPicker;
+using Microsoft.CSS.Core.TreeItems.PropertyValues;
+using Microsoft.CSS.Core.TreeItems.Functions;
 
 namespace MadsKristensen.EditorExtensions.Css
 {

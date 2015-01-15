@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
 using Microsoft.CSS.Core;
-using Microsoft.CSS.Editor.Intellisense;
-using Microsoft.Html.Schemas;
-using Microsoft.Html.Schemas.Model;
 using Microsoft.VisualStudio.Utilities;
+using Microsoft.CSS.Core.Checker;
+using Microsoft.CSS.Editor.Completion;
+using Microsoft.Html.Editor.Schemas.Interfaces;
+using Microsoft.Html.Editor.Schemas.Model;
+using Microsoft.CSS.Core.Parser;
+using Microsoft.CSS.Core.TreeItems;
 
 namespace MadsKristensen.EditorExtensions.Css
 {

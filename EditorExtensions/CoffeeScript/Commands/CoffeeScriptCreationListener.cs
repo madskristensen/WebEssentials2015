@@ -4,6 +4,7 @@ using Microsoft.VisualStudio.Editor;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Utilities;
+using Microsoft.Web.Core.ContentTypes;
 using Microsoft.Web.Editor;
 using System.Collections.ObjectModel;
 using System.ComponentModel.Composition;

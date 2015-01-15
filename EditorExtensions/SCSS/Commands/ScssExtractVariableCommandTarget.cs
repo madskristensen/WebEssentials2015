@@ -1,10 +1,13 @@
 ﻿using System;
 using Microsoft.CSS.Core;
 using Microsoft.CSS.Editor;
-using Microsoft.Scss.Core;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.TextManager.Interop;
+using Microsoft.Web.Languages.Scss.Parser;
+using Microsoft.CSS.Core.Parser;
+using Microsoft.CSS.Editor.Document;
+using Microsoft.CSS.Core.TreeItems.AtDirectives;
 
 namespace MadsKristensen.EditorExtensions.Scss
 {

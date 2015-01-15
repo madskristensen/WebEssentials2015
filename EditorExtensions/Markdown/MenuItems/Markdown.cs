@@ -10,6 +10,7 @@ using Microsoft.Html.Editor;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Utilities;
 using Microsoft.Web.Editor;
+using Microsoft.Html.Editor.ContentType;
 
 namespace MadsKristensen.EditorExtensions.Markdown
 {

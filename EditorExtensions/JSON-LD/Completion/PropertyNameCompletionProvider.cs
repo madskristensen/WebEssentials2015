@@ -4,9 +4,9 @@ using System.Linq;
 using MadsKristensen.EditorExtensions.JSON;
 using Microsoft.JSON.Core.Parser;
 using Microsoft.JSON.Editor.Completion;
-using Microsoft.JSON.Editor.Completion.Def;
 using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.VisualStudio.Utilities;
+using Microsoft.JSON.Core.Parser.TreeItems;
 
 namespace MadsKristensen.EditorExtensions.JSONLD
 {

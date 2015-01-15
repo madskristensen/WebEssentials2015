@@ -5,6 +5,9 @@ using Microsoft.Html.Editor;
 using Microsoft.VisualStudio.Utilities;
 using Microsoft.Web.Editor;
 using Microsoft.Web.Editor.Composition;
+using Microsoft.Web.Core.Composition;
+using Microsoft.Web.Editor.Host;
+using Microsoft.Html.Editor.ContentType;
 
 namespace MadsKristensen.EditorExtensions
 {

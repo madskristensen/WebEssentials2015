@@ -1,6 +1,7 @@
 ﻿using System.Windows.Media;
 using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.Web.Editor;
+using Microsoft.Web.Editor.Imaging;
 
 namespace MadsKristensen.EditorExtensions.JSONLD
 {

@@ -1,16 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Composition;
-using System.Linq;
-using System.Text.RegularExpressions;
-using Microsoft.Html.Core;
+﻿using Microsoft.Html.Core;
+using Microsoft.Html.Core.Artifacts;
 using Microsoft.Html.Editor.Classification;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Classification;
 using Microsoft.VisualStudio.Utilities;
 using Microsoft.Web.Core;
+using Microsoft.Web.Core.Text;
 using Microsoft.Web.Editor;
-using Microsoft.Web.Editor.Extensions.Text;
+using Microsoft.Web.Editor.Services;
+using Microsoft.Web.Editor.Text;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.Composition;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace MadsKristensen.EditorExtensions.Markdown
 {

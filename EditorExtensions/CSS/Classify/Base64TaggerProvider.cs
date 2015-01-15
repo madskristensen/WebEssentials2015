@@ -8,6 +8,9 @@ using Microsoft.CSS.Editor;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Tagging;
 using Microsoft.VisualStudio.Utilities;
+using Microsoft.CSS.Core.TreeItems.Functions;
+using Microsoft.CSS.Core.Document;
+using Microsoft.CSS.Editor.Document;
 
 namespace MadsKristensen.EditorExtensions.Css
 {

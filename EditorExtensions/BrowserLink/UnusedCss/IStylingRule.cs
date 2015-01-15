@@ -1,5 +1,7 @@
 ﻿using System;
 using Microsoft.CSS.Core;
+using Microsoft.CSS.Core.TreeItems;
+
 namespace MadsKristensen.EditorExtensions.BrowserLink.UnusedCss
 {
     public interface IStylingRule : IEquatable<IStylingRule>

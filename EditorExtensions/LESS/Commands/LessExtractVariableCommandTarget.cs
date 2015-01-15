@@ -1,10 +1,13 @@
 ﻿using System;
 using Microsoft.CSS.Core;
 using Microsoft.CSS.Editor;
-using Microsoft.Less.Core;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.TextManager.Interop;
+using Microsoft.CSS.Core.Parser;
+using Microsoft.Web.Languages.Less.Parser;
+using Microsoft.CSS.Core.TreeItems.AtDirectives;
+using Microsoft.CSS.Editor.Document;
 
 namespace MadsKristensen.EditorExtensions.Less
 {

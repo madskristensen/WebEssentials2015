@@ -8,6 +8,14 @@ using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Text.Tagging;
 using Microsoft.Web.Editor;
 using Microsoft.Web.Editor.EditorHelpers;
+using Microsoft.CSS.Core.Parser;
+using Microsoft.CSS.Core.TreeItems;
+using Microsoft.CSS.Editor.Document;
+using Microsoft.Web.Editor.Host;
+using Microsoft.CSS.Core.Utilities;
+using Microsoft.CSS.Core.Document;
+using Microsoft.CSS.Core.TreeItems.Selectors;
+using Microsoft.CSS.Core.TreeItems.Comments;
 
 namespace MadsKristensen.EditorExtensions.Css
 {

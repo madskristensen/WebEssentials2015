@@ -5,6 +5,10 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 using Microsoft.CSS.Core;
+using Microsoft.CSS.Core.Parser;
+using Microsoft.CSS.Core.TreeItems.Functions;
+using Microsoft.CSS.Core.Text;
+using Microsoft.CSS.Core.TreeItems;
 
 namespace MadsKristensen.EditorExtensions.Helpers
 {

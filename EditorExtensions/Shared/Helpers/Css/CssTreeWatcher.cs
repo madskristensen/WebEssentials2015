@@ -7,6 +7,9 @@ using Microsoft.CSS.Editor;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Utilities;
+using Microsoft.CSS.Core.Parser;
+using Microsoft.CSS.Core.Document;
+using Microsoft.CSS.Editor.Document;
 
 namespace MadsKristensen.EditorExtensions
 {

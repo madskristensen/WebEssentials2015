@@ -9,10 +9,15 @@ using System.Windows.Media.Imaging;
 using MadsKristensen.EditorExtensions.Settings;
 using Microsoft.CSS.Core;
 using Microsoft.CSS.Editor;
-using Microsoft.CSS.Editor.Intellisense;
 using Microsoft.CSS.Editor.Schemas;
 using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.VisualStudio.Text;
+using Microsoft.CSS.Core.TreeItems.Selectors;
+using Microsoft.CSS.Core.TreeItems;
+using Microsoft.CSS.Editor.Completion;
+using Microsoft.CSS.Core.Parser;
+using Microsoft.CSS.Editor.Document;
+using Microsoft.CSS.Core.TreeItems.AtDirectives;
 
 namespace MadsKristensen.EditorExtensions
 {

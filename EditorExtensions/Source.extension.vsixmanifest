@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="5fb7364d-2e8c-44a4-95eb-2a382e30fec9" Version="0.1.7" Language="en-US" Publisher="Mads Kristensen" />
+        <Identity Id="5fb7364d-2e8c-44a4-95eb-2a382e30fec9" Version="0.2.1" Language="en-US" Publisher="Mads Kristensen" />
         <DisplayName>Web Essentials 2015.0 Preview</DisplayName>
         <Description xml:space="preserve">Adds many useful features to Visual Studio for web developers.</Description>
         <MoreInfo>http://vswebessentials.com/</MoreInfo>
@@ -13,11 +13,10 @@
         <Tags>css, javascript, html, json, markdown</Tags>
     </Metadata>
     <Installation InstalledByMsi="false">
-        <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="14.0.22310" />
+        <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="14.0.22512" />
     </Installation>
     <Dependencies>
-        <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="4.5" />
-        <Dependency Id="Microsoft.VisualStudio.MPF.14.0" DisplayName="Visual Studio MPF 14.0" d:Source="Installed" Version="14.0" />
+
         <!--<Dependency d:Source="Installed" Id="0AC2ABB1-6383-4608-BA51-B58A23DD9E8A" DisplayName="Microsoft ASP.NET and Web Tools" Version="[12.3,12.4)" />-->
     </Dependencies>
     <Assets>

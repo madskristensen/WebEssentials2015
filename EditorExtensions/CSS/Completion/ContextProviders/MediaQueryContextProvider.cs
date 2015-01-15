@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using Microsoft.CSS.Core;
-using Microsoft.CSS.Editor.Intellisense;
 using Microsoft.VisualStudio.Utilities;
+using Microsoft.CSS.Core.TreeItems.AtDirectives;
+using Microsoft.CSS.Core.Parser;
+using Microsoft.CSS.Editor.Completion;
 
 namespace MadsKristensen.EditorExtensions.Css
 {

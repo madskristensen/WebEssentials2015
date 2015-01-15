@@ -8,9 +8,13 @@ using System.Threading.Tasks;
 using MadsKristensen.EditorExtensions.Settings;
 using Microsoft.CSS.Core;
 using Microsoft.CSS.Editor;
-using Microsoft.Scss.Core;
 using Microsoft.VisualStudio.Utilities;
 using Newtonsoft.Json;
+using Microsoft.CSS.Core.Parser;
+using Microsoft.CSS.Core.TreeItems.Selectors;
+using Microsoft.CSS.Core.TreeItems;
+using Microsoft.CSS.Editor.Parser;
+using Microsoft.Web.Languages.Scss.Parser;
 
 namespace MadsKristensen.EditorExtensions
 {

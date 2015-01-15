@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.CSS.Core;
 using Microsoft.CSS.Editor;
-using Microsoft.Less.Core;
-using Microsoft.Scss.Core;
 using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.VisualStudio.Text;
+using Microsoft.CSS.Editor.Document;
+using Microsoft.CSS.Core.Parser;
+using Microsoft.Web.Languages.Less.Parser.Mixin;
+using Microsoft.Web.Languages.Scss.Parser.MixinDirective;
+using Microsoft.CSS.Core.TreeItems.Selectors;
 
 namespace MadsKristensen.EditorExtensions
 {

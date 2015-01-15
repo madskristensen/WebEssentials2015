@@ -4,6 +4,9 @@ using System.Linq;
 using MadsKristensen.EditorExtensions.Helpers;
 using Microsoft.Html.Core;
 using Microsoft.Web.Core;
+using Microsoft.VisualStudio.Text.Editor;
+using Microsoft.Html.Core.Artifacts;
+using Microsoft.Web.Core.Text;
 
 namespace MadsKristensen.EditorExtensions.Markdown
 {
@@ -102,7 +105,7 @@ namespace MadsKristensen.EditorExtensions.Markdown
         {
             if (rangeLength == 0)
                 return false;
-            var surroundingText = rangeText.GetText(new TextRange(
+            var surroundingText = rangeText.GetText(new Microsoft.Web.Core.Text.TextRange(
                 rangeStart,
                 Math.Min(rangeText.Length - rangeStart, rangeLength + surroundingLength)
             ));

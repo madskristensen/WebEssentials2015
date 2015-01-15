@@ -1,11 +1,14 @@
-﻿using System;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using Microsoft.CSS.Editor;
-using Microsoft.CSS.Editor.Intellisense;
+﻿using Microsoft.CSS.Editor;
+using Microsoft.CSS.Editor.Completion;
+using Microsoft.CSS.Editor.Schemas.Browsers;
 using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.VisualStudio.Text;
 using Microsoft.Web.Editor;
+using Microsoft.Web.Editor.Completion;
+using Microsoft.Web.Editor.Imaging;
+using System;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace MadsKristensen.EditorExtensions.Css
 {
@@ -92,9 +95,9 @@ namespace MadsKristensen.EditorExtensions.Css
             get { return null; }
         }
 
-        public Microsoft.Web.Editor.Intellisense.CompletionEntryFilterTypes FilterType
+        public CompletionEntryFilterTypes FilterType
         {
-            get { return Microsoft.Web.Editor.Intellisense.CompletionEntryFilterTypes.AlwaysVisible; }
+            get { return CompletionEntryFilterTypes.AlwaysVisible; }
         }
 
         public ImageSource Icon

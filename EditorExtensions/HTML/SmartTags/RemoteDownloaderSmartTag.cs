@@ -11,6 +11,10 @@ using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Utilities;
 using Microsoft.Web.Editor;
+using Microsoft.Html.Editor.SmartTags.Def;
+using Microsoft.Web.Core.ContentTypes;
+using Microsoft.Html.Core.Tree.Nodes;
+using Microsoft.Html.Core.Tree.Utility;
 
 namespace MadsKristensen.EditorExtensions.Html
 {

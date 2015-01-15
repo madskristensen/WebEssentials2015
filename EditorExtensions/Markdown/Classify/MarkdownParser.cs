@@ -2,6 +2,8 @@
 using MadsKristensen.EditorExtensions.Helpers;
 using Microsoft.Html.Core;
 using Microsoft.Web.Core;
+using Microsoft.Web.Core.Text;
+using Microsoft.Html.Core.Artifacts;
 
 namespace MadsKristensen.EditorExtensions.Markdown
 {

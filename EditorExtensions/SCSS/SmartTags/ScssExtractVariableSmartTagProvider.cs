@@ -5,11 +5,16 @@ using System.Drawing;
 using MadsKristensen.EditorExtensions.Css;
 using MadsKristensen.EditorExtensions.Less;
 using Microsoft.CSS.Core;
-using Microsoft.Scss.Core;
 using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Utilities;
+using Microsoft.CSS.Core.TreeItems;
+using Microsoft.CSS.Core.Parser;
+using Microsoft.CSS.Core.Tokens;
+using Microsoft.CSS.Core.TreeItems.PropertyValues;
+using Microsoft.Web.Languages.Scss.Parser;
+using Microsoft.CSS.Core.TreeItems.Functions;
 
 namespace MadsKristensen.EditorExtensions.Scss
 {

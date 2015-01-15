@@ -12,6 +12,11 @@ using Microsoft.CSS.Editor;
 using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.VisualStudio.Text;
 using Microsoft.Web.Editor;
+using Microsoft.CSS.Core.TreeItems.Functions;
+using Microsoft.CSS.Core.Parser;
+using Microsoft.CSS.Core.Document;
+using Microsoft.CSS.Editor.Document;
+using Microsoft.Web.Editor.Host;
 
 namespace MadsKristensen.EditorExtensions
 {

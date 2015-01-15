@@ -1,7 +1,9 @@
 ﻿using System.Windows.Media;
-using Microsoft.Html.Editor.Intellisense;
 using Microsoft.Web.Editor;
 using vs = Microsoft.VisualStudio.Language.Intellisense;
+using Microsoft.Html.Editor.Completion;
+using Microsoft.Html.Editor.Completion.Html;
+using Microsoft.Web.Editor.Imaging;
 
 namespace MadsKristensen.EditorExtensions.Html
 {

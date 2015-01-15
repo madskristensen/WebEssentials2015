@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Composition;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using Microsoft.Html.Core;
+﻿using Microsoft.Html.Core;
+using Microsoft.Html.Core.Artifacts;
 using Microsoft.Html.Editor.Classification;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
@@ -13,7 +7,16 @@ using Microsoft.VisualStudio.Text.Projection;
 using Microsoft.VisualStudio.Text.Tagging;
 using Microsoft.VisualStudio.Utilities;
 using Microsoft.Web.Editor;
-using Microsoft.Web.Editor.Extensions.Text;
+using Microsoft.Web.Editor.Controller;
+using Microsoft.Web.Editor.Services;
+using Microsoft.Web.Editor.Text;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.Composition;
+using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace MadsKristensen.EditorExtensions.Markdown
 {

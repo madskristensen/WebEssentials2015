@@ -4,6 +4,9 @@ using Microsoft.Html.Core;
 using Microsoft.Html.Editor;
 using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.VisualStudio.Text;
+using Microsoft.Html.Editor.Tree;
+using Microsoft.Html.Editor.Document;
+using Microsoft.Html.Core.Tree.Nodes;
 
 namespace MadsKristensen.EditorExtensions.Html
 {

@@ -9,6 +9,7 @@ using Microsoft.JSON.Core.Schema;
 using Microsoft.Web.Editor;
 using Minimatch;
 using Newtonsoft.Json.Linq;
+using Microsoft.Web.Editor.Host;
 
 namespace MadsKristensen.EditorExtensions.JSON
 {

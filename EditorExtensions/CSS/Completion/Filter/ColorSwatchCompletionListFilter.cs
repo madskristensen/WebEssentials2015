@@ -3,9 +3,10 @@ using System.ComponentModel.Composition;
 using System.Windows;
 using System.Windows.Media;
 using Microsoft.CSS.Core;
-using Microsoft.CSS.Editor.Intellisense;
 using Microsoft.VisualStudio.Utilities;
-using Microsoft.Web.Editor.Intellisense;
+using Microsoft.CSS.Editor.Completion;
+using Microsoft.CSS.Core.TreeItems;
+using Microsoft.Web.Editor.Completion;
 
 namespace MadsKristensen.EditorExtensions.Css
 {

@@ -3,9 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Media.Imaging;
 using MadsKristensen.EditorExtensions.Css;
-using Microsoft.Css.Extensions;
 using Microsoft.CSS.Core;
 using Microsoft.VisualStudio.Text;
+using Microsoft.CSS.Core.TreeItems.Functions;
+using Microsoft.CSS.Core.TreeItems;
+using Microsoft.CSS.Core.Tokens;
+using Microsoft.CSS.Core.Parser;
+using Microsoft.Web.Languages.Css.Extensions;
+using Microsoft.CSS.Core.TreeItems.AtDirectives;
+using Microsoft.CSS.Core.TreeItems.PropertyValues;
 
 namespace MadsKristensen.EditorExtensions.Less
 {

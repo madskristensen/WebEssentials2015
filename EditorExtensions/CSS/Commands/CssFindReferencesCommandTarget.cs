@@ -4,6 +4,10 @@ using Microsoft.CSS.Editor;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.TextManager.Interop;
+using Microsoft.CSS.Core.Parser;
+using Microsoft.CSS.Editor.Document;
+using Microsoft.CSS.Core.TreeItems;
+using Microsoft.CSS.Core.TreeItems.AtDirectives;
 
 namespace MadsKristensen.EditorExtensions.Css
 {

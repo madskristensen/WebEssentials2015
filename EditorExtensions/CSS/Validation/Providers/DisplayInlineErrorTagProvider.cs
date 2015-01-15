@@ -7,15 +7,21 @@ using System.Linq;
 using System.Windows.Threading;
 using Microsoft.CSS.Core;
 using Microsoft.CSS.Editor;
-using Microsoft.CSS.Editor.SyntaxCheck;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Utilities;
+using Microsoft.Web.Core.ContentTypes;
+using Microsoft.CSS.Core.TreeItems;
+using Microsoft.CSS.Editor.Document;
+using Microsoft.CSS.Core.Document;
+using Microsoft.CSS.Core.Parser;
+using Microsoft.CSS.Core.Checker;
+using Microsoft.CSS.Editor.Checker;
 
 namespace MadsKristensen.EditorExtensions.Css
 {
     [Export(typeof(IWpfTextViewConnectionListener))]
-    [ContentType(Microsoft.Web.Editor.CssContentTypeDefinition.CssContentType)]
+    [ContentType(CssContentTypeDefinition.CssContentType)]
     [TextViewRole(PredefinedTextViewRoles.Document)]
     public class DisplayInlineTextViewCreationListener : IWpfTextViewConnectionListener
     {

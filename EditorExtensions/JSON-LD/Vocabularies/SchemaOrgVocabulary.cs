@@ -2,6 +2,7 @@
 using System.ComponentModel.Composition;
 using System.Linq;
 using Microsoft.JSON.Core.Parser;
+using Microsoft.JSON.Core.Parser.TreeItems;
 
 namespace MadsKristensen.EditorExtensions.JSONLD
 {

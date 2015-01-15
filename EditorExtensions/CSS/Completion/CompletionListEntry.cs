@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Windows.Media;
 using Microsoft.CSS.Editor;
-using Microsoft.CSS.Editor.Intellisense;
 using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.VisualStudio.Text;
 using Microsoft.Web.Editor;
-using Microsoft.Web.Editor.Intellisense;
+using Microsoft.CSS.Editor.Completion;
+using Microsoft.CSS.Editor.Schemas.Browsers;
+using Microsoft.Web.Editor.Completion;
+using Microsoft.Web.Editor.Imaging;
 
 namespace MadsKristensen.EditorExtensions.Css
 {

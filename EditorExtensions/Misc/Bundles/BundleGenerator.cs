@@ -10,6 +10,8 @@ using MadsKristensen.EditorExtensions.Settings;
 using Microsoft.CSS.Core;
 using Microsoft.VisualStudio.Utilities;
 using Microsoft.Web.Editor;
+using Microsoft.CSS.Core.Parser;
+using Microsoft.Web.Editor.Host;
 
 namespace MadsKristensen.EditorExtensions
 {

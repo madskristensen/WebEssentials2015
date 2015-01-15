@@ -7,6 +7,7 @@ using EnvDTE;
 using Microsoft.CSS.Core;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Web.BrowserLink;
+using Microsoft.CSS.Core.TreeItems;
 
 namespace MadsKristensen.EditorExtensions.BrowserLink.UnusedCss
 {

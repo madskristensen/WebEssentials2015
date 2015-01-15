@@ -1,6 +1,6 @@
 ﻿using Microsoft.JSON.Core.Parser;
+using Microsoft.JSON.Core.Parser.TreeItems;
 using Microsoft.JSON.Editor.Completion;
-using Microsoft.JSON.Editor.Completion.Def;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Utilities;
 using System.Collections.Generic;

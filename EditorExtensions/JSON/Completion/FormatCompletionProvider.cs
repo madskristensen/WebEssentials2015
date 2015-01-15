@@ -2,8 +2,8 @@
 using System.ComponentModel.Composition;
 using Microsoft.JSON.Core.Parser;
 using Microsoft.JSON.Editor.Completion;
-using Microsoft.JSON.Editor.Completion.Def;
 using Microsoft.VisualStudio.Utilities;
+using Microsoft.JSON.Core.Parser.TreeItems;
 
 namespace MadsKristensen.EditorExtensions.JSON
 {

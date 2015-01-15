@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System.Windows.Media.Imaging;
 using Microsoft.CSS.Core;
 using Microsoft.VisualStudio.Text;
+using Microsoft.CSS.Core.TreeItems.Functions;
 
 namespace MadsKristensen.EditorExtensions.Css
 {

@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 using EnvDTE;
 using Microsoft.CSS.Core;
 using Microsoft.Web.Editor.EditorHelpers;
+using Microsoft.CSS.Core.TreeItems;
+using Microsoft.CSS.Core.Utilities;
+using Microsoft.CSS.Core.Parser;
 
 namespace MadsKristensen.EditorExtensions.BrowserLink.PixelPushing
 {

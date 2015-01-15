@@ -4,11 +4,16 @@ using System.ComponentModel.Composition;
 using System.Drawing;
 using MadsKristensen.EditorExtensions.Css;
 using Microsoft.CSS.Core;
-using Microsoft.Less.Core;
 using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Utilities;
+using Microsoft.CSS.Core.TreeItems;
+using Microsoft.CSS.Core.Parser;
+using Microsoft.CSS.Core.Tokens;
+using Microsoft.Web.Languages.Less.Parser;
+using Microsoft.CSS.Core.TreeItems.Functions;
+using Microsoft.CSS.Core.TreeItems.PropertyValues;
 
 namespace MadsKristensen.EditorExtensions.Less
 {

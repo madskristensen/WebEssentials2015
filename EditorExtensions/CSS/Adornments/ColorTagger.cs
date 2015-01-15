@@ -1,15 +1,24 @@
-﻿using System;
+﻿using Microsoft.CSS.Core;
+using Microsoft.CSS.Core.Document;
+using Microsoft.CSS.Core.Parser;
+using Microsoft.CSS.Core.Tokens;
+using Microsoft.CSS.Core.TreeItems;
+using Microsoft.CSS.Core.TreeItems.Functions;
+using Microsoft.CSS.Core.TreeItems.PropertyValues;
+using Microsoft.CSS.Editor;
+using Microsoft.CSS.Editor.Completion.ColorPicker;
+using Microsoft.CSS.Editor.Document;
+using Microsoft.VisualStudio.Text;
+using Microsoft.VisualStudio.Text.Tagging;
+using Microsoft.Web.Editor;
+using Microsoft.Web.Editor.ColorPicker;
+using Microsoft.Web.Editor.Host;
+using Microsoft.Web.Languages.Css.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Threading;
-using Microsoft.Css.Extensions;
-using Microsoft.CSS.Core;
-using Microsoft.CSS.Editor;
-using Microsoft.CSS.Editor.Intellisense;
-using Microsoft.VisualStudio.Text;
-using Microsoft.VisualStudio.Text.Tagging;
-using Microsoft.Web.Editor;
 
 namespace MadsKristensen.EditorExtensions.Css
 {

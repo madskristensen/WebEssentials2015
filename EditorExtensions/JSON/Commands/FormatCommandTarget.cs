@@ -6,6 +6,8 @@ using Microsoft.JSON.Editor;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.TextManager.Interop;
+using Microsoft.JSON.Core.Parser.TreeItems;
+using Microsoft.JSON.Editor.Document;
 
 namespace MadsKristensen.EditorExtensions.JSON
 {

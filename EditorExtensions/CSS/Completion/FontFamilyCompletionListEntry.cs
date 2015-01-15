@@ -1,8 +1,9 @@
 ﻿using System;
 using Microsoft.CSS.Editor;
-using Microsoft.CSS.Editor.Intellisense;
 using Microsoft.VisualStudio.Text;
-using Microsoft.Web.Editor.Intellisense;
+using Microsoft.CSS.Editor.Completion;
+using Microsoft.CSS.Editor.Schemas.Browsers;
+using Microsoft.Web.Editor.Completion;
 
 namespace MadsKristensen.EditorExtensions.Css
 {

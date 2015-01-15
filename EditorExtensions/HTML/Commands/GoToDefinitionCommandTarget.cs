@@ -11,6 +11,14 @@ using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.TextManager.Interop;
 using Microsoft.Web.Editor;
+using Microsoft.Html.Editor.Tree;
+using Microsoft.VisualStudio;
+using Microsoft.Html.Editor.Document;
+using Microsoft.CSS.Core.Parser;
+using Microsoft.CSS.Editor.Parser;
+using Microsoft.CSS.Core.TreeItems.Selectors;
+using Microsoft.CSS.Core.TreeItems.AtDirectives;
+using Microsoft.Html.Core.Tree.Nodes;
 
 namespace MadsKristensen.EditorExtensions.Html
 {

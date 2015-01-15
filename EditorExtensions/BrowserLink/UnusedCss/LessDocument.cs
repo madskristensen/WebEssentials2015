@@ -2,8 +2,13 @@
 using System.Linq;
 using Microsoft.CSS.Core;
 using Microsoft.CSS.Editor;
-using Microsoft.Less.Core;
 using Microsoft.Web.Editor;
+using Microsoft.CSS.Core.TreeItems;
+using Microsoft.CSS.Core.Parser;
+using Microsoft.CSS.Editor.Parser;
+using Microsoft.Web.Core.ContentTypes;
+using Microsoft.Web.Languages.Less.Parser;
+using Microsoft.Web.Languages.Less.Parser.Mixin;
 
 namespace MadsKristensen.EditorExtensions.BrowserLink.UnusedCss
 {

@@ -12,6 +12,10 @@ using Microsoft.CSS.Core;
 using Microsoft.CSS.Editor;
 using Microsoft.VisualStudio.Threading;
 using Microsoft.VisualStudio.Utilities;
+using Microsoft.CSS.Editor.Parser;
+using Microsoft.CSS.Core.TreeItems.AtDirectives;
+using Microsoft.CSS.Editor.Document;
+using Microsoft.CSS.Core.Parser;
 
 namespace MadsKristensen.EditorExtensions.Helpers
 {

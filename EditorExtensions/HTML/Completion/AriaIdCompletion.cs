@@ -1,6 +1,9 @@
 ﻿using Microsoft.Html.Core;
-using Microsoft.Html.Editor.Intellisense;
+using Microsoft.Html.Core.Tree.Nodes;
+using Microsoft.Html.Editor.Completion;
+using Microsoft.Html.Editor.Completion.Def;
 using Microsoft.VisualStudio.Utilities;
+using Microsoft.Web.Core.ContentTypes;
 using Microsoft.Web.Editor;
 using System.Collections.Generic;
 using System.Linq;
