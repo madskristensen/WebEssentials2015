@@ -27,10 +27,15 @@ namespace MadsKristensen.EditorExtensions.Html
         private static string _error = "When using \"{0}\", you must also specify the class \"{1}\".";
         private static Dictionary<string, string[]> _whitelist = new Dictionary<string, string[]>
         {
-            { "btn", new [] { "btn-group", "btn-toolbar" } }
+            { "btn", new [] { "btn-group", "btn-group-xs", "btn-group-sm", "btn-group-lg", "btn-group-justified", "btn-group-vertical", "btn-toolbar" } }
         };
 
-        public override IList<IHtmlValidationError> ValidateElement(ElementNode element)
+		private static Dictionary<string, string[]> _aliases = new Dictionary<string, string[]>
+		{
+			{ "btn", new [] { "btn-sm", "btn-xs", "btn-lg" } }
+		};
+
+		public override IList<IHtmlValidationError> ValidateElement(ElementNode element)
         {
             var results = new ValidationErrorCollection();
 
@@ -77,6 +82,7 @@ namespace MadsKristensen.EditorExtensions.Html
         private static bool IsCorrect(string input, string token, List<string> childrenClassNames = null)
         {
             if (input.Contains(token + "-") &&
+				!(_aliases.ContainsKey(token) && _aliases[token].Any(a => input.Split(' ').Contains(a))) &&
                  !(input.Contains(token + " ") || input.EndsWith(token, StringComparison.CurrentCulture) || IsWhitelisted(input, token)) &&
                 ((childrenClassNames != null && !childrenClassNames.All(cn => cn.Contains(token + " ") || cn.EndsWith(token, StringComparison.CurrentCulture))) || childrenClassNames == null))
                 return false;
