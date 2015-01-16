@@ -790,6 +790,10 @@
     <Resource Include="JSON\Resources\vs.png" />
     <Resource Include="JSON\Resources\grunt.png" />
     <Resource Include="JSON\Resources\gulp.png" />
+    <Content Include="..\LICENSE.txt">
+      <Link>LICENSE.txt</Link>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="JavaScript\Snippets\snippets.pkgdef">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
@@ -989,10 +993,6 @@
     <Resource Include="Resources\Images\Browsers\ie_gray.png" />
     <Resource Include="Resources\Images\Browsers\o_gray.png" />
     <Resource Include="Resources\Images\Browsers\s_gray.png" />
-    <Content Include="License.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
     <Content Include="Resources\Images\Package.ico" />
   </ItemGroup>
   <ItemGroup>
