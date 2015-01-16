@@ -482,9 +482,9 @@
     <Compile Include="Shared\Helpers\NodeModuleService.cs" />
     <Compile Include="Shared\Helpers\Policies\PolicyFactory.cs" />
     <Compile Include="Shared\Helpers\Policies\Strategies\FileTransientErrorDetectionStrategy.cs" />
-    <Compile Include="Shared\Helpers\SourceMapNode.cs" />
     <Compile Include="Shared\Helpers\CssSourceMap.cs" />
     <Compile Include="Shared\Helpers\Base64Vlq.cs" />
+    <Compile Include="Shared\Helpers\SourceMapNode.cs" />
     <Compile Include="Shared\Margins\CssTextViewMargin.cs" />
     <Compile Include="SweetJs\ContentType\SweetJsContentTypeDefinition.cs" />
     <Compile Include="RobotsTxt\Classify\RobotsTxtClassificationTypes.cs" />
@@ -596,7 +596,6 @@
     <Compile Include="CSS\Completion\Filter\HideInheritInitialCompletionListFilter.cs" />
     <Compile Include="RobotsTxt\Completion\RobotsCompletionController.cs" />
     <Compile Include="RobotsTxt\Completion\RobotsCompletionSource.cs" />
-    <Compile Include="XML\DragDrop\BundleDrop.cs" />
     <Compile Include="CSS\DragDrop\FontDrop.cs" />
     <Compile Include="Shared\ExtensionMethods\CssExtensions.cs" />
     <Compile Include="Shared\Helpers\Css\CssTreeWatcher.cs" />
