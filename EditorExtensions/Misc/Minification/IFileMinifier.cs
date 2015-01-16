@@ -124,7 +124,7 @@ namespace MadsKristensen.EditorExtensions.Optimization.Minification
     [ContentType("node.js")]
     public class JavaScriptFileMinifier : InMemoryMinifier
     {
-        public override bool GenerateSourceMap { get { return WESettings.Instance.JavaScript.GenerateSourceMaps; } }
+        public override bool GenerateSourceMap { get { return false; } }// WESettings.Instance.JavaScript.GenerateSourceMaps; } }
 
         public override bool SaveWithBOM { get { return true; } }
 

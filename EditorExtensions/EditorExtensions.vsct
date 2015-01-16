@@ -52,15 +52,7 @@
         </Menus>
 
         <Groups>
-            <Group guid="guidBuildCmdSet" id="MyBuildMenuGroup" priority="0x0002">
-                <Parent guid="guidTopMenu" id="TopMenu"/>
-            </Group>
-
             <Group guid="guidTopMenu" id="SolutionSubMenuGroup" priority="0x0002">
-                <Parent guid="guidTopMenu" id="TopMenu"/>
-            </Group>
-
-            <Group guid="guidBuildCmdSet" id="MyCompileMenuGroup" priority="0x0003">
                 <Parent guid="guidTopMenu" id="TopMenu"/>
             </Group>
 
@@ -116,10 +108,6 @@
                 <Parent guid="guidCssIntellisenseCmdSet" id="CssIntellisenseSubMenu"/>
             </Group>
 
-            <Group guid="guidMinifyCmdSet" id="MyMenuGroup" priority="0x0009">
-                <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE"/>
-            </Group>
-
             <Group guid="guidImageCmdSet" id="MyMenuGroup" priority="0x0009">
                 <Parent guid="guidSolutionExplorerCmdSet" id="MySubMenuGroup"/>
             </Group>
@@ -129,10 +117,6 @@
             </Group>
 
             <Group guid="guidSolutionExplorerCmdSet" id="MySubGroup" priority="0x0001">
-                <Parent guid="guidSolutionExplorerCmdSet" id="MySubMenuGroup"/>
-            </Group>
-
-            <Group guid="guidSolutionExplorerCmdSet" id="MyBundleGroup" priority="0x0002">
                 <Parent guid="guidSolutionExplorerCmdSet" id="MySubMenuGroup"/>
             </Group>
 
@@ -442,33 +426,6 @@
                 </Strings>
             </Button>
 
-            <Button guid="guidMinifyCmdSet" id="cmdMinifyCss" priority="0x0101" type="Button">
-                <Parent guid="guidSolutionExplorerCmdSet" id="MySubGroup"/>
-                <Icon guid="guidImages" id="bmpLogo"/>
-                <CommandFlag>DynamicVisibility</CommandFlag>
-                <Strings>
-                    <ButtonText>Minify CSS file(s)</ButtonText>
-                </Strings>
-            </Button>
-
-            <Button guid="guidMinifyCmdSet" id="cmdMinifyJs" priority="0x0101" type="Button">
-                <Parent guid="guidSolutionExplorerCmdSet" id="MySubGroup"/>
-                <Icon guid="guidImages" id="bmpLogo"/>
-                <CommandFlag>DynamicVisibility</CommandFlag>
-                <Strings>
-                    <ButtonText>Minify JavaScript file(s)</ButtonText>
-                </Strings>
-            </Button>
-
-            <Button guid="guidMinifyCmdSet" id="cmdMinifyHtml" priority="0x0101" type="Button">
-                <Parent guid="guidSolutionExplorerCmdSet" id="MySubGroup"/>
-                <Icon guid="guidImages" id="bmpLogo"/>
-                <CommandFlag>DynamicVisibility</CommandFlag>
-                <Strings>
-                    <ButtonText>Minify HTML file(s)</ButtonText>
-                </Strings>
-            </Button>
-
             <Button guid="guidImageCmdSet" id="cmdCompressImage" priority="0x0101" type="Button">
                 <Parent guid="guidImageCmdSet" id="MyMenuGroup"/>
                 <Icon guid="guidMenuImages" id="bmpImage"/>
@@ -476,65 +433,6 @@
                 <CommandFlag>DynamicVisibility</CommandFlag>
                 <Strings>
                     <ButtonText>Optimize image(s)</ButtonText>
-                </Strings>
-            </Button>
-
-            <Button guid="guidImageCmdSet" id="cmdSpriteImage" priority="0x0102" type="Button">
-                <Parent guid="guidImageCmdSet" id="MyMenuGroup"/>
-                <Icon guid="guidMenuImages" id="bmpJigsaw"/>
-                <CommandFlag>DynamicVisibility</CommandFlag>
-                <Strings>
-                    <ButtonText>Create image sprite...</ButtonText>
-                </Strings>
-            </Button>
-
-            <Button guid="guidBundleCmdSet" id="cmdBundleJs" priority="0x0101" type="Button">
-                <Parent guid="guidSolutionExplorerCmdSet" id="MyBundleGroup"/>
-                <CommandFlag>DynamicVisibility</CommandFlag>
-                <Strings>
-                    <ButtonText>Create JavaScript bundle file</ButtonText>
-                </Strings>
-            </Button>
-
-            <Button guid="guidBundleCmdSet" id="cmdBundleCss" priority="0x0101" type="Button">
-                <Parent guid="guidSolutionExplorerCmdSet" id="MyBundleGroup"/>
-                <CommandFlag>DynamicVisibility</CommandFlag>
-                <Strings>
-                    <ButtonText>Create CSS bundle file</ButtonText>
-                </Strings>
-            </Button>
-
-            <Button guid="guidBundleCmdSet" id="cmdBundleHtml" priority="0x0101" type="Button">
-                <Parent guid="guidSolutionExplorerCmdSet" id="MyBundleGroup"/>
-                <CommandFlag>DynamicVisibility</CommandFlag>
-                <Strings>
-                    <ButtonText>Create HTML bundle file</ButtonText>
-                </Strings>
-            </Button>
-
-            <Button guid="guidBuildCmdSet" id="cmdBuildBundles" priority="0x0102" type="Button">
-                <Parent guid="guidBuildCmdSet" id="MyBuildMenuGroup"/>
-                <CommandFlag>DynamicVisibility</CommandFlag>
-                <Strings>
-                    <ButtonText>Update All Bundles</ButtonText>
-                </Strings>
-            </Button>
-
-            <Button guid="guidBuildCmdSet" id="cmdBuildSprites" priority="0x0103" type="Button">
-                <Parent guid="guidBuildCmdSet" id="MyBuildMenuGroup"/>
-                <Icon guid="guidMenuImages" id="bmpJigsaw"/>
-                <CommandFlag>DynamicVisibility</CommandFlag>
-                <Strings>
-                    <ButtonText>Update All Sprites</ButtonText>
-                </Strings>
-            </Button>
-
-            <Button guid="guidBuildCmdSet" id="cmdBuildMinify" priority="0x0101" type="Button">
-                <Parent guid="guidBuildCmdSet" id="MyBuildMenuGroup"/>
-                <Icon guid="guidImages" id="bmpLogo"/>
-                <CommandFlag>DynamicVisibility</CommandFlag>
-                <Strings>
-                    <ButtonText>Re-minify All CSS/JS/HTML Files</ButtonText>
                 </Strings>
             </Button>
 
@@ -568,32 +466,6 @@
                     <ButtonText>Contract Selection</ButtonText>
                 </Strings>
             </Button>
-
-            <!--<Button guid="guidUnusedCssCmdSet" id="UnusedCssRecordAllCommandId" priority="0x2000" type="Button">
-                <Parent guid="guidBrowserLinkCmdSet" id="IDG_BROWSERLINK_COMMANDS"/>
-                <Icon guid="guidBrowserLink" id="bmpRecord"/>
-                <CommandFlag>DynamicVisibility</CommandFlag>
-                <Strings>
-                    <ButtonText>Start Recording (All Browsers)</ButtonText>
-                </Strings>
-            </Button>
-
-            <Button guid="guidUnusedCssCmdSet" id="UnusedCssStopRecordAllCommandId" priority="0x2001" type="Button">
-                <Parent guid="guidBrowserLinkCmdSet" id="IDG_BROWSERLINK_COMMANDS"/>
-                <Icon guid="guidBrowserLink" id="bmpPause"/>
-                <CommandFlag>DynamicVisibility</CommandFlag>
-                <CommandFlag>DefaultInvisible</CommandFlag>
-                <Strings>
-                    <ButtonText>Stop Recording (All Browsers)</ButtonText>
-                </Strings>
-            </Button>
-
-            <Button guid="guidUnusedCssCmdSet" id="UnusedCssResetCommandId" priority="0x2003" type="Button">
-                <Parent guid="guidBrowserLinkCmdSet" id="IDG_BROWSERLINK_COMMANDS"/>
-                <Strings>
-                    <ButtonText>Clear CSS Usage Data</ButtonText>
-                </Strings>
-            </Button>-->
 
             <Button guid="guidPixelPushingCmdSet" id="PixelPushingToggleCommandId" priority="0x2010" type="Button">
                 <Parent guid="guidBrowserLinkCmdSet" id="IDG_BROWSERLINK_COMMANDS"/>
@@ -641,7 +513,6 @@
     </Commands>
 
     <KeyBindings>
-        <KeyBinding guid="guidCssCmdSet" id="cmdidCssSortProperties" mod1="Shift Alt" key1="S" editor="guidVSStd97"/>
         <KeyBinding guid="guidCssCmdSet" id="cmdidCssRemoveDuplicates" mod1="Shift Alt" key1="R" editor="guidVSStd97"/>
         <KeyBinding guid="guidCssCmdSet" id="cmdidCssAddMissingStandard" mod1="Shift Alt" key1="P" editor="guidVSStd97"/>
         <KeyBinding guid="guidCssCmdSet" id="cmdidCssAddMissingVendor" mod1="Shift Alt" key1="V" editor="guidVSStd97"/>
@@ -650,13 +521,6 @@
         <KeyBinding guid="guidExtractCmdSet" id="cmdExtractVariable" mod1="Shift Alt" key1="J" editor="guidVSStd97"/>
         <KeyBinding guid="guidExtractCmdSet" id="cmdExtractMixin" mod1="Shift Alt" key1="K" editor="guidVSStd97"/>
 
-        <KeyBinding guid="guidBuildCmdSet" id="cmdBuildBundles" mod1="Shift Alt" key1="I" editor="guidVSStd97"/>
-        <KeyBinding guid="guidBuildCmdSet" id="cmdBuildSprites" mod1="Shift Alt" key1="G" editor="guidVSStd97"/>
-        <KeyBinding guid="guidBuildCmdSet" id="cmdBuildLess" mod1="Shift Alt" key1="Y" editor="guidVSStd97"/>
-        <KeyBinding guid="guidBuildCmdSet" id="cmdBuildSass" mod1="Shift Alt" key1="Q" editor="guidVSStd97"/>
-        <KeyBinding guid="guidBuildCmdSet" id="cmdBuildMinify" mod1="Shift Alt" key1="F" editor="guidVSStd97"/>
-        <KeyBinding guid="guidBuildCmdSet" id="cmdBuildCoffeeScript" mod1="Shift Alt" key1="Z" editor="guidVSStd97"/>
-        <KeyBinding guid="guidBuildCmdSet" id="cmdBuildSweetJs" mod1="Shift Alt" key1="J" editor="guidVSStd97"/>
         <KeyBinding guid="guidFormattingCmdSet" id="SurroundWith" mod1="Shift Alt" key1="W" editor="guidVSStd97"/>
         <KeyBinding guid="guidFormattingCmdSet" id="ExpandSelection" mod1="Alt" key1="1" editor="guidVSStd97"/>
         <KeyBinding guid="guidFormattingCmdSet" id="ContractSelection" mod1="Alt" key1="2" editor="guidVSStd97"/>
@@ -748,7 +612,6 @@
             <IDSymbol name="cmdidSha512Transform" value="0x0124" />
             <IDSymbol name="ReferenceJs" value="0x333" />
             <IDSymbol name="AddGrunt" value="0x337" />
-            <!--<IDSymbol name="cmdChainCompile" value="0x337" />-->
         </GuidSymbol>
 
         <GuidSymbol name="guidEditorLinesCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e67}">
@@ -764,7 +627,6 @@
         <GuidSymbol name="guidCssCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e50}">
             <IDSymbol name="MyMenuGroup" value="0x1020" />
             <IDSymbol name="CssSubMenuGroup" value="0x1022" />
-            <IDSymbol name="cmdidCssSortProperties" value="0x0125"/>
             <IDSymbol name="CssIntellisenseSubMenu" value="0x0126"/>
             <IDSymbol name="cmdidCssAddMissingVendor" value="0x0127"/>
             <IDSymbol name="cmdidCssAddMissingStandard" value="0x0128"/>
@@ -782,19 +644,11 @@
             <IDSymbol name="MyMenuGroup" value="0x1060" />
             <IDSymbol name="MySubMenuGroup" value="0x1061" />
             <IDSymbol name="MySubGroup" value="0x1062" />
-            <IDSymbol name="MyBundleGroup" value="0x1063" />
         </GuidSymbol>
 
         <GuidSymbol name="guidDiffCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e59}">
             <IDSymbol name="MyMenuGroup" value="0x1040" />
             <IDSymbol name="cmdDiff" value="0x1041" />
-            <IDSymbol name="cmdJsHint" value="0x1042" />
-            <IDSymbol name="cmdTsLint" value="0x1092" />
-            <IDSymbol name="cmdCoffeeLint" value="0x1096" />
-            <IDSymbol name="cmdJsCodeStyle" value="0x1095" />
-            <IDSymbol name="cmdRtlCss" value="0x2066" />
-            <IDSymbol name="cmdRunCson2Json" value="0x2067" />
-            <IDSymbol name="cmdRunJson2Cson" value="0x2068" />
             <IDSymbol name="cmdProjectSettings" value="0x1043" />
             <IDSymbol name="cmdSolutionSettings" value="0x1044" />
             <IDSymbol name="cmdSolutionColors" value="0x1045" />
@@ -802,23 +656,14 @@
             <IDSymbol name="cmdJavaScriptIntellisense" value="0x1047" />
             <IDSymbol name="cmdTypeScriptIntellisense" value="0x1048" />
             <IDSymbol name="MarkdownGroup" value="0x1049" />
-            <IDSymbol name="cmdEditGlobalJsHint" value="0x1038" />
-            <IDSymbol name="cmdEditGlobalTsLint" value="0x1098" />
-            <IDSymbol name="cmdEditGlobalCoffeeLint" value="0x1100" />
-            <IDSymbol name="cmdEditGlobalJsCodeStyle" value="0x1099" />
-            <IDSymbol name="cmdEditGlobalRtlCss" value="0x1081" />
             <IDSymbol name="cmdMarkdownCompile" value="0x1039" />
-            <IDSymbol name="cmdHandleBarsCompile" value="0x1101" />
         </GuidSymbol>
 
         <GuidSymbol name="guidMinifyCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e61}">
             <IDSymbol name="MyMenuGroup" value="0x1050" />
-            <IDSymbol name="cmdMinifyCss" value="0x1051" />
-            <IDSymbol name="cmdMinifyJs" value="0x1052" />
             <IDSymbol name="cmdMinifySelection" value="0x1053" />
             <IDSymbol name="cmdUnMinifySelection" value="0x1059" />
             <IDSymbol name="cmdSelectBrowsers" value="0x1055" />
-            <IDSymbol name="cmdMinifyHtml" value="0x1058" />
         </GuidSymbol>
 
         <GuidSymbol name="guidExtractCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e64}">
@@ -830,22 +675,7 @@
 
         <GuidSymbol name="guidBuildCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e65}">
             <IDSymbol name="MyBuildMenuGroup" value="0x1082" />
-            <IDSymbol name="cmdBuildBundles" value="0x1083" />
-            <IDSymbol name="cmdBuildSprites" value="0x1094" />
-            <IDSymbol name="cmdBuildLess" value="0x1084" />
-            <IDSymbol name="cmdBuildSass" value="0x1085" />
-            <IDSymbol name="cmdBuildMinify" value="0x1086" />
-            <IDSymbol name="cmdBuildCoffeeScript" value="0x1087" />
-            <IDSymbol name="cmdBuildSweetJs" value="0x1088" />
             <IDSymbol name="MyCompileMenuGroup" value="0x1089" />
-        </GuidSymbol>
-
-        <GuidSymbol name="guidBundleCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e63}">
-            <IDSymbol name="MyMenuGroup" value="0x1070" />
-            <IDSymbol name="cmdBundleCss" value="0x1071" />
-            <IDSymbol name="cmdBundleJs" value="0x1072" />
-            <IDSymbol name="cmdBundleTs" value="0x1073" />
-            <IDSymbol name="cmdBundleHtml" value="0x1074" />
         </GuidSymbol>
 
         <GuidSymbol name="guidImageCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e68}">
@@ -874,22 +704,10 @@
             <IDSymbol name="ContractSelection" value="0x336" />
         </GuidSymbol>
 
-        <!--<GuidSymbol name="lessEditorCommandSet" value="{D309F791-903F-11D0-9EFC-00A0C911004F}">
-      <IDSymbol name="lessContextMenu" value="0x040d"/>
-    </GuidSymbol>-->
-
         <GuidSymbol name="jsEditorCommandSet" value="{D309F791-903F-11D0-9EFC-00A0C911004F}">
             <IDSymbol name="jsContextMenu" value="0x040d"/>
             <!-- 52 in hex is 0x0034 -->
         </GuidSymbol>
-
-        <!--<GuidSymbol name="guidUnusedCssCmdSet" value="{47BA41E6-C7AB-49F1-984A-30E672AFF9FC}">
-            <IDSymbol name="UnusedCssExtensionGroup" value="0x2020" />
-            <IDSymbol name="UnusedCssSnapshotCommandId" value="0x2100" />
-            <IDSymbol name="UnusedCssResetCommandId" value="0x2101" />
-            <IDSymbol name="UnusedCssRecordAllCommandId" value="0x2102" />
-            <IDSymbol name="UnusedCssStopRecordAllCommandId" value="0x2103" />
-        </GuidSymbol>-->
 
         <GuidSymbol name="guidPixelPushingCmdSet" value="{EE755B3C-F6ED-414B-86BA-1AADB7DAE216}">
             <IDSymbol name="PixelPushingToggleCommandId" value="0x2200" />
