@@ -11,10 +11,7 @@ before_build:
   - nuget.exe restore
 
 build_script:
-  - msbuild /p:DeployExtension=false /p:ZipPackageCompressionLevel=normal
-
-build:
-  verbosity: minimal
+  - msbuild /p:DeployExtension=false /p:ZipPackageCompressionLevel=normal /v:m
 
 after_test:
   - ps: Vsix-PushArtifacts -publishToGallery
