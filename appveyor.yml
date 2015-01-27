@@ -2,7 +2,6 @@ version: 1.0.{build}
 os: Visual Studio 2015 CTP
 environment
 configuration: Release
-verbosity: minimal
 
 install: 
   - ps: Start-FileDownload https://raw.githubusercontent.com/madskristensen/ExtensionScripts/master/AppVeyor/vsix.ps1
@@ -14,6 +13,9 @@ before_build:
 
 build_script:
   - msbuild /p:DeployExtension=false /p:ZipPackageCompressionLevel=normal
+
+build:
+  verbosity: minimal
 
 after_test:
   - ps: Vsix-PushArtifacts -publishToGallery
