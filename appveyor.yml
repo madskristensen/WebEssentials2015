@@ -16,6 +16,7 @@ before_build:
 
 build:
   verbosity: minimal
+  project: WebEssentials2015.sln
 
 after_test:
   - ps: Vsix-PushArtifacts -publishToGallery
