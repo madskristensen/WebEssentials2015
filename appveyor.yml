@@ -3,8 +3,8 @@ os: Visual Studio 2015 CTP
 configuration: Release
 
 environment:
-  - ZipPackageCompressionLevel: normal
-  - DeployExtension: false
+  ZipPackageCompressionLevel: normal
+  DeployExtension: false
 
 install: 
   - ps: Start-FileDownload https://raw.githubusercontent.com/madskristensen/ExtensionScripts/master/AppVeyor/vsix.ps1
