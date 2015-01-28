@@ -77,7 +77,7 @@ namespace MadsKristensen.EditorExtensions.Grunt
 
             var task = System.Threading.Tasks.Task.Run(() =>
             {
-                ProcessStartInfo start = new ProcessStartInfo("cmd", "/c npm install grunt grunt-bower-task --save-dev -d")
+                ProcessStartInfo start = new ProcessStartInfo("cmd", "/c npm install grunt@0.4.5 grunt-bower-task@0.4.0 --save-dev -d")
                 {
                     CreateNoWindow = true,
                     UseShellExecute = false,
