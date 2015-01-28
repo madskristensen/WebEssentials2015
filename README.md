@@ -28,5 +28,3 @@ You can then build the project, then double-click the VSIX file from the bin fol
  - [About Web Essentials features](http://blogs.msdn.com/b/mvpawardprogram/archive/2013/11/05/making-web-development-wonderful-again-with-web-essentials.aspx)
  - [Inside the Visual Studio editor](http://msdn.microsoft.com/en-us/library/vstudio/dd885240.aspx)
  - [Extending the Visual Studio editor](http://msdn.microsoft.com/en-us/library/vstudio/dd885244.aspx)
-
-i don't know
