@@ -272,11 +272,6 @@ namespace MadsKristensen.EditorExtensions.Settings
         //[DefaultValue(false)]
         //public bool GzipMinifiedFiles { get; set; }
 
-        [DisplayName("Enable Angular.js validation")]
-        [Description("Validate HTML files against Angular.js best practices.")]
-        [DefaultValue(true)]
-        public bool EnableAngularValidation { get; set; }
-
         [DisplayName("Enable Bootstrap validation")]
         [Description("Validate HTML files against Bootstrap best practices.")]
         [DefaultValue(true)]

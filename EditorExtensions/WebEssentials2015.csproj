@@ -631,7 +631,6 @@
     <Compile Include="CSS\Validation\Filters\VariableCssErrorFilter.cs" />
     <Compile Include="CSS\Validation\Providers\MediaQuerySyntaxErrorTagProvider.cs" />
     <Compile Include="HTML\Validation\BootstrapClassValidator.cs" />
-    <Compile Include="HTML\Validation\AngularMissingAppValidator.cs" />
     <Compile Include="CSS\Validation\Providers\ColorValuesInRangeErrorTagProvider.cs">
       <SubType>Code</SubType>
     </Compile>
