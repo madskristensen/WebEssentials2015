@@ -177,8 +177,8 @@ namespace MadsKristensen.EditorExtensions
             var size = WebEditor.ExportProvider.GetExport<ITextBufferFactoryService>().Value.CreateTextBuffer();
             size.SetText("Loading...");
 
-            source.OnDownloaded(() => size.SetText(Math.Round(source.Width) + "×" + Math.Round(source.Height)));
-            if (source.IsDownloading)
+			source.OnDownloaded(() => size.SetText(source.PixelWidth + "×" + source.PixelHeight));
+			if (source.IsDownloading)
             {
                 EventHandler<System.Windows.Media.ExceptionEventArgs> failure = (s, e) =>
                 {
