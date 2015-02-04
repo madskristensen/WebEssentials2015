@@ -226,6 +226,7 @@
     function base64ToImage(base64, img, mimeType) {
         var tmp = img || document.createElement("img");
         tmp.src = "data:" + (mimeType || "image/png") + ";base64," + base64;
+		tmp.alt = ""
         return tmp;
     }
 
