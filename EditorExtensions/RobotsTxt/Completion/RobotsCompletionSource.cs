@@ -18,7 +18,13 @@ namespace MadsKristensen.EditorExtensions.RobotsTxt
     {
         public ICompletionSource TryCreateCompletionSource(ITextBuffer textBuffer)
         {
-            return new RobotsTxtCompletionSource(textBuffer);
+            string filename = System.IO.Path.GetFileName(textBuffer.GetFileName());
+            var textType = RobotsTxtClassifierProvider.GetTextType(filename);
+            if (textType == TextType.Robots || textType == TextType.Humans)
+            {
+                return new RobotsTxtCompletionSource(textBuffer);
+            }
+            return null;
         }
     }
 
