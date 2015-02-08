@@ -5,36 +5,35 @@ using System.Windows.Media;
 using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Utilities;
-using Microsoft.Web.Editor;
 using Intel = Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.Web.Editor.Imaging;
 
-namespace MadsKristensen.EditorExtensions.RobotsTxt
+namespace MadsKristensen.EditorExtensions.Dockerfile
 {
     [Export(typeof(ICompletionSourceProvider))]
-    [ContentType("plaintext")]
-    [Name("RobotsTxtCompletion")]
-    class RobotsTxtCompletionSourceProvider : ICompletionSourceProvider
+    [ContentType("text")]
+    [Name("DockerfileCompletion")]
+    class DockerfileCompletionSourceProvider : ICompletionSourceProvider
     {
         public ICompletionSource TryCreateCompletionSource(ITextBuffer textBuffer)
         {
             string filename = System.IO.Path.GetFileName(textBuffer.GetFileName());
-            var textType = RobotsTxtClassifierProvider.GetTextType(filename);
-            if (textType == TextType.Robots || textType == TextType.Humans)
+            var textType = DockerfileClassifierProvider.GetTextType(filename);
+            if (textType == TextType.Dockerfile)
             {
-                return new RobotsTxtCompletionSource(textBuffer);
+                return new DockerfileCompletionSource(textBuffer);
             }
             return null;
         }
     }
 
-    class RobotsTxtCompletionSource : ICompletionSource
+    class DockerfileCompletionSource : ICompletionSource
     {
         private ITextBuffer _buffer;
         private bool _disposed = false;
         private static ImageSource _glyph = GlyphService.GetGlyph(StandardGlyphGroup.GlyphGroupVariable, StandardGlyphItem.GlyphItemPublic);
 
-        public RobotsTxtCompletionSource(ITextBuffer buffer)
+        public DockerfileCompletionSource(ITextBuffer buffer)
         {
             _buffer = buffer;
         }
@@ -45,7 +44,7 @@ namespace MadsKristensen.EditorExtensions.RobotsTxt
                 return;
 
             List<Intel.Completion> completions = new List<Intel.Completion>();
-            foreach (string item in RobotsTxtClassifier.Valid)
+            foreach (string item in DockerfileClassifier.Valid.OrderBy(x => x))
             {
                 completions.Add(new Intel.Completion(item, item, null, _glyph, item));
             }
@@ -58,10 +57,10 @@ namespace MadsKristensen.EditorExtensions.RobotsTxt
 
             var line = triggerPoint.Value.GetContainingLine();
             string text = line.GetText();
-            int index = text.IndexOf(':');
+            int index = text.IndexOf(' ');
             int hash = text.IndexOf('#');
             SnapshotPoint start = triggerPoint.Value;
-
+            
             if (hash > -1 && hash < triggerPoint.Value.Position || (index > -1 && (start - line.Start.Position) > index))
                 return;
 
@@ -72,7 +71,7 @@ namespace MadsKristensen.EditorExtensions.RobotsTxt
 
             var applicableTo = snapshot.CreateTrackingSpan(new SnapshotSpan(start, triggerPoint.Value), SpanTrackingMode.EdgeInclusive);
 
-            completionSets.Add(new CompletionSet("All", "All", applicableTo, completions, Enumerable.Empty<Intel.Completion>()));
+            completionSets.Add(new CompletionSet("Dockerfile", "Dockerfile", applicableTo, completions, Enumerable.Empty<Intel.Completion>()));
         }
 
         public void Dispose()
