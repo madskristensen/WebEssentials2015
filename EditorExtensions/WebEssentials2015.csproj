@@ -391,6 +391,11 @@
     <Compile Include="CSS\Completion\IconProviders\SkeletonCompletionEntryGlyphProvider.cs" />
     <Compile Include="CSS\Completion\IconProviders\FoundationCompletionEntryGlyphProvider.cs" />
     <Compile Include="CSS\Validation\Filters\ExtendCssErrorFilter.cs" />
+    <Compile Include="Dockerfile\Classify\DockerfileClassificationTypes.cs" />
+    <Compile Include="Dockerfile\Classify\DockerfileClassifier.cs" />
+    <Compile Include="Dockerfile\Classify\DockerfileClassifierProvider.cs" />
+    <Compile Include="Dockerfile\Completion\DockerfileCompletionController.cs" />
+    <Compile Include="Dockerfile\Completion\DockerfileCompletionSource.cs" />
     <Compile Include="HTML\Completion\AriaIdCompletion.cs" />
     <Compile Include="HTML\Schema\IonicSchemaFileProvider.cs" />
     <Compile Include="JavaScript\Completion\GruntTaskCompletionSourceProvider.cs" />
