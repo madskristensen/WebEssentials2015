@@ -397,6 +397,7 @@
     <Compile Include="Dockerfile\Completion\DockerfileCompletionController.cs" />
     <Compile Include="Dockerfile\Completion\DockerfileCompletionSource.cs" />
     <Compile Include="HTML\Completion\AriaIdCompletion.cs" />
+    <Compile Include="HTML\Completion\AureliaLogoCompletion.cs" />
     <Compile Include="HTML\Schema\IonicSchemaFileProvider.cs" />
     <Compile Include="JavaScript\Completion\GruntTaskCompletionSourceProvider.cs" />
     <Compile Include="JavaScript\Completion\HTML CompletionSources.cs" />
@@ -827,6 +828,7 @@
     <Resource Include="Resources\Images\foundation.png" />
     <Resource Include="Resources\Images\blueprint.png" />
     <Resource Include="Resources\Images\gumby.png" />
+    <Resource Include="Resources\Images\aurelia.png" />
     <Content Include="Resources\Images\preview.png">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
