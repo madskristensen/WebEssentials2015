@@ -78,6 +78,7 @@ namespace MadsKristensen.EditorExtensions.Html
                     s =>
                         !s.ContentType.IsOfType("html")
                         && !s.ContentType.IsOfType("htmlx")
+                        && !s.ContentType.IsOfType("Markdown")
                         && !s.ContentType.IsOfType("inert")
                         && !s.ContentType.IsOfType("CSharp")
                         && !s.ContentType.IsOfType("VisualBasic")
