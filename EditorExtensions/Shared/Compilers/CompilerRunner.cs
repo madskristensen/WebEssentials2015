@@ -246,7 +246,7 @@ namespace MadsKristensen.EditorExtensions.Compilers
     }
 
 
-    ///<summary>Compiles files asynchronously using MarkdownSharp and reports the results.</summary>
+    ///<summary>Compiles files asynchronously using CommonMark.NET and reports the results.</summary>
     class MarkdownCompilerRunner : CompilerRunnerBase
     {
         public MarkdownCompilerRunner(IContentType contentType) : base(contentType) { }
@@ -255,7 +255,12 @@ namespace MadsKristensen.EditorExtensions.Compilers
 
         protected async override Task<CompilerResult> RunCompilerAsync(string sourcePath, string targetPath)
         {
-            var result = new MarkdownSharp.Markdown(WESettings.Instance.Markdown).Transform(await FileHelpers.ReadAllTextRetry(sourcePath));
+			var cmSettings = new CommonMark.CommonMarkSettings()
+			{
+				RenderSoftLineBreaksAsLineBreaks = WESettings.Instance.Markdown.RenderSoftLineBreaksAsLineBreaks,
+				TrackSourcePosition = WESettings.Instance.Markdown.TrackSourcePosition
+			};			
+            var result = CommonMark.CommonMarkConverter.Convert(await FileHelpers.ReadAllTextRetry(sourcePath), cmSettings);
 
             if (!string.IsNullOrEmpty(targetPath) &&
                (!File.Exists(targetPath) || await FileHelpers.ReadAllTextRetry(targetPath) != result))

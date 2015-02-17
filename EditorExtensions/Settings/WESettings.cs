@@ -1,5 +1,4 @@
 ﻿using ConfOxide;
-using MarkdownSharp;
 using Microsoft.Ajax.Utilities;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -670,7 +669,7 @@ namespace MadsKristensen.EditorExtensions.Settings
     //    public bool MinifyInPlace { get; set; }
     //}
 
-    public sealed class MarkdownSettings : SettingsBase<MarkdownSettings>, ICompilerInvocationSettings, IMarginSettings, IMarkdownOptions
+    public sealed class MarkdownSettings : SettingsBase<MarkdownSettings>, ICompilerInvocationSettings, IMarginSettings
     {
         #region Compilation
         [Category("Editor")]
@@ -695,46 +694,21 @@ namespace MadsKristensen.EditorExtensions.Settings
         [Description("Specifies a custom subfolder to save compiled files to. By default, compiled output will be placed in the same folder and nested under the original file.")]
         [DefaultValue(null)]
         public string OutputDirectory { get; set; }
-        #endregion
+		#endregion
 
-        [Category("Compile Options")]
-        [DisplayName("Make bare URLs into hyperlinks")]
-        [Description("When true, (most) bare plain Urls are auto-hyperlinked. WARNING: this is a significant deviation from the Markdown spec.")]
-        [DefaultValue(false)]
-        public bool AutoHyperlink { get; set; }
+		[Category("Compile Options")]
+		[DisplayName("Render soft lines breaks as hard line breaks")]
+		[Description("When true, line breaks with ENTER key will be converted to proper HTML line breaks")]
+		[DefaultValue(false)]
+		public bool RenderSoftLineBreaksAsLineBreaks { get; set; }
 
-        [Category("Compile Options")]
-        [DisplayName("Make bare emails into links")]
-        [Description("When false, email addresses will never be auto-linked. WARNING: this is a significant deviation from the Markdown spec.")]
-        [DefaultValue(false)]
-        public bool LinkEmails { get; set; }
+		[Category("Compile Options")]
+		[DisplayName("Keep track of the precise position of block and inline elements")]
+		[Description("When true, the parser tracks precise positions in the source data for block and inline elements. This is disabled by default because it incurs an additional performance cost to keep track of the original position")]
+		[DefaultValue(false)]
+		public bool TrackSourcePosition { get; set; }
 
-        [Category("Compile Options")]
-        [DisplayName("Make return into a newline")]
-        [Description("When true, RETURN becomes a literal newline. WARNING: this is a significant deviation from the Markdown spec.")]
-        [DefaultValue(false)]
-        public bool AutoNewLines { get; set; }
-
-        [Category("Compile Options")]
-        [DisplayName("Generate XHTML output")]
-        [Description("When true, the output is valid XHTML. Otherwise regular HTML it output. In this case, when true (mostly) means that single tags are closed with `/>` instead of `>`.")]
-        [DefaultValue(true)]
-        public bool GenerateXHTML { get; set; }
-
-        [Category("Compile Options")]
-        [DisplayName("Encode problem Url characters")]
-        [Description("When true, problematic Url characters like [, ], (, and so forth will be encoded. WARNING: this is a significant deviation from the Markdown spec.")]
-        [DefaultValue(false)]
-        public bool EncodeProblemUrlCharacters { get; set; }
-
-        [Category("Compile Options")]
-        [DisplayName("Require non-word characters for bold/italic")]
-        [Description("When true, bold and italic require non-word characters on both sides. WARNING: this is a significant deviation from the Markdown spec.")]
-        [DefaultValue(false)]
-        public bool StrictBoldItalic { get; set; }
-        string IMarkdownOptions.EmptyElementSuffix { get { return GenerateXHTML ? " />" : ">"; } }
-
-        [Category("Compilation")]
+		[Category("Compilation")]
         [DisplayName("Don't save raw compilation output")]
         [Description("Don't save separate unminified compiler output. This option has no effect when Minify On Save is disabled for HTML.")]
         [DefaultValue(false)]
