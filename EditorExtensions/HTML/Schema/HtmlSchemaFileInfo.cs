@@ -7,11 +7,17 @@ namespace MadsKristensen.EditorExtensions.Html
 	{
 		private static Regex _regex = new Regex("vs:customattrprefix=\"(?<prefix>[^\"]+)\"", RegexOptions.IgnoreCase);
 
+		public HtmlSchemaFileInfo()
+		{
+			IsSupplemental = true;
+			IsXml = false;
+		}
+
 		public string CustomPrefix { get; set; }
 		public string File { get; set; }
 		public string FriendlyName { get; set; }
-		public bool IsSupplemental { get; set; } = true;
-		public bool IsXml { get; set; } = false;
+		public bool IsSupplemental { get; set; }
+		public bool IsXml { get; set; }
 		public string Uri { get; set; }
 
 		public static HtmlSchemaFileInfo FromFile(string file)
