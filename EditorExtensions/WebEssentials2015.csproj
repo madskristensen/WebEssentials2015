@@ -396,7 +396,18 @@
     <Compile Include="Dockerfile\Completion\DockerfileCompletionController.cs" />
     <Compile Include="Dockerfile\Completion\DockerfileCompletionSource.cs" />
     <Compile Include="HTML\Completion\AriaIdCompletion.cs" />
-    <Compile Include="HTML\Completion\AureliaLogoCompletion.cs" />
+    <Compile Include="HTML\LightBulbs\Actions\AngularControllerLightBulbAction.cs" />
+    <Compile Include="HTML\LightBulbs\Actions\Base64DecodeLightBulbAction.cs" />
+    <Compile Include="HTML\LightBulbs\Actions\ExtractLightBulbAction.cs" />
+    <Compile Include="HTML\LightBulbs\Actions\MinifyLightBulbAction.cs" />
+    <Compile Include="HTML\LightBulbs\Actions\OptimizeImageLightBulbAction.cs" />
+    <Compile Include="HTML\LightBulbs\Actions\RemoveElementLightBulbAction.cs" />
+    <Compile Include="HTML\LightBulbs\Providers\AngularControllerLightBulbProvider.cs" />
+    <Compile Include="HTML\LightBulbs\Providers\ImageLightBulbProvider.cs" />
+    <Compile Include="HTML\LightBulbs\Providers\RemoveElementLightBulbProvider.cs" />
+    <Compile Include="HTML\LightBulbs\Providers\StyleScriptLightBulbProvider.cs" />
+    <Compile Include="HTML\Schema\DynamicSchemaFileProvider.cs" />
+    <Compile Include="HTML\Schema\HtmlSchemaFileInfo.cs" />
     <Compile Include="HTML\Schema\IonicSchemaFileProvider.cs" />
     <Compile Include="JavaScript\Completion\GruntTaskCompletionSourceProvider.cs" />
     <Compile Include="JavaScript\Completion\HTML CompletionSources.cs" />
@@ -530,8 +541,6 @@
     </Compile>
     <Compile Include="Settings\SettingsStore.cs" />
     <Compile Include="Settings\WESettings.cs" />
-    <Compile Include="HTML\SmartTags\RemoteDownloaderSmartTag.cs" />
-    <Compile Include="HTML\SmartTags\OptimizeImageSmartTag.cs" />
     <Compile Include="Images\Commands\PasteImageCommandTarget.cs" />
     <Compile Include="Images\Commands\WebEditorsCreationListener.cs" />
     <Compile Include="WebVtt\Commands\WebVttCreationListener.cs" />
@@ -621,19 +630,6 @@
     <Compile Include="JavaScript\MenuItems\ReferenceJs.cs" />
     <Compile Include="Shared\Classify\IconRegistration.cs" />
     <Compile Include="CSS\SmartTags\Actions\RemoveCssRuleSmartTagAction.cs" />
-    <Compile Include="HTML\SmartTags\Base64DecodeSmartTag.cs" />
-    <Compile Include="HTML\SmartTags\ExtractToFileSmartTag.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="HTML\SmartTags\HtmlAngularControllerSmartTag.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="HTML\SmartTags\HtmlMinifyLanguageSmartTag.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="HTML\SmartTags\HtmlRemoveParentSmartTag.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="CSS\Validation\Filters\VariableCssErrorFilter.cs" />
     <Compile Include="CSS\Validation\Providers\MediaQuerySyntaxErrorTagProvider.cs" />
     <Compile Include="HTML\Validation\BootstrapClassValidator.cs" />
@@ -731,7 +727,6 @@
     <Compile Include="CSS\Schemas\CssSchemaUpdater.cs" />
     <Compile Include="CSS\Schemas\XmlColorPaletteProvider.cs" />
     <Compile Include="LESS\SmartTags\LessExtractVariableSmartTagAction.cs" />
-    <Compile Include="CSS\SmartTags\Actions\SortSmartTagAction.cs" />
     <Compile Include="CSS\SmartTags\Actions\UpdateEmbedSmartTagAction.cs" />
     <Compile Include="CSS\SmartTags\Actions\MissingStandardDirectiveSmartTagAction.cs" />
     <Compile Include="CSS\SmartTags\Actions\VendorDirectiveSmartTagAction.cs" />
@@ -791,13 +786,16 @@
       <Link>LICENSE.txt</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <Content Include="HTML\Schema\Schemas\aurelia.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="JavaScript\Resources\Modern.Intellisense.js">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="JavaScript\Snippets\snippets.pkgdef">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="NPM\Resources\gruntfile.js">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="Resources\Icons\Bundle.ico">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="Resources\Icons\Font.ico">
@@ -828,15 +826,11 @@
     <Resource Include="Resources\Images\foundation.png" />
     <Resource Include="Resources\Images\blueprint.png" />
     <Resource Include="Resources\Images\gumby.png" />
-    <Resource Include="Resources\Images\aurelia.png" />
     <Content Include="Resources\Images\preview.png">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Resource Include="Resources\Images\skeleton.png" />
     <Content Include="Resources\Images\WebEssentials2012logo.png">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="Resources\Scripts\Modern.Intellisense.js">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="Resources\Tools\gifsicle.exe">
@@ -923,6 +917,10 @@
       <SubType>Designer</SubType>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <Content Include="HTML\Schema\Schemas\aurelia.xsd">
+      <SubType>Designer</SubType>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <None Include="Markdown\Classify\Sample.md" />
     <Content Include="NPM\Resources\bower.json">
       <IncludeInVSIX>true</IncludeInVSIX>
@@ -951,22 +949,15 @@
     <Resource Include="Resources\Images\browserlink.png" />
     <Resource Include="Resources\Images\node_module.png" />
     <Resource Include="Resources\Images\jsfile.png" />
-    <Resource Include="Resources\Images\jsonfile.png" />
     <None Include="Resources\Images\Browser Pause Button.png" />
     <None Include="Resources\Images\Browser Record Button.png" />
     <!--<Content Include="Resources\nodejs\node.exe">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>-->
-    <Resource Include="Resources\Images\graph_id.png" />
-    <Resource Include="Resources\Images\graph_atdir.png" />
-    <Resource Include="Resources\Images\graph_class.png" />
-    <Resource Include="Resources\Images\graph_parent.png" />
-    <Resource Include="Resources\Images\sort.png" />
     <Content Include="Resources\Tools\png.cmd">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <None Include="Source.extension.vsixmanifest" />
-    <Resource Include="Resources\Images\vsgallery.png" />
     <Content Include="CSS\Schemas\css-we-settings.xml">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
@@ -979,9 +970,7 @@
     <Resource Include="Resources\Images\skull.png" />
     <Resource Include="Resources\Images\embed.png" />
     <Resource Include="Resources\Images\nopreview.png" />
-    <Resource Include="Resources\Images\cross_browser.png" />
     <Resource Include="Resources\Images\no_skull.png" />
-    <Resource Include="Resources\Images\alphabatize.png" />
     <Resource Include="Resources\Images\Browsers\ie.png" />
     <Resource Include="Resources\Images\Browsers\o.png" />
     <Resource Include="Resources\Images\Browsers\c.png" />

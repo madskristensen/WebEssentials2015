@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xsd:schema xmlns="http://schemas.microsoft.com/intellisense/aurelia"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+      xmlns:vs="http://schemas.microsoft.com/Visual-Studio-Intellisense"
+      vs:SuccinctFriendlyName="Aurelia"
+      vs:issupplemental="true"
+      vs:icon="aurelia.png"
+      vs:customattrprefix="aurelia-"
+      vs:addattributesfromusage="true">
+
+    <xsd:element name="___all___">
+        <xsd:complexType>
+            <xsd:attribute name="aurelia-app" vs:category="Aurelia" vs:standalone="true" />
+            <xsd:attribute name="aurelia-main" vs:category="Aurelia" vs:standalone="true" />
+        </xsd:complexType>
+    </xsd:element>
+
+</xsd:schema>

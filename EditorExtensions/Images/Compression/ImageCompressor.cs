@@ -94,7 +94,7 @@ namespace MadsKristensen.EditorExtensions.Images
 
         private static void HandleResult(string file, CompressionResult result)
         {
-            string name = file.Contains(_dataUriPrefix) ? "the dataUri" : Path.GetFileName(file);
+            string name = file.Contains(_dataUriPrefix) ? "The dataUri" : Path.GetFileName(file);
 
             if (result.Saving > 0)
             {

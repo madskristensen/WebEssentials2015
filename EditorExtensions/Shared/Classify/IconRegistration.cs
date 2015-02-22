@@ -30,10 +30,7 @@ namespace MadsKristensen.EditorExtensions
 
                     // WebVTT
                     AddIcon(classes, "WebVTT.ico", ".vtt");
-
-                    // Bundles
-                    //AddIcon(classes, "Bundle.ico", ".bundle");
-
+					                    
                     // Fonts
                     AddIcon(classes, "Font.ico", ".wof", ".woff", ".woff2", ".eot");
 

@@ -214,7 +214,7 @@ namespace MadsKristensen.EditorExtensions
     {
         protected async override void Initialize()
         {
-            //JavaScriptIntellisense.Register(UserRegistryRoot);
+            JavaScriptIntellisense.Register(UserRegistryRoot);
             await CompatibilityChecker.StartCheckingCompatibility();
         }
     }

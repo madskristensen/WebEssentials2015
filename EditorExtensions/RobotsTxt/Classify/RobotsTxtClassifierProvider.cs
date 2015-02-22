@@ -59,6 +59,9 @@ namespace MadsKristensen.EditorExtensions.RobotsTxt
 
                 case "humans.txt":
                     return TextType.Humans;
+
+				case ".gitignore":
+					return TextType.CommentsOnly;
             }
 
             return TextType.Unsupported;
@@ -70,5 +73,6 @@ namespace MadsKristensen.EditorExtensions.RobotsTxt
         Unsupported = 0,
         Robots,
         Humans,
+		CommentsOnly
     }
 }

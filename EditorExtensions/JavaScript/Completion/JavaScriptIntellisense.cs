@@ -9,26 +9,29 @@ namespace MadsKristensen.EditorExtensions.JavaScript
     {
         public static void Register(RegistryKey root)
         {
-            RegisterFile("resources\\scripts\\Modern.Intellisense.js", root);
+            RegisterFile("JavaScript\\Resources\\Modern.Intellisense.js", root);
         }
 
         private static void RegisterFile(string path, RegistryKey root)
         {
             try
             {
-                string assembly = Assembly.GetExecutingAssembly().Location;
+				string userPath = GetUserFilePath(Path.GetFileName(path));
+				string assembly = Assembly.GetExecutingAssembly().Location;
                 string folder = Path.GetDirectoryName(assembly).ToLowerInvariant();
                 string file = Path.Combine(folder, path);
 
                 if (!File.Exists(file))
                     return;
 
-                using (RegistryKey key = root.OpenSubKey("JavaScriptLanguageService", true))
+				File.Copy(file, userPath, true);
+
+				using (RegistryKey key = root.OpenSubKey("JavaScriptLanguageService", true))
                 {
                     if (key == null)
                         return;
 
-                    key.SetValue("ReferenceGroups_WE", "Implicit (Web)|" + file + ";");
+                    key.SetValue("ReferenceGroups_WE", "Implicit (Web)|" + userPath + ";");
                     return;
                 }
             }
@@ -37,5 +40,17 @@ namespace MadsKristensen.EditorExtensions.JavaScript
                 Logger.Log(ex);
             }
         }
-    }
+
+		private static string GetUserFilePath(string fileName)
+		{
+			string folder = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+
+			string WE_folder = Path.Combine(folder, "Web Essentials 2015");
+
+			if (!Directory.Exists(WE_folder))
+				Directory.CreateDirectory(WE_folder);
+
+			return Path.Combine(WE_folder, fileName);
+		}
+	}
 }
