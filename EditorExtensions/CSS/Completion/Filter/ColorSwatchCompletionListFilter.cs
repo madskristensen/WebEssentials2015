@@ -7,6 +7,8 @@ using Microsoft.VisualStudio.Utilities;
 using Microsoft.CSS.Editor.Completion;
 using Microsoft.CSS.Core.TreeItems;
 using Microsoft.Web.Editor.Completion;
+using System.Windows.Media.Imaging;
+using System;
 
 namespace MadsKristensen.EditorExtensions.Css
 {
@@ -57,7 +59,20 @@ namespace MadsKristensen.EditorExtensions.Css
             DrawingImage image = new DrawingImage(drawing);
             image.Freeze();
 
-            return image;
+            return ConvertToBitmap(image);
         }
-    }
+
+		private static BitmapSource ConvertToBitmap(DrawingImage image)
+		{
+			DrawingVisual drawingVisual = new DrawingVisual();
+			DrawingContext drawingContext = drawingVisual.RenderOpen();
+			drawingContext.DrawImage(image, new Rect(new Point(0, 0), new Size(image.Width, image.Height)));
+			drawingContext.Close();
+
+			RenderTargetBitmap rendered = new RenderTargetBitmap(Convert.ToInt32(image.Height), Convert.ToInt32(image.Width), 96, 96, PixelFormats.Pbgra32);
+			rendered.Render(drawingVisual);
+
+			return rendered;
+		}
+	}
 }
