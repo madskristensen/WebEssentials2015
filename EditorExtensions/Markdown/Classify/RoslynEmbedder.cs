@@ -90,13 +90,8 @@ namespace MadsKristensen.EditorExtensions.Markdown.Classify
                 return CurrentSolution.GetDocument(id);
             }
 
-            protected override void AddMetadataReference(ProjectId projectId, MetadataReference metadataReference)
+            protected override void ApplyDocumentTextChanged(DocumentId id, SourceText text)
             {
-                OnMetadataReferenceAdded(projectId, metadataReference);
-            }
-            protected override void ChangedDocumentText(DocumentId id, SourceText text)
-            {
-                OnDocumentTextChanged(id, text, PreservationMode.PreserveValue);
                 UpdateText(text, documentBuffers[id], EditOptions.DefaultMinimalChange);
             }
 
