@@ -88,55 +88,55 @@
       <HintPath>..\packages\ConfOxide.1.4.0.0\lib\net40\ConfOxide.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeAnalysis">
-      <HintPath>..\packages\Microsoft.CodeAnalysis.Common.1.0.0-beta1-20141031-01\lib\net45\Microsoft.CodeAnalysis.dll</HintPath>
+      <HintPath>..\packages\Microsoft.CodeAnalysis.Common.1.0.0-rc1\lib\net45\Microsoft.CodeAnalysis.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.CodeAnalysis.CSharp">
-      <HintPath>..\packages\Microsoft.CodeAnalysis.CSharp.1.0.0-beta1-20141031-01\lib\net45\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
+      <HintPath>..\packages\Microsoft.CodeAnalysis.CSharp.1.0.0-rc1\lib\net45\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.CodeAnalysis.CSharp.Desktop">
-      <HintPath>..\packages\Microsoft.CodeAnalysis.CSharp.1.0.0-beta1-20141031-01\lib\net45\Microsoft.CodeAnalysis.CSharp.Desktop.dll</HintPath>
+      <HintPath>..\packages\Microsoft.CodeAnalysis.CSharp.1.0.0-rc1\lib\net45\Microsoft.CodeAnalysis.CSharp.Desktop.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.CodeAnalysis.CSharp.Workspaces">
-      <HintPath>..\packages\Microsoft.CodeAnalysis.CSharp.Workspaces.1.0.0-beta1-20141031-01\lib\net45\Microsoft.CodeAnalysis.CSharp.Workspaces.dll</HintPath>
+      <HintPath>..\packages\Microsoft.CodeAnalysis.CSharp.Workspaces.1.0.0-rc1\lib\net45\Microsoft.CodeAnalysis.CSharp.Workspaces.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.CodeAnalysis.CSharp.Workspaces.Desktop">
-      <HintPath>..\packages\Microsoft.CodeAnalysis.CSharp.Workspaces.1.0.0-beta1-20141031-01\lib\net45\Microsoft.CodeAnalysis.CSharp.Workspaces.Desktop.dll</HintPath>
+      <HintPath>..\packages\Microsoft.CodeAnalysis.CSharp.Workspaces.1.0.0-rc1\lib\net45\Microsoft.CodeAnalysis.CSharp.Workspaces.Desktop.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.CodeAnalysis.Desktop">
-      <HintPath>..\packages\Microsoft.CodeAnalysis.Common.1.0.0-beta1-20141031-01\lib\net45\Microsoft.CodeAnalysis.Desktop.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Microsoft.CodeAnalysis.VisualBasic">
-      <HintPath>..\packages\Microsoft.CodeAnalysis.VisualBasic.1.0.0-beta1-20141031-01\lib\net45\Microsoft.CodeAnalysis.VisualBasic.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Microsoft.CodeAnalysis.VisualBasic.Desktop">
-      <HintPath>..\packages\Microsoft.CodeAnalysis.VisualBasic.1.0.0-beta1-20141031-01\lib\net45\Microsoft.CodeAnalysis.VisualBasic.Desktop.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Microsoft.CodeAnalysis.VisualBasic.Workspaces">
-      <HintPath>..\packages\Microsoft.CodeAnalysis.VisualBasic.Workspaces.1.0.0-beta1-20141031-01\lib\net45\Microsoft.CodeAnalysis.VisualBasic.Workspaces.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Microsoft.CodeAnalysis.VisualBasic.Workspaces.Desktop">
-      <HintPath>..\packages\Microsoft.CodeAnalysis.VisualBasic.Workspaces.1.0.0-beta1-20141031-01\lib\net45\Microsoft.CodeAnalysis.VisualBasic.Workspaces.Desktop.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Microsoft.CodeAnalysis.Workspaces">
-      <HintPath>..\packages\Microsoft.CodeAnalysis.Workspaces.Common.1.0.0-beta1-20141031-01\lib\net45\Microsoft.CodeAnalysis.Workspaces.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Microsoft.CodeAnalysis.Workspaces.Desktop">
-      <HintPath>..\packages\Microsoft.CodeAnalysis.Workspaces.Common.1.0.0-beta1-20141031-01\lib\net45\Microsoft.CodeAnalysis.Workspaces.Desktop.dll</HintPath>
+      <HintPath>..\packages\Microsoft.CodeAnalysis.Common.1.0.0-rc1\lib\net45\Microsoft.CodeAnalysis.Desktop.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.CodeAnalysis.EditorFeatures.Text">
-      <HintPath>..\packages\Microsoft.CodeAnalysis.EditorFeatures.Text.1.0.0-beta1-20141031-01\lib\net45\Microsoft.CodeAnalysis.EditorFeatures.Text.dll</HintPath>
+      <HintPath>..\packages\Microsoft.CodeAnalysis.EditorFeatures.Text.1.0.0-rc1\lib\net45\Microsoft.CodeAnalysis.EditorFeatures.Text.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.VisualBasic">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.VisualBasic.1.0.0-rc1\lib\net45\Microsoft.CodeAnalysis.VisualBasic.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.VisualBasic.Desktop">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.VisualBasic.1.0.0-rc1\lib\net45\Microsoft.CodeAnalysis.VisualBasic.Desktop.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.VisualBasic.Workspaces">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.VisualBasic.Workspaces.1.0.0-rc1\lib\net45\Microsoft.CodeAnalysis.VisualBasic.Workspaces.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.VisualBasic.Workspaces.Desktop">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.VisualBasic.Workspaces.1.0.0-rc1\lib\net45\Microsoft.CodeAnalysis.VisualBasic.Workspaces.Desktop.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.Workspaces">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.Workspaces.Common.1.0.0-rc1\lib\net45\Microsoft.CodeAnalysis.Workspaces.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.Workspaces.Desktop">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.Workspaces.Common.1.0.0-rc1\lib\net45\Microsoft.CodeAnalysis.Workspaces.Desktop.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.CSS.Core">
@@ -182,7 +182,7 @@
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Language.Intellisense, Version=14.0.0.0" />
     <Reference Include="Microsoft.VisualStudio.LanguageServices">
-      <HintPath>..\packages\Microsoft.VisualStudio.LanguageServices.1.0.0-beta1-20141031-01\lib\net45\Microsoft.VisualStudio.LanguageServices.dll</HintPath>
+      <HintPath>..\packages\Microsoft.VisualStudio.LanguageServices.1.0.0-rc1\lib\net45\Microsoft.VisualStudio.LanguageServices.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Shell.14.0, Version=14.0.0.0" />
@@ -257,12 +257,33 @@
     <Reference Include="System" />
     <Reference Include="System.Collections">
       <HintPath>..\packages\System.Collections.4.0.10-beta-22416\lib\net45\System.Collections.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Collections.Immutable, Version=1.1.32.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <Private>False</Private>
-      <HintPath>..\packages\System.Collections.Immutable.1.1.32-beta\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=1.1.33.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>False</Private>
+      <HintPath>..\packages\System.Collections.Immutable.1.1.33-beta\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Composition.AttributedModel">
+      <HintPath>..\packages\Microsoft.Composition.1.0.30\lib\portable-net45+win8+wp8+wpa81\System.Composition.AttributedModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Composition.Convention">
+      <HintPath>..\packages\Microsoft.Composition.1.0.30\lib\portable-net45+win8+wp8+wpa81\System.Composition.Convention.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Composition.Hosting">
+      <HintPath>..\packages\Microsoft.Composition.1.0.30\lib\portable-net45+win8+wp8+wpa81\System.Composition.Hosting.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Composition.Runtime">
+      <HintPath>..\packages\Microsoft.Composition.1.0.30\lib\portable-net45+win8+wp8+wpa81\System.Composition.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Composition.TypedParts">
+      <HintPath>..\packages\Microsoft.Composition.1.0.30\lib\portable-net45+win8+wp8+wpa81\System.Composition.TypedParts.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Design" />
@@ -272,11 +293,12 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Reflection.Metadata">
-      <HintPath>..\packages\System.Reflection.Metadata.1.0.17-beta\lib\portable-net45+win8\System.Reflection.Metadata.dll</HintPath>
+      <HintPath>..\packages\System.Reflection.Metadata.1.0.18-beta\lib\portable-net45+win8\System.Reflection.Metadata.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Runtime">
       <HintPath>..\packages\System.Runtime.4.0.20-beta-22416\lib\net45\System.Runtime.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -1012,7 +1034,10 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0-rc1\tools\analyzers\C#\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0-rc1\tools\analyzers\Microsoft.CodeAnalysis.Analyzers.dll" />
+  </ItemGroup>
   <PropertyGroup>
     <UseCodebase>true</UseCodebase>
   </PropertyGroup>
