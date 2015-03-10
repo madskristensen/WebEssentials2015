@@ -694,21 +694,21 @@ namespace MadsKristensen.EditorExtensions.Settings
         [Description("Specifies a custom subfolder to save compiled files to. By default, compiled output will be placed in the same folder and nested under the original file.")]
         [DefaultValue(null)]
         public string OutputDirectory { get; set; }
-		#endregion
+        #endregion
 
-		[Category("Compile Options")]
-		[DisplayName("Render soft lines breaks as hard line breaks")]
-		[Description("When true, line breaks with ENTER key will be converted to proper HTML line breaks")]
-		[DefaultValue(false)]
-		public bool RenderSoftLineBreaksAsLineBreaks { get; set; }
+        [Category("Compile Options")]
+        [DisplayName("Render soft lines breaks as hard line breaks")]
+        [Description("When true, line breaks with ENTER key will be converted to proper HTML line breaks")]
+        [DefaultValue(false)]
+        public bool RenderSoftLineBreaksAsLineBreaks { get; set; }
 
-		[Category("Compile Options")]
-		[DisplayName("Keep track of the precise position of block and inline elements")]
-		[Description("When true, the parser tracks precise positions in the source data for block and inline elements. This is disabled by default because it incurs an additional performance cost to keep track of the original position")]
-		[DefaultValue(false)]
-		public bool TrackSourcePosition { get; set; }
+        [Category("Compile Options")]
+        [DisplayName("Keep track of the precise position of block and inline elements")]
+        [Description("When true, the parser tracks precise positions in the source data for block and inline elements. This is disabled by default because it incurs an additional performance cost to keep track of the original position")]
+        [DefaultValue(false)]
+        public bool TrackSourcePosition { get; set; }
 
-		[Category("Compilation")]
+        [Category("Compilation")]
         [DisplayName("Don't save raw compilation output")]
         [Description("Don't save separate unminified compiler output. This option has no effect when Minify On Save is disabled for HTML.")]
         [DefaultValue(false)]
