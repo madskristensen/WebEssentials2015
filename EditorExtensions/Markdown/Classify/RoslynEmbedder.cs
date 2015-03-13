@@ -57,7 +57,7 @@ namespace MadsKristensen.EditorExtensions.Markdown.Classify
             static readonly Type IWorkCoordinatorRegistrationService = Type.GetType("Microsoft.CodeAnalysis.SolutionCrawler.IWorkCoordinatorRegistrationService, Microsoft.CodeAnalysis.Features");
 
             readonly Dictionary<DocumentId, ITextBuffer> documentBuffers = new Dictionary<DocumentId, ITextBuffer>();
-            public MarkdownWorkspace(HostServices host) : base(host, WorkspaceKind.MiscellaneousFiles)
+            public MarkdownWorkspace(HostServices host) : base(host, WorkspaceKind.Interactive) // TODO: Change to Host on next release
             {
                 var wcrService = typeof(HostWorkspaceServices)
                     .GetMethod(nameof(HostWorkspaceServices.GetService))
