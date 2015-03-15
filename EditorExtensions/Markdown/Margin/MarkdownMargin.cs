@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using MadsKristensen.EditorExtensions.Settings;
 using Microsoft.VisualStudio.Text;
 using mshtml;
+using System.Reflection;
 
 namespace MadsKristensen.EditorExtensions.Markdown
 {
@@ -26,15 +27,32 @@ namespace MadsKristensen.EditorExtensions.Markdown
         public static string GetStylesheet()
         {
             string file = GetCustomStylesheetFilePath();
+            string folder = GetFolder();
+            string Csspath = Path.Combine(folder, "markdown\\margin\\highlight.css");
+            string scriptPath = Path.Combine(folder, "markdown\\margin\\highlight.js");
+
+            string linkFormat = "<link rel=\"stylesheet\" href=\"{0}\" />";
+            string link = string.Format(CultureInfo.CurrentCulture, linkFormat, Csspath);
+
+            string scriptFormat = "<script src=\"{0}\"></script>" +
+                                  "<script>hljs.initHighlightingOnLoad();</script>";
+
+            link += string.Format(CultureInfo.CurrentCulture, scriptFormat, scriptPath);
 
             if (File.Exists(file))
             {
-                string linkFormat = "<link rel=\"stylesheet\" href=\"{0}\" />";
-
-                return string.Format(CultureInfo.CurrentCulture, linkFormat, file);
+                link += string.Format(CultureInfo.CurrentCulture, linkFormat, file);
+                return link;
             }
 
-            return "<style>body{font: 1.1em 'Century Gothic'}</style>";
+            return  link + "<style>body{font: 16px/1.5 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif} h1{font-size:36px; border-bottom: 1px solid silver} h2{font-size:28px} h3{font-size:24px} h4{font-size:20px} pre{padding:16px} img{border:none} a{color:#4183c4}</style>";
+        }
+
+        private static string GetFolder()
+        {
+            string assembly = Assembly.GetExecutingAssembly().Location;
+            string folder = Path.GetDirectoryName(assembly);
+            return folder;
         }
 
         public static string GetCustomStylesheetFilePath()
