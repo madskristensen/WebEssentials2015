@@ -10,7 +10,7 @@ namespace MadsKristensen.EditorExtensions.Settings
     internal static class SettingsStore
     {
         //const string _legacyFileName = "WE2013-settings.xml";
-        public const string FileName = "WebEssentials-Settings.json";
+        public const string FileName = "WebEssentials2015-Settings.json";
 
         public static bool SolutionSettingsExist
         {
