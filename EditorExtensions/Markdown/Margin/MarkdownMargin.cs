@@ -45,7 +45,8 @@ namespace MadsKristensen.EditorExtensions.Markdown
                 return link;
             }
 
-            return  link + "<style>body{font: 16px/1.5 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif} h1{font-size:36px; border-bottom: 1px solid silver} h2{font-size:28px} h3{font-size:24px} h4{font-size:20px} pre{padding:16px} img{border:none} a{color:#4183c4}</style>";
+            // Mimicks GitHub's styling
+            return  link + "<style>body{font: 16px/1.5 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif} h1{font-size:36px; border-bottom: 1px solid #f1f1f1} h2{font-size:28px} h3{font-size:24px} h4{font-size:20px} pre{padding:16px} img{border:none} a{color:#4183c4}</style>";
         }
 
         private static string GetFolder()
