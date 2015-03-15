@@ -1,5 +1,6 @@
-[Web Essentials](http://vswebessentials.com) for Visual Studio 2015
-=================
+# [Web Essentials](http://vswebessentials.com) for Visual Studio 2015
+
+[![Build status](https://ci.appveyor.com/api/projects/status/635d910flwbi7sh9?svg=true)](https://ci.appveyor.com/project/madskristensen/webessentials2015)
 
 Web Essentials extends Visual Studio with lots of new features that web developers have been missing for many years. 
 
