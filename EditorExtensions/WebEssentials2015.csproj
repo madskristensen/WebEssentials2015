@@ -945,6 +945,10 @@
       <SubType>Designer</SubType>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <Content Include="JavaScript\Snippets\Web Essentials\region.snippet">
+      <SubType>Designer</SubType>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <None Include="Markdown\Classify\Sample.md" />
     <Content Include="NPM\Resources\bower.json">
       <IncludeInVSIX>true</IncludeInVSIX>
