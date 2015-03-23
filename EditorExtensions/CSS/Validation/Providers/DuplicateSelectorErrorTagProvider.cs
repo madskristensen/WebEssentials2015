@@ -42,7 +42,7 @@ namespace MadsKristensen.EditorExtensions.Css
                 if (cache[i].Start >= start)
                     break;
 
-                if (ruleText == cache[i].Value)
+                if (ruleText == cache[i].Value && rule.Parent == cache[i].Rule.Parent)
                 {
                     dupe = cache[i];
                     break;
