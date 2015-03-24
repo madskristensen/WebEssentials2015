@@ -251,9 +251,6 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="Pri.LongPath">
-      <HintPath>..\packages\Pri.LongPath.2.0.0-beta\lib\net45\Pri.LongPath.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Collections">
       <HintPath>..\packages\System.Collections.4.0.10-beta-22605\lib\net45\System.Collections.dll</HintPath>
