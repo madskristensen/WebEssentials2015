@@ -429,6 +429,9 @@
     <Compile Include="HTML\Schema\DynamicSchemaFileProvider.cs" />
     <Compile Include="HTML\Schema\HtmlSchemaFileInfo.cs" />
     <Compile Include="HTML\Schema\IonicSchemaFileProvider.cs" />
+    <Compile Include="JavaScript\Classify\TaskClassificationTypes.cs" />
+    <Compile Include="JavaScript\Classify\TaskClassifier.cs" />
+    <Compile Include="JavaScript\Classify\TaskProvider.cs" />
     <Compile Include="JavaScript\Completion\GruntTaskCompletionSourceProvider.cs" />
     <Compile Include="JavaScript\Completion\HTML CompletionSources.cs" />
     <Compile Include="JavaScript\Completion\JavaScriptCompletionController.cs" />
