@@ -111,9 +111,7 @@ namespace MadsKristensen.EditorExtensions
                 unMinifyMenu.SetupCommands();
                 grunt.SetupCommands();
             }
-
-            IconRegistration.RegisterIcons();
-
+            
             // Hook up event handlers
             await Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() =>
             {

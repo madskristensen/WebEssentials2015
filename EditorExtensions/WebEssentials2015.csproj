@@ -649,7 +649,6 @@
     <Compile Include="Shared\Helpers\Css\StyleSheetHelpers.cs" />
     <Compile Include="Shared\Helpers\WindowHelpers.cs" />
     <Compile Include="JavaScript\MenuItems\ReferenceJs.cs" />
-    <Compile Include="Shared\Classify\IconRegistration.cs" />
     <Compile Include="CSS\SmartTags\Actions\RemoveCssRuleSmartTagAction.cs" />
     <Compile Include="CSS\Validation\Filters\VariableCssErrorFilter.cs" />
     <Compile Include="CSS\Validation\Providers\MediaQuerySyntaxErrorTagProvider.cs" />
@@ -825,34 +824,14 @@
     <Content Include="NPM\Resources\gruntfile.js">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="Resources\Icons\Font.ico">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="Resources\Icons\GenericScript.ico">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="Resources\Icons\Git.ico">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="Resources\Icons\Jigsaw.ico">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="Resources\Icons\LiveScript.ico">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="Resources\Icons\WebVTT.ico">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="Resources\Icons\CoffeeScript.ico">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="Resources\Icons\Markdown.ico">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
     <Resource Include="Resources\Images\angular.png" />
     <Resource Include="Resources\Images\foundation.png" />
     <Resource Include="Resources\Images\blueprint.png" />
     <Resource Include="Resources\Images\gumby.png" />
+    <Content Include="icons.pkgdef">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Images\preview.png">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>

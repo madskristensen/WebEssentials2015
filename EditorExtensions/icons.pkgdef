@@ -1,0 +1,89 @@
+﻿// See all available icons here http://glyphlist.azurewebsites.net/knownmonikers/
+
+// Git
+[$RootKey$\ShellFileAssociations\.gitignore]
+"DefaultIconMoniker"="KnownMonikers.Git"
+[$RootKey$\ShellFileAssociations\.gitattributes]
+"DefaultIconMoniker"="KnownMonikers.Git"
+
+// Markdown
+[$RootKey$\ShellFileAssociations\.md]
+"DefaultIconMoniker"="KnownMonikers.MarkdownFile"
+[$RootKey$\ShellFileAssociations\.mdown]
+"DefaultIconMoniker"="KnownMonikers.MarkdownFile"
+[$RootKey$\ShellFileAssociations\.markdown]
+"DefaultIconMoniker"="KnownMonikers.MarkdownFile"
+[$RootKey$\ShellFileAssociations\.mkd]
+"DefaultIconMoniker"="KnownMonikers.MarkdownFile"
+[$RootKey$\ShellFileAssociations\.mkdn]
+"DefaultIconMoniker"="KnownMonikers.MarkdownFile"
+[$RootKey$\ShellFileAssociations\.mdwn]
+"DefaultIconMoniker"="KnownMonikers.MarkdownFile"
+[$RootKey$\ShellFileAssociations\.mmd]
+"DefaultIconMoniker"="KnownMonikers.MarkdownFile"
+
+// CoffeeScript
+[$RootKey$\ShellFileAssociations\.cson]
+"DefaultIconMoniker"="KnownMonikers.JSCoffeeScript"
+[$RootKey$\ShellFileAssociations\.iced]
+"DefaultIconMoniker"="KnownMonikers.JSCoffeeScript"
+
+// Fonts
+[$RootKey$\ShellFileAssociations\.wof]
+"DefaultIconMoniker"="KnownMonikers.Font"
+[$RootKey$\ShellFileAssociations\.woff]
+"DefaultIconMoniker"="KnownMonikers.Font"
+[$RootKey$\ShellFileAssociations\.woff2]
+"DefaultIconMoniker"="KnownMonikers.Font"
+[$RootKey$\ShellFileAssociations\.eot]
+"DefaultIconMoniker"="KnownMonikers.Font"
+
+// Generic Scripts
+[$RootKey$\ShellFileAssociations\.appcache]
+"DefaultIconMoniker"="KnownMonikers.FSScript"
+[$RootKey$\ShellFileAssociations\.rtlcssrc]
+"DefaultIconMoniker"="KnownMonikers.FSScript"
+[$RootKey$\ShellFileAssociations\.sjs]
+"DefaultIconMoniker"="KnownMonikers.FSScript"
+
+// LiveScript
+[$RootKey$\ShellFileAssociations\.ls]
+"DefaultIconMoniker"="KnownMonikers.FSScript"
+[$RootKey$\ShellFileAssociations\.livescript]
+"DefaultIconMoniker"="KnownMonikers.FSScript"
+[$RootKey$\ShellFileAssociations\.lsc]
+"DefaultIconMoniker"="KnownMonikers.FSScript"
+
+// Config files
+[$RootKey$\ShellFileAssociations\.jshintrc]
+"DefaultIconMoniker"="KnownMonikers.JSONScript"
+[$RootKey$\ShellFileAssociations\.bowerrc]
+"DefaultIconMoniker"="KnownMonikers.JSONScript"
+[$RootKey$\ShellFileAssociations\.npmrc]
+"DefaultIconMoniker"="KnownMonikers.JSONScript"
+
+// YAML
+[$RootKey$\ShellFileAssociations\.yml]
+"DefaultIconMoniker"="KnownMonikers.JSONScript"
+[$RootKey$\ShellFileAssociations\.yaml]
+"DefaultIconMoniker"="KnownMonikers.JSONScript"
+
+// WebVTT
+[$RootKey$\ShellFileAssociations\.vtt]
+"DefaultIconMoniker"="KnownMonikers.ObjectLifetimeView"
+
+// Source Maps
+[$RootKey$\ShellFileAssociations\.map]
+"DefaultIconMoniker"="KnownMonikers.SiteMap"
+
+// Image files
+[$RootKey$\ShellFileAssociations\.pdn]
+"DefaultIconMoniker"="KnownMonikers.Image"
+
+// Ignore files
+[$RootKey$\ShellFileAssociations\.jshintignore]
+"DefaultIconMoniker"="KnownMonikers.ConfigurationFile"
+[$RootKey$\ShellFileAssociations\.npmignore]
+"DefaultIconMoniker"="KnownMonikers.ConfigurationFile"
+[$RootKey$\ShellFileAssociations\.weignore]
+"DefaultIconMoniker"="KnownMonikers.ConfigurationFile"
