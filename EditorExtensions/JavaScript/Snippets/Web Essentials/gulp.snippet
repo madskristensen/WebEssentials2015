@@ -9,12 +9,19 @@
         </SnippetTypes>
     </Header>
     <Snippet>
+        <Declarations>
+            <Literal>
+                <ID>name</ID>
+                <ToolTip>Name of task</ToolTip>
+                <Default>name</Default>
+            </Literal>
+        </Declarations>
         <Code Language="JavaScript">
-            <![CDATA[var gulp = require('gulp');
+            <![CDATA[var gulp = require("gulp");
 
-gulp.task('default', function () {
-    // place code for your default task here
-});$end$]]>
+gulp.task("$name$", function () {
+    $end$
+});]]>
         </Code>
     </Snippet>
 </CodeSnippet>
