@@ -922,6 +922,10 @@
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Compile Include="JavaScript\Schemas\FSPCache.cs" />
+    <Content Include="JavaScript\Snippets\Web Essentials\gulp.snippet">
+      <SubType>Designer</SubType>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <None Include="Markdown\Classify\Sample.md" />
     <Content Include="NPM\Resources\bower.json">
       <IncludeInVSIX>true</IncludeInVSIX>
