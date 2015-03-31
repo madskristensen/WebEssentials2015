@@ -11,13 +11,13 @@ using Microsoft.Html.Editor.Completion;
 
 namespace MadsKristensen.EditorExtensions.Html
 {
-    [HtmlCompletionProvider(CompletionType.Values, "input", "list")]
+    [HtmlCompletionProvider(CompletionTypes.Values, "input", "list")]
     [ContentType(HtmlContentTypeDefinition.HtmlContentType)]
     public class HtmlDataListCompletion : IHtmlCompletionListProvider, IHtmlTreeVisitor
     {
-        public CompletionType CompletionType
+        public string CompletionType
         {
-            get { return CompletionType.Values; }
+            get { return CompletionTypes.Values; }
         }
 
         public IList<HtmlCompletion> GetEntries(HtmlCompletionContext context)

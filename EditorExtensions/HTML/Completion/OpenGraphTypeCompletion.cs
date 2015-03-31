@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace MadsKristensen.EditorExtensions.Html
 {
-	[HtmlCompletionProvider(CompletionType.Values, "meta", "content")]
+	[HtmlCompletionProvider(CompletionTypes.Values, "meta", "content")]
 	[ContentType(HtmlContentTypeDefinition.HtmlContentType)]
 	public class OpenGraphTypeCompletion : StaticListCompletion, IHtmlTreeVisitor
 	{

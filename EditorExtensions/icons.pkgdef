@@ -54,6 +54,10 @@
 [$RootKey$\ShellFileAssociations\.lsc]
 "DefaultIconMoniker"="KnownMonikers.FSScript"
 
+// JSX
+[$RootKey$\ShellFileAssociations\.jsx]
+"DefaultIconMoniker"="KnownMonikers.JSScript"
+
 // Config files
 [$RootKey$\ShellFileAssociations\.jshintrc]
 "DefaultIconMoniker"="KnownMonikers.JSONScript"

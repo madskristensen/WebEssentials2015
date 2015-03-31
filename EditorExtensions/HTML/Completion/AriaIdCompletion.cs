@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace MadsKristensen.EditorExtensions.Html
 {
-    [HtmlCompletionProvider(CompletionType.GroupValues, "*", "*")]
+    [HtmlCompletionProvider(CompletionTypes.GroupValues, "*", "*")]
     [ContentType(HtmlContentTypeDefinition.HtmlContentType)]
     public class AriaIdCompletion : IHtmlCompletionListProvider, IHtmlTreeVisitor
     {
@@ -21,9 +21,9 @@ namespace MadsKristensen.EditorExtensions.Html
             "aria-labelledby"
         };
 
-        public CompletionType CompletionType
+        public string CompletionType
         {
-            get { return CompletionType.Values; }
+            get { return CompletionTypes.Values; }
         }
 
         public IList<HtmlCompletion> GetEntries(HtmlCompletionContext context)

@@ -7,7 +7,7 @@ using Microsoft.Web.Core.ContentTypes;
 
 namespace MadsKristensen.EditorExtensions.Html
 {
-    [HtmlCompletionProvider(CompletionType.Values, "meta", "content")]
+    [HtmlCompletionProvider(CompletionTypes.Values, "meta", "content")]
     [ContentType(HtmlContentTypeDefinition.HtmlContentType)]
     public class FragmentCompletion : StaticListCompletion
     {

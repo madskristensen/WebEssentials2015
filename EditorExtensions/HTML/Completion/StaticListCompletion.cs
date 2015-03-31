@@ -13,9 +13,9 @@ namespace MadsKristensen.EditorExtensions.Html
 
         protected static ReadOnlyCollection<HtmlCompletion> Empty { get { return _empty; } }
 
-        public CompletionType CompletionType
+        public string CompletionType
         {
-            get { return CompletionType.Values; }
+            get { return CompletionTypes.Values; }
         }
         ///<summary>Gets the property that serves as a key to look up completion values against.</summary>
         protected abstract string KeyProperty { get; }

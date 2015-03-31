@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 
 namespace MadsKristensen.EditorExtensions.Html
 {
-    [HtmlCompletionProvider(CompletionType.Values, "*", "class")]
+    [HtmlCompletionProvider(CompletionTypes.Values, "*", "class")]
     [ContentType(HtmlContentTypeDefinition.HtmlContentType)]
     public class AngularClassCompletion : IHtmlCompletionListProvider, IHtmlTreeVisitor
     {
@@ -30,13 +30,13 @@ namespace MadsKristensen.EditorExtensions.Html
             "ng-style",
         };
 
-        public CompletionType CompletionType
+        public string CompletionType
         {
-            get { return CompletionType.Values; }
+            get { return CompletionTypes.Values; }
         }
 
         public IList<HtmlCompletion> GetEntries(HtmlCompletionContext context)
-        {
+        { 
             HashSet<bool> isAngular = new HashSet<bool>();
             context.Document.HtmlEditorTree.RootNode.Accept(this, isAngular);
 

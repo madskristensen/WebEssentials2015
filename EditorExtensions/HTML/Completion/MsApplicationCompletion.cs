@@ -11,7 +11,7 @@ using Microsoft.Html.Editor.Completion;
 
 namespace MadsKristensen.EditorExtensions.Html
 {
-    [HtmlCompletionProvider(Microsoft.Html.Editor.Completion.Def.CompletionType.Values, "meta", "content")]
+    [HtmlCompletionProvider(Microsoft.Html.Editor.Completion.Def.CompletionTypes.Values, "meta", "content")]
     [ContentType(HtmlContentTypeDefinition.HtmlContentType)]
     public class MSApplicationCompletion : StaticListCompletion, IHtmlTreeVisitor
     {

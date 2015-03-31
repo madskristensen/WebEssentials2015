@@ -72,7 +72,6 @@ namespace MadsKristensen.EditorExtensions
     [Guid(CommandGuids.guidFormattingCmdSetString)]
     enum FormattingCommandId
     {
-        SurroundWith = 0x334,
         ExpandSelection = 0x335,
         ContractSelection = 0x336,
     }

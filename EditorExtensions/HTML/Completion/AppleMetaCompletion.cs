@@ -8,7 +8,7 @@ using Microsoft.Web.Core.ContentTypes;
 
 namespace MadsKristensen.EditorExtensions.Html
 {
-    [HtmlCompletionProvider(Microsoft.Html.Editor.Completion.Def.CompletionType.Values, "meta", "content")]
+    [HtmlCompletionProvider(Microsoft.Html.Editor.Completion.Def.CompletionTypes.Values, "meta", "content")]
     [ContentType(HtmlContentTypeDefinition.HtmlContentType)]
     public class AppleMetaCompletion : StaticListCompletion
     {

@@ -11,13 +11,8 @@ namespace MadsKristensen.EditorExtensions.Html
 	internal class HtmlMinifyLightBulbAction : HtmlSuggestedActionBase
 	{
 		public HtmlMinifyLightBulbAction(ITextView textView, ITextBuffer textBuffer, ElementNode element)
-			: base(textView, textBuffer, element)
+			: base(textView, textBuffer, element, "Minify " + (element.IsStyleBlock() ? "CSS" : "JavaScript"))
 		{ }
-
-		public override string DisplayText
-		{
-			get { return "Minify " + (Element.IsStyleBlock() ? "CSS" : "JavaScript"); }
-		}
 
 		public override void Invoke(CancellationToken cancellationToken)
 		{

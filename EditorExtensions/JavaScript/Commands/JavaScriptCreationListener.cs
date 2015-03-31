@@ -21,15 +21,14 @@ namespace MadsKristensen.EditorExtensions.JavaScript
 
         [Import(typeof(ITextStructureNavigatorSelectorService))]
         public ITextStructureNavigatorSelectorService Navigator { get; set; }
-
-        [Import]
-        public ITextDocumentFactoryService TextDocumentFactoryService { get; set; }
-
+        
         [Import]
         public ICompletionBroker CompletionBroker { get; set; }
 
         [Import]
         internal IClassifierAggregatorService AggregatorService;
+
+        private static FSPCache _fspCache;
 
         public void VsTextViewCreated(IVsTextView textViewAdapter)
         {
@@ -43,22 +42,10 @@ namespace MadsKristensen.EditorExtensions.JavaScript
             textView.Properties.GetOrCreateSingletonProperty(() => new CommentCompletionCommandTarget(textViewAdapter, textView, AggregatorService));
             textView.Properties.GetOrCreateSingletonProperty(() => new CommentIndentationCommandTarget(textViewAdapter, textView, AggregatorService, CompletionBroker));
 
-            ITextDocument document;
-            if (TextDocumentFactoryService.TryGetTextDocument(textView.TextDataModel.DocumentBuffer, out document))
-            {
-                if (ProjectHelpers.GetProjectItem(document.FilePath) == null)
-                    return;
+            if (_fspCache == null)
+                _fspCache = new FSPCache();
 
-                //var jsHintLintInvoker = new LintFileInvoker(f => new JavaScriptLintReporter(new JsHintCompiler(), f), document);
-                //textView.Closed += (s, e) => jsHintLintInvoker.Dispose();
-
-                //textView.TextBuffer.Properties.GetOrCreateSingletonProperty(() => jsHintLintInvoker);
-
-                //var jsCodeStyleLintInvoker = new LintFileInvoker(f => new JavaScriptLintReporter(new JsCodeStyleCompiler(), f), document);
-                //textView.Closed += (s, e) => jsCodeStyleLintInvoker.Dispose();
-
-                //textView.TextBuffer.Properties.GetOrCreateSingletonProperty(() => jsCodeStyleLintInvoker);
-            }
+            _fspCache.SyncIntellisenseFiles();
         }
     }
 }

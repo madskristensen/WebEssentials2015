@@ -10,14 +10,14 @@ using Microsoft.Html.Editor.Completion;
 
 namespace MadsKristensen.EditorExtensions.Html
 {
-    [HtmlCompletionProvider(CompletionType.Values, "label", "for")]
+    [HtmlCompletionProvider(CompletionTypes.Values, "label", "for")]
     [ContentType(HtmlContentTypeDefinition.HtmlContentType)]
     public class HtmlLabelForAttributeCompletion : IHtmlCompletionListProvider, IHtmlTreeVisitor
     {
         private static readonly List<string> _inputTypes = new List<string>() { "input", "textarea", "select" };
-        public CompletionType CompletionType
+        public string CompletionType
         {
-            get { return CompletionType.Values; }
+            get { return CompletionTypes.Values; }
         }
 
         public IList<HtmlCompletion> GetEntries(HtmlCompletionContext context)

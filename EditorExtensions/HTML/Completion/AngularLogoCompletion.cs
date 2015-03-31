@@ -10,15 +10,15 @@ using System.Windows.Threading;
 
 namespace MadsKristensen.EditorExtensions.Html
 {
-    [HtmlCompletionProvider(CompletionType.GroupAttributes, "*", "*")]
+    [HtmlCompletionProvider(CompletionTypes.GroupAttributes, "*", "*")]
     [ContentType(HtmlContentTypeDefinition.HtmlContentType)]
     public class AngularLogoCompletion : IHtmlCompletionListProvider
     {
         private static BitmapFrame _icon = BitmapFrame.Create(new Uri("pack://application:,,,/WebEssentials2015;component/Resources/Images/angular.png", UriKind.RelativeOrAbsolute));
 
-        public CompletionType CompletionType
+        public string CompletionType
         {
-            get { return CompletionType.GroupAttributes; }
+            get { return CompletionTypes.GroupAttributes; }
         }
 
         public IList<HtmlCompletion> GetEntries(HtmlCompletionContext context)
@@ -52,13 +52,13 @@ namespace MadsKristensen.EditorExtensions.Html
         }
     }
 
-    [HtmlCompletionProvider(CompletionType.Attributes, "*", "*")]
+    [HtmlCompletionProvider(CompletionTypes.Attributes, "*", "*")]
     [ContentType(HtmlContentTypeDefinition.HtmlContentType)]
     public class AngularLogo2Completion : IHtmlCompletionListProvider
     {
-        public CompletionType CompletionType
+        public string CompletionType
         {
-            get { return CompletionType.Attributes; }
+            get { return CompletionTypes.Attributes; }
         }
 
         public IList<HtmlCompletion> GetEntries(HtmlCompletionContext context)

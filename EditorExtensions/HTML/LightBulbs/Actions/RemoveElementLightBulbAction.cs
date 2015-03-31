@@ -11,16 +11,11 @@ namespace MadsKristensen.EditorExtensions.Html
 	{
 		private AttributeNode _src;
 		public HtmlRemoveElementLightBulbAction(ITextView textView, ITextBuffer textBuffer, ElementNode element)
-			: base(textView, textBuffer, element)
+			: base(textView, textBuffer, element, element.Children.Count == 0 ? "Remove <" + element.StartTag.Name + "> tag" : "Remove <" + element.StartTag.Name + "> and Keep Children")
 		{
 			_src = element.GetAttribute("src", true);
 		}
-
-		public override string DisplayText
-		{
-			get { return Element.Children.Count == 0 ? "Remove <" + Element.StartTag.Name + "> tag" : "Remove <" + Element.StartTag.Name + "> and Keep Children"; }
-		}
-		
+        
 		public override void Invoke(CancellationToken cancellationToken)
 		{
 			var content = Element.GetText(Element.InnerRange).Trim();

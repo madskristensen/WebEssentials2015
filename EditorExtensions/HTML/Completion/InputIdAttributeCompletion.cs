@@ -10,15 +10,15 @@ using Microsoft.Html.Editor.Completion;
 
 namespace MadsKristensen.EditorExtensions.Html
 {
-    [HtmlCompletionProvider(CompletionType.Values, "*", "id")]
+    [HtmlCompletionProvider(CompletionTypes.Values, "*", "id")]
     [ContentType(HtmlContentTypeDefinition.HtmlContentType)]
     public class InputIdAttributeCompletion : IHtmlCompletionListProvider, IHtmlTreeVisitor
     {
         private static readonly HashSet<string> _inputTypes = new HashSet<string>() { "input", "textarea", "select" };
 
-        public CompletionType CompletionType
+        public string CompletionType
         {
-            get { return CompletionType.Values; }
+            get { return CompletionTypes.Values; }
         }
 
         public IList<HtmlCompletion> GetEntries(HtmlCompletionContext context)

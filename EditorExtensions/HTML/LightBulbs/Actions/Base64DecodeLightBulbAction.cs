@@ -11,14 +11,9 @@ namespace MadsKristensen.EditorExtensions.Html
 	internal class HtmlBase64DecodeLightBulbAction : HtmlSuggestedActionBase
 	{
 		public HtmlBase64DecodeLightBulbAction(ITextView textView, ITextBuffer textBuffer, ElementNode element, AttributeNode attribute)
-			: base(textView, textBuffer, element, attribute)
+			: base(textView, textBuffer, element, attribute, "Save as File...")
 		{		}
-
-		public override string DisplayText
-		{
-			get { return "Save as File..."; }
-		}
-
+        
 		public async override void Invoke(CancellationToken cancellationToken)
 		{
 			string mimeType = FileHelpers.GetMimeTypeFromBase64(Attribute.Value);

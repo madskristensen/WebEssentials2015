@@ -19,19 +19,10 @@ namespace MadsKristensen.EditorExtensions.Html
 		private AttributeNode _ngController;
 
 		public HtmlAngularControllerLightBulbAction(ITextView textView, ITextBuffer textBuffer, ElementNode element, AttributeNode attribute)
-			: base(textView, textBuffer, element)
+			: base(textView, textBuffer, element, attribute, "Add new Angular Controller")
 		{
 			_ngController = attribute;
-		}
-
-		public override string DisplayText
-		{
-			get { return "Add new Angular Controller"; }
-		}
-
-		public override ImageSource IconSource
-		{
-			get { return _icon; }
+            IconSource = _icon;
 		}
 
 		public async override void Invoke(CancellationToken cancellationToken)

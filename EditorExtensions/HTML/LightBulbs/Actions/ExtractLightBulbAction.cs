@@ -16,13 +16,8 @@ namespace MadsKristensen.EditorExtensions.Html
 	internal class HtmlExtractLightBulbAction : HtmlSuggestedActionBase
 	{
 		public HtmlExtractLightBulbAction(ITextView textView, ITextBuffer textBuffer, ElementNode element)
-			: base(textView, textBuffer, element)
+			: base(textView, textBuffer, element, "Extract to File...")
 		{ }
-
-		public override string DisplayText
-		{
-			get { return "Extract to File..."; }
-		}
 
 		public async override void Invoke(CancellationToken cancellationToken)
 		{

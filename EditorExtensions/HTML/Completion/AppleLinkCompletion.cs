@@ -7,7 +7,7 @@ using Microsoft.Web.Core.ContentTypes;
 
 namespace MadsKristensen.EditorExtensions.Html
 {
-    [HtmlCompletionProvider(Microsoft.Html.Editor.Completion.Def.CompletionType.Values, "link", "sizes")]
+    [HtmlCompletionProvider(Microsoft.Html.Editor.Completion.Def.CompletionTypes.Values, "link", "sizes")]
     [ContentType(HtmlContentTypeDefinition.HtmlContentType)]
     public class AppleLinkCompletion : StaticListCompletion
     {

@@ -13,14 +13,9 @@ namespace MadsKristensen.EditorExtensions.Html
 	internal class HtmlOptimizeImageLightBulbAction : HtmlSuggestedActionBase
 	{
 		public HtmlOptimizeImageLightBulbAction(ITextView textView, ITextBuffer textBuffer, ElementNode element, AttributeNode attribute)
-			: base(textView, textBuffer, element, attribute)
+			: base(textView, textBuffer, element, attribute, "Optimize Image (lossless)")
 		{ }
-
-		public override string DisplayText
-		{
-			get { return "Optimize Image (lossless)"; }
-		}
-
+        
 		public async override void Invoke(CancellationToken cancellationToken)
 		{
 			ImageCompressor compressor = new ImageCompressor();
