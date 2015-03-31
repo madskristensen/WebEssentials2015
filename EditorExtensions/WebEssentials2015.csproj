@@ -666,9 +666,6 @@
     <Compile Include="CSS\Validation\Providers\Ie10PrefixErrorTagProvider.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CSS\Validation\Providers\InvalidVendorErrorTagProvider.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="CSS\Validation\Providers\MissingStandardDirectiveErrorTagProvider.cs">
       <SubType>Code</SubType>
     </Compile>
