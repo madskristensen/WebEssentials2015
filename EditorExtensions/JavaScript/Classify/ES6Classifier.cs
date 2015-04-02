@@ -16,7 +16,8 @@ namespace MadsKristensen.EditorExtensions.JavaScript
         private IClassificationType _identifier;
         private ITagger<ClassificationTag> _tagger;
 
-        private static Regex _regex = new Regex(@"(?<!(var|let|const))( |\t)(?<keyword>as|from)( |\t)", RegexOptions.Compiled);
+        private static Regex _regexAs = new Regex(@"([\*\w])([\s]+)(?<keyword>as)([\s]+)([\w$_\\])", RegexOptions.Compiled);
+        private static Regex _regexFrom = new Regex(@"([\s])(?<keyword>from)([\s]+)([""'])", RegexOptions.Compiled);
         private static readonly Type _jsTaggerType = typeof(JavaScriptLanguageService).Assembly.GetType("Microsoft.VisualStudio.JSLS.Classification.Tagger");
 
         public ES6Classifier(IClassificationTypeRegistryService registry, ITextBuffer buffer)
@@ -32,18 +33,31 @@ namespace MadsKristensen.EditorExtensions.JavaScript
 
             string text = span.GetText();
 
-            foreach (Match match in _regex.Matches(text))
+            if (text.Contains("from"))
+            {
+                Classify(span, list, text, _regexFrom);
+            }
+
+            if (text.Contains("as"))
+            {
+                Classify(span, list, text, _regexAs);
+            }
+
+            return list;
+        }
+
+        private void Classify(SnapshotSpan span, IList<ClassificationSpan> list, string text, Regex regex)
+        {
+            foreach (Match match in regex.Matches(text))
             {
                 var name = match.Groups["keyword"];
-
                 var matchSpan = new SnapshotSpan(span.Snapshot, span.Start + name.Index, name.Length);
+
                 var tags = _tagger.GetTags(new NormalizedSnapshotSpanCollection(matchSpan)).Select(s => s.Tag.ClassificationType);
 
                 if (tags.Contains(_identifier))
                     list.Add(new ClassificationSpan(matchSpan, _keyword));
             }
-
-            return list;
         }
 
         public event EventHandler<ClassificationChangedEventArgs> ClassificationChanged
