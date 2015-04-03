@@ -30,6 +30,33 @@ Element.prototype.webkitCreateShadowRoot = Element.prototype.createShadowRoot;
 
 //#endregion
 
+// #region Web Components
+
+if (!document.registerElement) {
+
+    ElementRegistrationOptions = function () {
+        return {
+            /// <field name="prototype" type="Object" optional="true">The custom element prototype.</field>
+            prototype: {},
+            /// <field name="type" type="String">The custom element type of the element being registered.</field>
+            type: "",
+            /// <field name="documents" type="HTMLDocument">The method's context object.</field>
+            document: HTMLDocument,
+            /// <field name="extends" type="String" optional="true">The local name of an HTML or SVG element that is being extended.</field>
+            "extends": ""
+        }
+    }
+
+    /**
+     * Provides a way to register a custom element and returns its custom element constructor.
+     * @param {String} type The element name/type.
+     * @param {ElementRegistrationOptions} [options] An options object.
+     */
+    document.registerElement = function () { }
+}
+
+// #endregion
+
 //#region Vibration API
 
 Navigator.prototype.vibrate = function () {
