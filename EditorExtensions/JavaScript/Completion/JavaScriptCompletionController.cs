@@ -50,6 +50,8 @@ namespace MadsKristensen.EditorExtensions.JavaScript
 
             int tries = 0;
 
+            //textView.Properties.GetOrCreateSingletonProperty(() => new RetriggerObjectLiteralCommandTarget(adapter, textView, CompletionBroker));
+
             // Ugly ugly hack
             // Keep trying to register our filter until after the JSLS CommandFilter
             // is added so we can catch completion before JSLS swallows all of them.

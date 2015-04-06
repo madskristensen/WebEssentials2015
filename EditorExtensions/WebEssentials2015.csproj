@@ -437,6 +437,7 @@
     <Compile Include="JavaScript\Completion\JavaScriptIntellisense.cs" />
     <Compile Include="JavaScript\Completion\JsDocCompletionSource.cs" />
     <Compile Include="JavaScript\Completion\NodeModuleCompletionSourceProvider.cs" />
+    <Compile Include="JavaScript\Completion\RetriggerObjectLiteralCommandTarget.cs" />
     <Compile Include="JavaScript\Completion\StringCompletionSource.cs" />
     <Compile Include="JavaScript\Completion\UseDirectiveCompletionSource.cs" />
     <Compile Include="Markdown\Completion\MarkdownCreationListener.cs" />
@@ -925,6 +926,10 @@
     </Content>
     <Compile Include="JavaScript\Schemas\FSPCache.cs" />
     <Content Include="JavaScript\Snippets\Web Essentials\gulp.snippet">
+      <SubType>Designer</SubType>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="JavaScript\Snippets\Web Essentials\gulptask.snippet">
       <SubType>Designer</SubType>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
