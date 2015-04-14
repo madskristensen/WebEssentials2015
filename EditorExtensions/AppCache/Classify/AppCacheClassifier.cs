@@ -9,7 +9,7 @@ namespace MadsKristensen.EditorExtensions.AppCache
     public class AppCacheClassifier : IClassifier
     {
         private IClassificationType _keyword, _comment;
-        private static List<string> _idents = new List<string>() { "CACHE MANIFEST", "CACHE:", "NETWORK:", "FALLBACK:" };
+        private static List<string> _idents = new List<string>() { "CACHE MANIFEST", "CACHE:", "NETWORK:", "FALLBACK:", "SETTINGS:" };
 
         public AppCacheClassifier(IClassificationTypeRegistryService registry)
         {
