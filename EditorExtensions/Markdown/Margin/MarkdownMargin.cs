@@ -111,7 +111,7 @@ namespace MadsKristensen.EditorExtensions.Markdown
         {
             _browser = new WebBrowser();
             _browser.HorizontalAlignment = HorizontalAlignment.Stretch;
-            _browser.Navigated += (s, e) =>
+            _browser.LoadCompleted += (s, e) =>
             {
                 _document = _browser.Document as HTMLDocument;
                 _cachedHeight = _document.body.offsetHeight;
