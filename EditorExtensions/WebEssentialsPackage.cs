@@ -26,7 +26,6 @@ namespace MadsKristensen.EditorExtensions
     [InstalledProductRegistration("#110", "#112", WebEssentialsPackage.Version, IconResourceID = 400)]
     [ProvideOptionPage(typeof(CssOptions), "Web Essentials", "CSS", 101, 102, true, new[] { "Minify", "Minification", "W3C", "CSS3" })]
     [ProvideOptionPage(typeof(HtmlOptions), "Web Essentials", "HTML", 101, 111, true, new[] { "html", "angular", "xhtml" })]
-    //[ProvideOptionPage(typeof(SpriteOptions), "Web Essentials", "Sprite", 101, 211, true, new[] { "Sprite", "image" })]
     [ProvideOptionPage(typeof(GeneralOptions), "Web Essentials", "General", 101, 101, true, new[] { "ZenCoding", "Mustache", "Handlebars", "Comments", "Bundling", "Bundle" })]
     [ProvideOptionPage(typeof(CodeGenOptions), "Web Essentials", "Code Generation", 101, 210, true, new[] { "CodeGeneration", "codeGeneration" })]
     [ProvideOptionPage(typeof(MarkdownOptions), "Web Essentials", "Markdown", 101, 109, true, new[] { "markdown", "Markdown", "md" })]
@@ -78,40 +77,28 @@ namespace MadsKristensen.EditorExtensions
             {
                 TransformMenu transform = new TransformMenu(DTE, mcs);
                 DiffMenu diffMenu = new DiffMenu(mcs);
-                //MinifyFileMenu minifyMenu = new MinifyFileMenu(mcs);
-                //BundleFilesMenu bundleMenu = new BundleFilesMenu(DTE, mcs);
                 ProjectSettingsMenu projectSettingsMenu = new ProjectSettingsMenu(DTE, mcs);
                 SolutionColorsMenu solutionColorsMenu = new SolutionColorsMenu(mcs);
-                //BuildMenu buildMenu = new BuildMenu(DTE, mcs);
                 MarkdownMenu markdownMenu = new MarkdownMenu(DTE, mcs);
                 AddIntellisenseFileMenu intellisenseFile = new AddIntellisenseFileMenu(DTE, mcs);
-                //UnusedCssMenu unusedCssMenu = new UnusedCssMenu(mcs);
                 PixelPushingMenu pixelPushingMenu = new PixelPushingMenu(mcs);
                 ReferenceJsMenu referenceJsMenu = new ReferenceJsMenu(mcs);
-                //CompressImageMenu compressImageMenu = new CompressImageMenu(mcs);
-                //SpriteImageMenu spriteImageMenu = new SpriteImageMenu(DTE, mcs);
                 UnminifyMenu unMinifyMenu = new UnminifyMenu(mcs);
                 AddGruntToProject grunt = new AddGruntToProject(DTE, mcs);
 
                 HandleMenuVisibility(mcs);
                 referenceJsMenu.SetupCommands();
                 pixelPushingMenu.SetupCommands();
-                //unusedCssMenu.SetupCommands();
                 intellisenseFile.SetupCommands();
                 markdownMenu.SetupCommands();
-                //buildMenu.SetupCommands();
                 solutionColorsMenu.SetupCommands();
                 projectSettingsMenu.SetupCommands();
-                //bundleMenu.SetupCommands();
-                //minifyMenu.SetupCommands();
                 diffMenu.SetupCommands();
                 transform.SetupCommands();
-                //compressImageMenu.SetupCommands();
-                //spriteImageMenu.SetupCommands();
                 unMinifyMenu.SetupCommands();
                 grunt.SetupCommands();
             }
-            
+
             // Hook up event handlers
             await Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() =>
             {
@@ -136,12 +123,6 @@ namespace MadsKristensen.EditorExtensions
                 return;
             }
         }
-
-        //private static void RunBundles()
-        //{
-        //    BundleFilesMenu.UpdateAllBundlesAsync(true).DoNotWait("Web Essentials: Updating Bundles...");
-        //    SpriteImageMenu.UpdateAllSpritesAsync(true).DoNotWait("Web Essentials: Updating Sprites...");
-        //}
 
         public static void ExecuteCommand(string commandName, string commandArgs = "")
         {
