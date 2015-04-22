@@ -108,9 +108,9 @@
                 <Parent guid="guidCssIntellisenseCmdSet" id="CssIntellisenseSubMenu"/>
             </Group>
 
-            <Group guid="guidImageCmdSet" id="MyMenuGroup" priority="0x0009">
+            <!--<Group guid="guidImageCmdSet" id="MyMenuGroup" priority="0x0009">
                 <Parent guid="guidSolutionExplorerCmdSet" id="MySubMenuGroup"/>
-            </Group>
+            </Group>-->
 
             <Group guid="guidSolutionExplorerCmdSet" id="MyMenuGroup" priority="0x0001">
                 <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE"/>
@@ -426,7 +426,7 @@
                 </Strings>
             </Button>
 
-            <Button guid="guidImageCmdSet" id="cmdCompressImage" priority="0x0101" type="Button">
+            <!--<Button guid="guidImageCmdSet" id="cmdCompressImage" priority="0x0101" type="Button">
                 <Parent guid="guidImageCmdSet" id="MyMenuGroup"/>
                 <Icon guid="guidMenuImages" id="bmpImage"/>
                 <CommandFlag>TextChanges</CommandFlag>
@@ -434,7 +434,7 @@
                 <Strings>
                     <ButtonText>Optimize image(s)</ButtonText>
                 </Strings>
-            </Button>
+            </Button>-->
 
             <Button guid="guidFormattingCmdSet" id="ExpandSelection" priority="0x0010" type="Button">
                 <Parent guid="guidFormattingCmdSet" id="FormattingGroup" />
@@ -666,11 +666,11 @@
             <IDSymbol name="MyCompileMenuGroup" value="0x1089" />
         </GuidSymbol>
 
-        <GuidSymbol name="guidImageCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e68}">
+        <!--<GuidSymbol name="guidImageCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e68}">
             <IDSymbol name="MyMenuGroup" value="0x1090" />
             <IDSymbol name="cmdCompressImage" value="0x1091" />
             <IDSymbol name="cmdSpriteImage" value="0x1093" />
-        </GuidSymbol>
+        </GuidSymbol>-->
 
         <GuidSymbol name="htmlEditorCommandSet" value="{D7E8C5E1-BDB8-11D0-9C88-0000F8040A53}">
             <IDSymbol name="htmlContextMenu" value="0x0033"/>

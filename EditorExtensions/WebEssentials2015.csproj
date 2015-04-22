@@ -416,7 +416,6 @@
     <Compile Include="HTML\LightBulbs\Actions\Base64DecodeLightBulbAction.cs" />
     <Compile Include="HTML\LightBulbs\Actions\ExtractLightBulbAction.cs" />
     <Compile Include="HTML\LightBulbs\Actions\MinifyLightBulbAction.cs" />
-    <Compile Include="HTML\LightBulbs\Actions\OptimizeImageLightBulbAction.cs" />
     <Compile Include="HTML\LightBulbs\Actions\RemoveElementLightBulbAction.cs" />
     <Compile Include="HTML\LightBulbs\Providers\AngularControllerLightBulbProvider.cs" />
     <Compile Include="HTML\LightBulbs\Providers\ImageLightBulbProvider.cs" />
@@ -549,11 +548,6 @@
     <Compile Include="Shared\Helpers\DependencyGraph.cs" />
     <Compile Include="Shared\Helpers\Mef.cs" />
     <Compile Include="Shared\Margins\TextViewMargin.cs" />
-    <Compile Include="Images\MenuItems\CompressImage.cs" />
-    <Compile Include="Images\Compression\CompressionResult.cs" />
-    <Compile Include="Images\Compression\ImageCompressor.cs" />
-    <Compile Include="CSS\SmartTags\Actions\OptimizeImageSmartTagAction.cs" />
-    <Compile Include="CSS\SmartTags\Providers\OptimizeImageSmartTagProvider.cs" />
     <Compile Include="Settings\OptionPages.cs">
       <SubType>component</SubType>
     </Compile>
@@ -832,18 +826,6 @@
     <Content Include="Resources\Images\WebEssentials2012logo.png">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="Resources\Tools\gifsicle.exe">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="Resources\Tools\jpegtran.exe">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="Resources\Tools\optipng.exe">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="Resources\Tools\pngout.exe">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="BrowserLink\UnusedCss\UnusedCss.js" />
@@ -966,9 +948,6 @@
     <!--<Content Include="Resources\nodejs\node.exe">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>-->
-    <Content Include="Resources\Tools\png.cmd">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
     <None Include="Source.extension.vsixmanifest" />
     <Content Include="CSS\Schemas\css-we-settings.xml">
       <IncludeInVSIX>true</IncludeInVSIX>

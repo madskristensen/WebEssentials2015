@@ -215,8 +215,8 @@ namespace MadsKristensen.EditorExtensions.Images
                 }
             }
 
-            ImageCompressor compressor = new ImageCompressor();
-            await compressor.CompressFilesAsync(fileName).HandleErrors("compressing " + fileName);
+            //ImageCompressor compressor = new ImageCompressor();
+            //await compressor.CompressFilesAsync(fileName).HandleErrors("compressing " + fileName);
 
             ProjectHelpers.AddFileToActiveProject(fileName);
         }

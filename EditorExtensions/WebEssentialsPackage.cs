@@ -88,7 +88,7 @@ namespace MadsKristensen.EditorExtensions
                 //UnusedCssMenu unusedCssMenu = new UnusedCssMenu(mcs);
                 PixelPushingMenu pixelPushingMenu = new PixelPushingMenu(mcs);
                 ReferenceJsMenu referenceJsMenu = new ReferenceJsMenu(mcs);
-                CompressImageMenu compressImageMenu = new CompressImageMenu(mcs);
+                //CompressImageMenu compressImageMenu = new CompressImageMenu(mcs);
                 //SpriteImageMenu spriteImageMenu = new SpriteImageMenu(DTE, mcs);
                 UnminifyMenu unMinifyMenu = new UnminifyMenu(mcs);
                 AddGruntToProject grunt = new AddGruntToProject(DTE, mcs);
@@ -106,7 +106,7 @@ namespace MadsKristensen.EditorExtensions
                 //minifyMenu.SetupCommands();
                 diffMenu.SetupCommands();
                 transform.SetupCommands();
-                compressImageMenu.SetupCommands();
+                //compressImageMenu.SetupCommands();
                 //spriteImageMenu.SetupCommands();
                 unMinifyMenu.SetupCommands();
                 grunt.SetupCommands();

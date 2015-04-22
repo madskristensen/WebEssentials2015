@@ -27,10 +27,10 @@ namespace MadsKristensen.EditorExtensions.Html
 				yield return new HtmlBase64DecodeLightBulbAction(textView, textBuffer, element, src);
 			}
 
-			if (!src.Value.StartsWith("http:") && !src.Value.StartsWith("https:") && !src.Value.StartsWith("//"))
-			{
-				yield return new HtmlOptimizeImageLightBulbAction(textView, textBuffer, element, src); 
-			}
+			//if (!src.Value.StartsWith("http:") && !src.Value.StartsWith("https:") && !src.Value.StartsWith("//"))
+			//{
+			//	yield return new HtmlOptimizeImageLightBulbAction(textView, textBuffer, element, src); 
+			//}
 		}
 
 		public bool HasSuggestedActions(ITextView textView, ITextBuffer textBuffer, int caretPosition, ElementNode element, AttributeNode attribute, HtmlPositionType positionType)
