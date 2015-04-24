@@ -13,7 +13,7 @@
     <Tags>css, javascript, html, json, markdown</Tags>
   </Metadata>
   <Installation InstalledByMsi="false">
-    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[14.0.22700, 14.0.22840)" />
+    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[14.0.22800, 14.0.22825)" />
   </Installation>
   <Dependencies>
 
