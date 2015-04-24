@@ -193,6 +193,17 @@ namespace MadsKristensen.EditorExtensions
     {
         protected async override void Initialize()
         {
+            try
+            {
+                // Remove for RTM
+                using (var key = UserRegistryRoot.CreateSubKey("HTML Editor"))
+                {
+                    key.SetValue("KnockoutSupportEnabled", "1");
+                }
+            }
+            catch {
+            }
+
             JavaScriptIntellisense.Register(UserRegistryRoot);
             await CompatibilityChecker.StartCheckingCompatibility();
         }
