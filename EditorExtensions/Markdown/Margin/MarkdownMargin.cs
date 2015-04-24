@@ -80,8 +80,9 @@ namespace MadsKristensen.EditorExtensions.Markdown
                 return;
             // The Markdown compiler cannot return errors
             string html = String.Format(CultureInfo.InvariantCulture, @"<!DOCTYPE html>
-                                        <html lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"">
+                                        <html lang=""en"">
                                             <head>
+                                                <meta http-equiv=""X-UA-Compatible"" content=""IE=Edge"" />
                                                 <meta charset=""utf-8"" />
                                                 <base href=""file:///{0}/"">
                                                 <title>Markdown Preview</title>
