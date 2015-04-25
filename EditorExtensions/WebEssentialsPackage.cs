@@ -195,7 +195,7 @@ namespace MadsKristensen.EditorExtensions
         {
             try
             {
-                // Remove for RTM
+                // TODO: Remove for RTM
                 using (var key = UserRegistryRoot.CreateSubKey("HTML Editor"))
                 {
                     key.SetValue("KnockoutSupportEnabled", "1");

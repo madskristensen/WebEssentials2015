@@ -647,7 +647,6 @@
     <Compile Include="CSS\Validation\Providers\ColorValuesInRangeErrorTagProvider.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CSS\Validation\Providers\MsViewState.cs" />
     <Compile Include="CSS\Validation\Providers\HoverOrderErrorTagProvider.cs" />
     <Compile Include="CSS\Validation\Providers\DisplayInlineErrorTagProvider.cs">
       <SubType>Code</SubType>

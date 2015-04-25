@@ -48,7 +48,7 @@ namespace MadsKristensen.EditorExtensions.Css
         public static void SaveBrowsers(IEnumerable<string> browsers)
         {
             string path = GetSolutionFilePath();
-            // TODO: XLINQ
+
             using (XmlWriter writer = XmlWriter.Create(path, new XmlWriterSettings() { Indent = true }))
             {
                 writer.WriteStartElement("browsers");
