@@ -62,7 +62,7 @@ namespace MadsKristensen.EditorExtensions
                         runCheck = DateTime.UtcNow > nextCheckDate;
                     }
                 }
-                catch (ArgumentException) { }
+                catch (Exception) { }
 
                 return runCheck;
             }
@@ -80,8 +80,7 @@ namespace MadsKristensen.EditorExtensions
                 HttpClient client = new HttpClient();
                 responseText = await client.GetStringAsync(uri);
             }
-            catch (WebException) { }
-            catch (HttpRequestException) { }
+            catch (Exception) { }
 
             if (string.IsNullOrEmpty(responseText))
                 return;
@@ -149,7 +148,7 @@ namespace MadsKristensen.EditorExtensions
                 store.CreateCollection("WebEssentials");
                 store.SetString("WebEssentials", "NextCompatibilityCheckDate", nextTimeString);
             }
-            catch (ArgumentException)
+            catch (Exception)
             {
                 Debug.Fail(@"Failed to set WebEssentials\NextCompatibilityCheckDate");
             }
@@ -190,7 +189,7 @@ namespace MadsKristensen.EditorExtensions
                 {
                     versionString = GlobalConfigStore.GetString("SplashInfo", "EnvVersion");
                 }
-                catch (ArgumentException) { }
+                catch (Exception) { }
 
                 if (string.IsNullOrEmpty(versionString))
                 {
