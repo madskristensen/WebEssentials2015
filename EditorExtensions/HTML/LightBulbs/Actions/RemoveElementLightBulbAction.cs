@@ -15,7 +15,7 @@ namespace MadsKristensen.EditorExtensions.Html
 		{
 			_src = element.GetAttribute("src", true);
 		}
-        
+
 		public override void Invoke(CancellationToken cancellationToken)
 		{
 			var content = Element.GetText(Element.InnerRange).Trim();
@@ -30,7 +30,7 @@ namespace MadsKristensen.EditorExtensions.Html
 					edit.Apply();
 				}
 
-				SnapshotSpan span = Element.ToSnapshotSpan(TextView.TextBuffer.CurrentSnapshot);// new SnapshotSpan(TextView.TextBuffer.CurrentSnapshot, start, length);
+				SnapshotSpan span = new SnapshotSpan(TextView.TextBuffer.CurrentSnapshot, start, length);
 
 				TextView.Selection.Select(span, false);
 				WebEssentialsPackage.ExecuteCommand("Edit.FormatSelection");
