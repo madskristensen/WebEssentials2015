@@ -24,7 +24,7 @@ namespace MadsKristensen.EditorExtensions.Html
 
 		public bool HasSuggestedActions(ITextView textView, ITextBuffer textBuffer, int caretPosition, ElementNode element, AttributeNode attribute, HtmlPositionType positionType)
 		{
-			if (element.IsRoot || (!element.StartTag.Contains(caretPosition) && !element.EndTag.Contains(caretPosition)))
+			if (element.IsRoot || element.EndTag == null || (!element.StartTag.Contains(caretPosition) && !element.EndTag.Contains(caretPosition)))
 				return false;
 
 			return element.InnerRange != null && element.GetText(element.InnerRange).Trim().Length > 0;
