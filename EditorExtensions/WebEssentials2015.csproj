@@ -412,7 +412,9 @@
     <Compile Include="Dockerfile\Classify\DockerfileClassifierProvider.cs" />
     <Compile Include="Dockerfile\Completion\DockerfileCompletionController.cs" />
     <Compile Include="Dockerfile\Completion\DockerfileCompletionSource.cs" />
+    <Compile Include="HTML\Commands\RetriggerCommandTarget.cs" />
     <Compile Include="HTML\Completion\AriaIdCompletion.cs" />
+    <Compile Include="HTML\Completion\AureliaCompletion.cs" />
     <Compile Include="HTML\Completion\JsxCompletion.cs" />
     <Compile Include="HTML\LightBulbs\Actions\AngularControllerLightBulbAction.cs" />
     <Compile Include="HTML\LightBulbs\Actions\Base64DecodeLightBulbAction.cs" />
@@ -820,6 +822,7 @@
       <IncludeInVSIX>true</IncludeInVSIX>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\Images\aurelia.png" />
     <Content Include="Resources\Images\preview.png">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>

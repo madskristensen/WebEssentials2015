@@ -69,12 +69,13 @@ namespace MadsKristensen.EditorExtensions.Html
 
             var formatter = ComponentLocatorForContentType<IEditorFormatterProvider, IComponentContentTypes>.ImportOne(HtmlContentTypeDefinition.HtmlContentType).Value;
 
-            textView.Properties.GetOrCreateSingletonProperty<ExpandSelection>(() => new ExpandSelection(textViewAdapter, textView));
-            textView.Properties.GetOrCreateSingletonProperty<ContractSelection>(() => new ContractSelection(textViewAdapter, textView));
-            textView.Properties.GetOrCreateSingletonProperty<EnterFormat>(() => new EnterFormat(textViewAdapter, textView, formatter, CompletionBroker));
-            textView.Properties.GetOrCreateSingletonProperty<MinifySelection>(() => new MinifySelection(textViewAdapter, textView));
-            textView.Properties.GetOrCreateSingletonProperty<HtmlGoToDefinition>(() => new HtmlGoToDefinition(textViewAdapter, textView));
-            textView.Properties.GetOrCreateSingletonProperty<HtmlFindAllReferences>(() => new HtmlFindAllReferences(textViewAdapter, textView));
+            textView.Properties.GetOrCreateSingletonProperty(() => new ExpandSelection(textViewAdapter, textView));
+            textView.Properties.GetOrCreateSingletonProperty(() => new ContractSelection(textViewAdapter, textView));
+            textView.Properties.GetOrCreateSingletonProperty(() => new EnterFormat(textViewAdapter, textView, formatter, CompletionBroker));
+            textView.Properties.GetOrCreateSingletonProperty(() => new MinifySelection(textViewAdapter, textView));
+            textView.Properties.GetOrCreateSingletonProperty(() => new HtmlGoToDefinition(textViewAdapter, textView));
+            textView.Properties.GetOrCreateSingletonProperty(() => new HtmlFindAllReferences(textViewAdapter, textView));
+            textView.Properties.GetOrCreateSingletonProperty(() => new RetriggerTarget(textViewAdapter, textView, CompletionBroker));
         }
     }
 }

@@ -26,6 +26,9 @@ namespace MadsKristensen.EditorExtensions.Html
 
         public void FilterCompletionList(IList<HtmlCompletion> completions, HtmlCompletionContext context)
         {
+            if (!context.DocumentContentType.IsOfType("jsx"))
+                return;
+
             foreach (var completion in completions)
             {
                 if (_filter.Contains(completion.DisplayText))
