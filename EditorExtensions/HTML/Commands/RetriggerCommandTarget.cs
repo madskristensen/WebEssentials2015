@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Windows.Threading;
+using Microsoft.Html.Core.Tree.Nodes;
 using Microsoft.Html.Editor.Completion;
+using Microsoft.Html.Editor.Document;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.VisualStudio.OLE.Interop;
+using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.TextManager.Interop;
+using Microsoft.Web.Core.ContentTypes;
 
 namespace MadsKristensen.EditorExtensions.Html
 {
@@ -44,7 +48,14 @@ namespace MadsKristensen.EditorExtensions.Html
         {
             Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() =>
             {
-                WebEssentialsPackage.ExecuteCommand("Edit.ListMembers");
+                var point = _textView.BufferGraph.MapDownToInsertionPoint(_textView.Caret.Position.BufferPosition - 1, PointTrackingMode.Positive, ts => ts.ContentType.IsOfType(HtmlContentTypeDefinition.HtmlContentType));
+                if (point == null)
+                    return;
+
+                var document = HtmlEditorDocument.FromTextBuffer(point.Value.Snapshot.TextBuffer);
+
+                if (document != null)
+                    WebEssentialsPackage.ExecuteCommand("Edit.ListMembers");
 
             }), DispatcherPriority.Background, null);
         }
