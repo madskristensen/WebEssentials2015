@@ -1,9 +1,8 @@
-﻿using System;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.ComponentModel.Composition;
-using System.Collections.Generic;
-using Microsoft.VisualStudio.ProjectSystem.Utilities;
+using System.IO;
 using System.Linq;
+using Microsoft.VisualStudio.ProjectSystem.Utilities;
 using Microsoft.VisualStudio.Web.ProjectSystem.ProjectTree.NestingRules;
 
 namespace MadsKristensen.EditorExtensions.Misc
@@ -18,12 +17,7 @@ namespace MadsKristensen.EditorExtensions.Misc
             string fileName = Path.GetFileName(potentialChildFilePath);
             if (fileName != ".bowerrc") return null;
 
-            if (potentialParentProjectItems.Any(x => x.Equals("bower.json", StringComparison.OrdinalIgnoreCase)))
-            {
-                return "bower.json";
-            }
-
-            return null;
+            return potentialParentProjectItems.FirstOrDefault(x => x == "bower.json");
         }
     }
 }
