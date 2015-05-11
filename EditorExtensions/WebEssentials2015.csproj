@@ -183,6 +183,9 @@
       <HintPath>..\packages\Microsoft.VisualStudio.LanguageServices.1.0.0-rc1\lib\net45\Microsoft.VisualStudio.LanguageServices.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Microsoft.VisualStudio.ProjectSystem.Utilities.v14.0">
+      <HintPath>..\assemblies\Microsoft.VisualStudio.ProjectSystem.Utilities.v14.0.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.Shell.14.0, Version=14.0.0.0" />
     <Reference Include="Microsoft.VisualStudio.Text.Data, Version=14.0.0.0" />
     <Reference Include="Microsoft.VisualStudio.Text.Internal, Version=14.0.0.0">
@@ -199,6 +202,9 @@
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Web.HTML, Version=14.0.0.0" />
     <Reference Include="Microsoft.VisualStudio.Web.HTML.Implementation, Version=14.0.0.0" />
+    <Reference Include="Microsoft.VisualStudio.Web.ProjectSystem">
+      <HintPath>..\assemblies\Microsoft.VisualStudio.Web.ProjectSystem.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Core">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\assemblies\Microsoft.Web.Core.dll</HintPath>
@@ -444,6 +450,7 @@
     <Compile Include="JavaScript\Completion\StringCompletionSource.cs" />
     <Compile Include="JavaScript\Completion\UseDirectiveCompletionSource.cs" />
     <Compile Include="Markdown\Completion\MarkdownCreationListener.cs" />
+    <Compile Include="Misc\FileNesting\BowerRcNestingRule.cs" />
     <Compile Include="Misc\Minification\IFileMinifier.cs" />
     <Compile Include="NPM\MenuItems\AddGruntToProject.cs" />
     <Compile Include="HTML\Completion\AngularLogoCompletion.cs" />
