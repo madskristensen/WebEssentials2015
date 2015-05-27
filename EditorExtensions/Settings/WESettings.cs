@@ -672,12 +672,6 @@ namespace MadsKristensen.EditorExtensions.Settings
     public sealed class MarkdownSettings : SettingsBase<MarkdownSettings>, ICompilerInvocationSettings, IMarginSettings
     {
         #region Compilation
-        [Category("Editor")]
-        [DisplayName("Show preview pane")]
-        [Description("Show a preview pane containing the rendered output in the editor.")]
-        [DefaultValue(true)]
-        public bool ShowPreviewPane { get; set; }
-
         [Category("Compilation")]
         [DisplayName("Compile files on save")]
         [Description("Compile files when saving them, if a compiled file already exists.")]
@@ -694,6 +688,27 @@ namespace MadsKristensen.EditorExtensions.Settings
         [Description("Specifies a custom subfolder to save compiled files to. By default, compiled output will be placed in the same folder and nested under the original file.")]
         [DefaultValue(null)]
         public string OutputDirectory { get; set; }
+        #endregion
+
+        #region Editor
+        [Category("Editor")]
+        [DisplayName("Show preview pane")]
+        [Description("Show a preview pane containing the rendered output in the editor.")]
+        [DefaultValue(true)]
+        public bool ShowPreviewPane { get; set; }
+
+        [Category("Editor")]
+        [DisplayName("Global CSS for Preview Pane")]
+        [Description("This CSS file will be applied to the preview pane so long as it's path is valid and there's no solution level custom css. To add a solution level CSS file, add a file with the filename ‘WE-Markdown.css’ in your solutions root directory. (Please note after setting this change, you'll need to close and reopen all markdown files)")]
+        [DefaultValue(null)]
+        public string GlobalPreviewCSSFile { get; set; }
+
+        [Category("Editor")]
+        [DisplayName("Global HTML Template for Preview Pane")]
+        [Description("This HTML template will be applied to the preview pane so long as it's path is valid and there's no solution level custom html template. To add a solution level html template file, add a file with the filename ‘WE-Markdown.html’ in your solutions root directory. (Please note after setting this change, you'll need to close and reopen all markdown files)")]
+        [DefaultValue(null)]
+        public string GlobalPreviewHtmlTemplate { get; set; }
+
         #endregion
 
         [Category("Compile Options")]
