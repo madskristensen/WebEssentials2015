@@ -24,7 +24,8 @@ namespace MadsKristensen.EditorExtensions.Html
                 { "MSApplication-AllowDomainApiCalls",  BooleanValues },
                 { "MSApplication-AllowDomainMetaTags",  BooleanValues },
                 { "MSApplication-Window",               Values("width=1024;height=768") },
-                { "MSApplication-StartURL",             Values("/", "./index.html", "/home/", "http://example.com") }
+                { "MSApplication-StartURL",             Values("/", "./index.html", "/home/", "http://example.com") },
+                { "MSApplication-Task",             Values("name=My name; action-uri=http://example.com/; icon-uri=http://example.com/favicon.ico") },
             }) { }
 
 
