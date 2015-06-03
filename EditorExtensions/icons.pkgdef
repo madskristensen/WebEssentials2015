@@ -5,6 +5,12 @@
 "DefaultIconMoniker"="KnownMonikers.Git"
 [$RootKey$\ShellFileAssociations\.gitattributes]
 "DefaultIconMoniker"="KnownMonikers.Git"
+[$RootKey$\ShellFileAssociations\.gitmodules]
+"DefaultIconMoniker"="KnownMonikers.Git"
+
+// TFS
+[$RootKey$\ShellFileAssociations\.tfignore]
+"DefaultIconMoniker"="KnownMonikers.TeamFoundationServer"
 
 // Markdown
 [$RootKey$\ShellFileAssociations\.md]
@@ -53,10 +59,6 @@
 "DefaultIconMoniker"="KnownMonikers.FSScript"
 [$RootKey$\ShellFileAssociations\.lsc]
 "DefaultIconMoniker"="KnownMonikers.FSScript"
-
-// JSX
-[$RootKey$\ShellFileAssociations\.jsx]
-"DefaultIconMoniker"="KnownMonikers.JSScript"
 
 // Config files
 [$RootKey$\ShellFileAssociations\.jshintrc]

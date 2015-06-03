@@ -7,6 +7,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Microsoft.Html.Core.Tree.Nodes;
 using Microsoft.Html.Editor.SuggestedActions;
+using Microsoft.VisualStudio.Imaging;
+using Microsoft.VisualStudio.Imaging.Interop;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.Web.Editor.Text;
@@ -15,14 +17,13 @@ namespace MadsKristensen.EditorExtensions.Html
 {
 	internal class HtmlAngularControllerLightBulbAction : HtmlSuggestedActionBase
 	{
-		private static BitmapFrame _icon = BitmapFrame.Create(new Uri("pack://application:,,,/WebEssentials2015;component/Resources/Images/angular.png", UriKind.RelativeOrAbsolute));
 		private AttributeNode _ngController;
 
 		public HtmlAngularControllerLightBulbAction(ITextView textView, ITextBuffer textBuffer, ElementNode element, AttributeNode attribute)
 			: base(textView, textBuffer, element, attribute, "Add new Angular Controller")
 		{
 			_ngController = attribute;
-            IconSource = _icon;
+            IconMoniker = KnownMonikers.JSScript;
 		}
 
 		public async override void Invoke(CancellationToken cancellationToken)

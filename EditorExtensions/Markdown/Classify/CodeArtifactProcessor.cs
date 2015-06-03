@@ -140,7 +140,7 @@ namespace MadsKristensen.EditorExtensions.Markdown
             return false;
         }
 
-        public override ICollection<IArtifact> ReflectTextChange(int start, int oldLength, int newLength)
+        public override IReadOnlyCollection<IArtifact> ReflectTextChange(int start, int oldLength, int newLength)
         {
             // Forward the change to any collections of artifacts
             // that have been removed from this main collection.

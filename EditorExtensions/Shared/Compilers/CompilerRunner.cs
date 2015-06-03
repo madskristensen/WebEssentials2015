@@ -256,6 +256,7 @@ namespace MadsKristensen.EditorExtensions.Compilers
         protected async override Task<CompilerResult> RunCompilerAsync(string sourcePath, string targetPath)
         {
             var cmSettings = CommonMark.CommonMarkSettings.Default.Clone();
+            cmSettings.AdditionalFeatures = CommonMark.CommonMarkAdditionalFeatures.All;
             cmSettings.RenderSoftLineBreaksAsLineBreaks = WESettings.Instance.Markdown.RenderSoftLineBreaksAsLineBreaks;
             cmSettings.TrackSourcePosition = WESettings.Instance.Markdown.TrackSourcePosition;
 

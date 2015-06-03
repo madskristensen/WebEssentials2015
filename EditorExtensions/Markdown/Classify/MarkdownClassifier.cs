@@ -46,7 +46,7 @@ namespace MadsKristensen.EditorExtensions.Markdown
 
         private static readonly Regex _reQuote = new Regex(lineBegin + @"( {0,3}>)+(?<Value> {0,3}[^\r\n]+)(?:$|\r?\n|\r)");
 
-        private static readonly Regex _reHeader = new Regex(lineBegin + @"(?<Value>([#]{1,6})[^#\r\n]+(\1(?!#))?)");
+        private static readonly Regex _reHeader = new Regex(lineBegin + @"(?<Value>([#]{1,6})\s[^#\r\n]+(\1(?!#))?)");
 
         private readonly IClassificationType codeType;
         private readonly IReadOnlyCollection<Tuple<Regex, IClassificationType>> typeRegexes;
