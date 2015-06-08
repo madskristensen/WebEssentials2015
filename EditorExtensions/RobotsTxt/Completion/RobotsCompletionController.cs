@@ -109,7 +109,7 @@ namespace MadsKristensen.EditorExtensions.RobotsTxt
                         case VSConstants.VSStd2KCmdID.TYPECHAR:
                             char ch = GetTypeChar(pvaIn);
                             if (ch == ':')
-                                Cancel();
+                                Complete(false);
                             else if (!char.IsPunctuation(ch) && !char.IsControl(ch))
                                 StartSession();
                             else if (_currentSession != null)
