@@ -2,8 +2,8 @@
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
     <Identity Id="5fb7364d-2e8c-44a4-95eb-2a382e30fec9" Version="0.5" Language="en-US" Publisher="Mads Kristensen" />
-    <DisplayName>Web Essentials 2015.0 RC</DisplayName>
-    <Description xml:space="preserve">Adds many useful features to Visual Studio for web developers. Requires Visual Studio 2015 RC</Description>
+    <DisplayName>Web Essentials 2015.0 RTM</DisplayName>
+    <Description xml:space="preserve">Adds many useful features to Visual Studio for web developers. Requires Visual Studio 2015 RTM</Description>
     <MoreInfo>http://vswebessentials.com/</MoreInfo>
     <License>License.txt</License>
     <GettingStartedGuide>http://vswebessentials.com/changelog</GettingStartedGuide>
@@ -13,7 +13,7 @@
     <Tags>css, javascript, html, json, markdown</Tags>
   </Metadata>
   <Installation InstalledByMsi="false">
-    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[14.0.23000, 14.0.23020)" />
+    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[14.0.23000, 14.0.23120)" />
   </Installation>
   <Dependencies>
 
