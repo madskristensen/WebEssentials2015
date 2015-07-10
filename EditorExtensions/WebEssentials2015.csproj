@@ -312,8 +312,9 @@
     <Reference Include="Microsoft.VisualStudio.Shell.Immutable.11.0">
       <Private>False</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.7.0.1-beta1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -987,6 +988,9 @@
       <SubType>Designer</SubType>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Markdown\Classify\Sample.md" />
     <Content Include="NPM\Resources\bower.json">
       <IncludeInVSIX>true</IncludeInVSIX>
