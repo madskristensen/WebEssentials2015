@@ -9,7 +9,6 @@ using EnvDTE80;
 using MadsKristensen.EditorExtensions.BrowserLink.PixelPushing;
 using MadsKristensen.EditorExtensions.BrowserLink.UnusedCss;
 using MadsKristensen.EditorExtensions.Css;
-using MadsKristensen.EditorExtensions.Grunt;
 using MadsKristensen.EditorExtensions.Images;
 using MadsKristensen.EditorExtensions.JavaScript;
 using MadsKristensen.EditorExtensions.Markdown;
@@ -84,7 +83,6 @@ namespace MadsKristensen.EditorExtensions
                 PixelPushingMenu pixelPushingMenu = new PixelPushingMenu(mcs);
                 ReferenceJsMenu referenceJsMenu = new ReferenceJsMenu(mcs);
                 UnminifyMenu unMinifyMenu = new UnminifyMenu(mcs);
-                AddGruntToProject grunt = new AddGruntToProject(DTE, mcs);
 
                 HandleMenuVisibility(mcs);
                 referenceJsMenu.SetupCommands();
@@ -96,7 +94,6 @@ namespace MadsKristensen.EditorExtensions
                 diffMenu.SetupCommands();
                 transform.SetupCommands();
                 unMinifyMenu.SetupCommands();
-                grunt.SetupCommands();
             }
 
             // Hook up event handlers

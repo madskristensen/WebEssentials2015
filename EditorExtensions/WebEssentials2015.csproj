@@ -513,7 +513,6 @@
     <Compile Include="Markdown\Completion\MarkdownCreationListener.cs" />
     <Compile Include="Misc\FileNesting\BowerRcNestingRule.cs" />
     <Compile Include="Misc\Minification\IFileMinifier.cs" />
-    <Compile Include="NPM\MenuItems\AddGruntToProject.cs" />
     <Compile Include="HTML\Completion\AngularLogoCompletion.cs" />
     <Compile Include="HTML\Completion\AppleLinkCompletion.cs" />
     <Compile Include="HTML\Completion\AppleMetaCompletion.cs" />
@@ -880,9 +879,6 @@
     <Content Include="Markdown\Margin\highlight.js">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="NPM\Resources\gruntfile.js">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
     <Resource Include="Resources\Images\angular.png" />
     <Resource Include="Resources\Images\foundation.png" />
     <Resource Include="Resources\Images\blueprint.png" />
@@ -924,9 +920,6 @@
     </VSCTCompile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="NPM\Resources\package.json">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
     <Content Include="JavaScript\Snippets\Web Essentials\grunt.snippet">
       <IncludeInVSIX>true</IncludeInVSIX>
       <SubType>Designer</SubType>
@@ -992,9 +985,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Markdown\Classify\Sample.md" />
-    <Content Include="NPM\Resources\bower.json">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
     <None Include="packages.config" />
     <None Include="Resources\Images\Images.png" />
   </ItemGroup>
