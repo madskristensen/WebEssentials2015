@@ -167,7 +167,7 @@ namespace MadsKristensen.EditorExtensions
 
                     if (io.IsEnum)
                     {
-                        sb.AppendLine("\tenum " + CamelCaseClassName(io.Name) + " {");
+                        sb.AppendLine("\tconst enum " + CamelCaseClassName(io.Name) + " {");
 
                         foreach (var p in io.Properties)
                         {
