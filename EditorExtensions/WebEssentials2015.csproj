@@ -588,7 +588,6 @@
     <Compile Include="Shared\Compilers\Result\CompilerResult.cs" />
     <Compile Include="Shared\Compilers\Result\CompilerResultFactory.cs" />
     <Compile Include="Shared\Compilers\Result\CssCompilerResult.cs" />
-    <Compile Include="CSS\Completion\ColorSwatchCompletionListEntry.cs" />
     <Compile Include="SCSS\SmartTags\ScssExtractVariableSmartTagProvider.cs" />
     <Compile Include="Shared\ExtensionMethods\TaskExtensions.cs" />
     <Compile Include="Shared\Helpers\AsyncLock.cs" />
@@ -683,7 +682,6 @@
     <Compile Include="CSS\Commands\CssAddMissingStandardCommandTarget.cs" />
     <Compile Include="Shared\Commands\ExtractToFileCommandTarget.cs" />
     <Compile Include="CSS\Commands\CssCreationListener.cs" />
-    <Compile Include="CSS\Commands\CssSortPropertiesCommandTarget.cs" />
     <Compile Include="CSS\Classify\Base64TaggerProvider.cs" />
     <Compile Include="CSS\Classify\CssHighlightWordTagger.cs" />
     <Compile Include="CSS\Classify\ValueTaggerProvider.cs" />
@@ -726,9 +724,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="CSS\Validation\Providers\DuplicateSelectorErrorTagProvider.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="CSS\Validation\Providers\EmbedImagesErrorTagProvider.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="CSS\Validation\Providers\Ie10PrefixErrorTagProvider.cs">

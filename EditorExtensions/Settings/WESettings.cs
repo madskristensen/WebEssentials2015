@@ -438,11 +438,7 @@ namespace MadsKristensen.EditorExtensions.Settings
         [Description("Warn when units are unnecessarily specified for the number 0 (which never needs a unit in CSS).")]
         [DefaultValue(true)]
         public bool ValidateZeroUnit { get; set; }
-        [Category("Performance Warnings")]
-        [DisplayName("Small images should be inlined")]
-        [Description("Warn on URLs to small images that are not embedded using data URIs.")]
-        [DefaultValue(true)]
-        public bool ValidateEmbedImages { get; set; }
+
         #endregion
 
         [Category("Validation")]
