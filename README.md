@@ -10,6 +10,13 @@ This is for all Web developers using Visual Studio.
 
 To get the latest nightly build, follow [these instructions](http://vswebessentials.com/download#nightly).
 
+### LESS/Sass/CoffeeScript compilation and bundling
+The compilers have been removed from Web Essentials and a new extension
+has been created specifically for compiling web resources. Download
+[Web Compiler](https://visualstudiogallery.msdn.microsoft.com/3b329021-cd7a-4a01-86fc-714c2d05bb6c)
+
+For bundling and minification, use
+[Bundler &amp; Minifier](https://visualstudiogallery.msdn.microsoft.com/9ec27da7-e24b-4d56-8064-fd7e88ac1c40)
 
 ## Getting started
 To contribute to this project, you'll need to do a few things first:
