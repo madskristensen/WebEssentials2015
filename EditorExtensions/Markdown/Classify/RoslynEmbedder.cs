@@ -66,27 +66,27 @@ namespace MadsKristensen.EditorExtensions.Markdown.Classify
 
                 ISolutionCrawlerRegistrationService.GetMethod("Register").Invoke(scrService, new[] { this });
             }
-            public Project AddProject(string name, string language)
-            {
-                ProjectInfo projectInfo = ProjectInfo.Create(ProjectId.CreateNewId(null), VersionStamp.Create(), name, name, language);
-                OnProjectAdded(projectInfo);
-                return CurrentSolution.GetProject(projectInfo.Id);
-            }
 
             ///<summary>Creates a new document linked to an existing text buffer.</summary>
-            public Document CreateDocument(ProjectId projectId, ITextBuffer buffer)
+            public DocumentId CreateDocument(ProjectId projectId, ITextBuffer buffer)
             {
-                var id = DocumentId.CreateNewId(projectId);
-                documentBuffers.Add(id, buffer);
-
                 // Our GetFileName() extension (which should probably be deleted) doesn't work on projection buffers
-                var docInfo = DocumentInfo.Create(id, TextBufferExtensions.GetFileName(buffer) ?? "Markdown Embedded Code",
-                    loader: TextLoader.From(buffer.AsTextContainer(), VersionStamp.Create())
-                );
-                OnDocumentAdded(docInfo);
-                OnDocumentOpened(id, buffer.AsTextContainer());
-                buffer.Changed += delegate { OnDocumentContextUpdated(id); };
-                return CurrentSolution.GetDocument(id);
+                var debugName = TextBufferExtensions.GetFileName(buffer) ?? "Markdown Embedded Code";
+                var id = DocumentId.CreateNewId(projectId, debugName);
+
+                TryApplyChanges(CurrentSolution.AddDocument(
+                    id, debugName, 
+                    TextLoader.From(buffer.AsTextContainer(), VersionStamp.Create())
+                ));
+                OpenDocument(id, buffer);
+                return id;
+            }
+            ///<summary>Links an existing <see cref="Document"/> to an <see cref="ITextBuffer"/>, synchronizing their contents.</summary>
+            public void OpenDocument(DocumentId documentId, ITextBuffer buffer)
+            {
+                documentBuffers.Add(documentId, buffer);
+                OnDocumentOpened(documentId, buffer.AsTextContainer());
+                buffer.Changed += delegate { OnDocumentContextUpdated(documentId); };
             }
 
             protected override void ApplyDocumentTextChanged(DocumentId id, SourceText text)
@@ -110,21 +110,7 @@ namespace MadsKristensen.EditorExtensions.Markdown.Classify
 
             public override bool CanApplyChange(ApplyChangesKind feature)
             {
-                switch (feature)
-                {
-                    case ApplyChangesKind.AddMetadataReference:
-                    case ApplyChangesKind.RemoveMetadataReference:
-                    case ApplyChangesKind.ChangeDocument:
-                        return true;
-                    case ApplyChangesKind.AddProject:
-                    case ApplyChangesKind.RemoveProject:
-                    case ApplyChangesKind.AddProjectReference:
-                    case ApplyChangesKind.RemoveProjectReference:
-                    case ApplyChangesKind.AddDocument:
-                    case ApplyChangesKind.RemoveDocument:
-                    default:
-                        return false;
-                }
+                return true;
             }
         }
 
@@ -147,22 +133,20 @@ namespace MadsKristensen.EditorExtensions.Markdown.Classify
             );
 
             var contentType = projectionBuffer.IProjectionBuffer.ContentType.DisplayName;
-            var project = editorBuffer.Properties.GetOrCreateSingletonProperty(contentType, () =>
+            var projectId = editorBuffer.Properties.GetOrCreateSingletonProperty(contentType, () =>
             {
-                var newProject = workspace.AddProject(
-                    "Sample " + contentType + " Project",
-                    contentTypeLanguages[contentType]
-                );
-                workspace.TryApplyChanges(workspace.CurrentSolution.AddMetadataReferences(
-                    newProject.Id,
-                    DefaultReferences.Select(name => VSWorkspace.CreatePortableExecutableReference(
-                        Path.Combine(referenceAssemblyPath, name + ".dll"),
-                        MetadataReferenceProperties.Assembly
-                    ))
-                ));
-                return newProject;
+                var newProject = workspace.CurrentSolution
+                    .AddProject(contentType + " Markdown Project", "Markdown", contentTypeLanguages[contentType])
+                    .AddMetadataReferences(
+                        DefaultReferences.Select(name => VSWorkspace.CreatePortableExecutableReference(
+                            Path.Combine(referenceAssemblyPath, name + ".dll"),
+                            MetadataReferenceProperties.Assembly
+                        ))
+                    );
+                workspace.TryApplyChanges(newProject.Solution);
+                return newProject.Id;
             });
-            workspace.CreateDocument(project.Id, projectionBuffer.IProjectionBuffer);
+            workspace.CreateDocument(projectId, projectionBuffer.IProjectionBuffer);
             WindowHelpers.WaitFor(delegate
             {
                 var textView = TextViewConnectionListener.GetFirstViewForBuffer(editorBuffer);
