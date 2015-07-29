@@ -81,8 +81,7 @@ namespace MadsKristensen.EditorExtensions.Markdown.Classify
 
                 // Our GetFileName() extension (which should probably be deleted) doesn't work on projection buffers
                 var docInfo = DocumentInfo.Create(id, TextBufferExtensions.GetFileName(buffer) ?? "Markdown Embedded Code",
-                    loader: TextLoader.From(buffer.AsTextContainer(), VersionStamp.Create()),
-                    sourceCodeKind: SourceCodeKind.Script
+                    loader: TextLoader.From(buffer.AsTextContainer(), VersionStamp.Create())
                 );
                 OnDocumentAdded(docInfo);
                 OnDocumentOpened(id, buffer.AsTextContainer());
