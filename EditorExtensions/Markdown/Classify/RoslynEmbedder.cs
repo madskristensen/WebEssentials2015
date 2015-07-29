@@ -27,7 +27,8 @@ namespace MadsKristensen.EditorExtensions.Markdown.Classify
 {
     public abstract class RoslynEmbedder : ICodeLanguageEmbedder
     {
-        public IReadOnlyCollection<string> GetBlockWrapper(IEnumerable<string> code) { return new string[0]; }
+        // TODO: Revert to empty array once Script is supported
+        public abstract IReadOnlyCollection<string> GetBlockWrapper(IEnumerable<string> code);
 
         static readonly string referenceAssemblyPath = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),
@@ -75,7 +76,7 @@ namespace MadsKristensen.EditorExtensions.Markdown.Classify
                 var id = DocumentId.CreateNewId(projectId, debugName);
 
                 TryApplyChanges(CurrentSolution.AddDocument(
-                    id, debugName, 
+                    id, debugName,
                     TextLoader.From(buffer.AsTextContainer(), VersionStamp.Create())
                 ));
                 OpenDocument(id, buffer);
@@ -269,6 +270,15 @@ namespace MadsKristensen.EditorExtensions.Markdown.Classify
                          using System.Xml.Linq;";
             }
         }
+        public override IReadOnlyCollection<string> GetBlockWrapper(IEnumerable<string> code)
+        {
+            return new[] { @"partial class Entry
+                            {
+                                  async Task<object> SampleMethod" + Guid.NewGuid().ToString("n") + @"() {", @"
+                                return await Task.FromResult(new object());
+                            }
+                            }" };
+        }
     }
 
     [Export(typeof(ICodeLanguageEmbedder))]
@@ -294,6 +304,15 @@ namespace MadsKristensen.EditorExtensions.Markdown.Classify
                         Imports System.Xml
                         Imports System.Xml.Linq";
             }
+        }
+        public override IReadOnlyCollection<string> GetBlockWrapper(IEnumerable<string> code)
+        {
+            return new[] { @"
+                            Partial Class Entry
+                            Async Function SampleMethod" + Guid.NewGuid().ToString("n") + @"() As Task(Of Object)", @"
+                                Return Await Task.FromResult(New Object())
+                            End Function
+                            End Class" };
         }
     }
 }
