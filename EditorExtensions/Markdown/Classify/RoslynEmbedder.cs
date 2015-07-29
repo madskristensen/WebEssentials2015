@@ -27,7 +27,8 @@ namespace MadsKristensen.EditorExtensions.Markdown.Classify
 {
     public abstract class RoslynEmbedder : ICodeLanguageEmbedder
     {
-        public IReadOnlyCollection<string> GetBlockWrapper(IEnumerable<string> code) { return new string[0]; }
+        // TODO: Revert to empty array once Script is supported
+        public abstract IReadOnlyCollection<string> GetBlockWrapper(IEnumerable<string> code);
 
         static readonly string referenceAssemblyPath = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),
@@ -66,28 +67,27 @@ namespace MadsKristensen.EditorExtensions.Markdown.Classify
 
                 ISolutionCrawlerRegistrationService.GetMethod("Register").Invoke(scrService, new[] { this });
             }
-            public Project AddProject(string name, string language)
-            {
-                ProjectInfo projectInfo = ProjectInfo.Create(ProjectId.CreateNewId(null), VersionStamp.Create(), name, name, language);
-                OnProjectAdded(projectInfo);
-                return CurrentSolution.GetProject(projectInfo.Id);
-            }
 
             ///<summary>Creates a new document linked to an existing text buffer.</summary>
-            public Document CreateDocument(ProjectId projectId, ITextBuffer buffer)
+            public DocumentId CreateDocument(ProjectId projectId, ITextBuffer buffer)
             {
-                var id = DocumentId.CreateNewId(projectId);
-                documentBuffers.Add(id, buffer);
-
                 // Our GetFileName() extension (which should probably be deleted) doesn't work on projection buffers
-                var docInfo = DocumentInfo.Create(id, TextBufferExtensions.GetFileName(buffer) ?? "Markdown Embedded Code",
-                    loader: TextLoader.From(buffer.AsTextContainer(), VersionStamp.Create()),
-                    sourceCodeKind: SourceCodeKind.Script
-                );
-                OnDocumentAdded(docInfo);
-                OnDocumentOpened(id, buffer.AsTextContainer());
-                buffer.Changed += delegate { OnDocumentContextUpdated(id); };
-                return CurrentSolution.GetDocument(id);
+                var debugName = TextBufferExtensions.GetFileName(buffer) ?? "Markdown Embedded Code";
+                var id = DocumentId.CreateNewId(projectId, debugName);
+
+                TryApplyChanges(CurrentSolution.AddDocument(
+                    id, debugName,
+                    TextLoader.From(buffer.AsTextContainer(), VersionStamp.Create())
+                ));
+                OpenDocument(id, buffer);
+                return id;
+            }
+            ///<summary>Links an existing <see cref="Document"/> to an <see cref="ITextBuffer"/>, synchronizing their contents.</summary>
+            public void OpenDocument(DocumentId documentId, ITextBuffer buffer)
+            {
+                documentBuffers.Add(documentId, buffer);
+                OnDocumentOpened(documentId, buffer.AsTextContainer());
+                buffer.Changed += delegate { OnDocumentContextUpdated(documentId); };
             }
 
             protected override void ApplyDocumentTextChanged(DocumentId id, SourceText text)
@@ -111,21 +111,7 @@ namespace MadsKristensen.EditorExtensions.Markdown.Classify
 
             public override bool CanApplyChange(ApplyChangesKind feature)
             {
-                switch (feature)
-                {
-                    case ApplyChangesKind.AddMetadataReference:
-                    case ApplyChangesKind.RemoveMetadataReference:
-                    case ApplyChangesKind.ChangeDocument:
-                        return true;
-                    case ApplyChangesKind.AddProject:
-                    case ApplyChangesKind.RemoveProject:
-                    case ApplyChangesKind.AddProjectReference:
-                    case ApplyChangesKind.RemoveProjectReference:
-                    case ApplyChangesKind.AddDocument:
-                    case ApplyChangesKind.RemoveDocument:
-                    default:
-                        return false;
-                }
+                return true;
             }
         }
 
@@ -148,22 +134,20 @@ namespace MadsKristensen.EditorExtensions.Markdown.Classify
             );
 
             var contentType = projectionBuffer.IProjectionBuffer.ContentType.DisplayName;
-            var project = editorBuffer.Properties.GetOrCreateSingletonProperty(contentType, () =>
+            var projectId = editorBuffer.Properties.GetOrCreateSingletonProperty(contentType, () =>
             {
-                var newProject = workspace.AddProject(
-                    "Sample " + contentType + " Project",
-                    contentTypeLanguages[contentType]
-                );
-                workspace.TryApplyChanges(workspace.CurrentSolution.AddMetadataReferences(
-                    newProject.Id,
-                    DefaultReferences.Select(name => VSWorkspace.CreatePortableExecutableReference(
-                        Path.Combine(referenceAssemblyPath, name + ".dll"),
-                        MetadataReferenceProperties.Assembly
-                    ))
-                ));
-                return newProject;
+                var newProject = workspace.CurrentSolution
+                    .AddProject(contentType + " Markdown Project", "Markdown", contentTypeLanguages[contentType])
+                    .AddMetadataReferences(
+                        DefaultReferences.Select(name => VSWorkspace.CreatePortableExecutableReference(
+                            Path.Combine(referenceAssemblyPath, name + ".dll"),
+                            MetadataReferenceProperties.Assembly
+                        ))
+                    );
+                workspace.TryApplyChanges(newProject.Solution);
+                return newProject.Id;
             });
-            workspace.CreateDocument(project.Id, projectionBuffer.IProjectionBuffer);
+            workspace.CreateDocument(projectId, projectionBuffer.IProjectionBuffer);
             WindowHelpers.WaitFor(delegate
             {
                 var textView = TextViewConnectionListener.GetFirstViewForBuffer(editorBuffer);
@@ -286,6 +270,15 @@ namespace MadsKristensen.EditorExtensions.Markdown.Classify
                          using System.Xml.Linq;";
             }
         }
+        public override IReadOnlyCollection<string> GetBlockWrapper(IEnumerable<string> code)
+        {
+            return new[] { @"partial class Entry
+                            {
+                                  async Task<object> SampleMethod" + Guid.NewGuid().ToString("n") + @"() {", @"
+                                return await Task.FromResult(new object());
+                            }
+                            }" };
+        }
     }
 
     [Export(typeof(ICodeLanguageEmbedder))]
@@ -311,6 +304,15 @@ namespace MadsKristensen.EditorExtensions.Markdown.Classify
                         Imports System.Xml
                         Imports System.Xml.Linq";
             }
+        }
+        public override IReadOnlyCollection<string> GetBlockWrapper(IEnumerable<string> code)
+        {
+            return new[] { @"
+                            Partial Class Entry
+                            Async Function SampleMethod" + Guid.NewGuid().ToString("n") + @"() As Task(Of Object)", @"
+                                Return Await Task.FromResult(New Object())
+                            End Function
+                            End Class" };
         }
     }
 }
