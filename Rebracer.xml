@@ -81,6 +81,7 @@
         <PropertyValue name="RemoveParameters_PreviewReferenceChanges">1</PropertyValue>
         <PropertyValue name="RemoveUnusedUsings">1</PropertyValue>
         <PropertyValue name="RenameSmartTagEnabled">1</PropertyValue>
+        <PropertyValue name="RenameTrackingPreview">1</PropertyValue>
         <PropertyValue name="Rename_Comments">0</PropertyValue>
         <PropertyValue name="Rename_Overloads">0</PropertyValue>
         <PropertyValue name="Rename_Preview">0</PropertyValue>
