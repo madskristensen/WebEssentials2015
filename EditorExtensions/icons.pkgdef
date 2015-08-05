@@ -32,7 +32,9 @@
 [$RootKey$\ShellFileAssociations\.cson]
 "DefaultIconMoniker"="KnownMonikers.JSCoffeeScript"
 [$RootKey$\ShellFileAssociations\.iced]
-"DefaultIconMoniker"="KnownMonikers.JSCoffeeScript"
+"DefaultIconMoniker"="KnownMonikers.JavaSource"
+[$RootKey$\ShellFileAssociations\.litcoffee]
+"DefaultIconMoniker"="KnownMonikers.JavaSource"
 
 // Fonts
 [$RootKey$\ShellFileAssociations\.wof]
