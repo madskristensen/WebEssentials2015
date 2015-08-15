@@ -472,12 +472,6 @@ namespace MadsKristensen.EditorExtensions.Settings
         public bool ShowInitialInherit { get; set; }
 
         [Category("IntelliSense")]
-        [DisplayName("Show unsupported properties")]
-        [Description("Show property names, values, and pseudos that aren't supported by any browser yet.")]
-        [DefaultValue(true)]
-        public bool ShowUnsupported { get; set; }
-
-        [Category("IntelliSense")]
         [DisplayName("Show browser support tooltips")]
         [Description("Show which browser support CSS properties & values on mouse hover.")]
         [DefaultValue(true)]

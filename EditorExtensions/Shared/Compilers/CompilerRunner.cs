@@ -179,72 +179,12 @@ namespace MadsKristensen.EditorExtensions.Compilers
         protected abstract Task<CompilerResult> RunCompilerAsync(string sourcePath, string targetPath);
     }
 
-    //[Export(typeof(ICompilerRunnerProvider))]
-    //[ContentType(CssContentTypeDefinition.CssContentType)]
-    //[ContentType(LessContentTypeDefinition.LessContentType)]
-    //[ContentType(ScssContentTypeDefinition.ScssContentType)]
-    //[ContentType(CoffeeContentTypeDefinition.CoffeeContentType)]
-    //[ContentType(CsonContentTypeDefinition.CsonContentType)]
-    //[ContentType(IcedCoffeeScriptContentTypeDefinition.IcedCoffeeScriptContentType)]
-    //[ContentType(LiveScriptContentTypeDefinition.LiveScriptContentType)]
-    //[ContentType(SweetJsContentTypeDefinition.SweetJsContentType)]
-    //[ContentType(Handlebars.HandlebarsContentTypeDefinition.HandlebarsContentType)]
-    //public class NodeCompilerRunnerProvider : ICompilerRunnerProvider
-    //{
-    //    public CompilerRunnerBase GetCompiler(IContentType contentType) { return new NodeCompilerRunner(contentType); }
-    //}
-
-
-    ///<summary>Compiles files using <see cref="NodeExecutorBase"/> classes and reports the results.</summary>
-    //class NodeCompilerRunner : CompilerRunnerBase
-    //{
-    //    public NodeCompilerRunner(IContentType contentType)
-    //        : base(contentType)
-    //    {
-    //        Compiler = Mef.GetImport<NodeExecutorBase>(contentType);
-    //    }
-
-    //    public NodeExecutorBase Compiler { get; private set; }
-
-    //    public override string TargetExtension
-    //    {
-    //        // This is called by the base ctor, before we assign Compiler
-    //        get { return (Compiler ?? Mef.GetImport<NodeExecutorBase>(SourceContentType)).TargetExtension; }
-    //    }
-
-    //    public override bool GenerateSourceMap { get { return Compiler.GenerateSourceMap; } }
-
-    //    protected override async Task<CompilerResult> RunCompilerAsync(string sourcePath, string targetPath)
-    //    {
-    //        bool isTemp = false;
-    //        if (string.IsNullOrEmpty(targetPath))
-    //        {
-    //            isTemp = true;
-    //            targetPath = Path.Combine(Path.GetTempPath(), Guid.NewGuid() + Compiler.TargetExtension);
-    //        }
-
-    //        try
-    //        {
-    //            return await Compiler.CompileAsync(sourcePath, targetPath);
-    //        }
-    //        finally
-    //        {
-    //            if (isTemp)
-    //            {
-    //                File.Delete(targetPath);
-    //                File.Delete(targetPath + ".map");
-    //            }
-    //        }
-    //    }
-    //}
-
     [Export(typeof(ICompilerRunnerProvider))]
     [ContentType(Markdown.MarkdownContentTypeDefinition.MarkdownContentType)]
     public class MarkdownCompilerRunnerProvider : ICompilerRunnerProvider
     {
         public CompilerRunnerBase GetCompiler(IContentType contentType) { return new MarkdownCompilerRunner(contentType); }
     }
-
 
     ///<summary>Compiles files asynchronously using CommonMark.NET and reports the results.</summary>
     class MarkdownCompilerRunner : CompilerRunnerBase
