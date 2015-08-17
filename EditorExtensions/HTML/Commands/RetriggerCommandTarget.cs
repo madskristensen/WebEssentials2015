@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Windows.Threading;
 using Microsoft.Html.Core.Tree.Nodes;
+using Microsoft.Html.Core.Tree.Utility;
 using Microsoft.Html.Editor.Completion;
 using Microsoft.Html.Editor.Document;
 using Microsoft.VisualStudio;
@@ -54,7 +55,14 @@ namespace MadsKristensen.EditorExtensions.Html
 
                 var document = HtmlEditorDocument.FromTextBuffer(point.Value.Snapshot.TextBuffer);
 
-                if (document != null)
+                if (document == null)
+                    return;
+
+                ElementNode element;
+                AttributeNode attr;
+                HtmlPositionType type = document.HtmlEditorTree.GetPositionElement(point.Value.Position, out element, out attr);
+
+                if (document != null && type == HtmlPositionType.AttributeName)
                     WebEssentialsPackage.ExecuteCommand("Edit.ListMembers");
 
             }), DispatcherPriority.Background, null);
