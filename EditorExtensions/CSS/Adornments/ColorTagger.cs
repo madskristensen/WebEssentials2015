@@ -45,6 +45,12 @@ namespace MadsKristensen.EditorExtensions.Css
             {
                 SnapshotSpan span = new SnapshotSpan(_buffer.CurrentSnapshot, item.Start, item.Length);
                 ColorModel colorModel = ColorParser.TryParseColor(item, ColorParser.Options.AllowAlpha | ColorParser.Options.AllowNames);
+                // Fix up for rebeccapurple adornment as it isn't parsed by ColorParser currently
+                if (colorModel == null && item.Text=="rebeccapurple")
+                {
+                    // as per http://lists.w3.org/Archives/Public/www-style/2014Jun/0312.html
+                    colorModel = ColorParser.TryParseColor("#663399", ColorParser.Options.AllowAlpha | ColorParser.Options.AllowNames);
+                }
                 if (colorModel != null)
                 {
                     yield return new TagSpan<ColorTag>(span, new ColorTag(colorModel.Color));
