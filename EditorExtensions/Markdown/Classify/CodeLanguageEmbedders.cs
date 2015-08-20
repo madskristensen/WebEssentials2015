@@ -94,49 +94,49 @@ namespace MadsKristensen.EditorExtensions.Markdown
 	// make sure that it uses the JSONEditorDocument from the inner
 	// buffer, and that it successfully finds IJSONFormatterFactory
 	// for Markdown.
-	[Export(typeof(ICodeLanguageEmbedder))]
-	[ContentType("JSON")]
-	public class JSONEmbedder : ICodeLanguageEmbedder
-	{
-		public string GlobalPrefix { get { return "["; } }
-		public string GlobalSuffix { get { return "{}]"; } }
+	//[Export(typeof(ICodeLanguageEmbedder))]
+	//[ContentType("JSON")]
+	//public class JSONEmbedder : ICodeLanguageEmbedder
+	//{
+	//	public string GlobalPrefix { get { return "["; } }
+	//	public string GlobalSuffix { get { return "{}]"; } }
 
-		public IReadOnlyCollection<string> GetBlockWrapper(IEnumerable<string> code)
-		{
-			return new[] { "", "," };
-		}
+	//	public IReadOnlyCollection<string> GetBlockWrapper(IEnumerable<string> code)
+	//	{
+	//		return new[] { "", "," };
+	//	}
 
-		public void OnBlockCreated(ITextBuffer editorBuffer, LanguageProjectionBuffer projectionBuffer)
-		{
-			WindowHelpers.WaitFor(delegate
-			{
-				var textView = TextViewConnectionListener.GetFirstViewForBuffer(editorBuffer);
-				if (textView == null)
-					return false;
-				// Attach the inner buffer's Document to the outer 
-				// buffer so that it can be found from the TextView
-				var editorDocument = JSONEditorDocument.FromTextBuffer(projectionBuffer.IProjectionBuffer)
-								  ?? JSONEditorDocument.Attach(projectionBuffer.IProjectionBuffer);
-				ServiceManager.AddService(editorDocument, editorBuffer);
-				editorDocument.Closing += delegate { ServiceManager.RemoveService<JSONEditorDocument>(textView.TextBuffer); };
-				return true;
-			});
-		}
-	}
-	[Export(typeof(ITextViewCreationListener))]
-	[ContentType("JSON")]
-	class JsonBufferListener : ITextViewCreationListener
-	{
-		public void OnTextViewCreated(ITextView textView, ITextBuffer textBuffer)
-		{
-			var jsonBuffer = textView.BufferGraph.GetTextBuffers(tb => tb.ContentType.IsOfType("JSON")).FirstOrDefault();
-			if (jsonBuffer == null) return;
-			// Attach the inner buffer's Document to the outer 
-			// buffer so that it can be found from the TextView
-			var editorDocument = JSONEditorDocument.FromTextBuffer(jsonBuffer)
-							  ?? JSONEditorDocument.Attach(jsonBuffer);
-			ServiceManager.AddService(editorDocument, textView.TextDataModel.DocumentBuffer);
-			editorDocument.Closing += delegate { ServiceManager.RemoveService<JSONEditorDocument>(textView.TextBuffer); };
-		}
-	}
+	//	public void OnBlockCreated(ITextBuffer editorBuffer, LanguageProjectionBuffer projectionBuffer)
+	//	{
+	//		WindowHelpers.WaitFor(delegate
+	//		{
+	//			var textView = TextViewConnectionListener.GetFirstViewForBuffer(editorBuffer);
+	//			if (textView == null)
+	//				return false;
+	//			// Attach the inner buffer's Document to the outer 
+	//			// buffer so that it can be found from the TextView
+	//			var editorDocument = JSONEditorDocument.FromTextBuffer(projectionBuffer.IProjectionBuffer)
+	//							  ?? JSONEditorDocument.Attach(projectionBuffer.IProjectionBuffer);
+	//			ServiceManager.AddService(editorDocument, editorBuffer);
+	//			editorDocument.Closing += delegate { ServiceManager.RemoveService<JSONEditorDocument>(textView.TextBuffer); };
+	//			return true;
+	//		});
+	//	}
+	//}
+	//[Export(typeof(ITextViewCreationListener))]
+	//[ContentType("JSON")]
+	//class JsonBufferListener : ITextViewCreationListener
+	//{
+	//	public void OnTextViewCreated(ITextView textView, ITextBuffer textBuffer)
+	//	{
+	//		var jsonBuffer = textView.BufferGraph.GetTextBuffers(tb => tb.ContentType.IsOfType("JSON")).FirstOrDefault();
+	//		if (jsonBuffer == null) return;
+	//		// Attach the inner buffer's Document to the outer 
+	//		// buffer so that it can be found from the TextView
+	//		var editorDocument = JSONEditorDocument.FromTextBuffer(jsonBuffer)
+	//						  ?? JSONEditorDocument.Attach(jsonBuffer);
+	//		ServiceManager.AddService(editorDocument, textView.TextDataModel.DocumentBuffer);
+	//		editorDocument.Closing += delegate { ServiceManager.RemoveService<JSONEditorDocument>(textView.TextBuffer); };
+	//	}
+	//}
 }

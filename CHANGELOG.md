@@ -1,6 +1,7 @@
 # Roadmap
 
 - [x] Markdown: Dot no longer triggers Intellisense (#82)
+- [x] Markdown: Fixed issue with embedded JSON
 - [x] HTML: Knockout comment outlining
 
 Features that have a checkmark are complete and available for
