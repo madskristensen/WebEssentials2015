@@ -485,6 +485,7 @@
     <Compile Include="HTML\LightBulbs\Providers\ImageLightBulbProvider.cs" />
     <Compile Include="HTML\LightBulbs\Providers\RemoveElementLightBulbProvider.cs" />
     <Compile Include="HTML\LightBulbs\Providers\StyleScriptLightBulbProvider.cs" />
+    <Compile Include="HTML\Outlining\KoTagger.cs" />
     <Compile Include="HTML\Schema\DynamicSchemaFileProvider.cs" />
     <Compile Include="HTML\Schema\HtmlSchemaFileInfo.cs" />
     <Compile Include="HTML\Schema\IonicSchemaFileProvider.cs" />
