@@ -1,9 +1,5 @@
 # Roadmap
 
-- [x] Markdown: Dot no longer triggers Intellisense (#82)
-- [x] Markdown: Fixed issue with embedded JSON
-- [x] HTML: Knockout comment outlining
-
 Features that have a checkmark are complete and available for
 download in the
 [nightly build](http://vsixgallery.com/extension/5fb7364d-2e8c-44a4-95eb-2a382e30fec9/).
@@ -12,6 +8,14 @@ download in the
 
 These are the changes to each version that has been released
 on the official Visual Studio extension gallery.
+
+## 0.5.156
+
+**2015-08-24**
+
+- [x] Markdown: Dot no longer triggers Intellisense (#82)
+- [x] Markdown: Fixed issue with embedded JSON
+- [x] HTML: Knockout comment outlining
 
 ## 0.5
 
