@@ -32,7 +32,7 @@ namespace MadsKristensen.EditorExtensions.Html
             {
                 try
                 {
-                    if (context.Session == null || context.Session.CompletionSets == null || context.Session.CompletionSets.Count == 0)
+                    if (context == null || context.Session == null || context.Session.CompletionSets == null || context.Session.CompletionSets.Count == 0)
                         return;
 
                     foreach (var item in context.Session.CompletionSets[0].Completions)
