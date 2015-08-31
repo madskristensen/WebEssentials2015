@@ -23,6 +23,7 @@ namespace MadsKristensen.EditorExtensions.Markdown
     {
         [Import]
         public ITextDocumentFactoryService TextDocumentFactoryService { get; set; }
+
         public IDropHandler GetAssociatedDropHandler(IWpfTextView wpfTextView)
         {
             return wpfTextView.Properties.GetOrCreateSingletonProperty(() => new MarkdownImageDropHandler(TextDocumentFactoryService, wpfTextView));

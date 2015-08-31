@@ -6,12 +6,11 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using MadsKristensen.EditorExtensions.Markdown;
+using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Text.Projection;
 using Microsoft.VisualStudio.TextManager.Interop;
-using Microsoft.Web.Editor;
-using Microsoft.VisualStudio;
 using Microsoft.Web.Core.ContentTypes;
 
 namespace MadsKristensen.EditorExtensions.Images
@@ -33,7 +32,7 @@ namespace MadsKristensen.EditorExtensions.Images
 
             var formats = data.GetFormats();
 
-            // This is to check if the image is text copied from PowerPoint etc. 
+            // This is to check if the image is text copied from PowerPoint etc.
             bool trueBitmap = formats.Any(x => new[] { "DeviceIndependentBitmap", "PNG", "JPG", "System.Drawing.Bitmap" }.Contains(x));
             bool textFormat = formats.Any(x => new[] { "Text", "Rich Text Format" }.Contains(x));
             bool hasBitmap = data.GetDataPresent("System.Drawing.Bitmap") || data.GetDataPresent(DataFormats.FileDrop);
@@ -49,7 +48,7 @@ namespace MadsKristensen.EditorExtensions.Images
             _lastPath = Path.GetDirectoryName(fileName);
 
             SaveClipboardImageToFile(data, fileName);
-            UpdateTextBuffer(fileName);
+            UpdateTextBuffer(fileName, WebEssentialsPackage.DTE.ActiveDocument.FullName);
 
             return true;
         }
@@ -137,7 +136,7 @@ namespace MadsKristensen.EditorExtensions.Images
                 dialog.FileName = fileName;
                 dialog.DefaultExt = "." + extension;
                 dialog.Filter = extension.ToUpperInvariant() + " Files|*." + extension;
-                dialog.InitialDirectory = _lastPath ?? ProjectHelpers.GetRootFolder();
+                dialog.InitialDirectory = _lastPath ?? Path.GetDirectoryName(WebEssentialsPackage.DTE.ActiveDocument.FullName);
 
                 if (dialog.ShowDialog() != System.Windows.Forms.DialogResult.OK)
                     return false;
@@ -170,29 +169,37 @@ namespace MadsKristensen.EditorExtensions.Images
             return "png";
         }
 
-        private void UpdateTextBuffer(string fileName)
+        private void UpdateTextBuffer(string fileName, string relativeTo)
         {
             int position = TextView.Caret.Position.BufferPosition.Position;
-            string relative = FileHelpers.RelativePath(ProjectHelpers.GetRootFolder() ?? "/", fileName);
+            string relative = MakeRelative(relativeTo, fileName);
             string text = string.Format(CultureInfo.InvariantCulture, _format, relative);
 
             using (WebEssentialsPackage.UndoContext("Insert Image"))
             {
-                TextView.TextBuffer.Insert(position, text);
-
                 try
                 {
+                    TextView.TextBuffer.Insert(position, text);
+
                     SnapshotSpan span = new SnapshotSpan(TextView.TextBuffer.CurrentSnapshot, position, _format.Length);
                     TextView.Selection.Select(span, false);
 
                     WebEssentialsPackage.ExecuteCommand("Edit.FormatSelection");
                     TextView.Selection.Clear();
                 }
-                catch
+                catch (Exception ex)
                 {
-                    // Try to format the selection. Some editors handle this differently, so try/catch
+                    Logger.Log(ex);
                 }
             }
+        }
+
+        public static string MakeRelative(string baseFile, string file)
+        {
+            Uri baseUri = new Uri(baseFile, UriKind.RelativeOrAbsolute);
+            Uri fileUri = new Uri(file, UriKind.RelativeOrAbsolute);
+
+            return Uri.UnescapeDataString(baseUri.MakeRelativeUri(fileUri).ToString());
         }
 
         public static async void SaveClipboardImageToFile(IDataObject data, string fileName)
