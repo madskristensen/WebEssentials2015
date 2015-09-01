@@ -73,7 +73,7 @@ namespace MadsKristensen.EditorExtensions.Markdown
                 h4{font-size:20px}
                 pre{padding:16px}
                 img{border:none}
-                ul{list-style-type:disc; padding-left:0}
+                ul{list-style-type:disc; padding-left:10px}
                 ul ul {padding-left:50px}
                 li{list-style-type:none; padding-left:0}
                 li ul li {list-style-type:disc;}
