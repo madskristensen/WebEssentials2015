@@ -1,5 +1,7 @@
 # Roadmap
 
+- [x] Markdown: Full GitHub flavor supported
+
 Features that have a checkmark are complete and available for
 download in the
 [nightly build](http://vsixgallery.com/extension/5fb7364d-2e8c-44a4-95eb-2a382e30fec9/).
