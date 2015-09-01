@@ -5,14 +5,9 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Threading.Tasks;
 using EnvDTE;
-using MadsKristensen.EditorExtensions.CoffeeScript;
 using MadsKristensen.EditorExtensions.Commands;
-using MadsKristensen.EditorExtensions.IcedCoffeeScript;
-using MadsKristensen.EditorExtensions.LiveScript;
 using MadsKristensen.EditorExtensions.Settings;
-using MadsKristensen.EditorExtensions.SweetJs;
 using Microsoft.VisualStudio.Utilities;
-using Microsoft.Web.Editor;
 
 namespace MadsKristensen.EditorExtensions.Compilers
 {
@@ -186,7 +181,7 @@ namespace MadsKristensen.EditorExtensions.Compilers
         public CompilerRunnerBase GetCompiler(IContentType contentType) { return new MarkdownCompilerRunner(contentType); }
     }
 
-    ///<summary>Compiles files asynchronously using CommonMark.NET and reports the results.</summary>
+    ///<summary>Compiles files asynchronously using MarkdownDeep and reports the results.</summary>
     class MarkdownCompilerRunner : CompilerRunnerBase
     {
         public MarkdownCompilerRunner(IContentType contentType) : base(contentType) { }
@@ -195,12 +190,14 @@ namespace MadsKristensen.EditorExtensions.Compilers
 
         protected async override Task<CompilerResult> RunCompilerAsync(string sourcePath, string targetPath)
         {
-            var cmSettings = CommonMark.CommonMarkSettings.Default.Clone();
-            cmSettings.AdditionalFeatures = CommonMark.CommonMarkAdditionalFeatures.All;
-            cmSettings.RenderSoftLineBreaksAsLineBreaks = WESettings.Instance.Markdown.RenderSoftLineBreaksAsLineBreaks;
-            cmSettings.TrackSourcePosition = WESettings.Instance.Markdown.TrackSourcePosition;
+            var markdown = new MarkdownDeep.Markdown();
+            markdown.ExtraMode = true;
+            markdown.SafeMode = false;
 
-            var result = CommonMark.CommonMarkConverter.Convert(await FileHelpers.ReadAllTextRetry(sourcePath), cmSettings);
+            var result = markdown
+                        .Transform(await FileHelpers.ReadAllTextRetry(sourcePath))
+                        .Replace("[ ] ", "<input type=\"checkbox\" disabled /> ")
+                        .Replace("[x] ", "<input type=\"checkbox\" disabled checked /> ");
 
             if (!string.IsNullOrEmpty(targetPath) &&
                (!File.Exists(targetPath) || await FileHelpers.ReadAllTextRetry(targetPath) != result))

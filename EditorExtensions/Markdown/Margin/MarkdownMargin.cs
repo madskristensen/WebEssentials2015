@@ -65,7 +65,24 @@ namespace MadsKristensen.EditorExtensions.Markdown
             }
 
             // Mimicks GitHub's styling
-            return link + "<style>body{font: 16px/1.5 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif} h1{font-size:36px; border-bottom: 1px solid #f1f1f1} h2{font-size:28px} h3{font-size:24px} h4{font-size:20px} pre{padding:16px} img{border:none} a{color:#4183c4}</style>";
+            return link + @"<style>
+                body{font: 16px/1.5 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif}
+                h1{font-size:36px; border-bottom: 1px solid #f1f1f1}
+                h2{font-size:28px}
+                h3{font-size:24px}
+                h4{font-size:20px}
+                pre{padding:16px}
+                img{border:none}
+                ul{list-style-type:disc; padding-left:0}
+                ul ul {padding-left:50px}
+                li{list-style-type:none; padding-left:0}
+                li ul li {list-style-type:disc;}
+                a{color:#4183c4}
+                table{display:block; width:100%; overflow:auto; word-break:keep-all; border-collapse:collapse; border-spacing:0}
+                tr:nth-child(2n){background-color:#f8f8f8}
+                th, td {padding: 6px 13px; border: 1px solid #ddd}
+                th{font-weight:bold}
+            </style>";
         }
 
         private static string GetFolder()
