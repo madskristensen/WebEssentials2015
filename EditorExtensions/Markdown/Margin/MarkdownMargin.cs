@@ -75,8 +75,6 @@ namespace MadsKristensen.EditorExtensions.Markdown
                 img{border:none}
                 ul{list-style-type:disc; padding-left:10px}
                 ul ul {padding-left:50px}
-                li{list-style-type:none; padding-left:0}
-                li ul li {list-style-type:disc;}
                 a{color:#4183c4}
                 table{display:block; width:100%; overflow:auto; word-break:keep-all; border-collapse:collapse; border-spacing:0}
                 tr:nth-child(2n){background-color:#f8f8f8}
