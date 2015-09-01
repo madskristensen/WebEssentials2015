@@ -66,14 +66,15 @@ namespace MadsKristensen.EditorExtensions.Markdown
 
             // Mimicks GitHub's styling
             return link + @"<style>
-                body{font: 16px/1.5 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif}
+                body{padding:0 15px; font: 16px/1.5 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif}
+                body > h1:first-child {margin-top:0; padding-top:0}
                 h1{font-size:36px; border-bottom: 1px solid #f1f1f1}
-                h2{font-size:28px}
+                h2{font-size:28px; border-bottom: 1px solid #f1f1f1}
                 h3{font-size:24px}
                 h4{font-size:20px}
                 pre{padding:16px}
                 img{border:none}
-                ul{list-style-type:disc; padding-left:10px}
+                ul{list-style-type:disc}
                 ul ul {padding-left:50px}
                 a{color:#4183c4}
                 table{display:block; width:100%; overflow:auto; word-break:keep-all; border-collapse:collapse; border-spacing:0}
