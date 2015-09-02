@@ -4,6 +4,7 @@ using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using MadsKristensen.EditorExtensions.Markdown;
 using Microsoft.VisualStudio;
@@ -113,10 +114,10 @@ namespace MadsKristensen.EditorExtensions.Images
                          + "img.src = \"{0}\"";
 
                 if (buffer.ContentType.IsOfType(MarkdownContentTypeDefinition.MarkdownContentType))
-                    return "![alt text]({0})";
+                    return "![{1}]({0})";
             }
 
-            return "<img src=\"{0}\" alt=\"\" />";
+            return "<img src=\"{0}\" alt=\"{1}\" />";
         }
 
         private static bool GetFileName(IDataObject data, out string fileName)
@@ -177,7 +178,8 @@ namespace MadsKristensen.EditorExtensions.Images
         {
             int position = TextView.Caret.Position.BufferPosition.Position;
             string relative = MakeRelative(relativeTo, fileName);
-            string text = string.Format(CultureInfo.InvariantCulture, _format, relative);
+            string altText = PrettifyAltText(fileName);
+            string text = string.Format(CultureInfo.InvariantCulture, _format, relative, altText);
 
             using (WebEssentialsPackage.UndoContext("Insert Image"))
             {
@@ -196,6 +198,17 @@ namespace MadsKristensen.EditorExtensions.Images
                     Logger.Log(ex);
                 }
             }
+        }
+
+        private static string PrettifyAltText(string fileName)
+        {
+            var text = Path.GetFileNameWithoutExtension(fileName)
+                            .Replace("-", " ")
+                            .Replace("_", " ");
+
+            text = Regex.Replace(text, "(\\B[A-Z])", " $1");
+
+            return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(text);
         }
 
         public static string MakeRelative(string baseFile, string file)
