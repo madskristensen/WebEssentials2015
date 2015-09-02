@@ -30,7 +30,11 @@ namespace MadsKristensen.EditorExtensions.Images
         {
             IDataObject data = Clipboard.GetDataObject();
 
+            if (data == null) return false;
+
             var formats = data.GetFormats();
+
+            if (formats == null) return false;
 
             // This is to check if the image is text copied from PowerPoint etc.
             bool trueBitmap = formats.Any(x => new[] { "DeviceIndependentBitmap", "PNG", "JPG", "System.Drawing.Bitmap" }.Contains(x));
@@ -221,9 +225,6 @@ namespace MadsKristensen.EditorExtensions.Images
                     await FileHelpers.WriteAllBytesRetry(fileName, buffer);
                 }
             }
-
-            //ImageCompressor compressor = new ImageCompressor();
-            //await compressor.CompressFilesAsync(fileName).HandleErrors("compressing " + fileName);
 
             ProjectHelpers.AddFileToActiveProject(fileName);
         }

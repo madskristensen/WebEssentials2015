@@ -135,20 +135,20 @@ namespace MadsKristensen.EditorExtensions
 
             if (project == null)
                 return;
-
-            string projectFilePath = project.Properties.Item("FullPath").Value.ToString();
-            string projectDirPath = Path.GetDirectoryName(projectFilePath);
-
-            if (!fileName.StartsWith(projectDirPath, StringComparison.OrdinalIgnoreCase))
-                return;
-
-            ProjectItem item = project.ProjectItems.AddFromFile(fileName);
-
-            if (itemType == null || item == null || project.FullName.Contains("://"))
-                return;
-
             try
             {
+                string projectFilePath = project.Properties.Item("FullPath").Value.ToString();
+                string projectDirPath = Path.GetDirectoryName(projectFilePath);
+
+                if (!fileName.StartsWith(projectDirPath, StringComparison.OrdinalIgnoreCase))
+                    return;
+
+                ProjectItem item = project.ProjectItems.AddFromFile(fileName);
+
+                if (itemType == null || item == null || project.FullName.Contains("://"))
+                    return;
+
+
                 item.Properties.Item("ItemType").Value = itemType;
             }
             catch { }
