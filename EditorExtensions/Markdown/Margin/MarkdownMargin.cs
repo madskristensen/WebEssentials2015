@@ -74,7 +74,7 @@ namespace MadsKristensen.EditorExtensions.Markdown
                 h4{font-size:20px}
                 pre{padding:10px; border-radius:2px; line-height:19px; margin: inherit 0}
                 code{padding:0 0.2em; background:rgba(0,0,0,0.04); border-radius:2px}
-                blockquote{padding:0 15px; color:#555; border-left:4px solid #ddd}
+                blockquote{padding:0 15px; margin-left:0; color:#555; border-left:4px solid #ddd}
                 img{border:none; max-width:100%; height:auto}
                 ul{list-style-type:disc}
                 ul ul {padding-left:50px}

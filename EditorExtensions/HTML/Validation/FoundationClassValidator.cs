@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
 using MadsKristensen.EditorExtensions.Settings;
-using Microsoft.Html.Core;
-using Microsoft.Html.Editor.Validation.Validators;
-using Microsoft.VisualStudio.Utilities;
-using Microsoft.Web.Editor;
 using Microsoft.Html.Core.Tree.Nodes;
 using Microsoft.Html.Editor.Validation.Def;
 using Microsoft.Html.Editor.Validation.Errors;
+using Microsoft.Html.Editor.Validation.Validators;
+using Microsoft.VisualStudio.Utilities;
 using Microsoft.Web.Core.ContentTypes;
 
 namespace MadsKristensen.EditorExtensions.Html
