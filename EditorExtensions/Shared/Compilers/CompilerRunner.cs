@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using EnvDTE;
 using MadsKristensen.EditorExtensions.Commands;
@@ -194,10 +195,28 @@ namespace MadsKristensen.EditorExtensions.Compilers
             markdown.ExtraMode = true;
             markdown.SafeMode = false;
 
+            string content = await FileHelpers.ReadAllTextRetry(sourcePath);
+
+            // Issue with MarkdownDeep reported here https://github.com/toptensoftware/markdowndeep/issues/62
+            content = content.Replace("```", "~~~");
+
+            foreach (Match match in Regex.Matches(content, "~~~\\s?(?<lang>[^\\s]+)"))
+            {
+                content = content.Replace(match.Value, "~~~");
+            }
+
+            // Issue with MarkdownDeep reported here https://github.com/toptensoftware/markdowndeep/issues/63
+            foreach (Match match in Regex.Matches(content, "( {0,3}>)+( {0,3})([^\r\n]+)", RegexOptions.Multiline))
+            {
+                content = content.Replace(match.Value, match.Value + "  ");
+            }
+
             var result = markdown
-                        .Transform(await FileHelpers.ReadAllTextRetry(sourcePath))
+                        .Transform(content)
                         .Replace("[ ] ", "<input type=\"checkbox\" disabled /> ")
-                        .Replace("[x] ", "<input type=\"checkbox\" disabled checked /> ");
+                        .Replace("[x] ", "<input type=\"checkbox\" disabled checked /> ")
+                        .Replace("<p><code>", "<pre><code>")
+                        .Replace("</code></p>", "</code></pre>");
 
             if (!string.IsNullOrEmpty(targetPath) &&
                (!File.Exists(targetPath) || await FileHelpers.ReadAllTextRetry(targetPath) != result))

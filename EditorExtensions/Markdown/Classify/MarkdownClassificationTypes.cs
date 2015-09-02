@@ -83,8 +83,8 @@ namespace MadsKristensen.EditorExtensions.Markdown
     {
         public MarkdownCodeFormatDefinition()
         {
-            BackgroundColor = Color.FromRgb(255, 255, 192);
-            BackgroundOpacity = .2;
+            BackgroundColor = Colors.LightGray;
+            BackgroundOpacity = .4;
             DisplayName = "Markdown Code";
         }
     }
@@ -98,8 +98,8 @@ namespace MadsKristensen.EditorExtensions.Markdown
         public MarkdownQuoteFormatDefinition()
         {
             // I wish I could make the background apply block-level (to highlight the entire line)
-            BackgroundColor = Color.FromRgb(200, 200, 200);
-            BackgroundOpacity = .2;
+            BackgroundColor = Colors.LightGray;
+            BackgroundOpacity = .4;
             DisplayName = "Markdown Quote";
         }
     }
