@@ -194,16 +194,15 @@ namespace MadsKristensen.EditorExtensions.Compilers
             var markdown = new MarkdownDeep.Markdown();
             markdown.ExtraMode = true;
             markdown.SafeMode = false;
+            markdown.FormatCodeBlock = FormatCodePrettyPrint;
 
             string content = await FileHelpers.ReadAllTextRetry(sourcePath);
 
             // Issue with MarkdownDeep reported here https://github.com/toptensoftware/markdowndeep/issues/62
             content = content.Replace("```", "~~~");
 
-            foreach (Match match in Regex.Matches(content, "~~~\\s?(?<lang>[^\\s]+)"))
-            {
-                content = content.Replace(match.Value, "~~~");
-            }
+            // Change the fenced code block language for the markdown.FormatCodeBlock method
+            content = Regex.Replace(content, @"(~~~\s?)(?<lang>[^\s]+)", "~~~\r{{${lang}}}");
 
             // Issue with MarkdownDeep reported here https://github.com/toptensoftware/markdowndeep/issues/63
             foreach (Match match in Regex.Matches(content, "( {0,3}>)+( {0,3})([^\r\n]+)", RegexOptions.Multiline))
@@ -214,9 +213,7 @@ namespace MadsKristensen.EditorExtensions.Compilers
             var result = markdown
                         .Transform(content)
                         .Replace("[ ] ", "<input type=\"checkbox\" disabled /> ")
-                        .Replace("[x] ", "<input type=\"checkbox\" disabled checked /> ")
-                        .Replace("<p><code>", "<pre><code>")
-                        .Replace("</code></p>", "</code></pre>");
+                        .Replace("[x] ", "<input type=\"checkbox\" disabled checked /> ");
 
             if (!string.IsNullOrEmpty(targetPath) &&
                (!File.Exists(targetPath) || await FileHelpers.ReadAllTextRetry(targetPath) != result))
@@ -229,6 +226,42 @@ namespace MadsKristensen.EditorExtensions.Compilers
             var compilerResult = await CompilerResultFactory.GenerateResult(sourcePath, targetPath, true, result, null);
 
             return compilerResult;
+        }
+
+        public static Regex rxExtractLanguage = new Regex("^({{(.+)}}[\r\n])", RegexOptions.Compiled);
+        public static string FormatCodePrettyPrint(MarkdownDeep.Markdown m, string code)
+        {
+            // Try to extract the language from the first line
+            var match = rxExtractLanguage.Match(code);
+            string language = null;
+
+            if (match.Success)
+            {
+                var g = match.Groups[2];
+                language = g.ToString().Trim();
+
+                code = code.Substring(match.Groups[1].Length);
+            }
+
+            if (language == null)
+            {
+                var d = m.GetLinkDefinition("default_syntax");
+                if (d != null)
+                    language = d.title;
+            }
+
+            // Common replacements
+            if (language == "C#")
+                language = "csharp";
+            if (language == "C++")
+                language = "cpp";
+
+            // Wrap code in pre/code tags and add PrettyPrint attributes if necessary
+            if (string.IsNullOrEmpty(language))
+                return string.Format("<pre><code>{0}</code></pre>\n", code);
+            else
+                return string.Format("<pre><code class=\"{0}\">{1}</code></pre>\n",
+                                    language.ToLowerInvariant(), code);
         }
     }
 }

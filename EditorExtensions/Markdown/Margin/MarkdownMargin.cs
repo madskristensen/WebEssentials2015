@@ -32,7 +32,7 @@ namespace MadsKristensen.EditorExtensions.Markdown
         <!-- This is where the rendered html from your document is placed -->
         {2}
         <hr />
-        <p>To customize this template, please head to <a href=""http://vswebessentials.com/features/markdown"">VSWebEssentials</a> for more information.</p>
+        <p>To customize this template, please head to <a href=""http://vswebessentials.com/features/markdown"" target=""_blank"">VSWebEssentials</a> for more information.</p>
     </body>
 </html>";
         private double _cachedPosition = 0,
@@ -72,7 +72,7 @@ namespace MadsKristensen.EditorExtensions.Markdown
                 h2{font-size:28px; border-bottom: 1px solid #f1f1f1}
                 h3{font-size:24px}
                 h4{font-size:20px}
-                pre{padding:10px; border-radius:2px; line-height:19px}
+                pre{padding:10px; border-radius:2px; line-height:19px; margin: inherit 0}
                 code{padding:0 0.2em; background:rgba(0,0,0,0.04); border-radius:2px}
                 blockquote{padding:0 15px; color:#555; border-left:4px solid #ddd}
                 img{border:none; max-width:100%; height:auto}
