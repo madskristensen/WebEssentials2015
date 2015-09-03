@@ -1,70 +1,69 @@
-﻿using Microsoft.Html.Editor.Completion;
-using Microsoft.Html.Editor.Completion.Def;
-using Microsoft.VisualStudio.Utilities;
-using Microsoft.Web.Core.ContentTypes;
-using Microsoft.Web.Editor;
-using System;
-using System.Collections.Generic;
-using System.Windows.Media.Imaging;
-using System.Windows.Threading;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Windows.Media.Imaging;
+//using System.Windows.Threading;
+//using Microsoft.Html.Editor.Completion;
+//using Microsoft.Html.Editor.Completion.Def;
+//using Microsoft.VisualStudio.Utilities;
+//using Microsoft.Web.Core.ContentTypes;
 
-namespace MadsKristensen.EditorExtensions.Html
-{
-    [HtmlCompletionProvider(CompletionTypes.GroupAttributes, "*", "*")]
-    [ContentType(HtmlContentTypeDefinition.HtmlContentType)]
-    public class AngularLogoCompletion : IHtmlCompletionListProvider
-    {
-        private static BitmapFrame _icon = BitmapFrame.Create(new Uri("pack://application:,,,/WebEssentials2015;component/Resources/Images/angular.png", UriKind.RelativeOrAbsolute));
+//namespace MadsKristensen.EditorExtensions.Html
+//{
+//    [HtmlCompletionProvider(CompletionTypes.GroupAttributes, "*", "*")]
+//    [ContentType(HtmlContentTypeDefinition.HtmlContentType)]
+//    public class AngularLogoCompletion : IHtmlCompletionListProvider
+//    {
+//        private static BitmapFrame _icon = BitmapFrame.Create(new Uri("pack://application:,,,/WebEssentials2015;component/Resources/Images/angular.png", UriKind.RelativeOrAbsolute));
 
-        public string CompletionType
-        {
-            get { return CompletionTypes.GroupAttributes; }
-        }
+//        public string CompletionType
+//        {
+//            get { return CompletionTypes.GroupAttributes; }
+//        }
 
-        public IList<HtmlCompletion> GetEntries(HtmlCompletionContext context)
-        {
-            return ChangeIcons(context);
-        }
+//        public IList<HtmlCompletion> GetEntries(HtmlCompletionContext context)
+//        {
+//            return ChangeIcons(context);
+//        }
 
-        public static IList<HtmlCompletion> ChangeIcons(HtmlCompletionContext context)
-        {
-            Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() =>
-            {
-                try
-                {
-                    if (context == null || context.Session == null || context.Session.CompletionSets == null || context.Session.CompletionSets.Count == 0)
-                        return;
+//        public static IList<HtmlCompletion> ChangeIcons(HtmlCompletionContext context)
+//        {
+//            Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() =>
+//            {
+//                try
+//                {
+//                    if (context == null || context.Session == null || context.Session.CompletionSets == null || context.Session.CompletionSets.Count == 0)
+//                        return;
 
-                    foreach (var item in context.Session.CompletionSets[0].Completions)
-                    {
-                        if (item.DisplayText.StartsWith("ng-", StringComparison.Ordinal) || item.DisplayText.StartsWith("data-ng-", StringComparison.Ordinal))
-                            item.IconSource = _icon;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Logger.Log(ex);
-                }
+//                    foreach (var item in context.Session.CompletionSets[0].Completions)
+//                    {
+//                        if (item.DisplayText.StartsWith("ng-", StringComparison.Ordinal) || item.DisplayText.StartsWith("data-ng-", StringComparison.Ordinal))
+//                            item.IconSource = _icon;
+//                    }
+//                }
+//                catch (Exception ex)
+//                {
+//                    Logger.Log(ex);
+//                }
 
-            }), DispatcherPriority.Normal, null);
+//            }), DispatcherPriority.Normal, null);
 
-            return new List<HtmlCompletion>();
-        }
-    }
+//            return new List<HtmlCompletion>();
+//        }
+//    }
 
-    [HtmlCompletionProvider(CompletionTypes.Attributes, "*", "*")]
-    [ContentType(HtmlContentTypeDefinition.HtmlContentType)]
-    public class AngularLogo2Completion : IHtmlCompletionListProvider
-    {
-        public string CompletionType
-        {
-            get { return CompletionTypes.Attributes; }
-        }
+//    [HtmlCompletionProvider(CompletionTypes.Attributes, "*", "*")]
+//    [ContentType(HtmlContentTypeDefinition.HtmlContentType)]
+//    public class AngularLogo2Completion : IHtmlCompletionListProvider
+//    {
+//        public string CompletionType
+//        {
+//            get { return CompletionTypes.Attributes; }
+//        }
 
-        public IList<HtmlCompletion> GetEntries(HtmlCompletionContext context)
-        {
-            return AngularLogoCompletion.ChangeIcons(context);
-        }
-    }
-}
+//        public IList<HtmlCompletion> GetEntries(HtmlCompletionContext context)
+//        {
+//            return AngularLogoCompletion.ChangeIcons(context);
+//        }
+//    }
+//}
 
