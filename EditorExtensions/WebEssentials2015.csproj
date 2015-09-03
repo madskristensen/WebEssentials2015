@@ -475,6 +475,8 @@
     <Compile Include="JavaScript\Completion\NodeModuleCompletionSourceProvider.cs" />
     <Compile Include="JavaScript\Completion\StringCompletionSource.cs" />
     <Compile Include="JavaScript\Completion\UseDirectiveCompletionSource.cs" />
+    <Compile Include="Markdown\Classify\CodeArtifactProcessor.cs" />
+    <Compile Include="Markdown\Classify\MarkdownParser.cs" />
     <Compile Include="Markdown\Completion\MarkdownCreationListener.cs" />
     <Compile Include="Misc\Minification\IFileMinifier.cs" />
     <Compile Include="HTML\Completion\AngularLogoCompletion.cs" />

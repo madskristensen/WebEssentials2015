@@ -33,107 +33,107 @@
 
 //        protected override void RegenerateBuffer()
 //        {
-//            if (ProjectionBufferManager == null)
-//                return;
+//            //if (ProjectionBufferManager == null)
+//            //    return;
 
-//            foreach (var language in EditorTree.RootNode.Tree.ArtifactCollection
-//                                               .OfType<BlockBoundaryArtifact>()
-//                                               .Select(b => b.BlockInfo)
-//                                               .Distinct()
-//                                               .GroupBy(b => contentTypeRegistry.FromFriendlyName(b.Language).ToEmbeddableContentType()))
-//            {
-//                if (language.Key == null) continue;  // If we can't identify the language, just use normal artifacts.
-//                PopulateLanguageBuffer(language.Key, language.SelectMany(b => b.CodeLines));
-//            }
+//            //foreach (var language in EditorTree.RootNode.Tree.ArtifactCollection
+//            //                                   .OfType<BlockBoundaryArtifact>()
+//            //                                   .Select(b => b.BlockInfo)
+//            //                                   .Distinct()
+//            //                                   .GroupBy(b => contentTypeRegistry.FromFriendlyName(b.Language).ToEmbeddableContentType()))
+//            //{
+//            //    if (language.Key == null) continue;  // If we can't identify the language, just use normal artifacts.
+//            //    PopulateLanguageBuffer(language.Key, language.SelectMany(b => b.CodeLines));
+//            //}
 //        }
 
-//        private void PopulateLanguageBuffer(IContentType contentType, IEnumerable<CodeLineArtifact> artifacts)
-//        {
-//            var pBuffer = ProjectionBufferManager.GetProjectionBuffer(contentType);
+//        //private void PopulateLanguageBuffer(IContentType contentType, IEnumerable<CodeLineArtifact> artifacts)
+//        //{
+//        //    var pBuffer = ProjectionBufferManager.GetProjectionBuffer(contentType);
 
-//            var embedder = Mef.GetImport<ICodeLanguageEmbedder>(contentType);
+//        //    var embedder = Mef.GetImport<ICodeLanguageEmbedder>(contentType);
 
-//            var fullSource = new StringBuilder();
-//            if (embedder != null)
-//                fullSource.AppendLine(embedder.GlobalPrefix);
-//            var mappings = new List<ProjectionMapping>();
+//        //    var fullSource = new StringBuilder();
+//        //    if (embedder != null)
+//        //        fullSource.AppendLine(embedder.GlobalPrefix);
+//        //    var mappings = new List<ProjectionMapping>();
 
-//            foreach (var block in artifacts.GroupBy(a => a.BlockInfo))
-//            {
-//                IReadOnlyCollection<string> surround = null;
-//                if (embedder != null)
-//                    surround = embedder.GetBlockWrapper(block.Select(a => a.GetText(EditorTree.TextSnapshot)));
+//        //    foreach (var block in artifacts.GroupBy(a => a.BlockInfo))
+//        //    {
+//        //        IReadOnlyCollection<string> surround = null;
+//        //        if (embedder != null)
+//        //            surround = embedder.GetBlockWrapper(block.Select(a => a.GetText(EditorTree.TextSnapshot)));
 
-//                if (surround != null)
-//                    fullSource.AppendLine(surround.FirstOrDefault());
+//        //        if (surround != null)
+//        //            fullSource.AppendLine(surround.FirstOrDefault());
 
-//                foreach (var artifact in block)
-//                {
-//                    if (artifact.Start >= EditorTree.TextSnapshot.Length || artifact.End > EditorTree.TextSnapshot.Length || artifact.TreatAs != ArtifactTreatAs.Code)
-//                        continue;
+//        //        foreach (var artifact in block)
+//        //        {
+//        //            if (artifact.Start >= EditorTree.TextSnapshot.Length || artifact.End > EditorTree.TextSnapshot.Length || artifact.TreatAs != ArtifactTreatAs.Code)
+//        //                continue;
 
-//                    mappings.Add(new ProjectionMapping(artifact.InnerRange.Start, fullSource.Length, artifact.InnerRange.Length, AdditionalContentInclusion.All));
-//                    fullSource.AppendLine(artifact.GetText(EditorTree.TextSnapshot));
-//                }
+//        //            mappings.Add(new ProjectionMapping(artifact.InnerRange.Start, fullSource.Length, artifact.InnerRange.Length, AdditionalContentInclusion.All));
+//        //            fullSource.AppendLine(artifact.GetText(EditorTree.TextSnapshot));
+//        //        }
 
-//                if (surround != null)
-//                    fullSource.AppendLine(surround.LastOrDefault());
-//            }
-//            if (embedder != null)
-//                fullSource.AppendLine(embedder.GlobalSuffix);
-//            pBuffer.SetTextAndMappings(fullSource.ToString(), mappings.ToArray());
+//        //        if (surround != null)
+//        //            fullSource.AppendLine(surround.LastOrDefault());
+//        //    }
+//        //    if (embedder != null)
+//        //        fullSource.AppendLine(embedder.GlobalSuffix);
+//        //    pBuffer.SetTextAndMappings(fullSource.ToString(), mappings.ToArray());
 
-//            if (createdContentTypes.Add(contentType))
-//                if (embedder != null)
-//                    embedder.OnBlockCreated(EditorTree.TextBuffer, pBuffer);
-//        }
+//        //    if (createdContentTypes.Add(contentType))
+//        //        if (embedder != null)
+//        //            embedder.OnBlockCreated(EditorTree.TextBuffer, pBuffer);
+//        //}
 //    }
 
-//    static class ContentTypeExtensions
-//    {
-//        static readonly IReadOnlyDictionary<string, string> ContentTypeAliases = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
-//        {
-//            { "C#",             "CSharp" },
-//            { "VB.Net",         "Basic" },
-//            { "VisualBasic",    "Basic" },
-//            { "JScript",        "Javascript" }
-//        };
+//    //static class ContentTypeExtensions
+//    //{
+//    //    static readonly IReadOnlyDictionary<string, string> ContentTypeAliases = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+//    //    {
+//    //        { "C#",             "CSharp" },
+//    //        { "VB.Net",         "Basic" },
+//    //        { "VisualBasic",    "Basic" },
+//    //        { "JScript",        "Javascript" }
+//    //    };
 
-//        ///<summary>Finds the ContentType corresponding to a user-facing string.</summary>
-//        public static IContentType FromFriendlyName(this IContentTypeRegistryService registry, string friendlyName)
-//        {
-//            if (string.IsNullOrWhiteSpace(friendlyName))
-//                return null;
+//    //    ///<summary>Finds the ContentType corresponding to a user-facing string.</summary>
+//    //    public static IContentType FromFriendlyName(this IContentTypeRegistryService registry, string friendlyName)
+//    //    {
+//    //        if (string.IsNullOrWhiteSpace(friendlyName))
+//    //            return null;
 
-//            string realName;
-//            if (!ContentTypeAliases.TryGetValue(friendlyName, out realName))
-//                realName = friendlyName;
+//    //        string realName;
+//    //        if (!ContentTypeAliases.TryGetValue(friendlyName, out realName))
+//    //            realName = friendlyName;
 
-//            return registry.GetContentType(realName)
-//                ?? WebEditor.ExportProvider.GetExport<IFileExtensionRegistryService>().Value.GetContentTypeForExtension(friendlyName);
-//        }
-//        ///<summary>Converts a ContenType to a ContentType that can be embedded.  This function contains workarounds for issues with specific ContentTypes.</summary>
-//        public static IContentType ToEmbeddableContentType(this IContentType original)
-//        {
-//            if (original == null)
-//                return null;
+//    //        return registry.GetContentType(realName)
+//    //            ?? WebEditor.ExportProvider.GetExport<IFileExtensionRegistryService>().Value.GetContentTypeForExtension(friendlyName);
+//    //    }
+//    //    ///<summary>Converts a ContenType to a ContentType that can be embedded.  This function contains workarounds for issues with specific ContentTypes.</summary>
+//    //    public static IContentType ToEmbeddableContentType(this IContentType original)
+//    //    {
+//    //        if (original == null)
+//    //            return null;
 
-//            // Having both CSS LESS buffers in the same TextView
-//            // breaks IntelliSense.  Also, embedding CSS as LESS
-//            // allows CSS code blocks to have both selectors and
-//            // and properties together.
-//            if (original.IsOfType("CSS"))
-//                return WebEditor.ExportProvider.GetExport<IContentTypeRegistryService>().Value.GetContentType("LESS");
+//    //        // Having both CSS LESS buffers in the same TextView
+//    //        // breaks IntelliSense.  Also, embedding CSS as LESS
+//    //        // allows CSS code blocks to have both selectors and
+//    //        // and properties together.
+//    //        if (original.IsOfType("CSS"))
+//    //            return WebEditor.ExportProvider.GetExport<IContentTypeRegistryService>().Value.GetContentType("LESS");
 
-//            // Having two HTMLX buffers within the same TextView
-//            // breaks most of their code.
-//            // The original HTML classifier doesn't work without
-//            // an IVsTextBuffer for the buffer.
-//            // Instead, we report this as normal text.
-//            if (original.IsOfType("htmlx") || original.IsOfType("html"))
-//                return null;
+//    //        // Having two HTMLX buffers within the same TextView
+//    //        // breaks most of their code.
+//    //        // The original HTML classifier doesn't work without
+//    //        // an IVsTextBuffer for the buffer.
+//    //        // Instead, we report this as normal text.
+//    //        if (original.IsOfType("htmlx") || original.IsOfType("html"))
+//    //            return null;
 
-//            return original;
-//        }
-//    }
+//    //        return original;
+//    //    }
+//    //}
 //}

@@ -233,17 +233,17 @@ namespace MadsKristensen.EditorExtensions.Compilers
         {
             // Try to extract the language from the first line
             var match = rxExtractLanguage.Match(code);
-            string language = null;
+            string language = string.Empty;
 
             if (match.Success)
             {
                 var g = match.Groups[2];
-                language = g.ToString().Trim();
+                language = g.ToString().Trim().ToLowerInvariant();
 
                 code = code.Substring(match.Groups[1].Length);
             }
 
-            if (language == null)
+            if (string.IsNullOrEmpty(language))
             {
                 var d = m.GetLinkDefinition("default_syntax");
                 if (d != null)
@@ -251,17 +251,21 @@ namespace MadsKristensen.EditorExtensions.Compilers
             }
 
             // Common replacements
-            if (language == "C#")
-                language = "csharp";
-            if (language == "C++")
+            if (language.Equals("C#", StringComparison.OrdinalIgnoreCase))
+                language = "cs";
+            else if (language.Equals("csharp", StringComparison.OrdinalIgnoreCase))
+                language = "cs";
+            else if (language.Equals("C++", StringComparison.OrdinalIgnoreCase))
                 language = "cpp";
 
-            // Wrap code in pre/code tags and add PrettyPrint attributes if necessary
             if (string.IsNullOrEmpty(language))
-                return string.Format("<pre><code>{0}</code></pre>\n", code);
+            {
+                return $"<pre><code>{code}</code></pre>\n";
+            }
             else
-                return string.Format("<pre><code class=\"{0}\">{1}</code></pre>\n",
-                                    language.ToLowerInvariant(), code);
+            {
+                return $"<pre class=\"prettyprint lang-{language}\"><code>{code}</code></pre>\n";
+            }
         }
     }
 }
