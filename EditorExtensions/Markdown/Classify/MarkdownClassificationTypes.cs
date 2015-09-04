@@ -12,21 +12,25 @@ namespace MadsKristensen.EditorExtensions.Markdown
         public const string MarkdownItalic = "md_italic";
         public const string MarkdownHeader = "md_header";
         public const string MarkdownCode = "md_code";
+        public const string MarkdownCodeBlock = "md_codeblock";
         public const string MarkdownQuote = "md_quote";
 
-        [Export, Name(MarkdownClassificationTypes.MarkdownBold)]
+        [Export, Name(MarkdownBold)]
         public static ClassificationTypeDefinition MarkdownClassificationBold { get; set; }
 
-        [Export, Name(MarkdownClassificationTypes.MarkdownItalic)]
+        [Export, Name(MarkdownItalic)]
         public static ClassificationTypeDefinition MarkdownClassificationItalic { get; set; }
 
-        [Export, Name(MarkdownClassificationTypes.MarkdownHeader)]
+        [Export, Name(MarkdownHeader)]
         public static ClassificationTypeDefinition MarkdownClassificationHeader { get; set; }
 
-        [Export, Name(MarkdownClassificationTypes.MarkdownCode)]
+        [Export, Name(MarkdownCode)]
         public static ClassificationTypeDefinition MarkdownClassificationCode { get; set; }
 
-        [Export, Name(MarkdownClassificationTypes.MarkdownQuote)]
+        [Export, Name(MarkdownCodeBlock)]
+        public static ClassificationTypeDefinition MarkdownClassificationCodeBlock { get; set; }
+
+        [Export, Name(MarkdownQuote)]
         public static ClassificationTypeDefinition MarkdownClassificationQuote { get; set; }
     }
 
@@ -88,6 +92,21 @@ namespace MadsKristensen.EditorExtensions.Markdown
             DisplayName = "Markdown Code";
         }
     }
+
+    [Export(typeof(EditorFormatDefinition))]
+    [ClassificationType(ClassificationTypeNames = MarkdownClassificationTypes.MarkdownCodeBlock)]
+    [Name(MarkdownClassificationTypes.MarkdownCodeBlock)]
+    [Order(After = Priority.Default)]
+    [UserVisible(true)]
+    internal sealed class MarkdownCodeBlockFormatDefinition : ClassificationFormatDefinition
+    {
+        public MarkdownCodeBlockFormatDefinition()
+        {
+            ForegroundColor = Colors.Green;
+            DisplayName = "Markdown Code Block";
+        }
+    }
+
     [Export(typeof(EditorFormatDefinition))]
     [ClassificationType(ClassificationTypeNames = MarkdownClassificationTypes.MarkdownQuote)]
     [Name(MarkdownClassificationTypes.MarkdownQuote)]

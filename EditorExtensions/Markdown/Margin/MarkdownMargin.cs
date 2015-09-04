@@ -23,7 +23,7 @@ namespace MadsKristensen.EditorExtensions.Markdown
         <meta http-equiv=""X-UA-Compatible"" content=""IE=Edge"" />
         <meta charset=""utf-8"" />
         <!-- This is to make sure your relative image links show up nicely. -->
-        <base href=""file:///{0}/"">
+        <base href=""file:///{0}/"" />
         <title>Markdown Preview</title>
         <!-- Here is where the custom style sheet is inserted as well as highlight.js setup code. -->
         {1}

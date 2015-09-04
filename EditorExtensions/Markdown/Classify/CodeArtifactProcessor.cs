@@ -33,11 +33,11 @@ namespace MadsKristensen.EditorExtensions.Markdown
                     }
 
                     // Don't add artifacts for HTML code lines.
-                    if ((cla.BlockInfo.Language ?? "").StartsWith("htm", StringComparison.OrdinalIgnoreCase))
-                    {
-                        cla.BlockInfo.IsExtradited = true;
-                        return;
-                    }
+                    //if ((cla.BlockInfo.Language ?? "").StartsWith("htm", StringComparison.OrdinalIgnoreCase))
+                    //{
+                    //    cla.BlockInfo.IsExtradited = true;
+                    //    return;
+                    //}
                 }
                 // If we got a non-block artifact after a block end, add the end marker.
                 else if (lastBlock != null && e.Artifact.Start >= lastBlock.OuterEnd.End)
@@ -57,7 +57,7 @@ namespace MadsKristensen.EditorExtensions.Markdown
         public string LeftSeparator { get { return "```"; } }
         public string RightSeparator { get { return "```"; } }
         public string LeftCommentSeparator { get { return "<!--"; } }
-        public string RightCommentSeparator { get { return "<!--"; } }
+        public string RightCommentSeparator { get { return "-->"; } }
     }
 
     ///<summary>An Artifact that marks the start or end boundaries of a block of code.</summary>

@@ -478,6 +478,7 @@
     <Compile Include="Markdown\Classify\CodeArtifactProcessor.cs" />
     <Compile Include="Markdown\Classify\MarkdownParser.cs" />
     <Compile Include="Markdown\Completion\MarkdownCreationListener.cs" />
+    <Compile Include="Markdown\Outlining\MarkdownOutlineTagger.cs" />
     <Compile Include="Misc\Minification\IFileMinifier.cs" />
     <Compile Include="HTML\Completion\AngularLogoCompletion.cs" />
     <Compile Include="HTML\Completion\AppleLinkCompletion.cs" />
