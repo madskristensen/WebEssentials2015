@@ -327,7 +327,8 @@ namespace MadsKristensen.EditorExtensions.Markdown
                     //    return;
                     while (stream.CurrentChar != '`')
                     {
-                        //if (stream.IsAtNewLine() || stream.IsEndOfStream()) return;
+                        if (stream.IsAtNewLine() || stream.IsEndOfStream()) return;
+
                         stream.MoveToNextChar();
                     }
 
