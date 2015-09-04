@@ -12,7 +12,6 @@ namespace MadsKristensen.EditorExtensions.Markdown
         public const string MarkdownItalic = "md_italic";
         public const string MarkdownHeader = "md_header";
         public const string MarkdownCode = "md_code";
-        public const string MarkdownCodeBlock = "md_codeblock";
         public const string MarkdownQuote = "md_quote";
 
         [Export, Name(MarkdownBold)]
@@ -26,9 +25,6 @@ namespace MadsKristensen.EditorExtensions.Markdown
 
         [Export, Name(MarkdownCode)]
         public static ClassificationTypeDefinition MarkdownClassificationCode { get; set; }
-
-        [Export, Name(MarkdownCodeBlock)]
-        public static ClassificationTypeDefinition MarkdownClassificationCodeBlock { get; set; }
 
         [Export, Name(MarkdownQuote)]
         public static ClassificationTypeDefinition MarkdownClassificationQuote { get; set; }
@@ -90,20 +86,6 @@ namespace MadsKristensen.EditorExtensions.Markdown
             BackgroundColor = Colors.LightGray;
             BackgroundOpacity = .4;
             DisplayName = "Markdown Code";
-        }
-    }
-
-    [Export(typeof(EditorFormatDefinition))]
-    [ClassificationType(ClassificationTypeNames = MarkdownClassificationTypes.MarkdownCodeBlock)]
-    [Name(MarkdownClassificationTypes.MarkdownCodeBlock)]
-    [Order(After = Priority.Default)]
-    [UserVisible(true)]
-    internal sealed class MarkdownCodeBlockFormatDefinition : ClassificationFormatDefinition
-    {
-        public MarkdownCodeBlockFormatDefinition()
-        {
-            ForegroundColor = Colors.Green;
-            DisplayName = "Markdown Code Block";
         }
     }
 
