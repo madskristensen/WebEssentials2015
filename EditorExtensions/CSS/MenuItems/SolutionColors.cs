@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.Design;
+using System.Linq;
 using Microsoft.VisualStudio.Shell;
 
 namespace MadsKristensen.EditorExtensions.Css
@@ -25,7 +26,9 @@ namespace MadsKristensen.EditorExtensions.Css
             OleMenuCommand menuCommand = sender as OleMenuCommand;
             bool settingsExist = XmlColorPaletteProvider.SolutionColorsExist;
 
-            menuCommand.Enabled = !settingsExist;
+            var projects = ProjectHelpers.GetAllProjects();
+
+            menuCommand.Enabled = projects.Any() && !settingsExist;
         }
 
         private static void ApplySolutionSettings()

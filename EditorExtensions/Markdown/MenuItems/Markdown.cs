@@ -54,8 +54,10 @@ namespace MadsKristensen.EditorExtensions.Markdown
         private void HasStylesheet(object sender, System.EventArgs e)
         {
             OleMenuCommand menuCommand = sender as OleMenuCommand;
+            bool fileExist = File.Exists(MarkdownMargin.GetCustomStylesheetFilePath());
+            var projects = ProjectHelpers.GetAllProjects();
 
-            menuCommand.Enabled = !File.Exists(MarkdownMargin.GetCustomStylesheetFilePath());
+            menuCommand.Enabled = projects.Any() && !fileExist;
         }
 
         private void IsMarkdownFile(object sender, System.EventArgs e)

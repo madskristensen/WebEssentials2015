@@ -40,51 +40,14 @@ namespace MadsKristensen.EditorExtensions
             solutionEvents.ProjectRemoved += ProjectRemoved;
         }
 
-        //private async void SolutionEvents_Opened()
-        //{
-        //    var projects = ProjectHelpers.GetAllProjects();
-
-        //    if (projects == null)
-        //        return;
-
-        //    foreach (Project project in projects)
-        //    {
-        //        if (project.ProjectItems == null || project.ProjectItems.Count == 0)
-        //            continue;
-
-        //        string folder = ProjectHelpers.GetRootFolder(project);
-
-        //        if (string.IsNullOrEmpty(folder))
-        //            continue;
-
-        //        Func<string, bool, Task> bundleFunc = new BundleFilesMenu().UpdateBundleAsync;
-        //        Func<string, bool, Task> spriteFunc = new SpriteImageMenu().UpdateSpriteAsync;
-
-        //        BundleFileObserver observer = new BundleFileObserver();
-
-        //        observer.WatchFutureFiles(folder, "*.bundle", async (s) => { await BundleGenerator.WatchFiles(await BundleDocument.FromFile(s), bundleFunc); });
-        //        observer.WatchFutureFiles(folder, "*.sprite", async (s) => { await SpriteGenerator.WatchFiles(await SpriteDocument.FromFile(s), spriteFunc); });
-
-        //        foreach (string file in Directory.EnumerateFiles(folder, "*.*", SearchOption.AllDirectories)
-        //                               .Where(s => s.EndsWith(".bundle") || s.EndsWith(".sprite")))
-        //        {
-        //            if (ProjectHelpers.GetProjectItem(file) == null)
-        //                continue;
-
-        //            if (file.EndsWith(".bundle", StringComparison.OrdinalIgnoreCase))
-        //                await BundleGenerator.WatchFiles(await BundleDocument.FromFile(file), bundleFunc);
-        //            else
-        //                await SpriteGenerator.WatchFiles(await SpriteDocument.FromFile(file), spriteFunc);
-        //        }
-        //    }
-        //}
-
         private void SolutionBeforeQueryStatus(object sender, EventArgs e)
         {
             OleMenuCommand menuCommand = sender as OleMenuCommand;
             bool settingsExist = SettingsStore.SolutionSettingsExist;
 
-            menuCommand.Enabled = !settingsExist;
+            var projects = ProjectHelpers.GetAllProjects();
+
+            menuCommand.Enabled = projects.Any() && !settingsExist;
         }
 
         private static void ApplySolutionSettings()
