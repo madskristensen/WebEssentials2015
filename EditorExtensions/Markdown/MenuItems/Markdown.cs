@@ -6,11 +6,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using EnvDTE80;
 using MadsKristensen.EditorExtensions.Compilers;
-using Microsoft.Html.Editor;
+using Microsoft.Html.Editor.ContentType;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Utilities;
-using Microsoft.Web.Editor;
-using Microsoft.Html.Editor.ContentType;
 
 namespace MadsKristensen.EditorExtensions.Markdown
 {

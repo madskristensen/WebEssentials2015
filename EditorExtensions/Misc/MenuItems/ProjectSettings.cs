@@ -5,10 +5,8 @@ using System.Linq;
 using System.Windows.Forms;
 using EnvDTE;
 using EnvDTE80;
-using MadsKristensen.EditorExtensions.Images;
 using MadsKristensen.EditorExtensions.Settings;
 using Microsoft.VisualStudio.Shell;
-using Task = System.Threading.Tasks.Task;
 
 namespace MadsKristensen.EditorExtensions
 {

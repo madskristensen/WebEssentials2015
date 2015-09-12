@@ -1,6 +1,6 @@
 # Roadmap
 
-- [x] Markdown: Full GitHub flavor supported
+- [ ] CSS: Use Light Bulbs instead of Smart Tags
 
 Features that have a checkmark are complete and available for
 download in the
@@ -10,6 +10,14 @@ download in the
 
 These are the changes to each version that has been released
 on the official Visual Studio extension gallery.
+
+## 0.5.175
+
+**2015-09-11**
+
+- [x] Markdown: Full GitHub flavor supported
+- [x] Fixed annoying crash/hang in HTML class attribute
+- [x] Various bug fixes
 
 ## 0.5.156
 
