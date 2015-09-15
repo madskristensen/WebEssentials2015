@@ -147,8 +147,9 @@ namespace MadsKristensen.EditorExtensions.Markdown
         static string Caption(CodeBlockInfo block)
         {
             if (string.IsNullOrEmpty(block.Language))
-                return "[ code clock ]";
-            return "[ " + block.Language.ToUpperInvariant() + " code clock ]";
+                return "[ code block ]";
+
+            return "[ " + block.Language.ToUpperInvariant() + " code block ]";
         }
 
         public IEnumerable<ITagSpan<IOutliningRegionTag>> GetTags(NormalizedSnapshotSpanCollection spans)
