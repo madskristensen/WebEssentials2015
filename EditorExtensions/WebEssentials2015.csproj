@@ -918,7 +918,6 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="app.config" />
     <None Include="Markdown\Classify\Sample.md" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
