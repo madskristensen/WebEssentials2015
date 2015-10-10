@@ -13,15 +13,16 @@ namespace MadsKristensen.EditorExtensions.Html
 {
 	[Export(typeof(IHtmlSuggestedActionProvider))]
 	[ContentType(HtmlContentTypeDefinition.HtmlContentType)]
-	[Order(Before = "Default")]
-	[Name("HtmlAngularControllerLightBulbProvider")]
+	[Name("Html Angular Controller Light Bulb Provider")]
 	internal class HtmlAngularControllerLightBulbProvider : IHtmlSuggestedActionProvider
 	{
 		public IEnumerable<ISuggestedAction> GetSuggestedActions(ITextView textView, ITextBuffer textBuffer, int caretPosition, ElementNode element, AttributeNode attribute, HtmlPositionType positionType)
 		{
 			AttributeNode ngController = element.GetAttribute("ng-controller") ?? element.GetAttribute("data-ng-controller");
 
-			yield return new HtmlAngularControllerLightBulbAction(textView, textBuffer, element, ngController);
+            return new ISuggestedAction[] {
+                new HtmlAngularControllerLightBulbAction(textView, textBuffer, element, ngController)
+            };
 		}
 
 		public bool HasSuggestedActions(ITextView textView, ITextBuffer textBuffer, int caretPosition, ElementNode element, AttributeNode attribute, HtmlPositionType positionType)

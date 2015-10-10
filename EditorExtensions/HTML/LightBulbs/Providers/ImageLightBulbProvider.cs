@@ -12,35 +12,31 @@ using Microsoft.Web.Core.ContentTypes;
 
 namespace MadsKristensen.EditorExtensions.Html
 {
-	[Export(typeof(IHtmlSuggestedActionProvider))]
-	[ContentType(HtmlContentTypeDefinition.HtmlContentType)]
-	[Order(Before = "Default")]
-	[Name("HtmlImageLightBulbProvider")]
-	internal class HtmlImageLightBulbProvider : IHtmlSuggestedActionProvider
-	{
-		public IEnumerable<ISuggestedAction> GetSuggestedActions(ITextView textView, ITextBuffer textBuffer, int caretPosition, ElementNode element, AttributeNode attribute, HtmlPositionType positionType)
-		{
-			AttributeNode src = element.GetAttribute("src");
+    [Export(typeof(IHtmlSuggestedActionProvider))]
+    [ContentType(HtmlContentTypeDefinition.HtmlContentType)]
+    [Name("Html Image Light Bulb Provider")]
+    internal class HtmlImageLightBulbProvider : IHtmlSuggestedActionProvider
+    {
+        public IEnumerable<ISuggestedAction> GetSuggestedActions(ITextView textView, ITextBuffer textBuffer, int caretPosition, ElementNode element, AttributeNode attribute, HtmlPositionType positionType)
+        {
+            AttributeNode src = element.GetAttribute("src");
 
-            if (src.Value.StartsWith("data:image/", StringComparison.Ordinal))
-			{
-				yield return new HtmlBase64DecodeLightBulbAction(textView, textBuffer, element, src);
-			}
+            return new ISuggestedAction[] {
+                    new HtmlBase64DecodeLightBulbAction(textView, textBuffer, element, src)
+                };
+        }
 
-			//if (!src.Value.StartsWith("http:") && !src.Value.StartsWith("https:") && !src.Value.StartsWith("//"))
-			//{
-			//	yield return new HtmlOptimizeImageLightBulbAction(textView, textBuffer, element, src); 
-			//}
-		}
+        public bool HasSuggestedActions(ITextView textView, ITextBuffer textBuffer, int caretPosition, ElementNode element, AttributeNode attribute, HtmlPositionType positionType)
+        {
+            if (!element.IsElement("img"))
+                return false;
 
-		public bool HasSuggestedActions(ITextView textView, ITextBuffer textBuffer, int caretPosition, ElementNode element, AttributeNode attribute, HtmlPositionType positionType)
-		{
-			if (element.Name != "img")
-				return false;
+            AttributeNode src = element.GetAttribute("src");
 
-			AttributeNode src = element.GetAttribute("src");
+            if (src == null)
+                return false;
 
-			return src != null && src.Value.Trim().Length > 0;
-		}
-	}
+            return src.Value.StartsWith("data:image/", StringComparison.Ordinal);
+        }
+    }
 }

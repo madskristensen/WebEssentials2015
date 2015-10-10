@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using Microsoft.Html.Core.Tree.Nodes;
 using Microsoft.Html.Core.Tree.Utility;
@@ -13,14 +14,13 @@ namespace MadsKristensen.EditorExtensions.Html
 {
     [Export(typeof(IHtmlSuggestedActionProvider))]
     [ContentType(HtmlContentTypeDefinition.HtmlContentType)]
-    [Name("HtmlStyleScriptLightBulbProvider")]
-    internal class HtmlStyleScriptLightBulbProvider : IHtmlSuggestedActionProvider
+    [Name("Calculate Integrity Light Bulb Provider")]
+    internal class IntegrityLightBulbProvider : IHtmlSuggestedActionProvider
     {
         public IEnumerable<ISuggestedAction> GetSuggestedActions(ITextView textView, ITextBuffer textBuffer, int caretPosition, ElementNode element, AttributeNode attribute, HtmlPositionType positionType)
         {
             return new ISuggestedAction[] {
-                new HtmlMinifyLightBulbAction(textView, textBuffer, element),
-                new HtmlExtractLightBulbAction(textView, textBuffer, element),
+                new IntegrityLightBulbAction(textView, textBuffer, element)
             };
         }
 
@@ -29,10 +29,12 @@ namespace MadsKristensen.EditorExtensions.Html
             if (!element.StartTag.Contains(caretPosition))
                 return false;
 
-            if (element.InnerRange.Length < 5)
+            string url = (element.GetAttribute("src") ?? element.GetAttribute("href"))?.Value;
+
+            if (string.IsNullOrEmpty(url))
                 return false;
 
-            return element.IsStyleBlock() || element.IsJavaScriptBlock();
+            return element.IsElement("style") || element.IsElement("script");
         }
     }
 }

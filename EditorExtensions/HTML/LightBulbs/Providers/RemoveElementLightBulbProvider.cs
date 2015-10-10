@@ -13,13 +13,14 @@ namespace MadsKristensen.EditorExtensions.Html
 {
 	[Export(typeof(IHtmlSuggestedActionProvider))]
 	[ContentType(HtmlContentTypeDefinition.HtmlContentType)]
-	[Order(Before = "Default")]
 	[Name("HtmlRemoveElementLightBulbProvider")]
 	internal class HtmlRemoveElementLightBulbProvider : IHtmlSuggestedActionProvider
 	{
-		public IEnumerable<ISuggestedAction> GetSuggestedActions(ITextView textView, ITextBuffer textBuffer, int caretPosition, ElementNode element, AttributeNode attribute, HtmlPositionType positionType)
-		{
-			yield return new HtmlRemoveElementLightBulbAction(textView, textBuffer, element);
+        public IEnumerable<ISuggestedAction> GetSuggestedActions(ITextView textView, ITextBuffer textBuffer, int caretPosition, ElementNode element, AttributeNode attribute, HtmlPositionType positionType)
+        {
+            return new ISuggestedAction[] {
+                new HtmlRemoveElementLightBulbAction(textView, textBuffer, element)
+            };
 		}
 
 		public bool HasSuggestedActions(ITextView textView, ITextBuffer textBuffer, int caretPosition, ElementNode element, AttributeNode attribute, HtmlPositionType positionType)
