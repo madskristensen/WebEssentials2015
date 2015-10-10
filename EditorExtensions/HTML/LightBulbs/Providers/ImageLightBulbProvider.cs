@@ -15,7 +15,7 @@ namespace MadsKristensen.EditorExtensions.Html
     [Export(typeof(IHtmlSuggestedActionProvider))]
     [ContentType(HtmlContentTypeDefinition.HtmlContentType)]
     [Name("Html Image Light Bulb Provider")]
-    internal class HtmlImageLightBulbProvider : IHtmlSuggestedActionProvider
+    class HtmlImageLightBulbProvider : IHtmlSuggestedActionProvider
     {
         public IEnumerable<ISuggestedAction> GetSuggestedActions(ITextView textView, ITextBuffer textBuffer, int caretPosition, ElementNode element, AttributeNode attribute, HtmlPositionType positionType)
         {

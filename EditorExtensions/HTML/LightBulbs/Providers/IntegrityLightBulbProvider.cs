@@ -15,7 +15,7 @@ namespace MadsKristensen.EditorExtensions.Html
     [Export(typeof(IHtmlSuggestedActionProvider))]
     [ContentType(HtmlContentTypeDefinition.HtmlContentType)]
     [Name("Calculate Integrity Light Bulb Provider")]
-    internal class IntegrityLightBulbProvider : IHtmlSuggestedActionProvider
+    class IntegrityLightBulbProvider : IHtmlSuggestedActionProvider
     {
         public IEnumerable<ISuggestedAction> GetSuggestedActions(ITextView textView, ITextBuffer textBuffer, int caretPosition, ElementNode element, AttributeNode attribute, HtmlPositionType positionType)
         {
@@ -31,7 +31,7 @@ namespace MadsKristensen.EditorExtensions.Html
 
             string url = (element.GetAttribute("src") ?? element.GetAttribute("href"))?.Value;
 
-            if (string.IsNullOrEmpty(url))
+            if (string.IsNullOrEmpty(url) || (!url.Contains("://") && !url.StartsWith("//")))
                 return false;
 
             return element.IsElement("style") || element.IsElement("script");

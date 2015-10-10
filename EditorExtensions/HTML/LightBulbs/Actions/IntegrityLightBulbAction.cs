@@ -3,6 +3,7 @@ using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
+using System.Windows;
 using Microsoft.Html.Core.Tree.Nodes;
 using Microsoft.Html.Editor.SuggestedActions;
 using Microsoft.VisualStudio.Text;
@@ -20,6 +21,8 @@ namespace MadsKristensen.EditorExtensions.Html
         {
             AttributeNode src = Element.GetAttribute("src") ?? Element.GetAttribute("href");
             AttributeNode integrity = Element.GetAttribute("integrity");
+            AttributeNode crossorigin = Element.GetAttribute("crossorigin");
+
             string url = src.Value;
 
             if (url.StartsWith("//"))
@@ -28,6 +31,12 @@ namespace MadsKristensen.EditorExtensions.Html
             }
 
             string hash = CalculateHash(url);
+
+            if (string.IsNullOrEmpty(hash))
+            {
+                MessageBox.Show("Could not resolve the URL to generate the hash", "Web Essentials", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
             using (WebEssentialsPackage.UndoContext((DisplayText)))
             {
@@ -43,6 +52,9 @@ namespace MadsKristensen.EditorExtensions.Html
                         edit.Insert(src.ValueRange.End, " integrity=\"" + hash + "\"");
                     }
 
+                    if (crossorigin == null)
+                        edit.Insert(src.ValueRange.End, " crossorigin=\"anonymous\"");
+
                     edit.Apply();
                 }
             }
@@ -50,23 +62,20 @@ namespace MadsKristensen.EditorExtensions.Html
 
         private static string CalculateHash(string url)
         {
-            StringBuilder sb = new StringBuilder();
+            try {
+                using (WebClient client = new WebClient())
+                {
+                    byte[] bytes = client.DownloadData(new Uri(url));
 
-            using (WebClient client = new WebClient())
-            {
-                byte[] bytes = client.DownloadData(new Uri(url));
-
-                HashAlgorithm hasher = SHA256.Create();
-                sb.AppendLine($"sha256-{Convert.ToBase64String(hasher.ComputeHash(bytes))}");
-
-                hasher = SHA384.Create();
-                sb.AppendLine($"sha384-{Convert.ToBase64String(hasher.ComputeHash(bytes))}");
-
-                hasher = SHA512.Create();
-                sb.AppendLine($"sha512-{Convert.ToBase64String(hasher.ComputeHash(bytes))}");
+                    HashAlgorithm sha = SHA384.Create();
+                    string hash = Convert.ToBase64String(sha.ComputeHash(bytes));
+                    return $"sha384-{hash}";
+                }
             }
-
-            return sb.ToString().Trim();
+            catch
+            {
+                return null;
+            }
         }
     }
 }

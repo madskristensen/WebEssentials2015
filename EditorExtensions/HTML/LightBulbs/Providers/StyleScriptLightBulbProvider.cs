@@ -14,7 +14,7 @@ namespace MadsKristensen.EditorExtensions.Html
     [Export(typeof(IHtmlSuggestedActionProvider))]
     [ContentType(HtmlContentTypeDefinition.HtmlContentType)]
     [Name("HtmlStyleScriptLightBulbProvider")]
-    internal class HtmlStyleScriptLightBulbProvider : IHtmlSuggestedActionProvider
+    class HtmlStyleScriptLightBulbProvider : IHtmlSuggestedActionProvider
     {
         public IEnumerable<ISuggestedAction> GetSuggestedActions(ITextView textView, ITextBuffer textBuffer, int caretPosition, ElementNode element, AttributeNode attribute, HtmlPositionType positionType)
         {

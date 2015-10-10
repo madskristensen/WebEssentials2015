@@ -14,7 +14,7 @@ namespace MadsKristensen.EditorExtensions.Html
 	[Export(typeof(IHtmlSuggestedActionProvider))]
 	[ContentType(HtmlContentTypeDefinition.HtmlContentType)]
 	[Name("HtmlRemoveElementLightBulbProvider")]
-	internal class HtmlRemoveElementLightBulbProvider : IHtmlSuggestedActionProvider
+	class HtmlRemoveElementLightBulbProvider : IHtmlSuggestedActionProvider
 	{
         public IEnumerable<ISuggestedAction> GetSuggestedActions(ITextView textView, ITextBuffer textBuffer, int caretPosition, ElementNode element, AttributeNode attribute, HtmlPositionType positionType)
         {
