@@ -37,6 +37,7 @@ namespace MadsKristensen.EditorExtensions
             if (ex != null)
             {
                 Log(ex.ToString());
+                Telemetry.TrackException(ex);
             }
         }
 

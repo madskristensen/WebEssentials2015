@@ -7,9 +7,7 @@ using System.Windows.Threading;
 using EnvDTE;
 using EnvDTE80;
 using MadsKristensen.EditorExtensions.BrowserLink.PixelPushing;
-using MadsKristensen.EditorExtensions.BrowserLink.UnusedCss;
 using MadsKristensen.EditorExtensions.Css;
-using MadsKristensen.EditorExtensions.Images;
 using MadsKristensen.EditorExtensions.JavaScript;
 using MadsKristensen.EditorExtensions.Markdown;
 using MadsKristensen.EditorExtensions.Settings;
@@ -67,7 +65,7 @@ namespace MadsKristensen.EditorExtensions
             base.Initialize();
 
             Instance = this;
-
+            Telemetry.Initialize(DTE, Version, "4739999f-47f2-408d-8931-0fd899885bb7");
             SettingsStore.Load();
 
             OleMenuCommandService mcs = GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
@@ -190,17 +188,6 @@ namespace MadsKristensen.EditorExtensions
     {
         protected async override void Initialize()
         {
-            try
-            {
-                // TODO: Remove for RTM
-                using (var key = UserRegistryRoot.CreateSubKey("HTML Editor"))
-                {
-                    key.SetValue("KnockoutSupportEnabled", "1");
-                }
-            }
-            catch {
-            }
-
             JavaScriptIntellisense.Register(UserRegistryRoot);
             await CompatibilityChecker.StartCheckingCompatibility();
         }

@@ -55,6 +55,8 @@ namespace MadsKristensen.EditorExtensions.Images
             SaveClipboardImageToFile(data, fileName);
             UpdateTextBuffer(fileName, WebEssentialsPackage.DTE.ActiveDocument.FullName);
 
+            Telemetry.TrackEvent("Paste image");
+
             return true;
         }
 

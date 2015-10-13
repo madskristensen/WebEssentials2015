@@ -52,6 +52,7 @@ namespace MadsKristensen.EditorExtensions
         private void InitiateInspectMode(BrowserLinkAction ction)
         {
             Browsers.Client(_connection).Invoke("setInspectMode", true);
+            Telemetry.TrackEvent("BL inspect mode");
 
             _instance = this;
         }

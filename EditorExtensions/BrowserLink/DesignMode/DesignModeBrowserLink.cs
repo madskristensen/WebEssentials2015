@@ -49,6 +49,7 @@ namespace MadsKristensen.EditorExtensions
         private void SetDesignMode(BrowserLinkAction action)
         {
             Browsers.Client(_connection).Invoke("setDesignMode");
+            Telemetry.TrackEvent("BL design mode");
         }
 
         [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]

@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using ConfOxide;
 using EnvDTE;
 using Microsoft.VisualStudio.Settings;
@@ -153,9 +152,15 @@ namespace MadsKristensen.EditorExtensions.Settings
             try
             {
                 if (SolutionSettingsExist)
+                {
                     WebEssentialsPackage.DTE.StatusBar.Text = "Web Essentials: Solution settings " + action;
+                    Telemetry.TrackEvent("VS solution settings applied");
+                }
                 else
+                {
                     WebEssentialsPackage.DTE.StatusBar.Text = "Web Essentials: Global settings " + action;
+                    Telemetry.TrackEvent("VS global settings applied");
+                }
             }
             catch
             {
