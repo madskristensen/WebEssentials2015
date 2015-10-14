@@ -35,14 +35,20 @@ namespace MadsKristensen.EditorExtensions.Css
                 doc.Tree.ItemsChanged += (sender, e) => { ItemsChanged(buffer, e); };
                 doc.Tree.TreeUpdated += Tree_TreeUpdated;
                 InitializeCache(doc.Tree.StyleSheet);
+
+                doc.Closing += Doc_Closing;
             }
         }
 
         public void SubjectBuffersDisconnected(IWpfTextView textView, ConnectionReason reason, Collection<ITextBuffer> subjectBuffers)
         {
-            foreach (ITextBuffer buffer in subjectBuffers)
+        }
+
+        private void Doc_Closing(object sender, EventArgs e)
+        {
+            CssEditorDocument doc = sender as CssEditorDocument;
+            if (doc != null)
             {
-                CssEditorDocument doc = CssEditorDocument.FromTextBuffer(buffer);
                 doc.Tree.TreeUpdated -= Tree_TreeUpdated;
             }
         }
