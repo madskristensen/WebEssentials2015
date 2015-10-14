@@ -30,7 +30,7 @@ namespace MadsKristensen.EditorExtensions.JavaScript
 
         private static FSPCache _fspCache;
 
-        public void VsTextViewCreated(IVsTextView textViewAdapter)
+        public async void VsTextViewCreated(IVsTextView textViewAdapter)
         {
             var textView = EditorAdaptersFactoryService.GetWpfTextView(textViewAdapter);
 
@@ -45,7 +45,7 @@ namespace MadsKristensen.EditorExtensions.JavaScript
             if (_fspCache == null)
                 _fspCache = new FSPCache();
 
-            _fspCache.SyncIntellisenseFiles();
+            await _fspCache.SyncIntellisenseFiles();
         }
     }
 }

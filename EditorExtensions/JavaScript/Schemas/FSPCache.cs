@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.Composition;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using Microsoft.JSON.Core.Schema;
-using Microsoft.Web.Editor;
-using Microsoft.Web.Editor.Host;
-using Minimatch;
 using Newtonsoft.Json.Linq;
 
 namespace MadsKristensen.EditorExtensions.JavaScript
@@ -16,35 +10,41 @@ namespace MadsKristensen.EditorExtensions.JavaScript
     internal class FSPCache
     {
         private static string _path = Environment.ExpandEnvironmentVariables(@"%localappdata%\Microsoft\FSPCache\SchemaStore.json");
-        private static bool _isDownloading;
         private const int _days = 3;
         private static DateTime _lastCheck = DateTime.MinValue;
 
-        public void SyncIntellisenseFiles()
+        public async Task SyncIntellisenseFiles()
         {
-            if (_lastCheck > DateTime.Now.AddDays(-_days))
-                return;
+            var mutex = new AsyncLock();
 
-            Task.Run(async () =>
+            using (mutex.LockAsync())
             {
-                try {
+                if (_lastCheck > DateTime.Now.AddDays(-_days))
+                    return;
+
+                _lastCheck = DateTime.Now;
+
+                try
+                {
                     string catalog = await GetCataLog();
 
                     if (!string.IsNullOrEmpty(catalog))
                     {
-                        DownloadIntellisenseFiles(catalog);
+                        await DownloadIntellisenseFiles(catalog);
                     }
                 }
                 catch (Exception ex)
                 {
                     Logger.Log(ex);
                 }
-            });
+            }
         }
 
-        private static void DownloadIntellisenseFiles(string catalog)
+        private static async Task DownloadIntellisenseFiles(string catalog)
         {
             var urls = ParseJsonCatalog(catalog);
+            var list = new List<Task>();
+
             foreach (string url in urls)
             {
                 int index = url.LastIndexOf("/");
@@ -54,24 +54,24 @@ namespace MadsKristensen.EditorExtensions.JavaScript
                 var directory = Path.GetDirectoryName(_path);
 
                 string fileName = Path.Combine(directory, url.Substring(index + 1));
-                SaveUrlToFile(url, fileName).DoNotWait("Downloading " + url);
+                list.Add(SaveUrlToFile(url, fileName));
             }
+
+            await Task.WhenAll(list);
         }
 
-        private static async Task<bool> SaveUrlToFile(string url, string fileName)
+        private static async Task SaveUrlToFile(string url, string fileName)
         {
             try
             {
                 using (WebClient client = new WebClient())
                 {
                     await client.DownloadFileTaskAsync(url, fileName);
-                    return true;
                 }
             }
             catch (Exception ex)
             {
                 Logger.Log(ex);
-                return false;
             }
         }
 
@@ -87,26 +87,21 @@ namespace MadsKristensen.EditorExtensions.JavaScript
                 await DownloadCatalog();
             }
 
-            return File.ReadAllText(_path);
+            using (StreamReader reader = new StreamReader(_path))
+            {
+                return await reader.ReadToEndAsync();
+            }
         }
 
         private static async Task DownloadCatalog()
         {
-            if (_isDownloading)
-                return;
-
             try
             {
-                _isDownloading = true;
                 await SaveUrlToFile("http://schemastore.org/api/javascript/catalog.json", _path);
             }
             catch
             {
                 Logger.Log("JSON Schema: Couldn't download the catalog file");
-            }
-            finally
-            {
-                _isDownloading = false;
             }
         }
 
@@ -137,7 +132,6 @@ namespace MadsKristensen.EditorExtensions.JavaScript
                 Logger.Log(ex);
             }
 
-            _lastCheck = DateTime.Now;
             return list;
         }
     }
