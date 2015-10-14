@@ -1,8 +1,9 @@
-﻿using MadsKristensen.EditorExtensions.Settings;
-using Microsoft.VisualStudio.Text.Editor;
-using System;
+﻿using System;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using MadsKristensen.EditorExtensions.Settings;
+using Microsoft.VisualStudio.Text.Editor;
 
 namespace MadsKristensen.EditorExtensions.JSON
 {
@@ -41,6 +42,7 @@ namespace MadsKristensen.EditorExtensions.JSON
             _adornment.Source = BitmapFrame.Create(new Uri("pack://application:,,,/WebEssentials2015;component/JSON/Resources/" + imageName, UriKind.RelativeOrAbsolute));
             _adornment.ToolTip = "Click to toggle visibility";
             _adornment.Opacity = _currentOpacity;
+            _adornment.SetValue(RenderOptions.BitmapScalingModeProperty, BitmapScalingMode.HighQuality);
 
             _adornment.MouseEnter += (s, e) => { _adornment.Opacity = 1D; };
             _adornment.MouseLeave += (s, e) => { _adornment.Opacity = _currentOpacity; };
