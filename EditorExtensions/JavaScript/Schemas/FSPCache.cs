@@ -12,12 +12,11 @@ namespace MadsKristensen.EditorExtensions.JavaScript
         private static string _path = Environment.ExpandEnvironmentVariables(@"%localappdata%\Microsoft\FSPCache\SchemaStore.json");
         private const int _days = 3;
         private static DateTime _lastCheck = DateTime.MinValue;
+        private static AsyncLock _mutex = new AsyncLock();
 
         public async Task SyncIntellisenseFiles()
         {
-            var mutex = new AsyncLock();
-
-            using (mutex.LockAsync())
+            using (await _mutex.LockAsync())
             {
                 if (_lastCheck > DateTime.Now.AddDays(-_days))
                     return;
