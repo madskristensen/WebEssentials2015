@@ -297,7 +297,7 @@ namespace MadsKristensen.EditorExtensions.JavaScript
 
         Intel.Completion Complete(bool force, bool dontAdvance = false)
         {
-            if (_currentSession == null)
+            if (_currentSession == null || _currentSession.SelectedCompletionSet == null)
                 return null;
 
             if (!_currentSession.SelectedCompletionSet.SelectionStatus.IsSelected && !force)
@@ -329,7 +329,7 @@ namespace MadsKristensen.EditorExtensions.JavaScript
                 // If the user completed a Node require path (which won't have any
                 // quotes in the completion, move past any existing closing quote.
                 // Other completions will include the closing quote themselves, so
-                // we don't need to move 
+                // we don't need to move
                 if (!completion.InsertionText.EndsWith("'", StringComparison.Ordinal) && !completion.InsertionText.EndsWith("\"", StringComparison.Ordinal)
                     && (position.GetChar() == '"' || position.GetChar() == '\''))
                     TextView.Caret.MoveToNextCaretPosition();
