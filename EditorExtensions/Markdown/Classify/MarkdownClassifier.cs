@@ -1,20 +1,17 @@
-﻿using Microsoft.Html.Core;
-using Microsoft.Html.Core.Artifacts;
-using Microsoft.Html.Editor.Classification;
-using Microsoft.VisualStudio.Text;
-using Microsoft.VisualStudio.Text.Classification;
-using Microsoft.VisualStudio.Utilities;
-using Microsoft.Web.Core;
-using Microsoft.Web.Core.Text;
-using Microsoft.Web.Editor;
-using Microsoft.Web.Editor.Services;
-using Microsoft.Web.Editor.Text;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Microsoft.Html.Core.Artifacts;
+using Microsoft.Html.Editor.Classification;
 using Microsoft.VisualStudio.Language.StandardClassification;
+using Microsoft.VisualStudio.Text;
+using Microsoft.VisualStudio.Text.Classification;
+using Microsoft.VisualStudio.Utilities;
+using Microsoft.Web.Core.Text;
+using Microsoft.Web.Editor.Services;
+using Microsoft.Web.Editor.Text;
 
 namespace MadsKristensen.EditorExtensions.Markdown
 {
@@ -47,9 +44,9 @@ namespace MadsKristensen.EditorExtensions.Markdown
         private static readonly Regex _reQuote = new Regex(lineBegin + @"(?<Value> {0,3}>)+( {0,3}[^\r\n]+)(?:$|\r?\n|\r)");
         private static readonly Regex _reHeader = new Regex(lineBegin + @"(?<Value>([#]{1,6})\s[^#\r\n]+(\1(?!#))?)");
         private static readonly Regex _reCode = new Regex(@"(?<Value>((?<!`)`(?!`))[^\s](?:.*?[^\s])?\1)");
-        private static readonly Regex _reLink = new Regex(@"(?<Value>!?\[([^\]\(\)\[]+)\]\(([^\)]+)\))");
+        private static readonly Regex _reLink = new Regex(@"(?<Value>!?\[([^\]\(\)\[]+)?\]\(([^\)]+)\))");
 
-        private readonly IClassificationType codeType;
+        private readonly IClassificationType codeType, linkType;
         private readonly IReadOnlyCollection<Tuple<Regex, IClassificationType>> typeRegexes;
         private readonly Func<ArtifactCollection> artifactsGetter;
 
@@ -58,6 +55,7 @@ namespace MadsKristensen.EditorExtensions.Markdown
         {
             this.artifactsGetter = artifactsGetter;
             codeType = registry.GetClassificationType(PredefinedClassificationTypeNames.ExcludedCode);
+            linkType = registry.GetClassificationType(PredefinedClassificationTypeNames.Keyword);
 
             typeRegexes = new[] {
                 Tuple.Create(_reBold, registry.GetClassificationType(MarkdownClassificationTypes.MarkdownBold)),
@@ -65,7 +63,6 @@ namespace MadsKristensen.EditorExtensions.Markdown
                 Tuple.Create(_reHeader, registry.GetClassificationType(MarkdownClassificationTypes.MarkdownHeader)),
                 Tuple.Create(_reQuote, registry.GetClassificationType(MarkdownClassificationTypes.MarkdownQuote)),
                 Tuple.Create(_reCode, registry.GetClassificationType(MarkdownClassificationTypes.MarkdownCode)),
-                Tuple.Create(_reLink, registry.GetClassificationType(PredefinedClassificationTypeNames.Keyword))
             };
         }
 
@@ -113,8 +110,36 @@ namespace MadsKristensen.EditorExtensions.Markdown
         private IEnumerable<ClassificationSpan> ClassifyPlainSpan(SnapshotSpan span)
         {
             var text = span.GetText();
-            var spans = typeRegexes.SelectMany(t => ClassifyMatches(span, text, t.Item1, t.Item2));
-            return spans;
+            var linkList = new List<ClassificationSpan>();
+            var otherList = new List<ClassificationSpan>();
+
+            // Link
+            foreach (Match match in _reLink.Matches(text))
+            {
+                var value = match.Groups["Value"];
+                var result = new SnapshotSpan(span.Snapshot, span.Start + value.Index, value.Length);
+                linkList.Add(new ClassificationSpan(result, linkType));
+            }
+
+            foreach (var tuble in typeRegexes)
+            {
+                Match match = tuble.Item1.Match(text);
+
+                while (match.Success)
+                {
+                    var value = match.Groups["Value"];
+                    var result = new SnapshotSpan(span.Snapshot, span.Start + value.Index, value.Length);
+
+                    if (!linkList.Any(link => link.Span.IntersectsWith(result)))
+                    {
+                        otherList.Add(new ClassificationSpan(result, tuble.Item2));
+                    }
+
+                    match = tuble.Item1.Match(text, match.Index + match.Length);
+                }
+            }
+
+            return linkList.Union(otherList);
         }
 
         ///<summary>Classifies an entire code block from any artifact in the block.</summary>
@@ -158,20 +183,6 @@ namespace MadsKristensen.EditorExtensions.Markdown
                 range = artifact.InnerRange;
 
             yield return new ClassificationSpan(range.ToSnapshotSpan(snapshot), codeType);
-        }
-
-        private static IEnumerable<ClassificationSpan> ClassifyMatches(SnapshotSpan span, string text, Regex regex, IClassificationType type)
-        {
-            Match match = regex.Match(text);
-
-            while (match.Success)
-            {
-                var value = match.Groups["Value"];
-                var result = new SnapshotSpan(span.Snapshot, span.Start + value.Index, value.Length);
-                yield return new ClassificationSpan(result, type);
-
-                match = regex.Match(text, match.Index + match.Length);
-            }
         }
 
         public event EventHandler<ClassificationChangedEventArgs> ClassificationChanged
