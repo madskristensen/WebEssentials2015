@@ -13,7 +13,7 @@
         <Tags>css, javascript, html, json, markdown</Tags>
     </Metadata>
     <Installation InstalledByMsi="false">
-        <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[14.0.23000, 14.0.24700, 14.0.24627)" />
+        <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[14.0.23000, 14.0.24627)" />
     </Installation>
     <Dependencies>
         <Dependency d:Source="Installed" Id="0AC2ABB1-6383-4608-BA51-B58A23DD9E8A" DisplayName="Web Developer Tools" Version="[14.0,15.0)" />
