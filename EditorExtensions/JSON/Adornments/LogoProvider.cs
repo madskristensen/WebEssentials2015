@@ -21,6 +21,7 @@ namespace MadsKristensen.EditorExtensions.JSON
 
         private Dictionary<string, string> _map = new Dictionary<string, string>()
         {
+            { ".bowerrc", "bower.png" },
             { "bower.json", "bower.png"},
             { "package.json", "npm.png"},
             { "project.json", "vs.png"},
