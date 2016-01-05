@@ -11,6 +11,8 @@ namespace MadsKristensen.EditorExtensions.JSON
     [Export(typeof(IWpfTextViewCreationListener))]
     [ContentType("json")]
     [ContentType("javascript")]
+    [ContentType("typescript")]
+    [ContentType("coffeescript")]
     [TextViewRole(PredefinedTextViewRoles.Document)]
     class LogoProvider : IWpfTextViewCreationListener
     {
@@ -26,7 +28,10 @@ namespace MadsKristensen.EditorExtensions.JSON
             { "package.json", "npm.png"},
             { "project.json", "vs.png"},
             { "gruntfile.js", "grunt.png"},
+            { "gruntfile.coffee", "grunt.png"},
             { "gulpfile.js", "gulp.png"},
+            { "gulpfile.babel.js", "gulp.png"},
+            { "gulpfile.ts", "gulp.png"},
         };
 
         public void TextViewCreated(IWpfTextView textView)
