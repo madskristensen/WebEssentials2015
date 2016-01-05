@@ -25,7 +25,8 @@ namespace MadsKristensen.EditorExtensions.Html
         private static string _error = "When using \"{0}\", you must also specify the class \"{1}\".";
         private static Dictionary<string, string[]> _whitelist = new Dictionary<string, string[]>
         {
-            { "btn", new [] { "btn-group", "btn-group-xs", "btn-group-sm", "btn-group-lg", "btn-group-justified", "btn-group-vertical", "btn-toolbar" } }
+            { "btn", new [] { "btn-group", "btn-group-xs", "btn-group-sm", "btn-group-lg", "btn-group-justified", "btn-group-vertical", "btn-toolbar" } },
+            { "alert", new [] { "alert-link" } }
         };
 
 		private static Dictionary<string, string[]> _aliases = new Dictionary<string, string[]>
