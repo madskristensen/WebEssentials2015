@@ -46,7 +46,7 @@ namespace MadsKristensen.EditorExtensions.JavaScript
 
             foreach (string url in urls)
             {
-                int index = url.LastIndexOf("/");
+                int index = url.LastIndexOf('/');
                 if (index == -1)
                     continue;
 
@@ -70,7 +70,8 @@ namespace MadsKristensen.EditorExtensions.JavaScript
             }
             catch (Exception ex)
             {
-                Logger.Log(ex);
+                // Fail silently. The server is having issues and this is not critical.
+                System.Diagnostics.Debug.Write(ex);
             }
         }
 
