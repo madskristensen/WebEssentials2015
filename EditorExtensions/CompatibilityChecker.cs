@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
-using System.Net;
 using System.Net.Http;
 using System.Runtime.InteropServices;
 using Microsoft.VisualStudio;
@@ -27,7 +26,7 @@ namespace MadsKristensen.EditorExtensions
         {
             if (CanCheckCompatibility)
             {
-                string weVersion = WebEssentialsPackage.Version;
+                string weVersion = Vsix.Version;
                 string vsVersion = VisualStudioVersionString;
 
                 if (!string.IsNullOrEmpty(weVersion) && !string.IsNullOrEmpty(vsVersion))

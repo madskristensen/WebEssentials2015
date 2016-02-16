@@ -288,8 +288,8 @@
     <Reference Include="Microsoft.VisualStudio.Shell.Immutable.11.0">
       <Private>False</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PresentationCore" />
@@ -347,8 +347,9 @@
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="WebMarkupMin.Core">
-      <HintPath>..\packages\WebMarkupMin.Core.0.9.11\lib\net40\WebMarkupMin.Core.dll</HintPath>
+    <Reference Include="WebMarkupMin.Core, Version=1.0.1.0, Culture=neutral, PublicKeyToken=99472178d266584b, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebMarkupMin.Core.1.0.1\lib\net40\WebMarkupMin.Core.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="ZenCoding, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -594,6 +595,9 @@
     <Compile Include="Shared\Helpers\Base64Vlq.cs" />
     <Compile Include="Shared\Helpers\SourceMapNode.cs" />
     <Compile Include="Shared\Margins\CssTextViewMargin.cs" />
+    <Compile Include="Source.extension.cs">
+      <DependentUpon>Source.extension.vsixmanifest</DependentUpon>
+    </Compile>
     <Compile Include="SweetJs\ContentType\SweetJsContentTypeDefinition.cs" />
     <Compile Include="RobotsTxt\Classify\RobotsTxtClassificationTypes.cs" />
     <Compile Include="RobotsTxt\Classify\RobotsTxtClassifier.cs" />
@@ -823,7 +827,17 @@
     <Compile Include="Shared\Helpers\Css\CssItemCollector.cs" />
     <Compile Include="HTML\Validation\OpenGraphPrefixValidator.cs" />
     <Compile Include="HTML\Validation\ItemTypeValidator.cs" />
+    <Resource Include="Source.extension.ico">
+      <DependentUpon>Source.extension.vsixmanifest</DependentUpon>
+    </Resource>
     <EmbeddedResource Include="BrowserLink\BrowserInfo\BrowserInfo.js" />
+    <EmbeddedResource Include="Source.extension.resx">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Source.extension.vsixmanifest</DependentUpon>
+      <MergeWithCTO>true</MergeWithCTO>
+      <ManifestResourceName>VSPackage</ManifestResourceName>
+    </EmbeddedResource>
     <Resource Include="JSON\Resources\bower.png" />
     <Resource Include="JSON\Resources\npm.png" />
     <Resource Include="JSON\Resources\vs.png" />
@@ -870,11 +884,6 @@
     <EmbeddedResource Include="Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VSPackage.resx">
-      <MergeWithCTO>true</MergeWithCTO>
-      <ManifestResourceName>VSPackage</ManifestResourceName>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
@@ -985,7 +994,10 @@
     <!--<Content Include="Resources\nodejs\node.exe">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>-->
-    <None Include="Source.extension.vsixmanifest" />
+    <None Include="Source.extension.vsixmanifest">
+      <Generator>VsixManifestGenerator</Generator>
+      <LastGenOutput>Source.extension.resx</LastGenOutput>
+    </None>
     <Content Include="CSS\Schemas\css-we-settings.xml">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
@@ -1008,7 +1020,6 @@
     <Resource Include="Resources\Images\Browsers\ie_gray.png" />
     <Resource Include="Resources\Images\Browsers\o_gray.png" />
     <Resource Include="Resources\Images\Browsers\s_gray.png" />
-    <Content Include="Resources\Images\Package.ico" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

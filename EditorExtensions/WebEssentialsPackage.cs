@@ -20,7 +20,7 @@ namespace MadsKristensen.EditorExtensions
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [Guid(CommandGuids.guidEditorExtensionsPkgString)]
     [ProvideAutoLoad(UIContextGuids80.SolutionExists)]
-    [InstalledProductRegistration("#110", "#112", WebEssentialsPackage.Version, IconResourceID = 400)]
+    [InstalledProductRegistration("#110", "#112", Vsix.Version, IconResourceID = 400)]
     [ProvideOptionPage(typeof(CssOptions), "Web Essentials", "CSS", 101, 102, true, new[] { "Minify", "Minification", "W3C", "CSS3" })]
     [ProvideOptionPage(typeof(HtmlOptions), "Web Essentials", "HTML", 101, 111, true, new[] { "html", "angular", "xhtml" })]
     [ProvideOptionPage(typeof(GeneralOptions), "Web Essentials", "General", 101, 101, true, new[] { "ZenCoding", "Mustache", "Handlebars", "Comments", "Bundling", "Bundle" })]
@@ -31,8 +31,6 @@ namespace MadsKristensen.EditorExtensions
     [SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling"), PackageRegistration(UseManagedResourcesOnly = true)]
     public sealed class WebEssentialsPackage : Package
     {
-        public const string Version = "0.5";
-
         private static DTE2 _dte;
         private static IVsRegisterPriorityCommandTarget _pct;
         private OleMenuCommand _topMenu;
@@ -65,7 +63,7 @@ namespace MadsKristensen.EditorExtensions
             base.Initialize();
 
             Instance = this;
-            Telemetry.Initialize(DTE, Version, "4739999f-47f2-408d-8931-0fd899885bb7");
+            Telemetry.Initialize(DTE, Vsix.Version, "4739999f-47f2-408d-8931-0fd899885bb7");
             SettingsStore.Load();
 
             OleMenuCommandService mcs = GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
