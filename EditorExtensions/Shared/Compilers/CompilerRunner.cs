@@ -225,6 +225,8 @@ namespace MadsKristensen.EditorExtensions.Compilers
 
             var compilerResult = await CompilerResultFactory.GenerateResult(sourcePath, targetPath, true, result, null);
 
+            Telemetry.TrackEvent("Compiled markdown");
+
             return compilerResult;
         }
 
