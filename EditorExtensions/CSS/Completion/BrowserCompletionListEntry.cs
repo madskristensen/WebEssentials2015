@@ -36,6 +36,8 @@ namespace MadsKristensen.EditorExtensions.Css
                 _icon = BitmapFrame.Create(new Uri("pack://application:,,,/WebEssentials2015;component/Resources/Images/Browsers/c.png", UriKind.RelativeOrAbsolute));
             else if (browserName.Contains("safari"))
                 _icon = BitmapFrame.Create(new Uri("pack://application:,,,/WebEssentials2015;component/Resources/Images/Browsers/s.png", UriKind.RelativeOrAbsolute));
+            else if (browserName.Contains("microsoft edge"))
+                _icon = BitmapFrame.Create(new Uri("pack://application:,,,/WebEssentials2015;component/Resources/Images/Browsers/e.png", UriKind.RelativeOrAbsolute));
             else
                 _icon = GlyphService.GetGlyph(StandardGlyphGroup.GlyphGroupEnumMember, StandardGlyphItem.GlyphItemPublic);
         }

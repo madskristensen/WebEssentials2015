@@ -56,7 +56,7 @@ namespace MadsKristensen.EditorExtensions.Commands
             textView.Properties.GetOrCreateSingletonProperty(() => new SortSelectedLines(textViewAdapter, textView));
             textView.Properties.GetOrCreateSingletonProperty(() => new RemoveDuplicateLines(textViewAdapter, textView));
             textView.Properties.GetOrCreateSingletonProperty(() => new RemoveEmptyLines(textViewAdapter, textView));
-            textView.Properties.GetOrCreateSingletonProperty(() => new CommandExceptionFilter(textViewAdapter, textView, UndoRegistry));
+            //textView.Properties.GetOrCreateSingletonProperty(() => new CommandExceptionFilter(textViewAdapter, textView, UndoRegistry));
 
             return textView;
         }
