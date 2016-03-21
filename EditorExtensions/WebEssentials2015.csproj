@@ -952,14 +952,6 @@
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Compile Include="JavaScript\Schemas\FSPCache.cs" />
-    <Content Include="JavaScript\Snippets\Web Essentials\gulp.snippet">
-      <SubType>Designer</SubType>
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="JavaScript\Snippets\Web Essentials\gulptask.snippet">
-      <SubType>Designer</SubType>
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
