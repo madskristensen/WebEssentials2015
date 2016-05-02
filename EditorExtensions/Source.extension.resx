@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="110" xml:space="preserve">
-    <value>Web Essentials 2015.1</value>
+    <value>Web Essentials 2015.2</value>
   </data>
   <data name="112" xml:space="preserve">
     <value>Adds many useful features to Visual Studio for web developers. Requires Visual Studio 2015</value>
