@@ -666,11 +666,6 @@
     <Compile Include="LESS\Commands\LessExtractMixinCommandTarget.cs" />
     <Compile Include="LESS\Commands\LessExtractVariableCommandTarget.cs" />
     <Compile Include="LESS\Commands\LessCreationListener.cs" />
-    <Compile Include="Shared\Commands\RemoveEmptyLinesCommandTarget.cs" />
-    <Compile Include="Shared\Commands\RemoveDuplicateLinesCommandTarget.cs" />
-    <Compile Include="Shared\Commands\SortSelectedLinesCommandTarget.cs" />
-    <Compile Include="Shared\Commands\EncodeSelectionCommandTarget.cs" />
-    <Compile Include="Shared\Commands\TextCreationListener.cs" />
     <Compile Include="Shared\Commands\MinifySelectionCommandTarget.cs" />
     <Compile Include="CSS\Commands\CssAddMissingStandardCommandTarget.cs" />
     <Compile Include="Shared\Commands\ExtractToFileCommandTarget.cs" />
@@ -745,7 +740,6 @@
     <Compile Include="CSS\MenuItems\SolutionColors.cs" />
     <Compile Include="Misc\MenuItems\ProjectSettings.cs" />
     <Compile Include="Misc\MenuItems\Diff.cs" />
-    <Compile Include="Misc\MenuItems\Transform.cs" />
     <Compile Include="Settings\ProjectSettingsTextViewListener.cs" />
     <Compile Include="HTML\QuickInfo\ImageHtml\ImageQuickInfo.cs" />
     <Compile Include="HTML\QuickInfo\ImageHtml\ImageQuickInfoController.cs" />

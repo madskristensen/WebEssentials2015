@@ -14,7 +14,7 @@
                     <ButtonText>Web Essentials</ButtonText>
                 </Strings>
             </Menu>
-            <Menu guid="guidEditorExtensionsCmdSet" id="SubMenu" priority="0x001" type="Menu">
+            <!--<Menu guid="guidEditorExtensionsCmdSet" id="SubMenu" priority="0x001" type="Menu">
                 <Parent guid="guidEditorLinesCmdSet" id="LinesTopMenuGroup" />
                 <Strings>
                     <ButtonText>Encode Selection</ButtonText>
@@ -26,7 +26,7 @@
                     <ButtonText>Transform Selection</ButtonText>
                     <CommandName>Transform Selection</CommandName>
                 </Strings>
-            </Menu>
+            </Menu>-->
             <Menu guid="guidCssIntellisenseCmdSet" id="CssIntellisenseSubMenu" priority="0x201" type="Menu">
                 <Parent guid="guidCssCmdSet" id="MyMenuGroup" />
                 <CommandFlag>DynamicVisibility</CommandFlag>
@@ -42,13 +42,13 @@
                     <CommandName>Web Essentials</CommandName>
                 </Strings>
             </Menu>
-            <Menu guid="guidEditorLinesCmdSet" id="LinesMenu" priority="0x201" type="Menu">
+            <!--<Menu guid="guidEditorLinesCmdSet" id="LinesMenu" priority="0x201" type="Menu">
                 <Parent guid="guidEditorLinesCmdSet" id="LinesTopMenuGroup" />
                 <CommandFlag>DynamicVisibility</CommandFlag>
                 <Strings>
                     <ButtonText>Selected Lines</ButtonText>
                 </Strings>
-            </Menu>
+            </Menu>-->
         </Menus>
 
         <Groups>
@@ -56,7 +56,7 @@
                 <Parent guid="guidTopMenu" id="TopMenu"/>
             </Group>
 
-            <Group guid="guidEditorExtensionsCmdSet" id="HtmlEncodingMenuGroup" priority="0x0002">
+            <!--<Group guid="guidEditorExtensionsCmdSet" id="HtmlEncodingMenuGroup" priority="0x0002">
                 <Parent guid="guidEditorExtensionsCmdSet" id="SubMenu"/>
             </Group>
 
@@ -78,7 +78,7 @@
 
             <Group guid="guidEditorExtensionsCmdSet" id="CryptoTransformMenuGroup" priority="0x0003">
                 <Parent guid="guidEditorExtensionsCmdSet" id="TransformSubMenu"/>
-            </Group>
+            </Group>-->
 
             <Group guid="guidCssCmdSet" id="MyMenuGroup" priority="0x0003">
                 <Parent guid="cssEditorCommandSet" id="cssContextMenu"/>
@@ -120,17 +120,17 @@
                 <Parent guid="guidSolutionExplorerCmdSet" id="MySubMenuGroup"/>
             </Group>
 
-            <Group guid="guidEditorLinesCmdSet" id="LinesTopMenuGroup" priority="0x0002">
+            <!--<Group guid="guidEditorLinesCmdSet" id="LinesTopMenuGroup" priority="0x0002">
                 <Parent guid="guidTopMenu" id="TopMenu" />
-            </Group>
+            </Group>-->
 
-            <Group guid="guidEditorLinesCmdSet" id="LinesMenuGroup" priority="0x0002">
+            <!--<Group guid="guidEditorLinesCmdSet" id="LinesMenuGroup" priority="0x0002">
                 <Parent guid="guidEditorLinesCmdSet" id="LinesMenu"/>
-            </Group>
+            </Group>-->
         </Groups>
 
         <Buttons>
-            <Button guid="guidEditorExtensionsCmdSet" id="cmdidHtmlEncode" priority="0x0101" type="Button">
+            <!--<Button guid="guidEditorExtensionsCmdSet" id="cmdidHtmlEncode" priority="0x0101" type="Button">
                 <Parent guid="guidEditorExtensionsCmdSet" id="HtmlEncodingMenuGroup" />
                 <CommandFlag>DynamicVisibility</CommandFlag>
                 <CommandFlag>DefaultDisabled</CommandFlag>
@@ -282,7 +282,7 @@
                 <Strings>
                     <ButtonText>Remove Empty Lines</ButtonText>
                 </Strings>
-            </Button>
+            </Button>-->
 
             <Button guid="guidCssCmdSet" id="cmdidCssRemoveDuplicates" priority="0x0100" type="Button">
                 <Parent guid="guidCssCmdSet" id="CssSubMenuGroup" />
@@ -501,14 +501,14 @@
 
         <KeyBinding guid="guidFormattingCmdSet" id="ExpandSelection" mod1="Alt" key1="1" editor="guidVSStd97"/>
         <KeyBinding guid="guidFormattingCmdSet" id="ContractSelection" mod1="Alt" key1="2" editor="guidVSStd97"/>
-        <KeyBinding guid="guidEditorLinesCmdSet" id="SortAsc" mod1="Alt" key1="3" editor="guidVSStd97"/>
-        <KeyBinding guid="guidEditorLinesCmdSet" id="SortDesc" mod1="Alt" key1="4" editor="guidVSStd97"/>
+        <!--<KeyBinding guid="guidEditorLinesCmdSet" id="SortAsc" mod1="Alt" key1="3" editor="guidVSStd97"/>
+        <KeyBinding guid="guidEditorLinesCmdSet" id="SortDesc" mod1="Alt" key1="4" editor="guidVSStd97"/>-->
 
     </KeyBindings>
 
     <CommandPlacements>
         <!-- Editor Lines start-->
-        <CommandPlacement guid="guidEditorLinesCmdSet" id="LinesTopMenuGroup" priority="0x0300">
+        <!--<CommandPlacement guid="guidEditorLinesCmdSet" id="LinesTopMenuGroup" priority="0x0300">
             <Parent guid="jsEditorCommandSet" id="jsContextMenu"/>
         </CommandPlacement>
         <CommandPlacement guid="guidEditorLinesCmdSet" id="LinesTopMenuGroup" priority="0x0300">
@@ -519,7 +519,7 @@
         </CommandPlacement>
         <CommandPlacement guid="guidEditorLinesCmdSet" id="LinesTopMenuGroup" priority="0x0300">
             <Parent guid="htmlEditorCommandSetLibra" id="htmlContextMenuLibra"/>
-        </CommandPlacement>
+        </CommandPlacement>-->
         <!-- Editor Lines end-->
 
         <CommandPlacement guid="guidCssCmdSet" id="MyMenuGroup" priority="0x0010">
@@ -565,7 +565,7 @@
 
         <GuidSymbol name="guidEditorExtensionsCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e41}">
             <IDSymbol name="MyMenuGroup" value="0x1020" />
-            <IDSymbol name="cmdidHtmlEncode" value="0x0102" />
+            <!--<IDSymbol name="cmdidHtmlEncode" value="0x0102" />
             <IDSymbol name="cmdidHtmlDecode" value="0x0103" />
             <IDSymbol name="SubMenu" value="0x0104" />
             <IDSymbol name="HtmlEncodingMenuGroup" value="0x0600" />
@@ -586,12 +586,12 @@
             <IDSymbol name="cmdidSha1Transform" value="0x0121" />
             <IDSymbol name="cmdidSha256Transform" value="0x0122" />
             <IDSymbol name="cmdidSha384Transform" value="0x0123" />
-            <IDSymbol name="cmdidSha512Transform" value="0x0124" />
+            <IDSymbol name="cmdidSha512Transform" value="0x0124" />-->
             <IDSymbol name="ReferenceJs" value="0x333" />
             <IDSymbol name="AddGrunt" value="0x337" />
         </GuidSymbol>
 
-        <GuidSymbol name="guidEditorLinesCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e67}">
+        <!--<GuidSymbol name="guidEditorLinesCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e67}">
             <IDSymbol name="LinesMenu" value="0x0001" />
             <IDSymbol name="LinesMenuGroup" value="0x0002" />
             <IDSymbol name="SortAsc" value="0x0003" />
@@ -599,7 +599,7 @@
             <IDSymbol name="RemoveDuplicateLines" value="0x0005" />
             <IDSymbol name="LinesTopMenuGroup" value="0x0006" />
             <IDSymbol name="RemoveEmptyLines" value="0x0007" />
-        </GuidSymbol>
+        </GuidSymbol>-->
 
         <GuidSymbol name="guidCssCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e50}">
             <IDSymbol name="MyMenuGroup" value="0x1020" />

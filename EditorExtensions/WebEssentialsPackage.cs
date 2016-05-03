@@ -70,7 +70,7 @@ namespace MadsKristensen.EditorExtensions
 
             if (null != mcs)
             {
-                TransformMenu transform = new TransformMenu(DTE, mcs);
+                //TransformMenu transform = new TransformMenu(DTE, mcs);
                 DiffMenu diffMenu = new DiffMenu(mcs);
                 ProjectSettingsMenu projectSettingsMenu = new ProjectSettingsMenu(DTE, mcs);
                 SolutionColorsMenu solutionColorsMenu = new SolutionColorsMenu(mcs);
@@ -88,7 +88,7 @@ namespace MadsKristensen.EditorExtensions
                 solutionColorsMenu.SetupCommands();
                 projectSettingsMenu.SetupCommands();
                 diffMenu.SetupCommands();
-                transform.SetupCommands();
+                //transform.SetupCommands();
                 unMinifyMenu.SetupCommands();
             }
 
