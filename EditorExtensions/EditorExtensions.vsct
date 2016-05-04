@@ -400,13 +400,13 @@
                 </Strings>
             </Button>
 
-            <Button guid="guidDiffCmdSet" id="cmdDiff" priority="0x0104" type="Button">
+            <!--<Button guid="guidDiffCmdSet" id="cmdDiff" priority="0x0104" type="Button">
                 <Parent guid="guidDiffCmdSet" id="MyMenuGroup" />
                 <CommandFlag>DynamicVisibility</CommandFlag>
                 <Strings>
                     <ButtonText>Diff selected files</ButtonText>
                 </Strings>
-            </Button>
+            </Button>-->
 
             <Button guid="guidDiffCmdSet" id="cmdJavaScriptIntellisense" priority="0x0107" type="Button">
                 <Parent guid="guidDiffCmdSet" id="MyMenuGroup" />
@@ -625,7 +625,7 @@
 
         <GuidSymbol name="guidDiffCmdSet" value="{e396b698-e00e-444b-9f5f-3dcb1ef74e59}">
             <IDSymbol name="MyMenuGroup" value="0x1040" />
-            <IDSymbol name="cmdDiff" value="0x1041" />
+            <!--<IDSymbol name="cmdDiff" value="0x1041" />-->
             <IDSymbol name="cmdProjectSettings" value="0x1043" />
             <IDSymbol name="cmdSolutionSettings" value="0x1044" />
             <IDSymbol name="cmdSolutionColors" value="0x1045" />

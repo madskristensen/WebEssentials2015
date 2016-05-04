@@ -16,7 +16,7 @@ namespace MadsKristensen.EditorExtensions
         public const string guidExtractCmdSetString = "e396b698-e00e-444b-9f5f-3dcb1ef74e64";
         //public const string guidBuildCmdSetString = "e396b698-e00e-444b-9f5f-3dcb1ef74e65";
         public const string guidFormattingCmdSetString = "e396b698-e00e-444b-9f5f-3dcb1ef74e66";
-        public const string guidEditorLinesCmdSetString = "e396b698-e00e-444b-9f5f-3dcb1ef74e67";
+        //public const string guidEditorLinesCmdSetString = "e396b698-e00e-444b-9f5f-3dcb1ef74e67";
         public const string guidImageCmdSetString = "e396b698-e00e-444b-9f5f-3dcb1ef74e68";
         public const string guidUnusedCssCmdSetString = "47BA41E6-C7AB-49F1-984A-30E672AFF9FC";
         public const string guidPixelPushingCmdSetString = "EE755B3C-F6ED-414B-86BA-1AADB7DAE216";
@@ -32,7 +32,7 @@ namespace MadsKristensen.EditorExtensions
         public static readonly Guid guidExtractCmdSet = new Guid(guidExtractCmdSetString);
         //public static readonly Guid guidBuildCmdSet = new Guid(guidBuildCmdSetString);
         public static readonly Guid guidFormattingCmdSet = new Guid(guidFormattingCmdSetString);
-        public static readonly Guid guidEditorLinesCmdSet = new Guid(guidEditorLinesCmdSetString);
+        //public static readonly Guid guidEditorLinesCmdSet = new Guid(guidEditorLinesCmdSetString);
         public static readonly Guid guidImageCmdSet = new Guid(guidImageCmdSetString);
         public static readonly Guid guidUnusedCssCmdSet = new Guid(guidUnusedCssCmdSetString);
         public static readonly Guid guidPixelPushingCmdSet = new Guid(guidPixelPushingCmdSetString);
@@ -51,14 +51,14 @@ namespace MadsKristensen.EditorExtensions
 
         SelectBrowsers = 0x1055,
     }
-    [Guid(CommandGuids.guidEditorLinesCmdSetString)]
-    enum LinesCommandId
-    {
-        SortAsc = 0x0003,
-        SortDesc = 0x0004,
-        RemoveDuplicateLines = 0x0005,
-        RemoveEmptyLines = 0x0007,
-    }
+    //[Guid(CommandGuids.guidEditorLinesCmdSetString)]
+    //enum LinesCommandId
+    //{
+    //    SortAsc = 0x0003,
+    //    SortDesc = 0x0004,
+    //    RemoveDuplicateLines = 0x0005,
+    //    RemoveEmptyLines = 0x0007,
+    //}
     [Guid(CommandGuids.guidCssCmdSetString)]
     enum CssCommandId
     {
@@ -86,21 +86,21 @@ namespace MadsKristensen.EditorExtensions
     enum CommandId
     {
         TopMenu = 0x3001,
-        HtmlEncode = 0x102,
-        HtmlDecode = 0x103,
-        UrlEncode = 0x106,
-        UrlDecode = 0x107,
-        JsEncode = 0x108,
-        AttrEncode = 0x109,
-        TitleCaseTransform = 0x115,
-        ReverseTransform = 0x116,
-        NormalizeTransform = 0x118,
-        MD5Transform = 0x120,
-        SHA1Transform = 0x121,
-        SHA256Transform = 0x122,
-        SHA384Transform = 0x123,
-        SHA512Transform = 0x124,
-        RunDiff = 0x1041,
+        //HtmlEncode = 0x102,
+        //HtmlDecode = 0x103,
+        //UrlEncode = 0x106,
+        //UrlDecode = 0x107,
+        //JsEncode = 0x108,
+        //AttrEncode = 0x109,
+        //TitleCaseTransform = 0x115,
+        //ReverseTransform = 0x116,
+        //NormalizeTransform = 0x118,
+        //MD5Transform = 0x120,
+        //SHA1Transform = 0x121,
+        //SHA256Transform = 0x122,
+        //SHA384Transform = 0x123,
+        //SHA512Transform = 0x124,
+        //RunDiff = 0x1041,
         //RunJsHint = 0x1042,
         //RunTsLint = 0x1092,
         //RunCoffeeLint = 0x1096,

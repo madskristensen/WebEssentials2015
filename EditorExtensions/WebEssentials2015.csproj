@@ -739,7 +739,6 @@
     <Compile Include="Shared\Margins\EditorMarginFactory.cs" />
     <Compile Include="CSS\MenuItems\SolutionColors.cs" />
     <Compile Include="Misc\MenuItems\ProjectSettings.cs" />
-    <Compile Include="Misc\MenuItems\Diff.cs" />
     <Compile Include="Settings\ProjectSettingsTextViewListener.cs" />
     <Compile Include="HTML\QuickInfo\ImageHtml\ImageQuickInfo.cs" />
     <Compile Include="HTML\QuickInfo\ImageHtml\ImageQuickInfoController.cs" />
