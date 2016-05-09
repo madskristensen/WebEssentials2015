@@ -17,7 +17,7 @@ namespace MadsKristensen.EditorExtensions
         //public const string guidBuildCmdSetString = "e396b698-e00e-444b-9f5f-3dcb1ef74e65";
         public const string guidFormattingCmdSetString = "e396b698-e00e-444b-9f5f-3dcb1ef74e66";
         //public const string guidEditorLinesCmdSetString = "e396b698-e00e-444b-9f5f-3dcb1ef74e67";
-        public const string guidImageCmdSetString = "e396b698-e00e-444b-9f5f-3dcb1ef74e68";
+        //public const string guidImageCmdSetString = "e396b698-e00e-444b-9f5f-3dcb1ef74e68";
         public const string guidUnusedCssCmdSetString = "47BA41E6-C7AB-49F1-984A-30E672AFF9FC";
         public const string guidPixelPushingCmdSetString = "EE755B3C-F6ED-414B-86BA-1AADB7DAE216";
         public const string guidTopMenuString = "{30947ebe-9147-45f9-96cf-401bfc671a01}";
@@ -33,7 +33,7 @@ namespace MadsKristensen.EditorExtensions
         //public static readonly Guid guidBuildCmdSet = new Guid(guidBuildCmdSetString);
         public static readonly Guid guidFormattingCmdSet = new Guid(guidFormattingCmdSetString);
         //public static readonly Guid guidEditorLinesCmdSet = new Guid(guidEditorLinesCmdSetString);
-        public static readonly Guid guidImageCmdSet = new Guid(guidImageCmdSetString);
+        //public static readonly Guid guidImageCmdSet = new Guid(guidImageCmdSetString);
         public static readonly Guid guidUnusedCssCmdSet = new Guid(guidUnusedCssCmdSetString);
         public static readonly Guid guidPixelPushingCmdSet = new Guid(guidPixelPushingCmdSetString);
         public static readonly Guid guidTopMenu = new Guid(guidTopMenuString);
@@ -138,7 +138,7 @@ namespace MadsKristensen.EditorExtensions
         //BuildSweetJs = 0x1088,
 
         // Images
-        CompressImage = 0x1091,
+        //CompressImage = 0x1091,
         //SpriteImage = 0x1093,
 
         //Unused CSS
