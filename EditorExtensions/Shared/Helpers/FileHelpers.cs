@@ -171,6 +171,9 @@ namespace MadsKristensen.EditorExtensions
                 case "woff":
                     return "font/x-woff";
 
+                case "woff2":
+                    return "font/x-woff2";
+
                 case "otf":
                     return "font/otf";
 
