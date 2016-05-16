@@ -472,6 +472,9 @@
     <Compile Include="CSS\Completion\IconProviders\SkeletonCompletionEntryGlyphProvider.cs" />
     <Compile Include="CSS\Completion\RegionCompletionListEntry.cs" />
     <Compile Include="CSS\Validation\Filters\ExtendCssErrorFilter.cs" />
+    <Compile Include="CSS\Validation\Providers\MissingVendorDirectiveErrorTagProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Dockerfile\Classify\DockerfileClassificationTypes.cs" />
     <Compile Include="Dockerfile\Classify\DockerfileClassifier.cs" />
     <Compile Include="Dockerfile\Classify\DockerfileClassifierProvider.cs" />
@@ -688,12 +691,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="CSS\Validation\Providers\HoverOrderErrorTagProvider.cs" />
-    <Compile Include="CSS\Validation\Providers\DisplayInlineErrorTagProvider.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="CSS\Validation\Providers\DuplicatePropertyErrorTagProvider.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="CSS\Validation\Providers\DuplicateSelectorErrorTagProvider.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -703,25 +700,10 @@
     <Compile Include="CSS\Validation\Providers\MissingStandardDirectiveErrorTagProvider.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CSS\Validation\Providers\MissingVendorDirectiveErrorTagProvider.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="CSS\Validation\Providers\MissingVendorErrorTagProvider.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="CSS\Validation\Providers\ShorthandErrorTagProvider.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="CSS\Validation\Providers\StarSelectorErrorTagProvider.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="CSS\Validation\Providers\UnknownTagErrorTagProvider.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="CSS\Validation\Providers\VendorOrderErrorTagProvider.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="CSS\Validation\Providers\ZeroUnitErrorTagProvider.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="CSS\Validation\SelectorErrorTag.cs" />

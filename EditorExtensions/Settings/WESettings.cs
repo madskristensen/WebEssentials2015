@@ -428,16 +428,6 @@ namespace MadsKristensen.EditorExtensions.Settings
         [Description("Where to display performance warnings. To use the Errors category, select Warnings, then disable Show errors as warnings in CSS Advanced Options.")]
         [DefaultValue(true)]
         public WarningLocation ValidationLocation { get; set; }
-        [Category("Performance Warnings")]
-        [DisplayName("Disallow universal selector")]
-        [Description("Warn on selectors that contain the universal selector (*).")]
-        [DefaultValue(true)]
-        public bool ValidateStarSelector { get; set; }
-        [Category("Performance Warnings")]
-        [DisplayName("Disallow units for 0 values")]
-        [Description("Warn when units are unnecessarily specified for the number 0 (which never needs a unit in CSS).")]
-        [DefaultValue(true)]
-        public bool ValidateZeroUnit { get; set; }
 
         #endregion
 
