@@ -562,13 +562,6 @@
     <Compile Include="SCSS\Commands\ScssCreationListener.cs" />
     <Compile Include="SCSS\Commands\ScssExtractMixinCommandTarget.cs" />
     <Compile Include="SCSS\Commands\ScssExtractVariableCommandTarget.cs" />
-    <Compile Include="Shared\Compilers\Compilation Interfaces.cs" />
-    <Compile Include="Shared\Compilers\CompilerRunner.cs" />
-    <Compile Include="Shared\Compilers\EditorCompilerInvoker.cs" />
-    <Compile Include="Shared\Compilers\Result\CompilerError.cs" />
-    <Compile Include="Shared\Compilers\Result\CompilerResult.cs" />
-    <Compile Include="Shared\Compilers\Result\CompilerResultFactory.cs" />
-    <Compile Include="Shared\Compilers\Result\CssCompilerResult.cs" />
     <Compile Include="SCSS\SmartTags\ScssExtractVariableSmartTagProvider.cs" />
     <Compile Include="Shared\ExtensionMethods\TaskExtensions.cs" />
     <Compile Include="Shared\Helpers\AsyncLock.cs" />

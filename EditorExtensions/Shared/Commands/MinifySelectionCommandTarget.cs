@@ -40,9 +40,9 @@ namespace MadsKristensen.EditorExtensions
 
         protected override bool IsEnabled()
         {
-            // Don't minify Markdown
-            _spansTuple = TextView.GetSelectedSpan(c => !c.IsOfType("Markdown")
-                                                     && Mef.GetImport<IFileMinifier>(c) != null);
+            //// Don't minify Markdown
+            //_spansTuple = TextView.GetSelectedSpan(c => !c.IsOfType("Markdown")
+            //                                         && Mef.GetImport<IFileMinifier>(c) != null);
             return _spansTuple != null;
         }
     }
