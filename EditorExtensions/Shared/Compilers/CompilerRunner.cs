@@ -175,99 +175,99 @@ namespace MadsKristensen.EditorExtensions.Compilers
         protected abstract Task<CompilerResult> RunCompilerAsync(string sourcePath, string targetPath);
     }
 
-    [Export(typeof(ICompilerRunnerProvider))]
-    [ContentType(Markdown.MarkdownContentTypeDefinition.MarkdownContentType)]
-    public class MarkdownCompilerRunnerProvider : ICompilerRunnerProvider
-    {
-        public CompilerRunnerBase GetCompiler(IContentType contentType) { return new MarkdownCompilerRunner(contentType); }
-    }
+    //[Export(typeof(ICompilerRunnerProvider))]
+    //[ContentType(Markdown.MarkdownContentTypeDefinition.MarkdownContentType)]
+    //public class MarkdownCompilerRunnerProvider : ICompilerRunnerProvider
+    //{
+    //    public CompilerRunnerBase GetCompiler(IContentType contentType) { return new MarkdownCompilerRunner(contentType); }
+    //}
 
-    ///<summary>Compiles files asynchronously using MarkdownDeep and reports the results.</summary>
-    class MarkdownCompilerRunner : CompilerRunnerBase
-    {
-        public MarkdownCompilerRunner(IContentType contentType) : base(contentType) { }
-        public override bool GenerateSourceMap { get { return false; } }
-        public override string TargetExtension { get { return ".html"; } }
+    /////<summary>Compiles files asynchronously using MarkdownDeep and reports the results.</summary>
+    //class MarkdownCompilerRunner : CompilerRunnerBase
+    //{
+    //    public MarkdownCompilerRunner(IContentType contentType) : base(contentType) { }
+    //    public override bool GenerateSourceMap { get { return false; } }
+    //    public override string TargetExtension { get { return ".html"; } }
 
-        protected async override Task<CompilerResult> RunCompilerAsync(string sourcePath, string targetPath)
-        {
-            var markdown = new MarkdownDeep.Markdown();
-            markdown.ExtraMode = true;
-            markdown.SafeMode = false;
-            markdown.FormatCodeBlock = FormatCodePrettyPrint;
+    //    protected async override Task<CompilerResult> RunCompilerAsync(string sourcePath, string targetPath)
+    //    {
+    //        var markdown = new MarkdownDeep.Markdown();
+    //        markdown.ExtraMode = true;
+    //        markdown.SafeMode = false;
+    //        markdown.FormatCodeBlock = FormatCodePrettyPrint;
 
-            string content = await FileHelpers.ReadAllTextRetry(sourcePath);
+    //        string content = await FileHelpers.ReadAllTextRetry(sourcePath);
 
-            // Issue with MarkdownDeep reported here https://github.com/toptensoftware/markdowndeep/issues/62
-            content = content.Replace("```", "~~~");
+    //        // Issue with MarkdownDeep reported here https://github.com/toptensoftware/markdowndeep/issues/62
+    //        content = content.Replace("```", "~~~");
 
-            // Change the fenced code block language for the markdown.FormatCodeBlock method
-            content = Regex.Replace(content, @"(~~~\s?)(?<lang>[^\s]+)", "~~~\r{{${lang}}}");
+    //        // Change the fenced code block language for the markdown.FormatCodeBlock method
+    //        content = Regex.Replace(content, @"(~~~\s?)(?<lang>[^\s]+)", "~~~\r{{${lang}}}");
 
-            // Issue with MarkdownDeep reported here https://github.com/toptensoftware/markdowndeep/issues/63
-            foreach (Match match in Regex.Matches(content, "( {0,3}>)+( {0,3})([^\r\n]+)", RegexOptions.Multiline))
-            {
-                content = content.Replace(match.Value, match.Value + "  ");
-            }
+    //        // Issue with MarkdownDeep reported here https://github.com/toptensoftware/markdowndeep/issues/63
+    //        foreach (Match match in Regex.Matches(content, "( {0,3}>)+( {0,3})([^\r\n]+)", RegexOptions.Multiline))
+    //        {
+    //            content = content.Replace(match.Value, match.Value + "  ");
+    //        }
 
-            var result = markdown
-                        .Transform(content)
-                        .Replace("[ ] ", "<input type=\"checkbox\" disabled /> ")
-                        .Replace("[x] ", "<input type=\"checkbox\" disabled checked /> ");
+    //        var result = markdown
+    //                    .Transform(content)
+    //                    .Replace("[ ] ", "<input type=\"checkbox\" disabled /> ")
+    //                    .Replace("[x] ", "<input type=\"checkbox\" disabled checked /> ");
 
-            if (!string.IsNullOrEmpty(targetPath) &&
-               (!File.Exists(targetPath) || await FileHelpers.ReadAllTextRetry(targetPath) != result))
-            {
-                ProjectHelpers.CheckOutFileFromSourceControl(targetPath);
+    //        if (!string.IsNullOrEmpty(targetPath) &&
+    //           (!File.Exists(targetPath) || await FileHelpers.ReadAllTextRetry(targetPath) != result))
+    //        {
+    //            ProjectHelpers.CheckOutFileFromSourceControl(targetPath);
 
-                await FileHelpers.WriteAllTextRetry(targetPath, result);
-            }
+    //            await FileHelpers.WriteAllTextRetry(targetPath, result);
+    //        }
 
-            var compilerResult = await CompilerResultFactory.GenerateResult(sourcePath, targetPath, true, result, null);
+    //        var compilerResult = await CompilerResultFactory.GenerateResult(sourcePath, targetPath, true, result, null);
 
-            Telemetry.TrackEvent("Compiled markdown");
+    //        Telemetry.TrackEvent("Compiled markdown");
 
-            return compilerResult;
-        }
+    //        return compilerResult;
+    //    }
 
-        public static Regex rxExtractLanguage = new Regex("^({{(.+)}}[\r\n])", RegexOptions.Compiled);
-        public static string FormatCodePrettyPrint(MarkdownDeep.Markdown m, string code)
-        {
-            // Try to extract the language from the first line
-            var match = rxExtractLanguage.Match(code);
-            string language = string.Empty;
+    //    public static Regex rxExtractLanguage = new Regex("^({{(.+)}}[\r\n])", RegexOptions.Compiled);
+    //    public static string FormatCodePrettyPrint(MarkdownDeep.Markdown m, string code)
+    //    {
+    //        // Try to extract the language from the first line
+    //        var match = rxExtractLanguage.Match(code);
+    //        string language = string.Empty;
 
-            if (match.Success)
-            {
-                var g = match.Groups[2];
-                language = g.ToString().Trim().ToLowerInvariant();
+    //        if (match.Success)
+    //        {
+    //            var g = match.Groups[2];
+    //            language = g.ToString().Trim().ToLowerInvariant();
 
-                code = code.Substring(match.Groups[1].Length);
-            }
+    //            code = code.Substring(match.Groups[1].Length);
+    //        }
 
-            if (string.IsNullOrEmpty(language))
-            {
-                var d = m.GetLinkDefinition("default_syntax");
-                if (d != null)
-                    language = d.title;
-            }
+    //        if (string.IsNullOrEmpty(language))
+    //        {
+    //            var d = m.GetLinkDefinition("default_syntax");
+    //            if (d != null)
+    //                language = d.title;
+    //        }
 
-            // Common replacements
-            if (language.Equals("C#", StringComparison.OrdinalIgnoreCase))
-                language = "cs";
-            else if (language.Equals("csharp", StringComparison.OrdinalIgnoreCase))
-                language = "cs";
-            else if (language.Equals("C++", StringComparison.OrdinalIgnoreCase))
-                language = "cpp";
+    //        // Common replacements
+    //        if (language.Equals("C#", StringComparison.OrdinalIgnoreCase))
+    //            language = "cs";
+    //        else if (language.Equals("csharp", StringComparison.OrdinalIgnoreCase))
+    //            language = "cs";
+    //        else if (language.Equals("C++", StringComparison.OrdinalIgnoreCase))
+    //            language = "cpp";
 
-            if (string.IsNullOrEmpty(language))
-            {
-                return $"<pre><code>{code}</code></pre>\n";
-            }
-            else
-            {
-                return $"<pre class=\"prettyprint lang-{language}\"><code>{code}</code></pre>\n";
-            }
-        }
-    }
+    //        if (string.IsNullOrEmpty(language))
+    //        {
+    //            return $"<pre><code>{code}</code></pre>\n";
+    //        }
+    //        else
+    //        {
+    //            return $"<pre class=\"prettyprint lang-{language}\"><code>{code}</code></pre>\n";
+    //        }
+    //    }
+    //}
 }

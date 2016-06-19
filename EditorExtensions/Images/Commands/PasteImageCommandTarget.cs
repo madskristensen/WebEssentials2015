@@ -6,7 +6,6 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using MadsKristensen.EditorExtensions.Markdown;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
@@ -73,8 +72,7 @@ namespace MadsKristensen.EditorExtensions.Images
                         s.ContentType.IsOfType("CSS")
                         || s.ContentType.IsOfType("JavaScript")
                         || s.ContentType.IsOfType("TypeScript")
-                        || s.ContentType.IsOfType("CoffeeScript")
-                        || s.ContentType.IsOfType("Markdown"));
+                        || s.ContentType.IsOfType("CoffeeScript"));
 
                 foreach (ITextBuffer buffer in buffers)
                 {
@@ -114,10 +112,7 @@ namespace MadsKristensen.EditorExtensions.Images
                     return "img = new Image()"
                          + Environment.NewLine
                          + "img.src = \"{0}\"";
-
-                if (buffer.ContentType.IsOfType(MarkdownContentTypeDefinition.MarkdownContentType))
-                    return "![{1}]({0})";
-            }
+                            }
 
             return "<img src=\"{0}\" alt=\"{1}\" />";
         }

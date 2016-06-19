@@ -85,10 +85,6 @@
     <Reference Include="ConfOxide">
       <HintPath>..\packages\ConfOxide.1.4.2.0\lib\net40\ConfOxide.dll</HintPath>
     </Reference>
-    <Reference Include="MarkdownDeep, Version=1.5.4983.28336, Culture=neutral, PublicKeyToken=4484fd7caa80aeae, processorArchitecture=MSIL">
-      <HintPath>..\packages\MarkdownDeep.NET-StrongName.1.5\lib\.NetFramework 3.5\MarkdownDeep.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.ApplicationInsights, Version=1.2.0.5639, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.1.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
       <Private>True</Private>
@@ -513,10 +509,6 @@
     <Compile Include="JavaScript\Completion\NodeModuleCompletionSourceProvider.cs" />
     <Compile Include="JavaScript\Completion\StringCompletionSource.cs" />
     <Compile Include="JavaScript\Completion\UseDirectiveCompletionSource.cs" />
-    <Compile Include="Markdown\Classify\CodeArtifactProcessor.cs" />
-    <Compile Include="Markdown\Classify\MarkdownParser.cs" />
-    <Compile Include="Markdown\Completion\MarkdownCreationListener.cs" />
-    <Compile Include="Markdown\Outlining\MarkdownOutlineTagger.cs" />
     <Compile Include="Misc\Minification\IFileMinifier.cs" />
     <Compile Include="HTML\Completion\AngularLogoCompletion.cs" />
     <Compile Include="HTML\Completion\AppleLinkCompletion.cs" />
@@ -566,19 +558,11 @@
     <Compile Include="JSON\Completion\LicenseCompletionProvider.cs" />
     <Compile Include="JSON\Completion\SimpleCompletionEntry.cs" />
     <Compile Include="JSON\Helpers\JsonTreeVisitor.cs" />
-    <Compile Include="Markdown\Classify\MarkdownClassificationTypes.cs" />
-    <Compile Include="Markdown\Classify\MarkdownClassifier.cs" />
-    <Compile Include="Markdown\Completion\MarkdownCompletionFilter.cs" />
-    <Compile Include="Markdown\ContentType\MarkdownContentTypeDefinition.cs" />
-    <Compile Include="Markdown\ContentType\MarkdownContentTypeHandler.cs" />
-    <Compile Include="Markdown\Margin\MarkdownMargin.cs" />
-    <Compile Include="Markdown\MenuItems\Markdown.cs" />
     <Compile Include="LiveScript\ContentType\LiveScriptContentTypeDefinition.cs" />
     <Compile Include="SCSS\Commands\ScssCreationListener.cs" />
     <Compile Include="SCSS\Commands\ScssExtractMixinCommandTarget.cs" />
     <Compile Include="SCSS\Commands\ScssExtractVariableCommandTarget.cs" />
     <Compile Include="Shared\Compilers\Compilation Interfaces.cs" />
-    <Compile Include="Shared\Compilers\CompilerNotifierProviders.cs" />
     <Compile Include="Shared\Compilers\CompilerRunner.cs" />
     <Compile Include="Shared\Compilers\EditorCompilerInvoker.cs" />
     <Compile Include="Shared\Compilers\Result\CompilerError.cs" />
@@ -595,7 +579,6 @@
     <Compile Include="Shared\Helpers\CssSourceMap.cs" />
     <Compile Include="Shared\Helpers\Base64Vlq.cs" />
     <Compile Include="Shared\Helpers\SourceMapNode.cs" />
-    <Compile Include="Shared\Margins\CssTextViewMargin.cs" />
     <Compile Include="Source.extension.cs">
       <DependentUpon>Source.extension.vsixmanifest</DependentUpon>
     </Compile>
@@ -619,7 +602,6 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Shared\Helpers\DependencyGraph.cs" />
     <Compile Include="Shared\Helpers\Mef.cs" />
-    <Compile Include="Shared\Margins\TextViewMargin.cs" />
     <Compile Include="Settings\OptionPages.cs">
       <SubType>component</SubType>
     </Compile>
@@ -635,11 +617,9 @@
     <Compile Include="Misc\CodeGeneration\IntellisenseProperty.cs" />
     <Compile Include="Misc\CodeGeneration\IntellisenseType.cs" />
     <Compile Include="Shared\Commands\CommandExceptionFilter.cs" />
-    <Compile Include="Markdown\DragDrop\MarkdownImageDrop.cs" />
     <Compile Include="Shared\Helpers\Disposable.cs" />
     <Compile Include="Shared\ExtensionMethods\Extensions.cs" />
     <Compile Include="Shared\Helpers\TabAwareCharacterStream.cs" />
-    <Compile Include="Svg\Margin\SvgMargin.cs" />
     <Compile Include="Misc\MenuItems\AddIntellisenseFile.cs" />
     <Compile Include="Misc\CodeGeneration\IntellisenseWriter.cs" />
     <Compile Include="Misc\CodeGeneration\ScriptIntellisenseListener.cs" />
@@ -715,8 +695,6 @@
     <Compile Include="Shared\Helpers\Logger.cs" />
     <Compile Include="Shared\Helpers\FileHelpers.cs" />
     <Compile Include="Shared\Helpers\OptionHelpers.cs" />
-    <Compile Include="Shared\Margins\MarginBase.cs" />
-    <Compile Include="Shared\Margins\EditorMarginFactory.cs" />
     <Compile Include="CSS\MenuItems\SolutionColors.cs" />
     <Compile Include="Misc\MenuItems\ProjectSettings.cs" />
     <Compile Include="Settings\ProjectSettingsTextViewListener.cs" />
@@ -829,12 +807,6 @@
     <Content Include="JavaScript\Snippets\snippets.pkgdef">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="Markdown\Margin\highlight.css">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="Markdown\Margin\highlight.js">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
     <Resource Include="Resources\Images\angular.png" />
     <Resource Include="Resources\Images\foundation.png" />
     <Resource Include="Resources\Images\blueprint.png" />
@@ -884,7 +856,6 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Markdown\Classify\Sample.md" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>

@@ -28,7 +28,7 @@ namespace MadsKristensen.EditorExtensions.Settings
         //public ScssSettings Scss { get; private set; }
         //public CoffeeScriptSettings CoffeeScript { get; private set; }
         //public LiveScriptSettings LiveScript { get; private set; }
-        public MarkdownSettings Markdown { get; private set; }
+        //public MarkdownSettings Markdown { get; private set; }
         //public HandlebarsSettings Handlebars { get; private set; }
         //public SweetJsSettings SweetJs { get; private set; }
     }
@@ -659,66 +659,66 @@ namespace MadsKristensen.EditorExtensions.Settings
     //    public bool MinifyInPlace { get; set; }
     //}
 
-    public sealed class MarkdownSettings : SettingsBase<MarkdownSettings>, ICompilerInvocationSettings, IMarginSettings
-    {
-        #region Compilation
-        [Category("Compilation")]
-        [DisplayName("Compile files on save")]
-        [Description("Compile files when saving them, if a compiled file already exists.")]
-        [DefaultValue(true)]
-        public bool CompileOnSave { get; set; }
-        [Category("Compilation")]
-        [DisplayName("Compile files on build")]
-        [Description("Compile all files that have matching compiled files when building the project.")]
-        [DefaultValue(false)]
-        public bool CompileOnBuild { get; set; }
+    //public sealed class MarkdownSettings : SettingsBase<MarkdownSettings>, ICompilerInvocationSettings, IMarginSettings
+    //{
+    //    #region Compilation
+    //    [Category("Compilation")]
+    //    [DisplayName("Compile files on save")]
+    //    [Description("Compile files when saving them, if a compiled file already exists.")]
+    //    [DefaultValue(true)]
+    //    public bool CompileOnSave { get; set; }
+    //    [Category("Compilation")]
+    //    [DisplayName("Compile files on build")]
+    //    [Description("Compile all files that have matching compiled files when building the project.")]
+    //    [DefaultValue(false)]
+    //    public bool CompileOnBuild { get; set; }
 
-        [Category("Compilation")]
-        [DisplayName("Custom output directory")]
-        [Description("Specifies a custom subfolder to save compiled files to. By default, compiled output will be placed in the same folder and nested under the original file.")]
-        [DefaultValue(null)]
-        public string OutputDirectory { get; set; }
-        #endregion
+    //    [Category("Compilation")]
+    //    [DisplayName("Custom output directory")]
+    //    [Description("Specifies a custom subfolder to save compiled files to. By default, compiled output will be placed in the same folder and nested under the original file.")]
+    //    [DefaultValue(null)]
+    //    public string OutputDirectory { get; set; }
+    //    #endregion
 
-        #region Editor
-        [Category("Editor")]
-        [DisplayName("Show preview pane")]
-        [Description("Show a preview pane containing the rendered output in the editor.")]
-        [DefaultValue(true)]
-        public bool ShowPreviewPane { get; set; }
+    //    #region Editor
+    //    [Category("Editor")]
+    //    [DisplayName("Show preview pane")]
+    //    [Description("Show a preview pane containing the rendered output in the editor.")]
+    //    [DefaultValue(true)]
+    //    public bool ShowPreviewPane { get; set; }
 
-        [Category("Editor")]
-        [DisplayName("Global CSS for Preview Pane")]
-        [Description("This CSS file will be applied to the preview pane so long as it's path is valid and there's no solution level custom css. To add a solution level CSS file, add a file with the filename ‘WE-Markdown.css’ in your solutions root directory. (Please note after setting this change, you'll need to close and reopen all markdown files)")]
-        [DefaultValue(null)]
-        public string GlobalPreviewCSSFile { get; set; }
+    //    [Category("Editor")]
+    //    [DisplayName("Global CSS for Preview Pane")]
+    //    [Description("This CSS file will be applied to the preview pane so long as it's path is valid and there's no solution level custom css. To add a solution level CSS file, add a file with the filename ‘WE-Markdown.css’ in your solutions root directory. (Please note after setting this change, you'll need to close and reopen all markdown files)")]
+    //    [DefaultValue(null)]
+    //    public string GlobalPreviewCSSFile { get; set; }
 
-        [Category("Editor")]
-        [DisplayName("Global HTML Template for Preview Pane")]
-        [Description("This HTML template will be applied to the preview pane so long as it's path is valid and there's no solution level custom html template. To add a solution level html template file, add a file with the filename ‘WE-Markdown.html’ in your solutions root directory. (Please note after setting this change, you'll need to close and reopen all markdown files)")]
-        [DefaultValue(null)]
-        public string GlobalPreviewHtmlTemplate { get; set; }
+    //    [Category("Editor")]
+    //    [DisplayName("Global HTML Template for Preview Pane")]
+    //    [Description("This HTML template will be applied to the preview pane so long as it's path is valid and there's no solution level custom html template. To add a solution level html template file, add a file with the filename ‘WE-Markdown.html’ in your solutions root directory. (Please note after setting this change, you'll need to close and reopen all markdown files)")]
+    //    [DefaultValue(null)]
+    //    public string GlobalPreviewHtmlTemplate { get; set; }
 
-        #endregion
+    //    #endregion
 
-        [Category("Compile Options")]
-        [DisplayName("Render soft lines breaks as hard line breaks")]
-        [Description("When true, line breaks with ENTER key will be converted to proper HTML line breaks")]
-        [DefaultValue(false)]
-        public bool RenderSoftLineBreaksAsLineBreaks { get; set; }
+    //    [Category("Compile Options")]
+    //    [DisplayName("Render soft lines breaks as hard line breaks")]
+    //    [Description("When true, line breaks with ENTER key will be converted to proper HTML line breaks")]
+    //    [DefaultValue(false)]
+    //    public bool RenderSoftLineBreaksAsLineBreaks { get; set; }
 
-        [Category("Compile Options")]
-        [DisplayName("Keep track of the precise position of block and inline elements")]
-        [Description("When true, the parser tracks precise positions in the source data for block and inline elements. This is disabled by default because it incurs an additional performance cost to keep track of the original position")]
-        [DefaultValue(false)]
-        public bool TrackSourcePosition { get; set; }
+    //    [Category("Compile Options")]
+    //    [DisplayName("Keep track of the precise position of block and inline elements")]
+    //    [Description("When true, the parser tracks precise positions in the source data for block and inline elements. This is disabled by default because it incurs an additional performance cost to keep track of the original position")]
+    //    [DefaultValue(false)]
+    //    public bool TrackSourcePosition { get; set; }
 
-        [Category("Compilation")]
-        [DisplayName("Don't save raw compilation output")]
-        [Description("Don't save separate unminified compiler output. This option has no effect when Minify On Save is disabled for HTML.")]
-        [DefaultValue(false)]
-        public bool MinifyInPlace { get; set; }
-    }
+    //    [Category("Compilation")]
+    //    [DisplayName("Don't save raw compilation output")]
+    //    [Description("Don't save separate unminified compiler output. This option has no effect when Minify On Save is disabled for HTML.")]
+    //    [DefaultValue(false)]
+    //    public bool MinifyInPlace { get; set; }
+    //}
 
     public interface IBundleSettings
     {

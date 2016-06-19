@@ -66,8 +66,8 @@ namespace MadsKristensen.EditorExtensions.Html
 
         private bool IsValidTextBuffer()
         {
-            if (TextView.TextBuffer.ContentType.IsOfType("markdown"))
-                return false;
+            //if (TextView.TextBuffer.ContentType.IsOfType("markdown"))
+//                return false;
             var projection = TextView.TextBuffer as IProjectionBuffer;
 
             if (projection != null)
@@ -78,7 +78,6 @@ namespace MadsKristensen.EditorExtensions.Html
                     s =>
                         !s.ContentType.IsOfType("html")
                         && !s.ContentType.IsOfType("htmlx")
-                        && !s.ContentType.IsOfType("Markdown")
                         && !s.ContentType.IsOfType("inert")
                         && !s.ContentType.IsOfType("CSharp")
                         && !s.ContentType.IsOfType("VisualBasic")

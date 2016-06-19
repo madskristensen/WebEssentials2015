@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
-using MadsKristensen.EditorExtensions.Markdown;
 using MadsKristensen.EditorExtensions.Svg;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
@@ -13,7 +12,6 @@ namespace MadsKristensen.EditorExtensions.Margin
     [Name("MarginFactory")]
     [Order(After = PredefinedMarginNames.RightControl)]
     [MarginContainer(PredefinedMarginNames.Right)]
-    [ContentType("Markdown")]
     [ContentType(SvgContentTypeDefinition.SvgContentType)]
     [TextViewRole(PredefinedTextViewRoles.Debuggable)]
     public sealed class MarginFactory : IWpfTextViewMarginProvider
@@ -23,7 +21,6 @@ namespace MadsKristensen.EditorExtensions.Margin
 
         static readonly Dictionary<string, Func<ITextDocument, IWpfTextView, IWpfTextViewMargin>> marginFactories = new Dictionary<string, Func<ITextDocument, IWpfTextView, IWpfTextViewMargin>>(StringComparer.OrdinalIgnoreCase)
         {
-            { "Markdown",          (document, sourceView) => new MarkdownMargin(document) },
             { "Svg",               (document, sourceView) => new SvgMargin(document) },                                                             //? null : new TextViewMargin("JavaScript", document, sourceView) }
         };
 

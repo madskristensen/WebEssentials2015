@@ -81,10 +81,10 @@ namespace MadsKristensen.EditorExtensions.Settings
     //{
     //    public ScssOptions() : base(s => s.Scss) { }
     //}
-    class MarkdownOptions : SettingsOptionPage<MarkdownSettings>
-    {
-        public MarkdownOptions() : base(s => s.Markdown) { }
-    }
+    //class MarkdownOptions : SettingsOptionPage<MarkdownSettings>
+    //{
+    //    public MarkdownOptions() : base(s => s.Markdown) { }
+    //}
     //class HandlebarsOptions : SettingsOptionPage<HandlebarsSettings>
     //{
     //    public HandlebarsOptions() : base(s => s.Handlebars) { }

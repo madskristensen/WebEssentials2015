@@ -11,17 +11,17 @@ using Microsoft.Web.Languages.HtmlTemplates.HandleBars.ContentType;
 
 namespace MadsKristensen.EditorExtensions.Compilers
 {
-    [Export(typeof(ICompilationNotifierProvider))]
-    [ContentType("Markdown")]
-    class MarkdownCompilerNotifierProvider : ICompilationNotifierProvider
-    {
-        public ICompilationNotifier GetCompilationNotifier(ITextDocument doc)
-        {
-            return doc.TextBuffer.Properties.GetOrCreateSingletonProperty<EditorCompilerInvoker>(
-                       () => new EditorCompilerInvoker(doc, new MarkdownCompilerRunner(doc.TextBuffer.ContentType))
-                   );
-        }
-    }
+    //[Export(typeof(ICompilationNotifierProvider))]
+    //[ContentType("Markdown")]
+    //class MarkdownCompilerNotifierProvider : ICompilationNotifierProvider
+    //{
+    //    public ICompilationNotifier GetCompilationNotifier(ITextDocument doc)
+    //    {
+    //        return doc.TextBuffer.Properties.GetOrCreateSingletonProperty<EditorCompilerInvoker>(
+    //                   () => new EditorCompilerInvoker(doc, new MarkdownCompilerRunner(doc.TextBuffer.ContentType))
+    //               );
+    //    }
+    //}
 
 
 	//[Export(typeof(ICompilationNotifierProvider))]
