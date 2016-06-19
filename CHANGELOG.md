@@ -11,6 +11,13 @@ download in the
 These are the changes to each version that has been released
 on the official Visual Studio extension gallery.
 
+## 2.0.219
+
+**2016-06-19**
+
+- [x] Removed Markdown features
+  - Replaced by [Markdown Editor](https://visualstudiogallery.msdn.microsoft.com/eaab33c3-437b-4918-8354-872dfe5d1bfe)
+
 ## 0.5.175
 
 **2015-09-11**
