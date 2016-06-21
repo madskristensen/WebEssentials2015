@@ -3,6 +3,8 @@ using System.ComponentModel.Design;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Windows;
+using System.Windows.Interop;
 using System.Windows.Threading;
 using EnvDTE;
 using EnvDTE80;
@@ -95,6 +97,8 @@ namespace MadsKristensen.EditorExtensions
                 DTE.Events.SolutionEvents.Opened += delegate { SettingsStore.Load(); ShowTopMenu(); };
                 DTE.Events.SolutionEvents.AfterClosing += delegate { DTE.StatusBar.Clear(); ShowTopMenu(); };
 
+                PromptToUpgrade();
+
             }), DispatcherPriority.ApplicationIdle, null);
         }
 
@@ -110,6 +114,37 @@ namespace MadsKristensen.EditorExtensions
                 }), DispatcherPriority.ApplicationIdle, null);
 
                 return;
+            }
+        }
+
+        private void PromptToUpgrade()
+        {
+            string key = "WebEssentials.WebExtensionPackPromptShown";
+
+            try
+            {
+                var userHasBeenPrompted = bool.Parse(UserRegistryRoot.GetValue(key, false).ToString());
+
+                if (!userHasBeenPrompted)
+                {
+
+                    var hwnd = new IntPtr(_dte.MainWindow.HWnd);
+                    var window = (System.Windows.Window)HwndSource.FromHwnd(hwnd).RootVisual;
+
+                    string msg = "Web Essentials recommendeds you to install the Web Extension Pack extension. It contains all the features that used to be part of Web Essentials that was extracted into individual extensions.\r\rDo you wish to go to the download page?";
+                    var answer = MessageBox.Show(window, msg, Vsix.Name, MessageBoxButton.YesNo, MessageBoxImage.Information);
+
+                    if (answer == MessageBoxResult.Yes)
+                        System.Diagnostics.Process.Start("https://visualstudiogallery.msdn.microsoft.com/f3b504c6-0095-42f1-a989-51d5fc2a8459");
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(ex);
+            }
+            finally
+            {
+                UserRegistryRoot.SetValue(key, true);
             }
         }
 
