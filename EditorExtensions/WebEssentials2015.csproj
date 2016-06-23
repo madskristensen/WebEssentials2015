@@ -483,9 +483,11 @@
     <Compile Include="HTML\LightBulbs\Actions\AngularControllerLightBulbAction.cs" />
     <Compile Include="HTML\LightBulbs\Actions\Base64DecodeLightBulbAction.cs" />
     <Compile Include="HTML\LightBulbs\Actions\ExtractLightBulbAction.cs" />
+    <Compile Include="HTML\LightBulbs\Actions\HtmlSuggestedActionBase.cs" />
     <Compile Include="HTML\LightBulbs\Actions\IntegrityLightBulbAction.cs" />
     <Compile Include="HTML\LightBulbs\Actions\MinifyLightBulbAction.cs" />
     <Compile Include="HTML\LightBulbs\Actions\RemoveElementLightBulbAction.cs" />
+    <Compile Include="HTML\LightBulbs\Actions\SuggestedActionBase.cs" />
     <Compile Include="HTML\LightBulbs\Providers\AngularControllerLightBulbProvider.cs" />
     <Compile Include="HTML\LightBulbs\Providers\ImageLightBulbProvider.cs" />
     <Compile Include="HTML\LightBulbs\Providers\RemoveElementLightBulbProvider.cs" />
