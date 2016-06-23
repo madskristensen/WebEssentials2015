@@ -28,9 +28,10 @@ namespace MadsKristensen.EditorExtensions.Html
             if (!string.IsNullOrEmpty(_className))
             {
                 FileHelpers.SearchFiles("." + _className, "*.css;*.less;*.scss;*.sass");
+				return true;
             }
 
-            return true;
+            return false;
         }
 
         private bool TryGetClassName(out string className)
