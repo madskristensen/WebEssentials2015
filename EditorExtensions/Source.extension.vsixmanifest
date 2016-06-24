@@ -1,28 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
-  <Metadata>
-    <Identity Id="5fb7364d-2e8c-44a4-95eb-2a382e30fec9" Version="2.0" Language="en-US" Publisher="Mads Kristensen" />
-    <DisplayName>Web Essentials 2015.2</DisplayName>
-    <Description xml:space="preserve">Adds many useful features to Visual Studio for web developers. Requires Visual Studio 2015</Description>
-    <MoreInfo>http://vswebessentials.com/</MoreInfo>
-    <License>License.txt</License>
-    <GettingStartedGuide>http://vswebessentials.com/changelog</GettingStartedGuide>
-    <ReleaseNotes>http://vswebessentials.com/changelog</ReleaseNotes>
-    <Icon>Resources/Images/WebEssentials2012logo.png</Icon>
-    <PreviewImage>Resources/Images/preview.png</PreviewImage>
-    <Tags>css, javascript, html, json</Tags>
-  </Metadata>
-  <Installation InstalledByMsi="false">
-    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="14.0" />
-  </Installation>
-  <Dependencies>
-    <Dependency d:Source="Installed" Id="0AC2ABB1-6383-4608-BA51-B58A23DD9E8A" DisplayName="Web Developer Tools" Version="[14.0,15.0)" />
-  </Dependencies>
-  <Assets>
-    <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
-    <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="registry.pkgdef" />
-    <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="icons.pkgdef" />
-    <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%|" />
-    <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="JavaScript\Snippets\snippets.pkgdef" />
-  </Assets>
+    <Metadata>
+        <Identity Id="5fb7364d-2e8c-44a4-95eb-2a382e30fec9" Version="3.0" Language="en-US" Publisher="Mads Kristensen" />
+        <DisplayName>Web Essentials 2015.3</DisplayName>
+        <Description xml:space="preserve">Adds many useful features to Visual Studio for web developers. Requires Visual Studio 2015</Description>
+        <MoreInfo>http://vswebessentials.com/</MoreInfo>
+        <License>License.txt</License>
+        <GettingStartedGuide>http://vswebessentials.com/changelog</GettingStartedGuide>
+        <ReleaseNotes>http://vswebessentials.com/changelog</ReleaseNotes>
+        <Icon>Resources/Images/WebEssentials2012logo.png</Icon>
+        <PreviewImage>Resources/Images/preview.png</PreviewImage>
+        <Tags>css, javascript, html, json</Tags>
+    </Metadata>
+    <Installation InstalledByMsi="false">
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="14.0" />
+    </Installation>
+    <Dependencies>
+        <Dependency d:Source="Installed" Id="0AC2ABB1-6383-4608-BA51-B58A23DD9E8A" DisplayName="Web Developer Tools" Version="[14.0,15.0)" />
+    </Dependencies>
+    <Assets>
+        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
+        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="registry.pkgdef" />
+        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="icons.pkgdef" />
+        <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%|" />
+        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="JavaScript\Snippets\snippets.pkgdef" />
+    </Assets>
 </PackageManifest>
