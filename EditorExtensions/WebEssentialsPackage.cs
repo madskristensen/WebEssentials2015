@@ -131,7 +131,7 @@ namespace MadsKristensen.EditorExtensions
                     var hwnd = new IntPtr(_dte.MainWindow.HWnd);
                     var window = (System.Windows.Window)HwndSource.FromHwnd(hwnd).RootVisual;
 
-                    string msg = "Web Essentials recommendeds you to install the Web Extension Pack extension if you haven't already. It contains all the features that used to be part of Web Essentials that was extracted into individual extensions.\r\rDo you wish to go to the download page?";
+                    string msg = "Web Essentials recommends you to install the Web Extension Pack extension if you haven't already. It contains all the features that used to be part of Web Essentials that was extracted into individual extensions.\r\rDo you wish to go to the download page?";
                     var answer = MessageBox.Show(window, msg, Vsix.Name, MessageBoxButton.YesNo, MessageBoxImage.Information);
 
                     if (answer == MessageBoxResult.Yes)
