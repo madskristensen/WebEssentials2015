@@ -574,9 +574,12 @@
     <Compile Include="Shared\Helpers\CssSourceMap.cs" />
     <Compile Include="Shared\Helpers\Base64Vlq.cs" />
     <Compile Include="Shared\Helpers\SourceMapNode.cs" />
+    <Compile Include="Shared\Margins\EditorMarginFactory.cs" />
+    <Compile Include="Shared\Margins\MarginBase.cs" />
     <Compile Include="Source.extension.cs">
       <DependentUpon>Source.extension.vsixmanifest</DependentUpon>
     </Compile>
+    <Compile Include="Svg\Margin\SvgMargin.cs" />
     <Compile Include="SweetJs\ContentType\SweetJsContentTypeDefinition.cs" />
     <Compile Include="RobotsTxt\Classify\RobotsTxtClassificationTypes.cs" />
     <Compile Include="RobotsTxt\Classify\RobotsTxtClassifier.cs" />

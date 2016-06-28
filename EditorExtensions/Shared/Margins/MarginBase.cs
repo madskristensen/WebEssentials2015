@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
-using MadsKristensen.EditorExtensions.Compilers;
+//using MadsKristensen.EditorExtensions.Compilers;
 using MadsKristensen.EditorExtensions.Settings;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
@@ -178,37 +178,37 @@ namespace MadsKristensen.EditorExtensions
         }
     }
     ///<summary>A base class for margins that display the result of an <see cref="ICompilationNotifier"/>.</summary>
-    public abstract class CompilingMarginBase : MarginBase
-    {
-        public ICompilationNotifier Notifier { get; private set; }
-        protected CompilingMarginBase(IMarginSettings settings, ITextDocument document)
-            : base(settings, document)
-        {
-            Notifier = Mef.GetImport<ICompilationNotifierProvider>(Document.TextBuffer.ContentType).GetCompilationNotifier(document);
-            Notifier.CompilationReady += (s, e) => UpdateMargin(e.CompilerResult);
-        }
+    //public abstract class CompilingMarginBase : MarginBase
+    //{
+    //    public ICompilationNotifier Notifier { get; private set; }
+    //    protected CompilingMarginBase(IMarginSettings settings, ITextDocument document)
+    //        : base(settings, document)
+    //    {
+    //        Notifier = Mef.GetImport<ICompilationNotifierProvider>(Document.TextBuffer.ContentType).GetCompilationNotifier(document);
+    //        Notifier.CompilationReady += (s, e) => UpdateMargin(e.CompilerResult);
+    //    }
 
-        protected override void CreateMarginControls()
-        {
-            if (Settings == null || !Settings.ShowPreviewPane)
-                return;
+    //    protected override void CreateMarginControls()
+    //    {
+    //        if (Settings == null || !Settings.ShowPreviewPane)
+    //            return;
 
-            base.CreateMarginControls();
-            Dispatcher.InvokeAsync(() => Notifier.RequestCompilationResult(cached: true));
-        }
+    //        base.CreateMarginControls();
+    //        Dispatcher.InvokeAsync(() => Notifier.RequestCompilationResult(cached: true));
+    //    }
 
-        protected abstract void UpdateMargin(CompilerResult result);
+    //    protected abstract void UpdateMargin(CompilerResult result);
 
 
-        ///<summary>Releases the unmanaged resources used by the CompilingMarginBase and optionally releases the managed resources.</summary>
-        ///<param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (Settings != null && disposing)
-            {
-                Notifier.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-    }
+    //    ///<summary>Releases the unmanaged resources used by the CompilingMarginBase and optionally releases the managed resources.</summary>
+    //    ///<param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
+    //    protected override void Dispose(bool disposing)
+    //    {
+    //        if (Settings != null && disposing)
+    //        {
+    //            Notifier.Dispose();
+    //        }
+    //        base.Dispose(disposing);
+    //    }
+    //}
 }
