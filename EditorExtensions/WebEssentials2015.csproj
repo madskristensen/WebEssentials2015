@@ -809,10 +809,6 @@
     <Resource Include="Resources\Images\foundation.png" />
     <Resource Include="Resources\Images\blueprint.png" />
     <Resource Include="Resources\Images\gumby.png" />
-    <Content Include="icons.pkgdef">
-      <IncludeInVSIX>true</IncludeInVSIX>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Resource Include="Resources\Images\aurelia.png" />
     <Resource Include="Resources\Images\Browsers\e.png" />
     <Content Include="Resources\Images\preview.png">
