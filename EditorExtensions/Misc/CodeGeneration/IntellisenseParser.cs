@@ -19,7 +19,7 @@ namespace MadsKristensen.EditorExtensions
     {
         private const string DefaultModuleName = "server";
         private const string ModuleNameAttributeName = "TypeScriptModule";
-        private static readonly Regex IsNumber = new Regex("^[0-9a-fx]+[ul]{0,2}$", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+        private static readonly Regex IsNumber = new Regex("^[\\-0-9a-fx]+[ul]{0,2}$", RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
         internal static class Ext
         {
